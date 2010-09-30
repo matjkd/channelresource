@@ -1,0 +1,196 @@
+h1.logo a {
+	background: url(../../images/blue/logo.png) no-repeat ;
+}
+
+a:hover, a:active, a:focus {
+	color: #8C9520;
+}
+
+/* Header */
+
+#ja-headtools li a:hover {
+	background: url(../../images/blue/arrow-hover.gif) no-repeat  10px center;
+}
+
+#ja-headtools li a.show {
+	background: #106494 url(../../images/blue/arrow-light-90cw.png) no-repeat 10px center !important;
+}
+
+#ja-mainnav .main {
+	background: #106494;
+}
+
+#ja-mainnav li a, #ja-splitmenu a {
+	border-right: 1px solid #2B7EB8;
+	color: #DEEFFB;
+}
+
+#mod_search_searchword {
+	background: #2B7EB8 ;
+	border:1px solid #DEEFFB;
+	color: #DEEFFB;
+}
+
+#ja-footer {
+	background: #106494;
+	border-bottom: 3px solid #0B557F;
+}
+
+#ja-footer small {
+	color: #DEEFFB;
+}
+
+#ja-footer a {
+	color: #DEEFFB;
+}
+
+#ja-footer a:hover,
+#ja-footer a:focus,
+#ja-footer a:active {
+	color: #DEEFFB;
+}
+
+#ja-footer li {
+	background-image: url(../../images/blue/vline.gif);
+}
+
+#ja-pathway a:hover, #ja-pathway a:active, #ja-pathway a:focus {
+	color: #8C9520;
+}
+
+
+/* MODULE */
+
+div.moduletable h3, div.moduletable_text h3, div.moduletable_menu h3 {
+	color: #106494;
+}
+#ja-col2 div.moduletable_highlight h3 {
+	background: #8C9520;
+	border-bottom: 1px solid #658B13;
+}
+
+#ja-col2 div.moduletable h3, 
+#ja-col2 div.moduletable_text h3, 
+#ja-col2 div.moduletable_menu h3 {
+	background: #106494;
+	border-bottom: 1px solid #0B557F;
+}
+
+div.color1 h3{
+	color: #D33615;
+}
+
+div.color2 h3{
+	color: #8C9520;
+}
+
+div.color3 h3{
+	color: #116593;
+}
+
+/* JOOMLA STYLE */
+
+h2.contentheading a.contentpagetitle{
+	color: #106494;
+}
+
+a.readon { 
+	background: #106494;
+	color: #DEEFFB;
+}
+
+a.readon:hover,
+a.readon:focus,
+a.readon:active { 
+	background: #8C9520;
+}
+
+/* TYPO */
+
+.highlight {
+	color: #8C9520;
+}
+
+.dropcap {
+	color: #8C9520;
+}
+
+ul.checklist li {
+	background: url(../../images/blue/icon-checklist.gif) no-repeat  0 4px !important;
+}
+
+ul.arrow li {
+	background: url(../../images/blue/icon-arrow.gif) no-repeat  0 4px !important;
+}
+
+/* Main Menu */
+
+#ja-cssmenu li ul,
+#ja-cssmenu li ul ul {
+	background: url(../../images/blue/trans-bg.png);
+	border: 1px solid #2B7EB8;
+}
+
+#ja-cssmenu li ul li {
+	border-bottom: 1px solid #2B7EB8;
+}
+
+#ja-cssmenu li ul a:hover, 
+#ja-cssmenu li ul a:active, 
+#ja-cssmenu li ul a:focus, 
+#ja-cssmenu ul li:hover, 
+#ja-cssmenu ul li.sfhover, 
+#ja-cssmenu ul li.havesubchildsfhover, 
+#ja-cssmenu ul li.havesubchild-activesfhover, 
+#ja-cssmenu ul ul li:hover, 
+#ja-cssmenu ul ul li.sfhover, 
+#ja-cssmenu ul ul li.havesubchildsfhover, 
+#ja-cssmenu ul ul li.havesubchild-activesfhover {
+	background: #106494;
+}
+
+#ja-cssmenu li ul a {
+	color: #DEEFFB !important;
+}
+
+#ja-splitmenu li.active {
+	background: #0B557F;
+}
+
+#ja-subnav ul li.active a,
+#ja-subnav ul li a:hover,
+#ja-subnav ul li a:active,
+#ja-subnav ul li a:focus {
+	color: #8C9520;
+	background-image: url(../../images/blue/arrow-hover.gif);
+}
+
+/* Slide show */
+
+#ja-slideshow .ja-slide-buttons {
+	background: #106494;
+}
+
+.ja-slide-next, .ja-slide-prev {
+	color: #DEEFFB !important;
+}
+
+#ja-slideshow .ja-slide-thumbs-wrap {
+	background: #106494;
+}
+
+.ja-slide-thumbs-mask-left, .ja-slide-thumbs-mask-right {
+	background: none;
+}
+
+.ja-slide-buttons span {
+	color: #DEEFFB !important;
+}
+
+.ja-slide-thumbs .active span {
+	background: #2B7EB8;
+}
+
+#ja-slideshow .maskDesc .ja-slide-desc {
+	background: #106494;
+}

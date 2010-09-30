@@ -1,0 +1,68 @@
+/* Using CSS3 for some visual enhancements. (Will be degraded
+	nicely for non-CSS3 browsers.)
+-------------------------------------------------------------*/
+
+/* ROUNDED ELEMENTS
+--------------------------------------------------------------*/
+#ja-current-content, /*layout*/
+.form-button, .form-button-alt, input.input-text, select, textarea,#mod_search_searchword, /*form*/
+.error-msg, .success-msg, .notice-msg, .note-msg, /*messages*/
+.ja-tab-panels-top,
+#ja-slideshow .maskDesc .ja-slide-desc,.ja-slide-thumbs-handles span.active,.ja-slide-buttons,.ja-slide-thumbs .active span,.ja-slide-thumbs-handles span.active, /* Slide show */
+#ja-mainnav .main,
+.article-content img, div.ja-innerdiv img, /*img*/ 
+a.readon, /*joomla style*/
+#ja-login,#ja-register /* headtools */{
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px; 
+}
+
+.nickel .ja-tabs-title-top ul.ja-tabs-title li h3,/* Tabs */
+#ja-headtools li a.show /* Head tools */{
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	-moz-border-radius-topleft: 3px;  
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 3px;  
+	-webkit-border-top-left-radius: 3px; 
+}
+
+#ja-subnav .main {
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+	-moz-border-radius-bottomleft: 3px;  
+	-moz-border-radius-bottomright: 3px;
+	-webkit-border-bottom-right-radius: 3px;  
+	-webkit-border-bottom-left-radius: 3px; 
+}
+
+/*Box---*/
+#ja-col2 .moduletable_highlight,
+#ja-col2 .moduletable,
+#ja-col2 .moduletable_text,
+#ja-col2 .moduletable_menu{
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px; 
+}
+
+#ja-col2 .moduletable_highlight h3,
+#ja-col2 .moduletable h3,
+#ja-col2 .moduletable_text h3,
+#ja-col2 .moduletable_menu h3{
+	border-top-right-radius: 3px;
+	border-top-left-radius: 3px;
+	-moz-border-radius-topleft: 3px;  
+	-moz-border-radius-topright: 3px;
+	-webkit-border-top-right-radius: 3px;  
+	-webkit-border-top-left-radius: 3px; 
+}
+
+/*Others---*/
+
+.button,.inputbox {
+	border-radius: 3px;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px; 
+} 

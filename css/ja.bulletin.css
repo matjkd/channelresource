@@ -1,0 +1,15 @@
+ul.ja-bullettin {
+	margin-top:-5px !important;
+	color: #666666;
+}
+
+ul.ja-bullettin li {
+	padding: 5px 0;
+	background: none;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+ul.ja-bullettin li a {
+	font-weight: bold;
+	background: none;
+}

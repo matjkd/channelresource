@@ -1,0 +1,57 @@
+/*------------------------------------------------------------------------
+# JA Nickel for Joomla 1.5.x - Version 1.0 - Licence Owner JA110795
+# ------------------------------------------------------------------------
+# Copyright (C) 2004-2008 J.O.O.M Solutions Co., Ltd. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: J.O.O.M Solutions Co., Ltd
+# Websites:  http://www.joomlart.com -  http://www.joomlancers.com
+# This file may not be redistributed in whole or significant part.
+-------------------------------------------------------------------------*/
+
+/* MAIN NAVIGATION
+----------------------------------------------------------- */
+#ja-splitmenu {
+	margin: 0;
+	padding: 0;
+}
+
+#ja-splitmenu ul {
+	margin: 0;
+	padding: 0;
+}
+
+#ja-splitmenu li {
+	background: none;
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+#ja-splitmenu a {
+	border-right: 1px solid #666666;
+	display: block;
+	float: left;
+	text-decoration: none;
+	font-size: 100%;
+	color: #999999;
+	padding: 10px 20px;
+	text-transform: uppercase;
+}
+
+#ja-splitmenu a:hover,
+#ja-splitmenu a:active,
+#ja-splitmenu a:focus {
+	color: #FFFFFF;
+}
+
+#ja-splitmenu li.active {}
+
+#ja-splitmenu li.active a {
+	color: #FFFFFF;
+}
+
+#ja-splitmenu li.active a:hover,
+#ja-splitmenu li.active a:active,
+#ja-splitmenu li.active a:focus {
+	color: #FFFFFF;
+}
