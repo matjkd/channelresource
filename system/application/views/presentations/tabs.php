@@ -64,7 +64,13 @@
 <img src="<?=base_url()?>images/word.png"></img>
 <a href="<?=base_url()?>images/files/WebExUserGuide.docx" target="_blank">WebEx User Guide (DOCX format)</a><br/>
 
+<a href="http://www.proctorconsulting.co.uk/email_images/email_july_2010/email_july_2010%20copy.htm" target="_blank">Email Campaign 1</a><br/>
 
+<a href="http://www.proctorconsulting.co.uk/email_images/email_july_2010/email_july_2010_part_2.htm" target="_blank">Email Campaign 2</a><br/>
+
+<a href="http://www.proctorconsulting.co.uk/email_images/email_july_2010/email_july_2010_part_3.htm" target="_blank">Email Campaign 3</a><br/>
+
+<a href="http://www.proctorconsulting.co.uk/email_images/email_sept_2010/email_sept_2010.htm" target="_blank">Email Campaign 4</a><br/>
 
 </div>
 	
