@@ -31,6 +31,13 @@ class Guides extends My_Controller {
 		$this->load->view('template');
 	}
 	
+	function view()
+	{
+		$data['main'] = '/guides/main';
+		$this->load->vars($data);
+		$this->load->view('template');
+	}
+	
 	
 	
 function is_logged_in()

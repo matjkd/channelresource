@@ -211,10 +211,10 @@ class Quote extends My_Controller {
 		else
 		{
 			$this->load->model('membership_model');
-		$customer['assigned_info'] = $this->membership_model->get_company_detail($data['assigned']);
+		$customer['assigned_info'] = $this->membership_model->get_employee_detail($data['assigned']);
 		foreach($customer['assigned_info'] as $key => $row)
 					{
-						$data['assigned_name'] = $row['company_name'];
+						$data['assigned_name'] = "".$row['firstname']." ".$row['lastname']."";
 					}
 		}
 			

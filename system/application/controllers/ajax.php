@@ -33,6 +33,13 @@ class Ajax extends My_Controller {
 	$this->load->view('ajax/listcompanies');
 	}
 	
+function get_users()
+	{
+	$data['items'] = $this->Membership_model->get_all_employees();
+	$this->load->vars($data);
+	$this->load->view('ajax/listusers');
+	}
+	
 	
 	
 	

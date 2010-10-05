@@ -1,4 +1,5 @@
-  <div id="leftside">
+ <?php $this->load->view('quote/assign');?>
+ <div id="leftside">
  
 <?php 
 	

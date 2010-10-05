@@ -72,6 +72,38 @@ class Membership_model extends Model {
 			return $data;
 		
 	}
+	function get_all_employees()
+	{
+			$data = array();
+			
+			$query = $this->db->get('users');
+			if ($query->num_rows() > 0)
+			{
+				foreach ($query->result_array() as $row)
+				$data[] = $row;
+			}
+			$query->free_result();
+			
+			return $data;
+		
+	}
+	function get_employee_detail($id)
+	{
+		$data = array();
+		$this->db->where('user_id', $id);
+		$Q = $this->db->get('users');
+		if ($Q->num_rows() == 1)
+		{
+			foreach ($Q->result_array() as $row)
+			$data[] = $row;
+			
+		
+		}
+		$Q->free_result();
+		
+		return $data;
+	
+	}
 	function create_member()
 	{
 		

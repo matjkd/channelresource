@@ -122,7 +122,7 @@ function list_entries_by_user()
 		if(!isset($company)|| $company > 2)
 					{
 					$this->db->where('quote.user_id', $user);
-					$this->db->or_where('quote.assigned', $company);
+					$this->db->or_where('quote.assigned', $user);
 					$this->db->join('users', 'users.user_id=quote.user_id', 'right');
 					}
 					else if(!isset($company)|| $company < 3)

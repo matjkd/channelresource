@@ -24,7 +24,7 @@ function onSelectChange2(){
 
   $(document).ready(function(){
   var id = "<?php echo $this->session->userdata('company_id'); ?>";
-  var loadlist = "/ajax/get_companies";
+  var loadlist = "/ajax/get_users";
 
   $("#list").autocomplete(loadlist, {
 		width: 150,
@@ -52,7 +52,7 @@ $this->table->set_heading('Payment Details', '', '');
 
 if($this->session->userdata('company_id') < 3)
 {
-$this->table->add_row('Assign to Company', form_input('assigned_name',set_value('assigned_name', $assigned_name) ,$auto));
+$this->table->add_row('Assign to User', form_input('assigned_name',set_value('assigned_name', $assigned_name) ,$auto));
 }
 $this->table->add_row('Reference (for your info)', form_input('quote_ref', set_value('quote_ref', $quote_ref), $fields));
 
