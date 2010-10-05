@@ -9,6 +9,7 @@ class Quote extends My_Controller {
 		$this->is_logged_in();
 		$this->load->library(array('encrypt', 'form_validation'));
 		$this->load->model('quote_model');
+		$this->load->plugin('to_pdf');
 	}
 	function index()
 	{
@@ -263,9 +264,22 @@ class Quote extends My_Controller {
 		$data['main'] = 'quote/results';
 		$data['title'] = 'Quote Results';
 		
-		$this->load->vars($data);
-		$this->load->view('template');
+		if($this->uri->segment(4) == "pdf")
+			{
+				$data['quote_id'] = $this->uri->segment(3);
+				$this->load->vars($data);
 		
+				$this->load->helper('file');
+		
+		
+				$html = $this->load->view('pdf_template', $data, true);
+				pdf_create($html, 'Quote_'.$data['quote_id'].'');
+			}
+			else
+			{
+				$this->load->vars($data);
+				$this->load->view('template');
+			}
 		}
 		
 	}
@@ -276,6 +290,43 @@ class Quote extends My_Controller {
 		$this->session->set_flashdata('message', 'Quote Deleted');
 		redirect('quote/main', 'refresh');
 		}
+		
+	function pdf_quote()
+	{
+		$data['quote_id'] = $this->uri->segment(3);
+		$data['quote'] = $this->quote_model->get_quote($data['quote_id']);
+		
+		foreach($data['quote'] as  $row2):
+					$employee_id = $row2['client_name'];
+					$company_id = $row2['idcompany'];
+					$data['report_id'] = $row2['quote_id'];
+		endforeach;	
+		
+		$data['employee'] = $this->companies_model->get_employee($employee_id);
+		if($data['employee']==NULL)
+			{
+				$data['employee_name'] = "";
+			}
+			else
+			{
+				foreach($data['employee'] as  $row3):
+							
+							$data['employee_name'] = "".$row3['firstname']." ".$row3['lastname']."";
+				endforeach;	
+			}
+		$data['quote_table'] = $this->quote_model->get_quote_table($data['quote_id']);
+		$data['report_type'] = 'QUOTE';
+		$data['body'] = '/quotes/pdf/pdf_quote';
+		
+		
+		$this->load->vars($data);
+		
+		$this->load->helper('file');
+		
+		
+		$html = $this->load->view('pdf_template', $data, true);
+		pdf_create($html, 'Quote_'.$data['quote_id'].'');
+	}
 	
 function is_logged_in()
 	{
