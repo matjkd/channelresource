@@ -21,10 +21,28 @@ function onSelectChange2(){
 	$("#output2").html(output);
 }
 
-</script>
+
+  $(document).ready(function(){
+  var id = "<?php echo $this->session->userdata('company_id'); ?>";
+  var loadlist = "/ajax/get_companies";
+
+  $("#list").autocomplete(loadlist, {
+		width: 150,
+		selectFirst: false
+	});
+
+  $("#list").result(function(event, data, formatted) {
+		if (data)
+			$("#hiddenIDbox").val(data[1]);
+	});
+
+  });
+ </script>
 
 <?php 
 $fields = "class='roifield'";
+$auto = "id='list'";
+$autohide = "id='hiddenIDbox'";
 $jquery = "id='jquerytype'";
 $jquery2 = "id='jquerytype2'";
 $user_id = $this->session->userdata('user_id');
@@ -32,6 +50,10 @@ $user_id = $this->session->userdata('user_id');
 
 $this->table->set_heading('Payment Details', '', '');
 
+if($this->session->userdata('company_id') < 3)
+{
+$this->table->add_row('Assign to Company', form_input('assigned_name',set_value('assigned_name', $assigned_name) ,$auto));
+}
 $this->table->add_row('Reference (for your info)', form_input('quote_ref', set_value('quote_ref', $quote_ref), $fields));
 
 $choose2 = array(1 => 'Capital Amount', 2 => 'Periodic Payment');
@@ -72,3 +94,4 @@ $this->table->add_row('<span id="output"></span>', form_input('calculate_by', se
 	echo form_hidden('user_id', $user_id);
 	?>
 	
+<input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">

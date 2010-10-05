@@ -23,11 +23,15 @@ class Quote extends My_Controller {
 		{
 			
 			$config['base_url'] = base_url().'quote/results/'.$this->uri->segment(3);
+			
+			
 		}
 		else if($segment_active==NULL)
 		{
 			
 			$config['base_url'] = base_url().'quote/results/0/';
+			
+			
 		}
 		
 		$config['total_rows'] = $this->db->count_all('quote');
@@ -47,6 +51,8 @@ class Quote extends My_Controller {
 		endforeach;
 		
 						$data['quote_ref'] ='';
+						$data['assigned'] = '';
+						$data['assigned_name'] = '';
 						$data['capital'] ='';
 						$data['capital_type'] ='';
 						$data['amount_type'] ='';
@@ -79,11 +85,16 @@ class Quote extends My_Controller {
 		{
 			
 			$config['base_url'] = base_url().'quote/results/'.$this->uri->segment(3);
+		
+			
 		}
 		else if($segment_active==NULL)
 		{
 			
 			$config['base_url'] = base_url().'quote/results/0/';
+			$data['customer_id'] ='';
+			$data['customer_name'] ='';
+			
 		}
 		
 		$config['total_rows'] = $this->db->count_all('quote');
@@ -113,6 +124,7 @@ class Quote extends My_Controller {
 		
 		
 		$data['quote_ref'] = $this->input->post('quote_ref');
+		$data['assigned'] = $this->input->post('assigned');
 		$data['capital'] = $this->input->post('capital');
 		$data['capital_type'] = $this->input->post('capital_type');
 		$data['amount_type'] = $this->input->post('amount_type');
@@ -143,9 +155,9 @@ class Quote extends My_Controller {
 				
 				foreach($data2['quote_numbers'] as $key => $row)
 					{
-						//if there is an error is may be caused here.
-						$data['quote_id'] = $row['quote_id'];
 						
+						$data['quote_id'] = $row['quote_id'];
+						$data['assigned'] = $row['assigned'];
 						$data['quote_ref'] = $row['quote_ref'];
 						$data['capital_type'] = $row['capital_type'];
 						$data['amount_type'] = $row['amount_type'];
@@ -190,7 +202,20 @@ class Quote extends My_Controller {
 			}
 		
 		
-		
+		//Turn the assigned company id into the  company  name
+		if($data['assigned']==NULL)
+		{
+			$data['assigned_name'] = '';
+		}
+		else
+		{
+			$this->load->model('membership_model');
+		$customer['assigned_info'] = $this->membership_model->get_company_detail($data['assigned']);
+		foreach($customer['assigned_info'] as $key => $row)
+					{
+						$data['assigned_name'] = $row['company_name'];
+					}
+		}
 			
 		if($run=='yes')
 		

@@ -20,6 +20,7 @@ class Quote_model extends Model {
     	
     				$new_quote_insert_data = array(
     				'quote_ref' => $this->input->post('quote_ref'),
+    				'assigned' => $this->input->post('assigned'),
 					'capital' => $this->input->post('capital'),
     				'capital_type' => $this->input->post('capital_type'),
     				'amount_type' => $this->input->post('amount_type'),
@@ -54,6 +55,7 @@ class Quote_model extends Model {
 			
     				$quote_update_data = array(
     				'quote_ref' => $this->input->post('quote_ref'),
+    				'assigned' => $this->input->post('assigned'),
 					'capital' => $this->input->post('capital'),
     				'capital_type' => $this->input->post('capital_type'),
     				'amount_type' => $this->input->post('amount_type'),
@@ -120,6 +122,7 @@ function list_entries_by_user()
 		if(!isset($company)|| $company > 2)
 					{
 					$this->db->where('quote.user_id', $user);
+					$this->db->or_where('quote.assigned', $company);
 					$this->db->join('users', 'users.user_id=quote.user_id', 'right');
 					}
 					else if(!isset($company)|| $company < 3)
