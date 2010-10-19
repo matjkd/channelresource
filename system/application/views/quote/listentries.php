@@ -31,7 +31,7 @@ $user =  $this->session->userdata('user_id');
 <table id="table_id"  width="100%" style="clear:both;">
 	<thead>
 		<tr>
-			<th>List of Previous Entries</th>
+			<th>Reference</th>
 			<th>Date Changed</th>
 			<th>Added By</th>
 			<th>Actions</th>

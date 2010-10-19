@@ -46,17 +46,21 @@ table.collapse td {
 
 <table>
 	<tr>
-	<td width="280px"><img style="width: 180px;" src="logo_pdf.jpg"/></td>
+	<td width="280px"><img style="width: 180px;" src="logo.png"/></td>
 	
-	<td align=right><h2 style="margin-bottom:3px;"> <?php echo "name" ?></h2>
-	<?php echo "address"; ?><br/>
+	<td align=right><h2 style="margin-bottom:3px;"> <?=$config_company_name?></h2>
+	<?=$config_address1?><br/>
+	<?=$config_address2?><br/>
+	<?=$config_address3?><br/>
+	<?=$config_address4?><br/>
+	
 	<?php echo "<strong>t 12</strong>  <br/><strong>e</strong> em  <br/> <strong>w</strong> ww"; ?>
 	</td>
 	</tr>
 	
 </table>
 
-
+Quote Reference: <?=$quote_ref?>
 
 
 <table>
