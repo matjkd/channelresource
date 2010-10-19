@@ -14,9 +14,9 @@ class MY_Controller extends Controller {
 	$config_data['config_address4'] = "NG15 0DT";
 	$config_data['config_address5'] = "Address";
 	$config_data['config_version'] = "0.0.9";
-	$config_data['config_email'] = "email@email.com";
-	$config_data['config_website'] = "email@email.com";
-	$config_data['config_phone'] = "1234567890";
+	$config_data['config_email'] = "support@lease-desk.com";
+	$config_data['config_website'] = "www.proctorconstulting.co.uk";
+	$config_data['config_phone'] = "01302 245310";
 	
 	$this->config_email = 'email@email.com';
 	$this->config_smtp_user = 'email@email.com';

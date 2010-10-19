@@ -42,13 +42,13 @@ $user =  $this->session->userdata('user_id');
 		
 		$viewquote ='/quote/results/'.$row['quote_id'];
 		$deletequote ='/quote/delete/'.$row['quote_id']; 
-
+		$pdfquote ='/quote/results/'.$row['quote_id'].'/pdf';
 ?>
 		<tr >
 			<td style="padding:5px;"><?=$row['quote_ref']?></td>
 			<td style="padding:5px;"><?=$row['date_added']?></td>
 			<td style="padding:5px;"><?=$row['firstname']?> <?=$row['lastname']?></td>
-			<td style="padding:5px;"><?php echo "<a href=$viewquote>View</a> | <a href='#' onclick='confirmation(".$row['quote_id'].")'>Delete</a>"?></td>
+			<td style="padding:5px;"><?php echo "<a href=$viewquote>View</a> | <a href='#' onclick='confirmation(".$row['quote_id'].")'>Delete</a> | <a href=$pdfquote>PDF</a>"?></td>
 		</tr>
 		<?php endforeach;  ?>
 	</tbody>

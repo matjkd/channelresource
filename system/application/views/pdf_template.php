@@ -46,7 +46,7 @@ table.collapse td {
 
 <table>
 	<tr>
-	<td width="280px"><img style="width: 180px;" src="logo.png"/></td>
+	<td width="280px"><img style="width: 180px;" src="logo.jpg"/></td>
 	
 	<td align=right><h2 style="margin-bottom:3px;"> <?=$config_company_name?></h2>
 	<?=$config_address1?><br/>
@@ -54,27 +54,44 @@ table.collapse td {
 	<?=$config_address3?><br/>
 	<?=$config_address4?><br/>
 	
-	<?php echo "<strong>t 12</strong>  <br/><strong>e</strong> em  <br/> <strong>w</strong> ww"; ?>
+	<?php echo "<strong>t $config_phone</strong>  <br/><strong>e</strong>$config_email<br/> <strong>w</strong> $config_website"; ?>
 	</td>
 	</tr>
 	
 </table>
 
-Quote Reference: <?=$quote_ref?>
+<strong>Quote Ref:</strong> <?=$quote_ref?>
 
 
-<table>
-	<tr>
+
+<?php 
+	$this->load->view('admin/table');
+foreach($quote_results as $key => $row):
+
+
+$this->table->add_row('<h2>Results</h2>', '');
+	$this->table->add_row('Capital Amount', number_format($row['capital'], 2));
+	$this->table->add_row('Interest Rate', $row['interest_rate']);
+	$this->table->add_row('Rate Per Thousand', $row['rate_per_1000']);
 	
-	<td><h1><?php echo "something"; ?> <?php echo "something"; ?></h1></td>
-	</tr>
-</table>
+	$this->table->add_row('Payment Type', $row['payment_type']);
+	$this->table->add_row('Payment Frequency', $row['payment_frequency']);
+	$this->table->add_row('Payment Profile', $row['initial']."+".$row['regular']);
+	$this->table->add_row('Initial', $row['initial_result']);
+	$this->table->add_row('Regular', $row['regular_result']);
+	$this->table->add_row('', '');
+
+	$this->table->add_row('<h2>Managed Service Results</h2>', '');
+	$this->table->add_row('Cost Per Port/User per month', $row['cost_per_port_per_month']);
+	echo $this->table->generate();
+	$this->table->clear();
+	
+endforeach;	
+	?>
 
 
 
 
-
-body to go here
 
 
 
