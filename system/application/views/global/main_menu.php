@@ -8,7 +8,7 @@
 		<ul id="ja-cssmenu" class="clearfix"> 
 			<li>
 			<a href="<?=base_url()?>" class="menu-item0 active first-item" id="menu1" title="Home">
-			<span class="menu-title">Home</span></a>
+			<span class="menu-title"><img src="<?=base_url()?>images/home_icon.png" style="padding:2px;"></span></a>
 			
 			</li> 
 			<?php $role = $this->session->userdata('role');
