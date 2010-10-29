@@ -31,10 +31,10 @@
 $this->table->set_heading('Results', '');
 	$this->table->add_row('Maximum Users', $maximum_users);
 	$this->table->add_row('Maximum Storage', $maximum_storage);
-	$this->table->add_row('5 Year Subscription', "&#163;".$subscription_5_year."");
-	$this->table->add_row('5 Year Services', "&#163;".$services_5_year."");
-	$this->table->add_row('5 Year Annual Support', "&#163;".$annual_support_5_year."");
-	$this->table->add_row('1 Year Subscription', "&#163;".$subscription_1_year."");
+	$this->table->add_row('5 Year Subscription', $currency.$subscription_5_year);
+	$this->table->add_row('5 Year Services', $currency.$services_5_year);
+	$this->table->add_row('5 Year Annual Support', $currency.$annual_support_5_year);
+	$this->table->add_row('1 Year Subscription', $currency.$subscription_1_year);
 	echo $this->table->generate();
 	$this->table->clear();
 

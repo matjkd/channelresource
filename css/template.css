@@ -149,7 +149,9 @@ form label {
 input, select, textarea, .inputbox, .button {
 	font-family: Arial, sans-serif;
 	font-size: 100% !important;
+	
 }
+
 
 .inputbox {
 	background: #FFFFFF;
@@ -201,7 +203,7 @@ input, select, textarea, .inputbox, .button {
 	border: 1px solid #DDDDDD;
 }
 
-.article-tools .article-meta {
+.article-tools .article-meta {height: 15px;
 	float: left;
 }
 
@@ -238,7 +240,7 @@ tr.sectiontableentry0 td,
 tr.sectiontableentry1 td,
 tr.sectiontableentry2 td {
 	padding: 2px;
-	height: 25px;
+	height: 30px;
 }
 
 tr.sectiontableentry2 td {

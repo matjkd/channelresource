@@ -2,9 +2,9 @@
 
 class Pricelist extends My_Controller {
 
-	function Pricelist()
+	function __construct()
 	{
-		parent::Controller();
+		parent::__construct();
 			
 		$this->is_logged_in();
 		$this->load->library(array('encrypt', 'form_validation'));

@@ -23,20 +23,24 @@ foreach($quote_results as $key => $row):
 
 
 $this->table->set_heading('Results', '');
-	$this->table->add_row('Capital Amount', number_format($row['capital'], 2));
+	$this->table->add_row('Capital Amount', $currency.number_format($row['capital'], 2));
 	$this->table->add_row('Interest Rate', $row['interest_rate']);
 	$this->table->add_row('Rate Per Thousand', $row['rate_per_1000']);
 	
 	$this->table->add_row('Payment Type', $row['payment_type']);
 	$this->table->add_row('Payment Frequency', $row['payment_frequency']);
 	$this->table->add_row('Payment Profile', $row['initial']."+".$row['regular']);
-	$this->table->add_row('Initial', $row['initial_result']);
-	$this->table->add_row('Regular', $row['regular_result']);
+	$this->table->add_row('Initial', $currency.$row['initial_result']);
+	$this->table->add_row('Regular', $currency.$row['regular_result']);
+	$this->table->add_row('', '');
 	$this->table->add_row('', '');
 echo $this->table->generate();
 	$this->table->clear();
 	$this->table->set_heading('Managed Service Results', '');
-	$this->table->add_row('Cost Per Port/User per month', $row['cost_per_port_per_month']);
+	$this->table->add_row('<strong>Product cost per port/user</strong>', $currency.$row['product_cost_per_port']);
+	$this->table->add_row('<strong>Service cost per port/user</strong>', $currency.$row['service_cost_per_port']);
+	$this->table->add_row('<hr>', '<hr>');
+	$this->table->add_row('<strong>Total Cost Per Port/User per month</strong>', $currency.$row['cost_per_port_per_month']);
 	echo $this->table->generate();
 	$this->table->clear();
 	

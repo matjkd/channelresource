@@ -17,6 +17,7 @@ class MY_Controller extends Controller {
 	$config_data['config_email'] = "support@lease-desk.com";
 	$config_data['config_website'] = "www.proctorconstulting.co.uk";
 	$config_data['config_phone'] = "01302 245310";
+	$config_data['currency'] = "&pound;";
 	
 	$this->config_email = 'email@email.com';
 	$this->config_smtp_user = 'email@email.com';

@@ -235,10 +235,18 @@ $guess = round($guess, 3);
 	{
 	$cost_per_port_per_month = (((($regularpayment*$payment_frequency)/12)/$number_of_ports)+(($annual_support_costs/12)/$number_of_ports)+(($other_monthly_costs))/$number_of_ports);
 	$cost_per_port_per_month = number_format($cost_per_port_per_month, 2);
+	
+	$product_cost_per_port = (($regularpayment*$payment_frequency)/12)/$number_of_ports;
+	$product_cost_per_port = number_format($product_cost_per_port, 2);
+	
+	$service_cost_per_port = (($annual_support_costs/12)/$number_of_ports)+($other_monthly_costs)/$number_of_ports;
+	$service_cost_per_port = number_format($service_cost_per_port, 2);
 	}
 	else
 	{
 		$cost_per_port_per_month = 0;
+		$product_cost_per_port = 0;
+		$service_cost_per_port = 0;
 	}
 	//END OF QUOTE CALCULATION
 			
@@ -254,6 +262,8 @@ $guess = round($guess, 3);
 			$results['initial_result'] = $initialpaymentround;
 			$results['regular_result'] = $regularpaymentround;
 			$results['cost_per_port_per_month'] = $cost_per_port_per_month;
+			$results['product_cost_per_port'] = $product_cost_per_port;
+			$results['service_cost_per_port'] = $service_cost_per_port;
 			$data[] = $results;
 			return $data;
 		}
