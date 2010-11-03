@@ -38,10 +38,21 @@ function onSelectChange2(){
 
   });
  </script>
+ 
+ <script type="text/javascript">
+	$(function() {
+		var availableTags = [<?php $this->load->view('ajax/json_users');?>];
+		$("#company").autocomplete({
+			source: availableTags
+		});
+	});
+	
+	
+</script>
 
 <?php 
 $fields = "class='roifield'";
-$auto = "id='list'";
+$auto = "id='company'";
 $autohide = "id='hiddenIDbox'";
 $jquery = "id='jquerytype'";
 $jquery2 = "id='jquerytype2'";

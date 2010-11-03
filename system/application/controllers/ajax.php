@@ -39,8 +39,18 @@ function get_users()
 	$this->load->vars($data);
 	$this->load->view('ajax/listusers');
 	}
-	
-	
+function json_users()
+	{
+	$data['items'] = $this->Membership_model->get_all_employees();
+	$this->load->vars($data);
+	$this->load->view('ajax/json_users');
+	}
+function json_companies()
+	{
+	$data['items'] = $this->Membership_model->get_companies('','');
+	$this->load->vars($data);
+	$this->load->view('ajax/json_companies');
+	}
 	
 	
 function is_logged_in()

@@ -16,10 +16,20 @@
 
   });
  </script>
+  <script type="text/javascript">
+	$(function() {
+		var availableTags = [<?php $this->load->view('ajax/json_companies');?>];
+		$("#company").autocomplete({
+			source: availableTags
+		});
+	});
+	
+	
+</script>
  
 <?php 
 $fields = "class='roifield'";
-$auto = "id='list'";
+$auto = "id='company'";
 $autohide = "id='hiddenIDbox'";
 $user_id = $this->session->userdata('user_id');
 
