@@ -54,35 +54,42 @@ table.collapse td {
 	<?=$config_address3?><br/>
 	<?=$config_address4?><br/>
 	
-	<?php echo "<strong>t $config_phone</strong>  <br/><strong>e</strong>$config_email<br/> <strong>w</strong> $config_website"; ?>
+	<?php echo "<strong>t $config_phone</strong>  <br/><strong>e </strong>$config_email<br/> <strong>w</strong> $config_website"; ?>
 	</td>
 	</tr>
 	
 </table>
 
-<strong>Quote Ref:</strong> <?=$quote_ref?>
+
 
 
 
 <?php 
 	$this->load->view('admin/table');
+	
+	$this->table->add_row("<strong>Quote Ref</strong>: $quote_ref", '');
 foreach($quote_results as $key => $row):
 
 
 $this->table->add_row('<h2>Results</h2>', '');
-	$this->table->add_row('Capital Amount', number_format($row['capital'], 2));
-	$this->table->add_row('Interest Rate', $row['interest_rate']);
-	$this->table->add_row('Rate Per Thousand', $row['rate_per_1000']);
+	$this->table->add_row('<strong>Capital Amount</strong>', $currency.number_format($row['capital'], 2));
 	
-	$this->table->add_row('Payment Type', $row['payment_type']);
-	$this->table->add_row('Payment Frequency', $row['payment_frequency']);
-	$this->table->add_row('Payment Profile', $row['initial']."+".$row['regular']);
-	$this->table->add_row('Initial', $row['initial_result']);
-	$this->table->add_row('Regular', $row['regular_result']);
+	
+	$this->table->add_row('<strong>Payment Type</strong>', $row['payment_type']);
+	$this->table->add_row('<strong>Payment Frequency</strong>', $row['payment_frequency']);
+	$this->table->add_row('<strong>Payment Profile</strong>', $row['initial']."+".$row['regular']);
+	$this->table->add_row('<strong>Initial</strong>', $currency.$row['initial_result']);
+	$this->table->add_row('<strong>Regular</strong>', $currency.$row['regular_result']);
 	$this->table->add_row('', '');
 
 	$this->table->add_row('<h2>Managed Service Results</h2>', '');
-	$this->table->add_row('Cost Per Port/User per month', $row['cost_per_port_per_month']);
+	
+	
+	$this->table->add_row('<strong>Product cost per port/user</strong>', $currency.$row['product_cost_per_port']);
+	$this->table->add_row('<strong>Service cost per port/user</strong>', $currency.$row['service_cost_per_port']);
+	$this->table->add_row('<hr>', '<hr>');
+	$this->table->add_row('<strong>Total Cost Per Port/User per month</strong>', $currency.$row['cost_per_port_per_month']);
+	
 	echo $this->table->generate();
 	$this->table->clear();
 	
@@ -117,7 +124,7 @@ if ( isset($pdf) ) {
 
   $y += $text_height;
 
-  $text = "ID: <?php echo "something"; ?>";
+  $text = "ID:  <?=$quote_ref?>";
   $pdf->text(16, $y, $text, $font, $size, $color);
 
   $pdf->close_object();
