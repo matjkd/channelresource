@@ -203,21 +203,39 @@ class Quote extends My_Controller {
 			}
 		
 		
-		//Turn the assigned company id into the  company  name
+		$this->load->model('membership_model');
+		//Turn the assigned user id into the full name then get the company details
 		if($data['assigned'] == FALSE)
 		{
-			$data['assigned_name'] = '';
+		
+			$customer['assigned_info'] = $this->membership_model->get_employee_detail($data['user_id']);
+			foreach($customer['assigned_info'] as $key => $row)
+					{
+						$data['assigned_name'] = "".$row['firstname']." ".$row['lastname']."";
+						$data['assigned_company'] = $row['company_id'];
+						$data['assigned_email'] = $row['email_address'];
+					}
+			
 		}
 		else
 		{
-			$this->load->model('membership_model');
+			
 		$customer['assigned_info'] = $this->membership_model->get_employee_detail($data['assigned']);
 		foreach($customer['assigned_info'] as $key => $row)
 					{
 						$data['assigned_name'] = "".$row['firstname']." ".$row['lastname']."";
+						$data['assigned_company'] = $row['company_id'];
+						$data['assigned_email'] = $row['email_address'];
 					}
 		}
-			
+		
+		$customer['assigned_company_details'] = $this->membership_model->get_company_detail($data['assigned_company']);
+		foreach($customer['assigned_company_details'] as $key => $row)
+					{
+						
+						$data['assigned_company_name'] = $row['company_name'];
+					}
+		
 		if($run=='yes')
 		
 		{
