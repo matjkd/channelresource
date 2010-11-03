@@ -18,7 +18,7 @@
  </script>
   <script type="text/javascript">
 	$(function() {
-		var availableTags = [<?php $this->load->view('ajax/json_companies');?>];
+		var availableTags = [<?php $this->load->view('ajax/json_customers');?>];
 		$("#company").autocomplete({
 			source: availableTags
 		});

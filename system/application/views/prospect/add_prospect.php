@@ -33,6 +33,17 @@ $(document).ready(function(){
 		$("#datepicker3").datepicker({changeMonth: true, changeYear: true, dateFormat: 'D, dd M yy'});
 	});
 	</script>
+	
+	 <script type="text/javascript">
+	$(function() {
+		var availableTags = [<?php $this->load->view('ajax/json_companies');?>];
+		$("#company").autocomplete({
+			source: availableTags
+		});
+	});
+	
+	
+</script>
 
 <?php 
 
@@ -42,7 +53,7 @@ $(document).ready(function(){
 $datepicker = "id='datepicker'";
 $datepicker2 = "id='datepicker2'";
 $datepicker3 = "id='datepicker3'";
-$auto = "id='list'";
+$auto = "id='company'";
 $autohide = "id='hiddenIDbox'";
 $user_id = $this->session->userdata('user_id');
 $this->table->set_heading('Add Prospect', '', '');
