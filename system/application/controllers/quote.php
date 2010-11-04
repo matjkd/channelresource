@@ -10,6 +10,7 @@ class Quote extends My_Controller {
 		$this->load->library(array('encrypt', 'form_validation'));
 		$this->load->model('quote_model');
 		$this->load->plugin('to_pdf');
+		
 	}
 	function index()
 	{

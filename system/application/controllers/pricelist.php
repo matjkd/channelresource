@@ -51,7 +51,7 @@ class Pricelist extends My_Controller {
 		$data['rowcount'] = $data['rowcount']+1;
 		endforeach;
 		
-		
+		$data['items'] = $this->prospect_model->list_customers($this->uri->segment(3));
 		$data['pricelist_ref'] = '';
 		$data['pricelist_users'] = '';
 		$data['pricelist_discount'] = '';
