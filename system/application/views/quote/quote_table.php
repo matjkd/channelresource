@@ -27,12 +27,23 @@ function onSelectChange2(){
   });
  </script>
  
+ 	<script>
+$(document).ready(function() {
+    $("input#np_from").autocomplete({
+    source: [{"value":"Some Name","id":1},{"value":"Some Othername","id":2}],
+    select: function(event,ui){
+		$('#np_id').val(ui.item.id)}
+		});
+  });
+	</script>
+ 
  <script type="text/javascript">
 	$(function() {
-		var availableTags = [<?php $this->load->view('ajax/json_users');?>];
+		var availableTags = [<?php $this->load->view('ajax/listusers');?>];
 		$("#company").autocomplete({
-			dataType: "jsonp",
-			source: availableTags
+			source: availableTags,
+			 select: function(event,ui){
+			$('#assign_id').val(ui.item.id)}
 		});
 	});
 	
@@ -53,6 +64,7 @@ $this->table->set_heading('Payment Details', '', '');
 if($this->session->userdata('company_id') < 3)
 {
 $this->table->add_row('Assign to User', form_input('assigned_name',set_value('assigned_name', $assigned_name) ,$auto));
+
 }
 $this->table->add_row('Reference (for your info)', form_input('quote_ref', set_value('quote_ref', $quote_ref), $fields));
 
@@ -92,6 +104,7 @@ $this->table->add_row('<span id="output"></span>', form_input('calculate_by', se
 	
 	echo form_hidden('date_added', unix_to_human(now(), TRUE, 'eu'));
 	echo form_hidden('user_id', $user_id);
+	echo form_hidden('assign_id');
 	?>
 	
 <input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">
