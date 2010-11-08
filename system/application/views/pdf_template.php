@@ -63,12 +63,10 @@ table.collapse td {
 
 
 
+
 <?php 
 	$this->load->view('admin/table');
 	
-	$this->table->add_row("<strong>Company Name</strong>: $assigned_company_name", '');
-	$this->table->add_row("<strong>User</strong>: $assigned_name", '');
-	$this->table->add_row("<strong>Email</strong>: $assigned_email", '');
 	$this->table->add_row("<strong>Quote Ref</strong>: $quote_ref", '');
 foreach($quote_results as $key => $row):
 
@@ -77,7 +75,7 @@ $this->table->add_row('<h2>Results</h2>', '');
 	$this->table->add_row('<strong>Capital Amount</strong>', $currency.number_format($row['capital'], 2));
 	
 	
-	$this->table->add_row('<strong>Payment Type</strong>', $row['payment_type']);
+	$this->table->add_row('<strong>Payment Type</strong>', $row['payment_type']); 
 	$this->table->add_row('<strong>Payment Frequency</strong>', $row['payment_frequency']);
 	$this->table->add_row('<strong>Payment Profile</strong>', $row['initial']."+".$row['regular']);
 	$this->table->add_row('<strong>Initial</strong>', $currency.$row['initial_result']);
@@ -86,7 +84,7 @@ $this->table->add_row('<h2>Results</h2>', '');
 
 	$this->table->add_row('<h2>Managed Service Results</h2>', '');
 	
-	
+	$this->table->add_row('<strong>Number of ports/users</strong>', $row['number_of_ports']);
 	$this->table->add_row('<strong>Product cost per port/user</strong>', $currency.$row['product_cost_per_port']);
 	$this->table->add_row('<strong>Service cost per port/user</strong>', $currency.$row['service_cost_per_port']);
 	$this->table->add_row('<hr>', '<hr>');

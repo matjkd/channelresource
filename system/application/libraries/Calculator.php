@@ -264,6 +264,8 @@ $guess = round($guess, 3);
 			$results['cost_per_port_per_month'] = $cost_per_port_per_month;
 			$results['product_cost_per_port'] = $product_cost_per_port;
 			$results['service_cost_per_port'] = $service_cost_per_port;
+			$results['number_of_ports'] = $number_of_ports;
+			
 			$data[] = $results;
 			return $data;
 		}
