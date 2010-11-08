@@ -84,7 +84,7 @@ $this->table->add_row('<h2>Results</h2>', '');
 
 	$this->table->add_row('<h2>Managed Service Results</h2>', '');
 	
-	
+	$this->table->add_row('<strong>Number of ports/users</strong>', $row['number_of_ports']);
 	$this->table->add_row('<strong>Product cost per port/user</strong>', $currency.$row['product_cost_per_port']);
 	$this->table->add_row('<strong>Service cost per port/user</strong>', $currency.$row['service_cost_per_port']);
 	$this->table->add_row('<hr>', '<hr>');
