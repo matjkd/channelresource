@@ -67,6 +67,9 @@ table.collapse td {
 <?php 
 	$this->load->view('admin/table');
 	
+	$this->table->add_row("<strong>Company Name</strong>: $assigned_company_name", '');
+	$this->table->add_row("<strong>User</strong>: $assigned_name", '');
+	$this->table->add_row("<strong>Email</strong>: $assigned_email", '');
 	$this->table->add_row("<strong>Quote Ref</strong>: $quote_ref", '');
 foreach($quote_results as $key => $row):
 
