@@ -48,5 +48,12 @@
 		Navigation
 	</div>
 </div>
+	<?php if($this->session->userdata('role') == 1) {?>
+	
+	edit guide
+	
+	<?php }?>
+
+
 <?php endforeach;?>
 <?php $this->load->view('guides/links'); ?>
