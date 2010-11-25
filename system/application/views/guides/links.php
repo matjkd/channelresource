@@ -17,7 +17,7 @@
 
 <div id="tabs-1">
 
-<a href="/guides/viewguide/1">Logging In</a><br/>
+Logging In (coming soon)<br/>
 Files(coming soon)<br/>
 Agreements(coming soon)<br/>
 
