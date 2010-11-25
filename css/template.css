@@ -1358,3 +1358,26 @@ li.ja-firstitem,
 .dataTables_wrapper {
 	min-height: 100px;
 }
+/* Userguide styles */
+#guide_container {
+	background: #aaaaaa url('/images/guideback.jpg') no-repeat;
+	padding:20px 20px 20px 40px;
+	width:740px;
+}
+#guide_container h2 {
+	margin:0px;
+	color:#ffffff;
+	font-weight:bold;
+}
+#guide_desc {
+	float:left;
+	width:235px;
+	color:#ffffff;
+}
+#guide_video {
+	float:left;
+	width:480px;
+}
+#guide_nav {
+	color:#ffffff;
+}
