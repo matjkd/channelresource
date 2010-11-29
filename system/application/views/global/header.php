@@ -21,6 +21,9 @@
 
 <script src="<?=base_url()?>js/jquery-ui-1.8.custom.min.js" type="text/javascript"></script>
 <script src="<?=base_url()?>js/autocomplete.js" type="text/javascript"></script>
+<script src="<?=base_url()?>js/wymeditor/jquery.wymeditor.js" type="text/javascript"></script>
+
+
 <script language="javascript">AC_FL_RunContent = 0;</script>
 <script src="<?=base_url()?>js/AC_RunActiveContent.js" language="javascript"></script>
 <link rel='stylesheet' href='<?=base_url()?>css/js.css' type='text/css' />
@@ -51,5 +54,7 @@ else if(SITE=="channel"){
 
 ?>
 </title>
+
+
 </head>
 
