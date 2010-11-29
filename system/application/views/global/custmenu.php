@@ -5,7 +5,7 @@
 	     </div> 
 	      <?php $this->load->view('user/login'); ?>
 	     <div>
-    <a href="<?=base_url()?>guides"><img src="<?=base_url()?>images/icons/guides.png"></img></a>
+    <a href="<?=base_url()?>userguide"><img src="<?=base_url()?>images/icons/guides.png"></img></a>
     </div>
     <div>
     <a href="<?=base_url()?>quote/main"><img src="<?=base_url()?>images/icons/quotetool.png"></img></a>

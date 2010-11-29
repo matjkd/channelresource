@@ -17,17 +17,11 @@
 
 <div id="tabs-1">
 
-Logging In (coming soon)<br/>
-Files(coming soon)<br/>
-Agreements(coming soon)<br/>
+<?php foreach($normal_guides as $normal):?>
 
+<a href="<?=base_url()?>userguide/viewguide/<?=$normal['user_guide_id']?>"><?=$normal['title']?></a><br/>
 
-
-
-
-Dashboard(coming soon)<br/>
-Search(coming soon)<br/>
-General(coming soon)<br/>
+<?php endforeach; ?>
 
 </div>
 

@@ -45,12 +45,12 @@
 	<div class="clr"></div>
 	
 	<div id="guide_nav">
-		Navigation
+		
 	</div>
 </div>
 	<?php if($this->session->userdata('role') == 1) {?>
 	
-	edit guide
+	<?=$this->load->view('guides/guide_admin')?>
 	
 	<?php }?>
 

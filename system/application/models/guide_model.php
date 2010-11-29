@@ -24,4 +24,20 @@ class Guide_model extends Model {
 		
 		return $data;
     }
+ 	function get_guides($section)
+    {
+    	$data = array();
+			$this->db->where('guide_section', $section);
+			$query = $this->db->get('user_guides');
+			if ($query->num_rows() > 0)
+			{
+				foreach ($query->result_array() as $row)
+				
+				$data[] = $row;
+				
+			}
+		$query->free_result();
+		
+		return $data;
+    }
 }
