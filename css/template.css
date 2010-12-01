@@ -1382,3 +1382,7 @@ li.ja-firstitem,
 #guide_nav {
 	color:#ffffff;
 }
+.ui-widget {
+font-family: Verdana, Arial, sans-serif;
+font-size: 1.0em;
+}
