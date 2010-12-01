@@ -40,6 +40,12 @@ class Userguide extends My_Controller {
 		$this->load->view('template');
 	}
 	
+	function editguide($id)
+	{
+		$this->guide_model->update_guide($id);
+		redirect('userguide/viewguide/'.$id);
+	}
+	
 		
 	function is_logged_in()
 	{

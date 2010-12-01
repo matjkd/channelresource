@@ -20,7 +20,7 @@ jQuery(function() {
 <?php  $id = $admin['user_guide_id'];?>
 
 
-<?=form_open("admin/edit_guides/$id")?> 
+<?=form_open("userguide/editguide/$id")?> 
 Title: <?=form_input('title', $admin['title'])?>
 <br/>
 Filename: <input type="text" name="filename" id="filename" value="<?=$admin['filename']?>"><br/>
