@@ -33,8 +33,12 @@ class Userguide extends My_Controller {
 		$data['main_guides'] =  $this->guide_model->get_guides(2);
 		$data['super_guides'] =  $this->guide_model->get_guides(3);
 		$data['main'] = '/guides/user_guide';
+		
 		$data['flash'] = 'yes';
 		$guide_id = $this->uri->segment(3);
+		$data['guide_id'] = $guide_id;
+		$data['tags'] = $this->guide_model->get_all_tags();
+		$data['assigned_tags'] = $this->guide_model->get_assigned_tags($guide_id);
 		$data['guide'] = $this->guide_model->get_guide($guide_id);
 		$this->load->vars($data);
 		$this->load->view('template');
