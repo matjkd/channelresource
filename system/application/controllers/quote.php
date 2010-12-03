@@ -10,6 +10,7 @@ class Quote extends My_Controller {
 		$this->load->library(array('encrypt', 'form_validation'));
 		$this->load->model('quote_model');
 		$this->load->plugin('to_pdf');
+		
 	}
 	function index()
 	{
@@ -70,7 +71,7 @@ class Quote extends My_Controller {
 						$data['annual_support_costs'] = '';
 						$data['other_monthly_costs'] = '';
 						$data['user_id'] = '';
-						
+		$data['items'] = $this->Membership_model->get_all_employees();							
 		$data['main'] = '/quote/main';
 		$data['title'] = 'Lease Rate Calculator';
 		$this->load->vars($data);
@@ -203,7 +204,9 @@ class Quote extends My_Controller {
 			}
 		
 		
+
 		$this->load->model('membership_model');
+
 		//Turn the assigned user id into the full name then get the company details
 		if($data['assigned'] == FALSE)
 		{
@@ -235,7 +238,7 @@ class Quote extends My_Controller {
 						
 						$data['assigned_company_name'] = $row['company_name'];
 					}
-		
+
 		if($run=='yes')
 		
 		{
@@ -278,7 +281,7 @@ class Quote extends My_Controller {
 			
 		
 		
-		
+		$data['items'] = $this->Membership_model->get_all_employees();			
 		$data['main'] = 'quote/results';
 		$data['title'] = 'Quote Results';
 		

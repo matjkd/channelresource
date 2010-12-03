@@ -350,6 +350,7 @@ $guess = round($guess, 3);
 		$results['additional_churn_per_sales'] = $additional_churn_per_sales;
 		$results['additional_churn_total'] = $additional_churn_total;
 		$results['total_cost_per_month'] = $total_cost_per_month;
+		$results['number_of_ports'] = $number_of_ports;
 		$data[] = $results;
 		return $data;	
 			

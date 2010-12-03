@@ -3,8 +3,9 @@
 
 foreach ($items as $key=>$row) {
 	
-		echo "".$row['firstname']." ".$row['lastname']." | ".$row['user_id']."\n";
-	
+		?>
+		{"value":"<?=$row['firstname']?> <?=$row['lastname']?>","id":<?=$row['user_id']?>},";
+<?php 	
 }
 
 	
