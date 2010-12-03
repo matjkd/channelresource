@@ -13,7 +13,7 @@
 <?php 
 // quote calculator form
 	$this->load->view('admin/table');
-	$this->load->view('quote/quote_table_test');
+	$this->load->view('quote/quote_table');
 	
 	$this->table->add_row(form_reset('reset', 'Reset'), form_submit('submit', 'Submit'));
 	echo $this->table->generate();

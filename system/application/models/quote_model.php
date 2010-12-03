@@ -20,7 +20,7 @@ class Quote_model extends Model {
     	
     				$new_quote_insert_data = array(
     				'quote_ref' => $this->input->post('quote_ref'),
-    				'assigned' => $this->input->post('assigned'),
+    				'assigned' => $this->input->post('assigned_id'),
 					'capital' => $this->input->post('capital'),
     				'capital_type' => $this->input->post('capital_type'),
     				'amount_type' => $this->input->post('amount_type'),
@@ -49,13 +49,24 @@ class Quote_model extends Model {
     	$this->db->select('company_id');
 		$this->db->where('user_id', $this->input->post('user_id'));
 		$query = $this->db->get('users');
+		
+		$assigned_id = $this->input->post('assigned_id');
+		
+		if($assigned_id == NULL)
+		{
+			$assigned = $this->input->post('assigned');
+		}
+		else
+		{
+			$assigned = $assigned_id;
+		}
 		if ($query->num_rows() == 1)
 		{
 			foreach ($query->result_array() as $row)
 			
     				$quote_update_data = array(
     				'quote_ref' => $this->input->post('quote_ref'),
-    				'assigned' => $this->input->post('assigned'),
+    				'assigned' => $assigned,
 					'capital' => $this->input->post('capital'),
     				'capital_type' => $this->input->post('capital_type'),
     				'amount_type' => $this->input->post('amount_type'),

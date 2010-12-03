@@ -97,7 +97,7 @@ else if(SITE=="channel"){
 	<?php 
 	if(isset($title))
 	{
-		echo "<h1 class='componentheading'>TEST PAGE</h1>";
+		echo "<h1 class='componentheading'>$title</h1>";
 	}
 	?>
 	

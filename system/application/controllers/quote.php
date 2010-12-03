@@ -75,7 +75,7 @@ class Quote extends My_Controller {
 		$data['main'] = '/quote/main';
 		$data['title'] = 'Lease Rate Calculator';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('test_template');
 	}
 	
 	function results()
@@ -193,7 +193,7 @@ class Quote extends My_Controller {
 					$data['main'] = '/quote/main';
 					$data['title'] = 'Quote Calculator';
 					$this->load->vars($data);
-					$this->load->view('template');
+					$this->load->view('test_template');
 					$run = 'no';
 				}
 				else
@@ -262,6 +262,8 @@ class Quote extends My_Controller {
 			{
 				$this->quote_model->add_data();
 				$data['quote_id'] = mysql_insert_id();
+				redirect('quote/results/'.$data['quote_id'].'', 'refresh');
+				
 			}
 			
 		
@@ -270,6 +272,7 @@ class Quote extends My_Controller {
 			{
 				$data['quote_id'] = $this->input->post('quote_id');
 				$this->quote_model->update_data($data['quote_id']);
+				redirect('quote/results/'.$data['quote_id'].'', 'refresh');
 				
 			}
 		if($submitted=='Reset')
@@ -299,7 +302,7 @@ class Quote extends My_Controller {
 			else
 			{
 				$this->load->vars($data);
-				$this->load->view('template');
+				$this->load->view('test_template');
 			}
 		}
 		
