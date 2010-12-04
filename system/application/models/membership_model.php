@@ -104,6 +104,7 @@ class Membership_model extends Model {
 		return $data;
 	
 	}
+	
 	function create_member()
 	{
 		
