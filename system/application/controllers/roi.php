@@ -72,8 +72,6 @@ class Roi extends My_Controller {
 		$data['user_id'] = '';
 		$data['main'] = '/roi/main';
 		$data['title'] = 'ROI Calculator';
-		
-		$data['items'] = $this->Membership_model->get_companies();
 		$this->load->vars($data);
 		$this->load->view('template');
 	}
