@@ -1,6 +1,7 @@
 <?php 
 
 class Support extends My_Controller {
+	
 
 	function Support()
 	{
@@ -10,6 +11,14 @@ class Support extends My_Controller {
 		$this->load->library(array('encrypt', 'form_validation'));
 		$this->load->model('support_model');
 		
+		if($this->session->userdata('company_id')==75)
+		{
+			$this->template = "redbox_template";
+		}
+		else
+		{
+			$this->template = "template";
+		}
 	}
 	function index()
 	{
@@ -47,7 +56,7 @@ class Support extends My_Controller {
 		$this->load->vars($data);
 		$data['main'] = '/support/main';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view($this->template);
 	}
 	function create_ticket()
 	{
@@ -129,7 +138,7 @@ class Support extends My_Controller {
 					$data['main'] = '/support/main';
 					$data['title'] = 'Support Request';
 					$this->load->vars($data);
-					$this->load->view('template');
+					$this->load->view($this->template);
 					
 				}
 				else
@@ -295,7 +304,7 @@ End
 					$data['title'] = 'Support Request';
 					$data['main'] = '/prospect/main';
 					$this->load->vars($data);
-					$this->load->view('template');
+					$this->load->view($this->template);
 					
 					redirect("support/results/$ticket_id", 'refresh');
 					}
@@ -453,7 +462,7 @@ End
 			$this->load->vars($data);
 			$data['main'] = '/support/results';
 			$this->load->vars($data);
-			$this->load->view('template');
+			$this->load->view($this->template);
 		}
 		
 	function reply($id)

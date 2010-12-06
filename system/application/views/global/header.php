@@ -21,7 +21,7 @@
 
 <script src="<?=base_url()?>js/jquery-ui-1.8.custom.min.js" type="text/javascript"></script>
 
-
+<script src="<?=base_url()?>js/autocomplete.js" type="text/javascript"></script>
 <script src="<?=base_url()?>js/wymeditor/jquery.wymeditor.js" type="text/javascript"></script>
 
 

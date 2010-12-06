@@ -4,7 +4,20 @@
             		
 	     </div> 
 	     <?php $this->load->view('user/redbox_login'); ?>
+	      <div>
+    <a href="<?=base_url()?>redbox/main"><img src="<?=base_url()?>images/icons/quotetool.png"></img></a>
+    </div>
+	       <div>
+		    <a href="<?=base_url()?>support"><img src="<?=base_url()?>images/icons/support.png"></img></a>
+		    </div>
+	     
+	     	 <div>
+		   		 <a href="mailto:support@lease-desk.com?subject=Customer Resource Help Required"><img src="<?=base_url()?>images/icons/contact.png"></img></a>
+		    </div>
+	     
 	     </div>
+	     
+	     
 	   
     
   	<!-- //Left COLUMN --> 

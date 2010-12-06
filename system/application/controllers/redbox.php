@@ -59,7 +59,7 @@ class Redbox extends My_Controller {
 						$data['capital_type'] ='';
 						$data['amount_type'] ='';
 						$data['interest_type'] = '';
-						$data['calculate_by'] = '';
+						$data['calculate_by'] = '12';
 						$data['interest_rate'] = '';
 						$data['rate_per_1000'] = '';
 						$data['periodic_payment'] = '';
