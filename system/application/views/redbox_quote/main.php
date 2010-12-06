@@ -1,4 +1,4 @@
- <?php $this->load->view('redbox_quote/assign');?>
+ <?php $this->load->view('quote/assign');?>
  <div id="leftside">
  
 <?php 
@@ -7,7 +7,7 @@
 	
 	$attributes = array('id' => 'quoteform');
 	$hidden = array('user_id' => $user_id);
-	echo form_open('redbox_quote/results', $attributes, $hidden); 
+	echo form_open('redbox/results', $attributes, $hidden); 
 ?>
 
 <?php 
@@ -30,5 +30,5 @@
 </div>
 	<div style="clear:both">
 	
-	<?php $this->load->view('quote/listentries'); ?>
+	<?php $this->load->view('redbox_quote/listentries'); ?>
 	</div>
