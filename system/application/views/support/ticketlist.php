@@ -1,4 +1,14 @@
-<script src="<?=base_url()?>js/tables/tables.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#support_table').dataTable({
+		"bStateSave": true,
+		"bJQueryUI": true,
+		"sPaginationType": "full_numbers"
+		
+		});
+} );
+
+</script>
 <script type="text/javascript">
 
 function confirmation(id) {
@@ -14,7 +24,7 @@ function confirmation(id) {
 </script>
 
 
-<table id="table_id"  width="100%" style="clear:both;">
+<table id="support_table"  width="100%" style="clear:both;">
 	<thead>
 		<tr>
 			<th>Priority</th>

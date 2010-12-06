@@ -27,7 +27,7 @@
 
 <script language="javascript">AC_FL_RunContent = 0;</script>
 <script src="<?=base_url()?>js/AC_RunActiveContent.js" language="javascript"></script>
-<link rel='stylesheet' href='<?=base_url()?>css/js.css' type='text/css' />
+
 <!-- Menu head --> 
 <link rel='stylesheet' href='<?=base_url()?>css/ja_menus/ja_cssmenu/ja.cssmenu.css' type='text/css' />
 
@@ -55,7 +55,5 @@ else if(SITE=="channel"){
 
 ?>
 </title>
-
-
 </head>
 
