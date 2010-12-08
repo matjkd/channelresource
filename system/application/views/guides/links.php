@@ -26,30 +26,30 @@
 </div>
 
 <div  id="tabs-2">
-Addresses(coming soon)<br/>
-Files(coming soon)<br/>
-Agreements(coming soon)<br/>
-Providers(coming soon)<br/>
-Products(coming soon)<br/>
-Notes(coming soon)<br/>
+<?php foreach($main_guides as $main):?>
+
+<a href="<?=base_url()?>userguide/viewguide/<?=$main['user_guide_id']?>"><?=$main['title']?></a><br/>
+
+<?php endforeach; ?>
 </div>
 
 <div id="tabs-3">
-Users(coming soon)<br/>
-Financial Products(coming soon)<br/>
-Companies(coming soon)<br/>
-Groups(coming soon)<br/>
+<?php foreach($super_guides as $super):?>
+
+<a href="<?=base_url()?>userguide/viewguide/<?=$super['user_guide_id']?>"><?=$super['title']?></a><br/>
+
+<?php endforeach; ?>
 
 
 </div>
 <div id="tabs-4">
 <img src="<?=base_url()?>images/pdf_button.png"></img>
-<a href="<?=base_url()?>images/files/normal-user.2.0.pdf" target="_blank">Normal User Guide</a>
+<a href="<?=base_url()?>images/files/normal.user.2.1.pdf" target="_blank">Normal User Guide</a>
 <br/>
 <img src="<?=base_url()?>images/pdf_button.png"></img>
-<a href="<?=base_url()?>images/files/main-user.2.0.pdf" target="_blank">Main User Guide</a>
+<a href="<?=base_url()?>images/files/main-user.2.1.pdf" target="_blank">Main User Guide</a>
 <br/>
 <img src="<?=base_url()?>images/pdf_button.png"></img>
-<a href="<?=base_url()?>images/files/super-user.1.0.pdf" target="_blank">Super User Guide</a>
+<a href="<?=base_url()?>images/files/super.user.2.1.pdf" target="_blank">Super User Guide</a>
 </div>
 </div>

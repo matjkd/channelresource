@@ -28,6 +28,9 @@
 <a href="<?=base_url()?>images/files/channelpartners.pdf" target="_blank">Channel Partner</a><br/>
 
 <img src="<?=base_url()?>images/pdf_button.png"></img>
+<a href="<?=base_url()?>images/files/System_Integration.pdf" target="_blank">System Integration</a><br/>
+
+<img src="<?=base_url()?>images/pdf_button.png"></img>
 <a href="<?=base_url()?>images/files/faqs.pdf" target="_blank">FAQs</a><br/>
 
 <img src="<?=base_url()?>images/pdf_button.png"></img>
