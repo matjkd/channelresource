@@ -15,7 +15,7 @@ jQuery(function() {
  
 </script> 
 
-<div id="accordion">
+<div id="accordion" style="width:800px;">
 	<h3><a href="#">Edit</a></h3>
 	<div>
 		

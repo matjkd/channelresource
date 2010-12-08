@@ -1,6 +1,8 @@
 $(function() {
 		$( "#accordion" ).accordion({
 			autoHeight: false,
-			navigation: true
+			collapsible: true,
+			navigation: true,
+			active: false
 		});
 	});
