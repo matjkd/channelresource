@@ -1399,3 +1399,29 @@ font-size: 1.0em;
 * html .ui-autocomplete {
 		height: 300px;
 	}
+	
+	
+/* sub nav styles */	
+ul#subnav {
+	width:960px;
+	background: #111111;
+	margin: 0 auto; padding: 0;
+	float:left;
+	width: 100%;
+	list-style: none;
+	font-size: 1.1em;
+}
+ul#subnav li {
+		
+	float: left;
+	margin: 0 0px; padding: 0 10px;
+	position: relative; /*--Important--*/
+}
+ul#subnav li a {
+	float: left;
+	color:#dddddd;
+	text-decoration:none;
+	height: 24px;
+}
+ul#subnav li:hover a, ul#subnav li a:hover { background: #777777; } /*--Hover State--*/
+

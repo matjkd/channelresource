@@ -6,6 +6,7 @@
 	<br/>
 <div id="tabs" style="width:795px;">
 	<ul>
+		<li><a href="#tabs-0">Basic usage</a></li>
 		<li><a href="#tabs-1">Normal User Guides</a></li>
 		<li><a href="#tabs-2">Main User guides</a></li>
 		<li><a href="#tabs-3">Super User Guides</a></li>
@@ -13,7 +14,15 @@
 	</ul>
 	
 
+<div id="tabs-0">
 
+<?php foreach($basic_guides as $basic):?>
+
+<a href="<?=base_url()?>userguide/viewguide/<?=$basic['user_guide_id']?>"><?=$basic['title']?></a><br/>
+
+<?php endforeach; ?>
+
+</div>
 
 <div id="tabs-1">
 

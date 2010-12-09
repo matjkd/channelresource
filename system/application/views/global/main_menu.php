@@ -51,3 +51,7 @@
  </div> 
 </div> 
 <!-- //MAIN NAVIGATION --> 
+<?php if(isset($subnav)) {?>
+
+<?=$this->load->view($subnav)?>
+<?php  }?>
