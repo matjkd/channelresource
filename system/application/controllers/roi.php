@@ -76,7 +76,7 @@ class Roi extends My_Controller {
 		$data['items'] = $this->prospect_model->list_customers($data['roicompany_id']);
 		
 		$this->load->vars($data);
-		$this->load->view('test_template');
+		$this->load->view('template');
 	}
 	
 	function results()
@@ -165,7 +165,7 @@ class Roi extends My_Controller {
 					$data['main'] = '/roi/main';
 					$data['title'] = 'ROI Calculator';
 					$this->load->vars($data);
-					$this->load->view('test_template');
+					$this->load->view('template');
 					$run = 'no';
 				}
 				else
@@ -239,7 +239,7 @@ class Roi extends My_Controller {
 		$data['title'] = 'ROI Results';
 		
 		$this->load->vars($data);
-		$this->load->view('test_template');
+		$this->load->view('template');
 		
 		}
 		

@@ -68,7 +68,7 @@ class Prospect extends My_Controller {
 		
 		$data['main'] = '/prospect/main';
 		$this->load->vars($data);
-		$this->load->view('test_template');
+		$this->load->view('template');
 	}
 	function create_customer()
 	{
@@ -169,7 +169,7 @@ class Prospect extends My_Controller {
 					$data['main'] = '/prospect/main';
 					$data['title'] = 'Prospect Registration';
 					$this->load->vars($data);
-					$this->load->view('test_template');
+					$this->load->view('template');
 					
 				}
 				else
@@ -207,7 +207,7 @@ class Prospect extends My_Controller {
 										
 										$this->load->vars($data);
 									
-										$this->load->view('test_template', 'refresh');
+										$this->load->view('template', 'refresh');
 										
 										//stops the following statements running
 										$submitted = "no";
@@ -293,7 +293,7 @@ End
 					$data['title'] = 'Quote Calculator';
 					$data['main'] = '/prospect/main';
 					$this->load->vars($data);
-					$this->load->view('test_template');
+					$this->load->view('template');
 					redirect('prospect', 'refresh');
 					
 					}
@@ -388,7 +388,7 @@ End
 			$this->load->vars($data);
 			$data['main'] = '/prospect/results';
 			$this->load->vars($data);
-			$this->load->view('test_template');
+			$this->load->view('template');
 		}
 		
 	function is_logged_in()
