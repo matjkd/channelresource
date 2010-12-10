@@ -262,6 +262,7 @@ class Quote extends My_Controller {
 			{
 				$this->quote_model->add_data();
 				$data['quote_id'] = mysql_insert_id();
+				$this->session->set_flashdata('message', "Calculation Added");
 				redirect('quote/results/'.$data['quote_id'].'', 'refresh');
 				
 			}
@@ -272,6 +273,7 @@ class Quote extends My_Controller {
 			{
 				$data['quote_id'] = $this->input->post('quote_id');
 				$this->quote_model->update_data($data['quote_id']);
+				$this->session->set_flashdata('message', "Calculation Updated");
 				redirect('quote/results/'.$data['quote_id'].'', 'refresh');
 				
 			}
