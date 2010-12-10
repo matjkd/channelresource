@@ -19,7 +19,7 @@ class Roi_model extends Model {
     	
     				$new_roi_insert_data = array(
     				'roi_ref' => $this->input->post('roi_ref'),
-    				'customer_id' => $this->input->post('customer_id'),
+    				'customer_id' => $this->input->post('assigned_id'),
 			    	'number_of_salespeople' => $this->input->post('number_of_salespeople'),
 					'appts_per_month' => $this->input->post('appts_per_month'),
 					'hours_per_appt' => $this->input->post('hours_per_appt'),

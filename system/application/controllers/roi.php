@@ -58,7 +58,7 @@ class Roi extends My_Controller {
 		
 		
 		$data['roi_ref'] ='';
-		
+		$data['customer_id'] = '';
 		$data['number_of_salespeople'] ='';
 		$data['appts_per_month'] = '';
 		$data['hours_per_appt'] = '';
@@ -72,8 +72,11 @@ class Roi extends My_Controller {
 		$data['user_id'] = '';
 		$data['main'] = '/roi/main';
 		$data['title'] = 'ROI Calculator';
+		
+		$data['items'] = $this->prospect_model->list_customers($data['roicompany_id']);
+		
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('test_template');
 	}
 	
 	function results()
@@ -114,6 +117,8 @@ class Roi extends My_Controller {
 		$data['subscription'] = $this->input->post('subscription');
 		$data['date_added'] = $this->input->post('date_added');
 		$data['user_id'] = $this->input->post('user_id');
+		
+		$data['items'] = $this->prospect_model->list_customers($data['roicompany_id']);
 		
 		$submitted = $this->input->post('submit');
 		$segment_active = $this->uri->segment(3);
@@ -160,7 +165,7 @@ class Roi extends My_Controller {
 					$data['main'] = '/roi/main';
 					$data['title'] = 'ROI Calculator';
 					$this->load->vars($data);
-					$this->load->view('template');
+					$this->load->view('test_template');
 					$run = 'no';
 				}
 				else
@@ -207,6 +212,8 @@ class Roi extends My_Controller {
 			{
 				$this->roi_model->add_data();
 				$data['roi_id'] = mysql_insert_id();
+				$this->session->set_flashdata('message', "Calculation Added");
+				redirect('roi/results/'.$data['roi_id'].'', 'refresh');
 			}
 			
 		
@@ -215,12 +222,14 @@ class Roi extends My_Controller {
 			{
 				$data['roi_id'] = $this->input->post('roi_id');
 				$this->roi_model->update_data($data['roi_id']);
-				//$this->session->set_flashdata('message', "Calculation Updated! $test3");
+				$this->session->set_flashdata('message', "Calculation Updated");
+				redirect('roi/results/'.$data['roi_id'].'', 'refresh');
+			
 			}
 			if($submitted=='Reset')
 			{
 				redirect('roi/main', 'refresh');
-				//$this->session->set_flashdata('message', "Calculation Updated! $test3");
+				
 			}
 			
 		
@@ -230,7 +239,7 @@ class Roi extends My_Controller {
 		$data['title'] = 'ROI Results';
 		
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('test_template');
 		
 		}
 		

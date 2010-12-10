@@ -1,25 +1,21 @@
  
- <script type="text/javascript">
-  $(document).ready(function(){
-  var id = "<?php echo $this->session->userdata('company_id'); ?>";
-  var loadlist = "/ajax/get_customers/"+id;
-
-  $("#list").autocomplete(loadlist, {
-		width: 150,
-		selectFirst: false
+<script type="text/javascript">
+	$(function() {
+		var availableTags = [<?php $this->load->view('ajax/json_customers');?>];
+		$("#customers").autocomplete({
+			source: availableTags,
+			 select: function(event,ui){
+			$('#assign_id').val(ui.item.id)}
+		});
 	});
+	
+	
+</script>
 
-  $("#list").result(function(event, data, formatted) {
-		if (data)
-			$("#hiddenIDbox").val(data[1]);
-	});
-
-  });
- </script>
- 
+<input type="hidden" name="assigned_id" id="assign_id" />
 <?php 
 $fields = "class='roifield'";
-$auto = "id='list'";
+$auto = "id='customers'";
 $autohide = "id='hiddenIDbox'";
 $user_id = $this->session->userdata('user_id');
 
