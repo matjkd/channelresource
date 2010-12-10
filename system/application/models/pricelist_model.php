@@ -20,8 +20,8 @@ class Pricelist_model extends Model {
     	
     				$new_pricelist_insert_data = array(
     				'pricelist_ref' => $this->input->post('pricelist_ref'),
-    				'customer_id' => $this->input->post('customer_id'),
-			    	'pricelist_users' => $this->input->post('pricelist_users'),
+    				'customer_id' => $this->input->post('assigned_id'),
+    				'pricelist_users' => $this->input->post('pricelist_users'),
 					'pricelist_discount' => $this->input->post('pricelist_discount'),
     				'additionalservices' => $this->input->post('additionalservices'),
 					'user_id' => $this->input->post('user_id'),
@@ -40,13 +40,25 @@ class Pricelist_model extends Model {
     	$this->db->select('company_id');
 		$this->db->where('user_id', $this->input->post('user_id'));
 		$query = $this->db->get('users');
+		
+   		 $assigned_id = $this->input->post('assigned_id');
+		
+		if($assigned_id == NULL)
+		{
+			$assigned = $this->input->post('customer_id');
+		}
+		else
+		{
+			$assigned = $assigned_id;
+		}
+		
 		if ($query->num_rows() == 1)
 		{
 			foreach ($query->result_array() as $row)
 			
     				$pricelist_update_data = array(
     				'pricelist_ref' => $this->input->post('pricelist_ref'),
-    				'customer_id' => $this->input->post('customer_id'),
+    				'customer_id' => $assigned,
 			    	'pricelist_users' => $this->input->post('pricelist_users'),
     				'additionalservices' => $this->input->post('additionalservices'),
 					'pricelist_discount' => $this->input->post('pricelist_discount'),

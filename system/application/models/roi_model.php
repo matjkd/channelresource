@@ -47,13 +47,27 @@ class Roi_model extends Model {
     	$this->db->select('company_id');
 		$this->db->where('user_id', $this->input->post('user_id'));
 		$query = $this->db->get('users');
+		
+    	$assigned_id = $this->input->post('assigned_id');
+		
+		if($assigned_id == NULL)
+		{
+			$assigned = $this->input->post('customer_id');
+		}
+		else
+		{
+			$assigned = $assigned_id;
+		}
+		
+		
+		
 		if ($query->num_rows() == 1)
 		{
 			foreach ($query->result_array() as $row)
 			
     				$roi_update_data = array(
     				'roi_ref' => $this->input->post('roi_ref'),
-    				'customer_id' => $this->input->post('customer_id'),
+    				'customer_id' => $assigned,
 					'number_of_salespeople' => $this->input->post('number_of_salespeople'),
 					'appts_per_month' => $this->input->post('appts_per_month'),
 					'hours_per_appt' => $this->input->post('hours_per_appt'),

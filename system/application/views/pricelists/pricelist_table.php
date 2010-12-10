@@ -1,20 +1,21 @@
  
-  <script type="text/javascript">
+<script type="text/javascript">
 	$(function() {
-		var availableTags = [<?php $this->load->view('ajax/listcustomers');?>];
-		$("#company").autocomplete({
-			source: availableTags
-			
-			
-			
+		var availableTags = [<?php $this->load->view('ajax/json_customers');?>];
+		$("#customers").autocomplete({
+			source: availableTags,
+			 select: function(event,ui){
+			$('#assign_id').val(ui.item.id)}
 		});
 	});
 	
 	
 </script>
+
+<input type="hidden" name="assigned_id" id="assign_id" />
  
 <?php 
-$auto = "id='company'";
+$auto = "id='customers'";
 $autohide = "id='hiddenIDbox'";
 $user_id = $this->session->userdata('user_id');
 $this->table->set_heading('Price Lists and Proposals', '');
