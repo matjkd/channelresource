@@ -52,6 +52,20 @@ class Userguide extends My_Controller {
 		redirect('userguide/viewguide/'.$id);
 	}
 	
+	function add_tag()
+	{
+	$segment_active = $this->uri->segment(3);
+		if($segment_active==NULL)
+		{
+			redirect('welcome', 'refresh');
+		}
+		else
+		{
+			$this->guide_model->add_tag($segment_active);
+			redirect('userguide/viewguide/'.$segment_active.'');   
+		}
+	}
+	
 		
 	function is_logged_in()
 	{

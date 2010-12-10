@@ -38,7 +38,7 @@ jQuery(function() {
 			
 			
 	</div>
-	<h3><a href="#">Add Taggs</a></h3>
+	<h3><a href="#">Add Tags</a></h3>
 	<div>
 		<p>
 		<?=$this->load->view('guides/tags')?>

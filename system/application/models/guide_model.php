@@ -95,5 +95,41 @@ function get_assigned_tags($id)
 		
 		return $data;
     }
+    function add_tag($id)
+    {
+    	$tag = $this->input->post('newtag');
+		$data = array();
+		$this->db->from('tags');
+		$this->db->where('tag', $tag);
+		$Q = $this->db->get();
+		// check if tag exists, if not add it to database
+		if ($Q->num_rows() < 1)
+			{
+				$new_tag_data = array(
+				'tag' => $tag
+				
+			);
+		
+			$this->db->insert('tags', $new_tag_data);
+			}
+			$Q->free_result();
+			
+		//now add feature to list of property features.	
+		$this->db->from('tags');
+		$this->db->where('tag', $tag);
+		$Q = $this->db->get();
+		if ($Q->num_rows() > 0)	
+		{
+			foreach ($Q->result_array() as $row)
+			
+			$new_tag_link = array(
+				'tag_id' => $row['tag_id'],
+				'guide_id' => $id
+		);
+		$this->db->insert('tag_links', $new_tag_link);
+		}
+			
+		return;
+    }
  
 }
