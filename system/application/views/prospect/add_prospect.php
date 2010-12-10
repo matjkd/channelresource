@@ -6,22 +6,6 @@
 	});
 	</script>
 <script type="text/javascript">
-$(document).ready(function(){
-	
-	  var loadlist = "/ajax/get_companies/";
-
-	  $("#list").autocomplete(loadlist, {
-			width: 150,
-			selectFirst: false
-		});
-
-	  $("#list").result(function(event, data, formatted) {
-			if (data)
-				$("#hiddenIDbox").val(data[1]);
-		});
-
-	  });
-
 
 	$(function() {
 		$("#datepicker").datepicker({showOtherMonths: true, selectOtherMonths: true, dateFormat: 'D, dd M yy' });
@@ -34,16 +18,19 @@ $(document).ready(function(){
 	});
 	</script>
 	
-	 <script type="text/javascript">
+	<script type="text/javascript">
 	$(function() {
-		var availableTags = [<?php $this->load->view('ajax/json_companies');?>];
+		var availableTags = [<?php $this->load->view('ajax/json_partners');?>];
 		$("#company").autocomplete({
-			source: availableTags
+			source: availableTags,
+			 select: function(event,ui){
+			$('#assign_id').val(ui.item.id)}
 		});
 	});
 	
-	
-</script>
+	</script>
+
+<input type="hidden" name="assigned_id" id="assign_id" />
 
 <?php 
 

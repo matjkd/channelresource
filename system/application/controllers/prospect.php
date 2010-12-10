@@ -10,9 +10,13 @@ class Prospect extends My_Controller {
 		$this->load->library(array('encrypt', 'form_validation'));
 		$this->load->model('roi_model');
 		$this->load->model('pricelist_model');
+		$this->load->model('membership_model');
 	}
 	function index()
 	{
+		$data['message'] = "This page has been recently updated, keep an eye out for bugs!!";
+		
+		
 		$data['customeruser_id'] = $this->session->userdata('user_id');
 		$data['customercompany_id'] = $this->session->userdata('company_id');
 		$data['customer_list'] = $this->prospect_model->list_customers($data['customercompany_id']);
@@ -20,10 +24,10 @@ class Prospect extends My_Controller {
 		
 	if($data['customer_list']!=NULL)
 		{
-		$data['rowcount'] = 0;
-		foreach($data['customer_list'] as $countrow):
-		$data['rowcount'] = $data['rowcount']+1;
-		endforeach;
+			$data['rowcount'] = 0;
+			foreach($data['customer_list'] as $countrow):
+			$data['rowcount'] = $data['rowcount']+1;
+			endforeach;
 		}
 		
 		//$data['rowcount'] = 0;
@@ -37,7 +41,7 @@ class Prospect extends My_Controller {
 			$data['channel_partner_name'] = $row['company_name'];
 			endforeach;
 		
-		$data['channel_partner'] = '';
+		$data['channel_partner'] = $this->session->userdata('company_id');
 		$data['customer_name'] = '';
 		$data['customer_address1'] = '';
 		$data['customer_address2'] = '';
@@ -58,12 +62,13 @@ class Prospect extends My_Controller {
 		$data['customer_renewal_type'] = '';
 		$data['user_id'] = '';
 		
+		$data['items'] = $this->membership_model->get_companies();
 		
 		$data['title'] = 'Prospect Registration';
-		$this->load->vars($data);
+		
 		$data['main'] = '/prospect/main';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('test_template');
 	}
 	function create_customer()
 	{
@@ -76,7 +81,7 @@ class Prospect extends My_Controller {
 		$this->form_validation->set_rules('customer_name', 'customer_name', 'trim|required');
 		
 		$data['customeruser_id'] = $this->session->userdata('user_id');
-		$data['customercompany_id'] = $this->session->userdata('company_id');
+		$data['customercompany_id'] = $this->input->post('channel_partner');
 		$data['customer_list'] = $this->prospect_model->list_customers($data['customercompany_id']);
 		
 		
@@ -164,7 +169,7 @@ class Prospect extends My_Controller {
 					$data['main'] = '/prospect/main';
 					$data['title'] = 'Prospect Registration';
 					$this->load->vars($data);
-					$this->load->view('template');
+					$this->load->view('test_template');
 					
 				}
 				else
@@ -202,7 +207,7 @@ class Prospect extends My_Controller {
 										
 										$this->load->vars($data);
 									
-										$this->load->view('template', 'refresh');
+										$this->load->view('test_template', 'refresh');
 										
 										//stops the following statements running
 										$submitted = "no";
@@ -288,7 +293,7 @@ End
 					$data['title'] = 'Quote Calculator';
 					$data['main'] = '/prospect/main';
 					$this->load->vars($data);
-					$this->load->view('template');
+					$this->load->view('test_template');
 					redirect('prospect', 'refresh');
 					
 					}
@@ -323,7 +328,7 @@ End
 			$data['customer_id'] = $this->uri->segment(3);
 			$data['customer_data'] = $this->prospect_model->get_customer($data['customer_id']);
 			
-			
+			$data['items'] = $this->membership_model->get_companies();
 			
 			
 			foreach ($data['customer_data'] as $row):
@@ -383,7 +388,7 @@ End
 			$this->load->vars($data);
 			$data['main'] = '/prospect/results';
 			$this->load->vars($data);
-			$this->load->view('template');
+			$this->load->view('test_template');
 		}
 		
 	function is_logged_in()

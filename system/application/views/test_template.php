@@ -22,10 +22,10 @@
 <link rel='stylesheet' href='<?=base_url()?>css/demo_table_jui.css' type='text/css' />
 
 
-
 <script src="<?=base_url()?>js/jquery-ui-dev.js" type="text/javascript"></script>
 
 
+<script src="<?=base_url()?>js/wymeditor/jquery.wymeditor.js" type="text/javascript"></script>
 
 
 <script language="javascript">AC_FL_RunContent = 0;</script>
@@ -38,10 +38,10 @@
 			<script src="<?=base_url()?>css/ja_menus/ja_cssmenu/ja.cssmenu.js" type="text/javascript"></script>
 			<link rel='stylesheet' href='<?=base_url()?>css/template.css' type='text/css' />
 	
- 
+<script src="<?=base_url()?>js/reusable-jquery-ui.js" type="text/javascript"></script> 
 <script type="text/javascript"> 
 	//<![CDATA[
-	document.write('<link rel="stylesheet" type="text/css" href="<?=base_url()?>/css/css3.css" media="all" \/>');
+	document.write('<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/css3.css" media="all" \/>');
 	//]]>
 </script> 
 
