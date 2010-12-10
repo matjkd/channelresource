@@ -51,7 +51,7 @@ class Pricelist extends My_Controller {
 		$data['rowcount'] = $data['rowcount']+1;
 		endforeach;
 		
-		$data['items'] = $this->prospect_model->list_customers($this->uri->segment(3));
+		
 		$data['pricelist_ref'] = '';
 		$data['pricelist_users'] = '';
 		$data['pricelist_discount'] = '';
@@ -59,8 +59,10 @@ class Pricelist extends My_Controller {
 		$data['title'] = 'Price Lists & Proposals';
 		$this->load->vars($data);
 		$data['main'] = '/pricelists/main';
+		
+		$data['items'] = $this->prospect_model->list_customers($data['pricelistcompany_id']);
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('test_template');
 	}
 	function results()
 	{
@@ -84,6 +86,9 @@ class Pricelist extends My_Controller {
 		$data['additionalservices'] = $this->input->post('additionalservices');
 		$data['date_added'] = $this->input->post('date_added');
 		$data['user_id'] = $this->input->post('user_id');
+		
+		$data['items'] = $this->prospect_model->list_customers($data['pricelistcompany_id']);
+		
 		
 		$submitted = $this->input->post('submit');
 		$segment_active = $this->uri->segment(3);
@@ -123,7 +128,7 @@ class Pricelist extends My_Controller {
 					$data['main'] = '/pricelists/main';
 					$data['title'] = 'Price Lists & Proposals';
 					$this->load->vars($data);
-					$this->load->view('template');
+					$this->load->view('test_template');
 					$run = 'no';
 				}
 				else
@@ -203,6 +208,8 @@ class Pricelist extends My_Controller {
 			{
 				$this->pricelist_model->add_pricelist();
 				$data['pricelist_id'] = mysql_insert_id();
+				$this->session->set_flashdata('message', "Pricelist added!");
+				redirect('pricelist/results/'.$data['pricelist_id'].'', 'refresh');
 			}
 			
 		
@@ -211,12 +218,13 @@ class Pricelist extends My_Controller {
 			{
 				$data['pricelist_id'] = $this->input->post('pricelist_id');
 				$this->pricelist_model->update_pricelist($data['pricelist_id']);
-				//$this->session->set_flashdata('message', "Calculation Updated! $test3");
+				$this->session->set_flashdata('message', "Pricelist Updated!");
+				redirect('pricelist/results/'.$data['pricelist_id'].'', 'refresh');
 			}
 			if($submitted=='Reset')
 			{
 				redirect('pricelist/main', 'refresh');
-				//$this->session->set_flashdata('message', "Calculation Updated! $test3");
+			
 			}
 			
 		
@@ -226,7 +234,7 @@ class Pricelist extends My_Controller {
 		$data['title'] = 'Pricelist';
 		
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('test_template');
 		
 		}
 		

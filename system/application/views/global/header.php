@@ -38,7 +38,7 @@
 <script src="<?=base_url()?>js/reusable-jquery-ui.js" type="text/javascript"></script> 
 <script type="text/javascript"> 
 	//<![CDATA[
-	document.write('<link rel="stylesheet" type="text/css" href="<?=base_url()?>/css/css3.css" media="all" \/>');
+	document.write('<link rel="stylesheet" type="text/css" href="<?=base_url()?>css/css3.css" media="all" \/>');
 	//]]>
 </script> 
 

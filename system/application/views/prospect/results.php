@@ -24,7 +24,7 @@ $user_id = $this->session->userdata('user_id');
 	$hidden = array('user_id' => $user_id, 'customer_id' => $customer_id);
 	
 	echo form_open('prospect/create_customer', $attributes, $hidden); 
-
+	echo form_hidden('duplicate_overide', 'yes');
 
 	$this->load->view('prospect/add_prospect');
 

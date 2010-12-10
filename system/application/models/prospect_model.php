@@ -14,6 +14,19 @@ class Prospect_model extends Model {
     	$this->db->select('company_id');
 		$this->db->where('user_id', $this->input->post('user_id'));
 		$query = $this->db->get('users');
+		
+    	$assigned_id = $this->input->post('assigned_id');
+		
+		if($assigned_id == NULL)
+		{
+			$assigned = $this->input->post('channel_partner');
+		}
+		else
+		{
+			$assigned = $assigned_id;
+		}
+		
+		
 		if ($query->num_rows() == 1)
 			{
 				foreach ($query->result_array() as $row)
@@ -32,7 +45,7 @@ class Prospect_model extends Model {
 	    				'date_added' => $this->input->post('date_added'),
 	    				
 	    				'customer_registration_date' => $this->input->post('customer_registration_date'),
-						'channel_partner' => $this->session->userdata('company_id'),
+						'channel_partner' => $assigned,
 						'customer_registration_date' => $this->input->post('customer_registration_date'),
 						'customer_subscription_date' => $this->input->post('customer_subscription_date'),
 						'customer_subscription_type' => $this->input->post('customer_subscription_type'),
@@ -61,6 +74,18 @@ class Prospect_model extends Model {
     	$this->db->select('company_id');
 		$this->db->where('user_id', $this->input->post('user_id'));
 		$query = $this->db->get('users');
+		
+   		$assigned_id = $this->input->post('assigned_id');
+		
+		if($assigned_id == NULL)
+		{
+			$assigned = $this->input->post('channel_partner');
+		}
+		else
+		{
+			$assigned = $assigned_id;
+		}
+		
 		if ($query->num_rows() == 1)
 		{
 			foreach ($query->result_array() as $row)
@@ -76,7 +101,7 @@ class Prospect_model extends Model {
     				'customer_tel' => $this->input->post('customer_tel'),
     				'date_updated' => $this->input->post('date_added'),
     				
-    				'channel_partner' => $this->input->post('channel_partner'),
+    				'channel_partner' => $assigned,
 					'customer_registration_date' => $this->input->post('customer_registration_date'),
 					'customer_subscription_date' => $this->input->post('customer_subscription_date'),
 					'customer_subscription_type' => $this->input->post('customer_subscription_type'),
@@ -100,8 +125,8 @@ class Prospect_model extends Model {
 		$company = $this->session->userdata('company_id');
 				if(!isset($company)|| $company > 2)
 					{
-					$this->db->where('customers.company_id', $id);
-					$this->db->join('users', 'users.user_id=customers.user_id', 'right');
+						$this->db->where('customers.company_id', $id);
+						$this->db->join('users', 'users.user_id=customers.user_id', 'right');
 					}
 					else if(!isset($company)|| $company < 3)
 					{
