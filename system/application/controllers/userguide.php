@@ -66,6 +66,17 @@ class Userguide extends My_Controller {
 		}
 	}
 	
+	function delete_tag($id)
+	{
+			$data['guide_id'] = $this->guide_model->delete_assigned_tag($id);
+			foreach($data['guide_id'] as $key => $row):
+			$guide = $row['guide_id'];
+			endforeach;
+		
+		redirect('userguide/viewguide/'.$guide.'', 'refresh');
+		
+	}
+	
 		
 	function is_logged_in()
 	{

@@ -114,7 +114,7 @@ function get_assigned_tags($id)
 			}
 			$Q->free_result();
 			
-		//now add feature to list of property features.	
+		//now add tag to list of tags.	
 		$this->db->from('tags');
 		$this->db->where('tag', $tag);
 		$Q = $this->db->get();
@@ -131,5 +131,26 @@ function get_assigned_tags($id)
 			
 		return;
     }
+    
+	function delete_assigned_tag($id)
+	{
+		//grab the guide id before deleting feature, and return guide id to controller
+		$data = array();
+		$this->db->select('guide_id');
+		$this->db->where('tag_link_id', $id);
+		
+		$Q = $this->db->get('tag_links');
+		if ($Q->num_rows() > 0) {
+			foreach ($Q->result_array() as $row) {
+				$data[] = $row;
+			}
+		}
+		$Q->free_result();
+		
+		$this->db->where('tag_link_id', $id);
+		$this->db->delete('tag_links');
+		
+		return $data;
+	}
  
 }

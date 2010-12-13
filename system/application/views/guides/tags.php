@@ -48,7 +48,7 @@ These tags are for helping with search. They won't be visible to users, but will
 <ul id='sortable'>
 <?php foreach($assigned_tags as $key => $tagrow):?>
 <li class="ui-state-default">
-<span class="ui-icon ui-icon-arrowthick-2-n-s"></span><?=$tagrow['tag']?><a href="<?=base_url()?>admin/userguide/delete_tag/<?=$tagrow['tag_id']?>" ><div style="float:right; margin-left:5px;" class="ui-icon ui-icon-circle-close"></div></a>
+<span class="ui-icon ui-icon-arrowthick-2-n-s"></span><?=$tagrow['tag']?><a href="<?=base_url()?>userguide/delete_tag/<?=$tagrow['tag_link_id']?>" ><div style="float:right; margin-left:5px;" class="ui-icon ui-icon-circle-close"></div></a>
 </li>
 <?php endforeach;?>
 </ul>
