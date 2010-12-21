@@ -63,13 +63,14 @@ $data['customer_detail'] = $this->prospect_model->get_customer($row['customer_id
 	endforeach;
 		
 		$viewroi ='/roi/results/'.$row['roi_id'];
-		
+			$old_date_added = strtotime($row['date_added']);
+		$new_date_added = date('jS \of F Y h:i:s A', $old_date_added);
 
 ?>
 		<tr >
 			<td style="padding:5px;"><?=$row['roi_ref']?></td>
 			<td style="padding:5px;"><?="<a href=$viewcustomer>$customer_name</a>"?></td>
-			<td style="padding:5px;"><?=$row['date_added']?></td>
+			<td style="padding:5px;"><div style="display:none;"><?=$row['date_added']?></div><?=$new_date_added?></td>
 			<td style="padding:5px;"><?=$row['firstname']?> <?=$row['lastname']?></td>
 			<td style="padding:5px;"><?="<a href=$viewroi>View</a> | <a href='#' onclick='confirmation(".$row['roi_id'].")'>Delete</a>"?></td>
 		</tr>

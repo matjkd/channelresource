@@ -14,7 +14,7 @@ class Prospect extends My_Controller {
 	}
 	function index()
 	{
-		$data['message'] = "This page has been recently updated, keep an eye out for bugs!!";
+		
 		
 		
 		$data['customeruser_id'] = $this->session->userdata('user_id');

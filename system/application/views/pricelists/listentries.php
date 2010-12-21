@@ -49,12 +49,15 @@ function confirmation(id) {
 					
 				
 				$viewpricelist ='/pricelist/results/'.$row['pricelist_id']; 
+				
+					$old_date_added = strtotime($row['date_updated']);
+					$new_date_added = date('jS \of F Y h:i:s A', $old_date_added);
 
 ?>
 		<tr >
 			<td style="padding:5px;"><?=$row['pricelist_ref']?></td>
 			<td style="padding:5px;"><?="<a href='$viewcustomer'>$customer_name</a>"?></td>
-			<td style="padding:5px;"><?=$row['date_updated']?></td>
+			<td style="padding:5px;"><div style="display:none;"><?=$row['date_updated']?></div><?=$new_date_added?></td>
 			<td style="padding:5px;"><?=$row['firstname']?> <?=$row['lastname']?></td>
 			<td style="padding:5px;"><?="<a href='$viewpricelist'>View</a> | <a href='#' onclick='confirmation(".$row['pricelist_id'].")'>Delete</a>"?></td>
 		</tr>

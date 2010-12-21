@@ -68,13 +68,16 @@ foreach($customer_list as $key => $row):
 		$viewquote ='/prospect/edit_customer/'.$row['customer_id'];
 		$roi ='/roi/main/'.$row['customer_id'];
 		$deletequote ='/prospect/delete/'.$row['customer_id'];
+		
+		$old_date_added = strtotime($row['date_added']);
+		$new_date_added = date('jS \of F Y h:i:s A', $old_date_added);
 
 ?>
 		<tr >
 			<td style="padding:5px;"><?=$row['customer_name']?></td>
 			<td style="padding:5px;"><?=$channel_partner_name2?></td>
 			<td style="padding:5px;"><?=$row['firstname']?> <?=$row['lastname']?></td>
-			<td style="padding:5px;"><?=$row['date_added']?></td>
+			<td style="padding:5px;"><div style="display:none;"><?=$row['date_added']?></div><?=$new_date_added?></td>
 			<td style="padding:5px;"><?=$customer_status?></td>
 			<td style="padding:5px;"><?="<a href=$viewquote>Edit</a> |  <a href='#' onclick='confirmation(".$row['customer_id'].")'>Delete</a>"?></td>
 		</tr>
