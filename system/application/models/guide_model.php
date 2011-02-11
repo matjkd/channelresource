@@ -40,6 +40,22 @@ class Guide_model extends Model {
 		
 		return $data;
     }
+	 	function get_all_guides()
+    {
+    	$data = array();
+			
+			$query = $this->db->get('user_guides');
+			if ($query->num_rows() > 0)
+			{
+				foreach ($query->result_array() as $row)
+				
+				$data[] = $row;
+				
+			}
+		$query->free_result();
+		
+		return $data;
+    }
 function update_guide($id)
     {
     	
@@ -53,6 +69,7 @@ function update_guide($id)
     				$guide_update = array(
     				'filename' => $this->input->post('filename'),
     				'title' => $this->input->post('title'),
+    				'guide_category' => $this->input->post('category'),
 					'description' => $this->input->post('description'),
     				'date_modified' => now()
 					);
@@ -61,6 +78,23 @@ function update_guide($id)
 		$update = $this->db->update('user_guides', $guide_update);
 		return $update;
     }
+	 function get_guide_categories()
+	{
+		$data = array();
+		
+			
+			$query = $this->db->get('guide_cat');
+			if ($query->num_rows() > 0)
+			{
+				foreach ($query->result_array() as $row)
+				
+				$data[] = $row;
+				
+			}
+		$query->free_result();
+		
+		return $data;
+	}
 function get_all_tags()
     {
     	$data = array();
@@ -131,7 +165,7 @@ function get_assigned_tags($id)
 			
 		return;
     }
-    
+   
 	function delete_assigned_tag($id)
 	{
 		//grab the guide id before deleting feature, and return guide id to controller

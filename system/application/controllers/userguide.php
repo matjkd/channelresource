@@ -16,11 +16,12 @@ class Userguide extends My_Controller {
 		$data['title'] = 'Introduction To Lease-Desk';
 		$data['main'] = '/guides/user_guide';
 		$data['flash'] = 'yes';
+		$data['all_guides'] =  $this->guide_model->get_all_guides();
 		$data['basic_guides'] =  $this->guide_model->get_guides(0);
 		$data['normal_guides'] =  $this->guide_model->get_guides(1);
 		$data['main_guides'] =  $this->guide_model->get_guides(2);
 		$data['super_guides'] =  $this->guide_model->get_guides(3);
-		
+		$data['categories'] = $this->guide_model->get_guide_categories();
 		$guide_id = $this->uri->segment(3);
 		$data['guide'] = $this->guide_model->get_guide($guide_id);
 		$this->load->vars($data);
@@ -28,13 +29,15 @@ class Userguide extends My_Controller {
 	}
 	function viewguide()
 	{
+		$data['categories'] = $this->guide_model->get_guide_categories();	
+		$data['all_guides'] =  $this->guide_model->get_all_guides();
 		$data['basic_guides'] =  $this->guide_model->get_guides(0);
 		$data['normal_guides'] =  $this->guide_model->get_guides(1);
 		$data['main_guides'] =  $this->guide_model->get_guides(2);
 		$data['super_guides'] =  $this->guide_model->get_guides(3);
 		$data['main'] = '/guides/user_guide';
 		
-		//$data['subnav'] = "/guides/subnav";
+		
 		
 		$data['flash'] = 'yes';
 		$guide_id = $this->uri->segment(3);

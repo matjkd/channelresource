@@ -46,7 +46,7 @@ h1, h2,
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
-  text-shadow: none;
+ 
   text-decoration: none;
   text-transform: none;
   letter-spacing: 0em;
@@ -73,7 +73,7 @@ h1 {
   font-size: 30px;
   font-style: normal;
   font-weight: 700;
-  text-shadow: none;
+ text-shadow: 2px 2px 2px #aaa;
   text-decoration: none;
   text-transform: none;
   letter-spacing: 0em;
@@ -1322,7 +1322,7 @@ li.ja-firstitem,
 	margin:0 auto 0;
 	position:relative;
 	top:0px;
-	padding: 0px auto 0px auto;	
+	padding: 0px 0px;	
 	z-index:999;
 	
 }
