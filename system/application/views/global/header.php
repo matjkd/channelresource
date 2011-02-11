@@ -9,6 +9,7 @@
 <link rel='stylesheet' href='<?=base_url()?>css/autocomplete.css' type='text/css' />
 <link rel='stylesheet' href='<?=base_url()?>css/jquery-ui-1.8.custom.css' type='text/css' />
 
+<link  href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css" >
 
 <script type='text/javascript' src='http://www.google.com/jsapi'></script>
 <script src="<?=base_url()?>js/Jquery.js" type="text/javascript"></script>
@@ -25,10 +26,11 @@
 <script src="<?=base_url()?>js/wymeditor/jquery.wymeditor.js" type="text/javascript"></script>
 
 
+
 <script language="javascript">AC_FL_RunContent = 0;</script>
 <script src="<?=base_url()?>js/AC_RunActiveContent.js" language="javascript"></script>
 
-<!-- Menu head --> 
+
 <link rel='stylesheet' href='<?=base_url()?>css/ja_menus/ja_cssmenu/ja.cssmenu.css' type='text/css' />
 
 <link rel='stylesheet' href='<?=base_url()?>css/addons.css' type='text/css' />

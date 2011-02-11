@@ -55,7 +55,7 @@
    <span style="float:right;"><a href="http://www.proctorconsulting.co.uk" target="_blank"><img src="<?=base_url()?>images/proctor/logo.png"></img></a></span>
 </div> 
 </div>
-<link  href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css" >
+
 
 
 <!-- //FOOTER --> 

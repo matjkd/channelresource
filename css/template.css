@@ -39,13 +39,19 @@ a:hover, a:active, a:focus {
 }
 
 /* Title text */
-h1, h2, h3, h4,
+h1, h2, 
 .contentheading, .componentheading, .blog_more strong,
 .nftitle {
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: normal;
-	line-height: 1.2;
-	color: #222222;
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  text-shadow: none;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0em;
+  word-spacing: 0em;
+  line-height: 1.2;
 }
 	
 /* Small text */
@@ -63,11 +69,29 @@ img.caption {
 
 /* Heading */
 h1 {
-	font-size: 200%;
+	font-family: 'Raleway', serif;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 700;
+  text-shadow: none;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0em;
+  word-spacing: 0em;
+  line-height: 1.2;
 }
 
 h2 {
-	font-size: 150%;
+	font-family: 'Raleway', serif;
+  font-size: 27px;
+  font-style: normal;
+  font-weight: 700;
+  text-shadow: none;
+  text-decoration: none;
+  text-transform: none;
+  letter-spacing: 0em;
+  word-spacing: 0em;
+  line-height: 1.2;
 }
 
 h3 {
@@ -354,22 +378,6 @@ table.searchintro td {
 	font-weight: bold;
 }
 
-h1.componentheading, .componentheading {
-	border-bottom: 1px solid #DDDDDD;
-	margin: 0 0 15px;
-	padding: 0 0 15px;
-}
-
-.componentheading {
-	font-size: 200%;
-}
-
-h2.contentheading, .contentheading {
-	font-size: 175%;
-	font-weight: bold;
-	margin: 0 0 5px;
-	padding: 0;
-}
 
 .blog h2.contentheading, .blog .contentheading {
 	font-size: 150%;
