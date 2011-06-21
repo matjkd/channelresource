@@ -1,9 +1,10 @@
 <?php
-class Login extends MY_Controller {
+class Login extends MY_Controller
 
-function Login()
+{
+function __construct()
 	{
-		parent::MY_Controller();
+		parent::__construct();
 		
 		$this->load->library(array('encrypt', 'form_validation'));
 		
@@ -19,13 +20,13 @@ function Login()
 			{
 			
 			$data['main'] = 'user/main_customer';
-			$title = "Welcome to Lease-Desk.com’s Customer Portal";
+			$title = "Welcome to the Lease-Desk.com Customer Portal";
 			}
 		else if(SITE=="channel")
 			{
 			
 			$data['main'] = 'user/main_channel';
-			$title = "Welcome to Lease-Desk.com's Channel Partner Portal";
+			$title = "Welcome to the Lease-Desk.com Channel Partner Portal";
 			}
 			else
 			{
