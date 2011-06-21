@@ -5,4 +5,4 @@ enabling you to confidently use Lease-Desk.com and stay up to date on future pro
  If you have any questions or require any assistance, please contact us at:</p>
 <p><strong>Telephone</strong>: 01302 245310</p>
 
-<p><strong>Email</strong>: <a href="mailto:support@lease-desk.com?subject=Customer Resource Help Required">support@lease-desk.com</a></p>
+<p><strong>Email</strong>: <a href="mailto:support@lease-desk.com">support@lease-desk.com</a></p>

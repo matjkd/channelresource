@@ -10,5 +10,5 @@
   in Purchase Orders due to lack of controls and processes in getting a lease for the customer, terrible
    communication from Leasing Companies or most worryingly high interest rates and hidden costs...</strong></p>
    
-<p><a href="http://www.commsbusiness.co.uk/News_Article_JS1.cfm?NewsID=10719&YearViewed=2010&Newsmonth=4&EndDay=15&StartDay=1&NoNews=0" taget="_blank">Read more...</a>
+<p><a href="http://www.commsbusiness.co.uk/News_Article_JS1.cfm?NewsID=10719&YearViewed=2010&Newsmonth=4&EndDay=15&StartDay=1&NoNews=0">Read more...</a>
 </p>
