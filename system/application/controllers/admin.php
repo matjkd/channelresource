@@ -46,7 +46,7 @@ class Admin extends My_Controller {
 		$data['main'] = '/admin/main';
 		$data['title'] = 'Administration';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function view_company()
 	{

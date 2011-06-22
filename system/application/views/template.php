@@ -54,9 +54,10 @@ else if(SITE=="channel"){
  
             </div> 
                     </div> 
-  	<!-- //CONTENT --> 
-		
-     </div></div></div>
+  			
+     </div>
+      <!-- //CONTENT -->
+        </div></div>
   
   
 

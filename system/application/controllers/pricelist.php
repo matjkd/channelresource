@@ -62,7 +62,7 @@ class Pricelist extends My_Controller {
 		
 		$data['items'] = $this->prospect_model->list_customers($data['pricelistcompany_id']);
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function results()
 	{
@@ -234,7 +234,7 @@ class Pricelist extends My_Controller {
 		$data['title'] = 'Pricelist';
 		
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 		
 		}
 		

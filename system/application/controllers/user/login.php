@@ -38,7 +38,7 @@ function __construct()
 		$data['title'] = 'Login';
 		
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	
 	
 	

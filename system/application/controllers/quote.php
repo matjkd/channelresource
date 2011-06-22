@@ -75,7 +75,7 @@ class Quote extends My_Controller {
 		$data['main'] = '/quote/main';
 		$data['title'] = 'Lease Rate Calculator';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	
 	function results()
@@ -193,7 +193,7 @@ class Quote extends My_Controller {
 					$data['main'] = '/quote/main';
 					$data['title'] = 'Quote Calculator';
 					$this->load->vars($data);
-					$this->load->view('template');
+					$this->load->view('leasedesktemplate');
 					$run = 'no';
 				}
 				else
@@ -304,7 +304,7 @@ class Quote extends My_Controller {
 			else
 			{
 				$this->load->vars($data);
-				$this->load->view('template');
+				$this->load->view('leasedesktemplate');
 			}
 		}
 		
