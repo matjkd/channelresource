@@ -13,7 +13,7 @@
 <div class="main clearfix"> 
 	
     <div class="ja-info"> 
-        &copy; Copyright 2009 Proctor Consulting. Website Developed by <a href="http://www.redstudio.co.uk">Redstudio Design Limited</a>
+        &copy; Copyright 2011 Lease-Desk Ltd. Website Developed by <a href="http://www.redstudio.co.uk">Redstudio Design Limited</a>
         <br/>
        
         <?php 
@@ -52,7 +52,7 @@
         
         
    </div> 
-   <span style="float:right;"><a href="http://www.proctorconsulting.co.uk" target="_blank"><img src="<?=base_url()?>images/proctor/logo.png"></img></a></span>
+   <span style="float:right;"><a href="http://www.lease-desk.com" target="_blank"><img src="<?=base_url()?>images/proctor/logo.png"></img></a></span>
 </div> 
 </div>
 <!-- //FOOTER --> 

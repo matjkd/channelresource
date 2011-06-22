@@ -204,8 +204,7 @@ class Testbed extends My_Controller {
 			}
 		
 		
-		$this->load->model('membership_model');
-	
+	$this->load->model('membership_model');
 		//Turn the assigned user id into the full name then get the company details
 		if($data['assigned'] == FALSE)
 		{
