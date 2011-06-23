@@ -5,10 +5,10 @@
 	     </div> 
 	     <?php $this->load->view('user/redbox_login'); ?>
 	      <div>
-    <a href="<?=base_url()?>redbox/main"><img src="<?=base_url()?>images/icons/quotetool.png"></img></a>
+    <a href="<?=base_url()?>redbox/main"><img src="<?=base_url()?>images/icons/quotetoolold.png"></img></a>
     </div>
 	       <div>
-		    <a href="<?=base_url()?>support"><img src="<?=base_url()?>images/icons/support.png"></img></a>
+		    <a href="<?=base_url()?>support"><img src="<?=base_url()?>images/icons/supportold.png"></img></a>
 		    </div>
 	     
 	     	 <div>
