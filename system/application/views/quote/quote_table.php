@@ -51,7 +51,7 @@ $jquery2 = "id='jquerytype2'";
 $user_id = $this->session->userdata('user_id');
 
 
-$this->table->set_heading('Payment Details', '', '');
+$this->table->set_heading('Payment Details', '');
 
 if($this->session->userdata('company_id') < 3)
 {

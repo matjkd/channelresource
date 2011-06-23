@@ -1,8 +1,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<link rel="SHORTCUT ICON" href="http://www.channel-resource.com/favicon.ico">
- <link rel="shortcut icon" href="http://www.channel-resource.com/favicon.png" >
+<link rel="SHORTCUT ICON" href="<?=base_url()?>favicon.ico">
+ <link rel="shortcut icon" href="<?=base_url()?>favicon.png" >
+
+ <link rel='stylesheet' href='<?=base_url()?>css/system.css' type='text/css' />
+<link rel='stylesheet' href='<?=base_url()?>css/general.css' type='text/css' />
+<link rel='stylesheet' href='<?=base_url()?>css/typo.css' type='text/css' />
+
  <link rel='stylesheet' href='<?=base_url()?>css/themes/style.css' type='text/css' />
   <link rel='stylesheet' href='<?=base_url()?>css/themes/1060.css' type='text/css' />
 <link rel='stylesheet' href='<?=base_url()?>css/themes/template.css' type='text/css' />
@@ -23,6 +28,8 @@
 <script src="<?=base_url()?>js/jquery-ui-1.8.custom.min.js" type="text/javascript"></script>
 
 <script src="<?=base_url()?>js/scripts.js" type="text/javascript"></script>
+
+
 
 
 <script language="javascript">AC_FL_RunContent = 0;</script>

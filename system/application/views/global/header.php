@@ -8,6 +8,7 @@
 <link rel='stylesheet' href='<?=base_url()?>css/typo.css' type='text/css' />
 <link rel='stylesheet' href='<?=base_url()?>css/autocomplete.css' type='text/css' />
 <link rel='stylesheet' href='<?=base_url()?>css/jquery-ui-1.8.custom.css' type='text/css' />
+<link rel='stylesheet' href='<?=base_url()?>css/demo_table_jui.css' type='text/css' />
 
 <link  href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css" >
 
@@ -17,7 +18,8 @@
 <script type="text/javascript" src="<?=base_url()?>js/editor.js" type="text/javascript"></script>
 
 <script src="<?=base_url()?>js/jquery.dataTables.min.js" type="text/javascript"></script>
-<link rel='stylesheet' href='<?=base_url()?>css/demo_table_jui.css' type='text/css' />
+
+
 
 
 <script src="<?=base_url()?>js/jquery-ui-1.8.custom.min.js" type="text/javascript"></script>

@@ -88,6 +88,12 @@ margin-right:10px;
 
 	
 }
+
+th {
+	font-weight: bold;
+	padding: 5px;
+	text-align: left;
+}
 #logo {
 
 margin-top: 30px;
@@ -669,7 +675,7 @@ tr.sectiontableentry2 td {
 }
 
 tr.sectiontableentry2 td {
-	background: #eeeeee;
+	background: #f3f3f3;
 }
 /* Calculator */
 #calculator {
