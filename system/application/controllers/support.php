@@ -17,7 +17,7 @@ class Support extends My_Controller {
 		}
 		else
 		{
-			$this->template = "template";
+			$this->template = "leasedesktemplate";
 		}
 	}
 	function index()
@@ -320,12 +320,12 @@ End
 						{
 							$this->email->clear();
 				
-						$this->email->to('chloe@lease-desk.com, debra.taylor@proctorconsulting.co.uk');
+					$this->email->to('chloe@lease-desk.com, debra.taylor@proctorconsulting.co.uk');
 					$this->email->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
 					$this->email->cc('mat@redstudio.co.uk, '.$email_address.''); 
 						
-						$this->email->subject('Support Request Ticket No. '.$ticket_id.' Updated');
-						$this->email->message("Subject: $support_subject
+					$this->email->subject('Support Request Ticket No. '.$ticket_id.' Updated');
+					$this->email->message("Subject: $support_subject
 					
 
 company: $company_name

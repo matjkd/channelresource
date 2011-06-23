@@ -1,18 +1,7 @@
-<!-- PATHWAY --> 
-<div id="ja-pathway" class="wrap"> 
-  <div class="main"> 
-  	<div class="ja-pathway-text"> 
-    <!-- <strong>You are here:</strong> -->
-    </div> 
-  </div> 
-</div> 
-<!-- //PATHWAY --> 
-		<!-- FOOTER --> 
-		
-<div id="ja-footer" class="wrap"> 
-<div class="main clearfix"> 
-	
-    <div class="ja-info"> 
+<!-- FOOTER --> 
+
+<div class="container_24">
+    <div  class="grid_19">
         &copy; Copyright 2011 Lease-Desk Ltd. Website Developed by <a href="http://www.redstudio.co.uk">Redstudio Design Limited</a>
         <br/>
        
@@ -26,21 +15,26 @@
 					{
 					?>
 					 
-    <a href="<?=base_url()?>quote/main">Quoting Tool</a> |
     
-    <a href="<?=base_url()?>support">Support Request</a> |
-    
-    <a href="<?=base_url()?>welcome/news">News</a> |
-    
-    <a href="<?=base_url()?>welcome/directory">Directory</a> |
-    
-    <a href="<?=base_url()?>pricelist">Pricelists</a> |
-    
-    <a href="<?=base_url()?>roi/main">ROI Calculator</a> |
-    
-    <a href="<?=base_url()?>prospect">Prospect Registration</a> |
-    
-    <a href="<?=base_url()?>welcome/presentations">Presentations</a> |
+<div id="bottom_menu">
+    		<ul>
+    		 	
+    		<li>  <a href="<?=base_url()?>quote/main">Quoting Tool</a></li>
+    		<li><a href="<?=base_url()?>support">Support Request</a></li>
+    		<li> <a href="<?=base_url()?>welcome/news">News</a></li>
+    		<li> <a href="<?=base_url()?>welcome/directory">Directory</a></li>
+    		 <li> <a href="<?=base_url()?>pricelist">Pricelists</a> </li>
+                <li> <a href="<?=base_url()?>roi/main">ROI Calculator</a> </li>
+                <li><a href="<?=base_url()?>prospect">Prospect Registration</a> </li>
+                <li> <a href="<?=base_url()?>welcome/presentations">Presentations</a> </li>
+                
+                
+             
+    		</ul>
+</div>
+
+
+  
     
    
 						
@@ -52,8 +46,7 @@
         
         
    </div> 
-   <span style="float:right;"><a href="http://www.lease-desk.com" target="_blank"><img src="<?=base_url()?>images/proctor/logo.png"></img></a></span>
-</div> 
+   <div class="grid_5"><a href="http://www.lease-desk.com" target="_blank"><img width="200px" src="<?=base_url()?>images/proctor/logo.png"></img></a></div>
 </div>
 <!-- //FOOTER --> 
  

@@ -33,6 +33,8 @@
 
          <div class="container_24">
                     <?php $this->load->view('global/menutop'); ?>
+
+            
 	</div>
 
 	<div class="menu_container">
@@ -42,18 +44,7 @@
 <div class="main_content container_24">
   	<!-- CONTENT -->
   	
-        <div class="grid_5">
-
-           	<?php if(SITE=="customer"){
-                    $this->load->view('global/themes/custmenu');
-            }
-            else if(SITE=="channel"){
-                    $this->load->view('global/themes/channelmenu');
-            }
-
-?>
-
-        </div>
+       
     
 
          <div class="grid_19">
@@ -71,13 +62,40 @@
 
             </div>
 
+         <div class="grid_5">
+
+           	<?php if(SITE=="customer"){
+                    $this->load->view('global/themes/custmenu');
+            }
+            else if(SITE=="channel"){
+                    $this->load->view('global/themes/channelmenu');
+            }
+
+?>
+
+        </div>
+
         <div class="clear"></div>
-                    
+
 
    
       <!-- //CONTENT -->
 </div>
-  
-<?php $this->load->view('global/themes/footer'); ?>
+   <div class="footer2">
+	<div class="top_shadow"></div>
+	<div class="container_24">
+
+
+		<div class="grid_19">
+				<?php $this->load->view('global/themes/footer'); ?>
+		</div>
+
+		<div class="grid_5">
+
+		</div>
+
+	</div>
+</div>
+
 </body>
 </html>

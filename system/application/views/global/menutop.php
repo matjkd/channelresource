@@ -1,9 +1,9 @@
 <!-- HEADER --> 
-<div id="ja-header" class="wrap"> 
-  <div class="main clearfix"> 
+<div class="logotop">
+  <div class="grid_19">
   
-  	  	<div class="logo-text" style="float:left"> 
-  		<h1>
+  	  	<div id="logo">
+  		
   		<?php if(SITE=="customer"){
 	?><a href="<?=base_url()?>" title="customer resource"><img src="<?=base_url()?>images/logocustomer.png"></img></a>
 <?php }
@@ -16,9 +16,14 @@ else if(SITE=="channel"){
   		
   		 
   				
-  		</h1> 
-  	</div> 
+  		
+  	</div>
+      
   	
-  	      </div> 
+  	      </div>
+     <div class="grid_5" id="contact_details">
+		<h3>tel: +44(0)1302 245 310</h3>
+		<?=$this->load->view('global/themes/social_links')?>
+		</div>
 </div> 
 <!-- //HEADER --> 

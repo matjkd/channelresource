@@ -8,7 +8,7 @@ $is_logged_in = $this->session->userdata('is_logged_in');
 if(!isset($is_logged_in) || $is_logged_in != true)
 		{?>
 	<form method="post" action="<?=base_url()?>user/login/validate_credentials"  target="_blank" >
-	<div style="margin-top:7px; width:148px; float:left;">
+	<div>
 		 <div id="inputs">
 			   <input type="text" id="username" name="username" title="Username" /><br/>
 
@@ -17,9 +17,9 @@ if(!isset($is_logged_in) || $is_logged_in != true)
 		</div>
 	</div>
 
-	<div style="width:41px; padding-top:5px; float:left;">
+	<div class="loginbutton">
 
-		<input type="image" name="submit" src="<?=base_url()?>images/icons/redbook_icon.png" border="0" />
+		<input type="image" name="submit" src="<?=base_url()?>images/icons/loginbutton.png" border="0" />
 
 	</div>
 

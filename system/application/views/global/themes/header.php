@@ -18,11 +18,11 @@
 <script src="<?=base_url()?>js/Jquery.js" type="text/javascript"></script>
 <script src="<?=base_url()?>js/jeditable.js" type="text/javascript"></script>
 
-
+<script type="text/javascript" src="<?=base_url()?>js/editor.js" type="text/javascript"></script>
 <script src="<?=base_url()?>js/jquery.dataTables.min.js" type="text/javascript"></script>
 <script src="<?=base_url()?>js/jquery-ui-1.8.custom.min.js" type="text/javascript"></script>
-<script src="<?=base_url()?>js/wymeditor/jquery.wymeditor.js" type="text/javascript"></script>
 
+<script src="<?=base_url()?>js/scripts.js" type="text/javascript"></script>
 
 
 <script language="javascript">AC_FL_RunContent = 0;</script>

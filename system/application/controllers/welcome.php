@@ -27,14 +27,14 @@ class Welcome extends My_Controller {
 		
 		$data['title'] = $title;
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function guides()
 	{
 		$data['main'] = '/guides/main';
 		$data['flash'] = 'yes';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	
 // Customer Resource Links
@@ -43,35 +43,35 @@ class Welcome extends My_Controller {
 		$data['main'] = '/quote/main';
 		$data['title'] = 'Quoting Tool';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function support()
 	{
 		$data['main'] = '/support/main';
 		$data['title'] = 'Support Request';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function news()
 	{
 		$data['main'] = '/news/main';
 		$data['title'] = 'Latest News';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function directory()
 	{
 		$data['main'] = '/directory/main';
 		$data['title'] = 'Lease Company Directory';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function fla()
 	{
 		$data['main'] = '/fla/main';
 		$data['title'] = 'FLA Business Finance Code';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 // end of Customer Resource Links
 
@@ -92,35 +92,35 @@ class Welcome extends My_Controller {
 		$data['main'] = '/roi/main';
 		$data['title'] = 'ROI Calculator';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function pricelists()
 	{
 		$data['main'] = '/pricelists/main';
 		$data['title'] = 'Price Lists & Proposals';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function conference()
 	{
 		$data['main'] = '/conference/main';
 		$data['title'] = 'Conference Facilities';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function prospect()
 	{
 		$data['main'] = '/prospect/main';
 		$data['title'] = 'Prospect Registration';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function presentations()
 	{
 		$data['main'] = '/presentations/main';
 		$data['title'] = 'Document Library';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function is_logged_in()
 	{

@@ -25,7 +25,7 @@ class Userguide extends My_Controller {
 		$guide_id = $this->uri->segment(3);
 		$data['guide'] = $this->guide_model->get_guide($guide_id);
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function viewguide()
 	{
@@ -46,7 +46,7 @@ class Userguide extends My_Controller {
 		$data['assigned_tags'] = $this->guide_model->get_assigned_tags($guide_id);
 		$data['guide'] = $this->guide_model->get_guide($guide_id);
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	
 	function editguide($id)

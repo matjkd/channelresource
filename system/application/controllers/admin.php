@@ -142,7 +142,7 @@ class Admin extends My_Controller {
 		$data['main'] = '/admin/view_user';
 		$data['title'] = "User Details";
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 		
 		
 	}

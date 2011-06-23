@@ -68,7 +68,7 @@ class Prospect extends My_Controller {
 		
 		$data['main'] = '/prospect/main';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 	}
 	function create_customer()
 	{

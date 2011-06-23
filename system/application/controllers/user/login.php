@@ -87,7 +87,7 @@ function __construct()
 			$data['title'] = 'Login Failed';
 			$data['main'] = 'user/index';
 			$this->load->vars($data);
-			$this->load->view('template');
+			$this->load->view('leasedesktemplate');
 			
 			
 		}
@@ -97,7 +97,7 @@ function __construct()
 	{
 		$data['main'] = '/user/register';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 		//$this->template->load('template', 'user/register');
 	}
 	
@@ -118,7 +118,7 @@ function __construct()
 		{
 			$data['main'] = 'user/register';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 			//$this->template->load('template', 'user/register');
 		}
 		
@@ -130,14 +130,14 @@ function __construct()
 			{
 				$data['main'] = 'user/signup_successful';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 				//$this->template->load('template', 'user/signup_successful');
 			}
 			else
 			{
 				$data['main'] = 'user/register';
 		$this->load->vars($data);
-		$this->load->view('template');
+		$this->load->view('leasedesktemplate');
 				//$this->template->load('template', 'user/register');		
 			}
 		}

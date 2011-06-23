@@ -22,13 +22,10 @@
 <?php  foreach($guide as $key => $row): ?>
 
 <div id="guide_container">
-<div id="guide_title"><h2><?=$row['title']?></h2></div>
+<div id="guide_title"><h1><?=$row['title']?></h1></div>
 
-<div class="clr"></div>
-	<div id="guide_desc">
+<div class="clear"></div>
 	
-	<?=$row['description']?>
-	</div>
 	
 	<div id="guide_video">
 	<object width="480" height="385">
@@ -42,7 +39,12 @@
 	type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"></embed>
 	</object>
 	</div>
-	<div class="clr"></div>
+
+<div id="guide_desc">
+
+	<?=$row['description']?>
+	</div>
+	<div class="clear"></div>
 	
 	<div id="guide_nav">
 		

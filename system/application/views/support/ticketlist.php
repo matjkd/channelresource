@@ -8,8 +8,7 @@ $(document).ready(function() {
 		});
 } );
 
-</script>
-<script type="text/javascript">
+
 
 function confirmation(id) {
 	var answer = confirm("Are you sure you want to delete this ticket?")

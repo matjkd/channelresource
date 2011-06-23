@@ -45,7 +45,7 @@ h1, h2,
 }
 h2 {
 	font-weight:bold;
-	color:#ffffff;
+	color:#333333;
 	font-size: 120%;
 }
 h3 {
@@ -60,6 +60,7 @@ h3 {
 .main_content {
 	
 	padding-top:10px;
+        padding-bottom:10px;
 	margin-bottom:20px;
 	position:relative;
 	background:#ffffff;
@@ -197,7 +198,7 @@ text-decoration:none;
 #contact_details {
 margin-top: 32px;
 }
-#contact_details h1 {
+#contact_details h3 {
 color: #b44640;
 margin-bottom:5px;
 }
@@ -331,19 +332,42 @@ display: none;
 
 .sidebox {
     
-    width:95%;
+    width:180px;
     padding-top:5px;
     padding-left:10px;
     padding-right:10px;
     margin-bottom:10px;
     color:#ffffff;
-    height: 61px;
+    height: 120px;
     background:url('/images/backgrounds/sidebox.jpg') repeat-x #4c585b;
 
 }
 .sidebox a {
 color:#ffffff;
 
+}
+
+.loginbutton {
+
+    margin-top: 5px;
+float:right;
+}
+
+.leftcolumn {
+	background: #E5E5E5;
+	width: 100px;
+	margin: 0 0 3px 0;
+
+}
+
+.profiletable tr {
+	margin: 3px;
+	padding: 3px;
+	border-bottom:#ffffff solid 3px;
+}
+.profiletable td {
+	padding:3px;
+	margin: 0 0 3px 0;
 }
 
 #testimonials {
@@ -385,7 +409,7 @@ text-align: center;
 
 }
 #inputs input {
-width:130px;
+width:100%;
 border:0px;
 }
 
@@ -416,7 +440,7 @@ font-size:120%;
 }
 
 .widebox {
-	width:95%;
+	width:180px;
 	height:61px;
 	background:#dce0e1;
 	padding-top: 0px;
@@ -889,4 +913,15 @@ margin-top:0px;
 table.contentpane {
 border: none;
 width: 100%;
+}
+
+#guide_video {
+
+    float:left;
+}
+
+#guide_desc {
+    width: 280px;
+    float:left;
+    padding-left:20px;
 }
