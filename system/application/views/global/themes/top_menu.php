@@ -1,9 +1,21 @@
 
 <div id="top_menu">
     		<ul>
-			<li><a href="<?=base_url()?>" >HOME</a></li>
+                 <?php $is_logged_in = $this->session->userdata('is_logged_in');
 
-			<?php $role = $this->session->userdata('role');
+                   if(!isset($is_logged_in) || $is_logged_in == true)
+                    {
+                 ?>
+		                  
+                    <li><a href="<?=base_url()?>" >HOME</a></li>
+                    <?php
+                    }
+                    ?>
+
+
+
+
+                    <?php $role = $this->session->userdata('role');
 				if(!isset($role)|| $role > 0)
 					{
 					?>

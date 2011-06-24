@@ -19,13 +19,13 @@ function __construct()
 		if(SITE=="customer")
 			{
 			
-			$data['main'] = 'user/main_customer';
+			//$data['main'] = 'user/main_customer';
 			$title = "Welcome to the Lease-Desk.com Customer Portal";
 			}
 		else if(SITE=="channel")
 			{
 			
-			$data['main'] = 'user/main_channel';
+			//$data['main'] = 'user/main_channel';
 			$title = "Welcome to the Lease-Desk.com Channel Partner Portal";
 			}
 			else
@@ -38,7 +38,7 @@ function __construct()
 		$data['title'] = 'Login';
 		
 		$this->load->vars($data);
-		$this->load->view('leasedesktemplate');
+		$this->load->view('logintemplate');
 	
 	
 	
@@ -87,7 +87,7 @@ function __construct()
 			$data['title'] = 'Login Failed';
 			$data['main'] = 'user/index';
 			$this->load->vars($data);
-			$this->load->view('leasedesktemplate');
+			$this->load->view('logintemplate');
 			
 			
 		}

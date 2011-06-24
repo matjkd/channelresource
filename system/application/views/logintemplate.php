@@ -11,7 +11,6 @@
 <?=$this->load->view('global/themes/header')?>
 
 
-
 <body>
 
 <!--[if lt IE 7]>
@@ -31,63 +30,78 @@
   </div>
 <![endif]-->
 
-         <div class="container_24">
-                    <?php $this->load->view('global/menutop'); ?>
+         <div class="container_24" align="center">
+                  	  	<div id="logo">
 
-            
+  		<?php if(SITE=="customer"){
+	?><a href="<?=base_url()?>" title="customer resource"><img src="<?=base_url()?>images/logocustomer.png"></img></a>
+<?php }
+else if(SITE=="channel"){
+	?><a href="<?=base_url()?>" title="channel resource"><img src="<?=base_url()?>images/logo.png"></img></a>
+<?php }
+
+?>
+
+
+
+
+
+                            </div>
+
+
 	</div>
 
-	<div class="menu_container">
-	    		<div class="container_24"><?=$this->load->view('global/themes/top_menu')?></div>
-	 </div>
+	
 
-<div class="main_content container_24">
+<div class="login_content container_24">
   	<!-- CONTENT -->
-  	
-       
-    
 
-         <div class="grid_19">
 
-	<?php
+
+
+
+         <div  align="center">
+             <?php
 	if(isset($title))
 	{
 		echo "<h1 class='componentheading'>$title</h1>";
 	}
 	?>
 
-	<?php $this->load->view('global/warning'); ?>
-	<?php $this->load->view($main); ?>
-
-
-            </div>
-
-         <div class="grid_5">
-
+	<?php $this->load->view('global/warning'); ?><br/>
+	
+Login with your username and password below:<br/>
            	<?php if(SITE=="customer"){
-                    $this->load->view('global/themes/custmenu');
+                    $this->load->view('global/themes/loginonly');
             }
             else if(SITE=="channel"){
-                    $this->load->view('global/themes/channelmenu');
+                    $this->load->view('global/themes/loginonly');
             }
 
 ?>
 
+
+<?php
+	if(isset($main))
+	{
+		$this->load->view($main);
+	}
+	?>
         </div>
 
         <div class="clear"></div>
 
 
-   
+
       <!-- //CONTENT -->
 </div>
-   <div class="footer2">
+   <div class="footer2" >
 	<div class="top_shadow"></div>
 	<div class="container_24">
 
 
 		<div class="grid_19">
-				<?php $this->load->view('global/themes/footer'); ?>
+				<?php $this->load->view('global/themes/loginfooter'); ?>
 		</div>
 
 		<div class="grid_5">
@@ -96,6 +110,7 @@
 
 	</div>
 </div>
+ 
 
 </body>
 </html>
