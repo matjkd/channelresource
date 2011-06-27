@@ -2,7 +2,7 @@
 	Proctor Consulting Website Template
 	
 */
-body {
+html, body, #container {
 	padding: 0px;
 	margin:0px;
 	background:  url('/images/backgrounds/background2.jpg') repeat-x #4d6f76;
@@ -10,6 +10,7 @@ body {
 			font-size: 12px;
 			color: #222;
 			line-height: 20px;
+                        height:100%;
 }
 
 ::-moz-selection{ background: #444444; color:#fff; text-shadow: none; }
@@ -74,7 +75,7 @@ box-shadow: 3px 2px 13px #000000;
 
 	padding:10px 10px 50px 10px;
        margin-top:30px;
-	margin-bottom:180px;
+	margin-bottom:10px;
 	position:relative;
         width:480px;
 	background:#ffffff;
@@ -289,7 +290,21 @@ position:relative;
     color:#dddddd;
 }
 
-.container {
+#footer2 {
+background:url('/images/backgrounds/footer_graphic.jpg') no-repeat top center #353e43;
+position:relative;
+	height:200px;
+	color: #dddddd;
+	padding-top:0px;
+        z-index:10;
+        margin-top: -200px;
+}
+#footer2 a {
+    color:#dddddd;
+}
+
+body > #container {
+
     height:auto;
     min-height:100%;
 
