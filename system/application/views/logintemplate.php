@@ -29,7 +29,7 @@
     </div>
   </div>
 <![endif]-->
-
+<div class="container">
          <div class="container_24" align="center">
                   	  	<div id="logo">
 
@@ -94,6 +94,8 @@ Login with your username and password below:<br/>
 
 
       <!-- //CONTENT -->
+</div>
+
 </div>
    <div class="footer2" >
 	<div class="top_shadow"></div>
