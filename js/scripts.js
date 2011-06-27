@@ -103,3 +103,14 @@ jQuery(function() {
 	jQuery('.wymeditor').cleditor({
 	    });
 });
+
+//slideshow
+$(function() {
+    $('.cycle').cycle({
+		fx: 'fade', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+		speedIn:  500,
+	    speedOut: 500,
+	   timeout:  8000
+	});
+	$('.cycle').css("display", "block");
+});

@@ -1,3 +1,6 @@
+<div>
+
+
 <p>Customer-Resource.com has been developed by Proctor Consulting UK Ltd,
  to provide essential Lease-Desk.com support tools and resources to its customers.</p>
  
@@ -10,3 +13,5 @@
 
 <p>If you are not a registered user of Lease-Desk.com but would find out more about how 
 it can benefit your business, please click here:</p>
+
+</div>

@@ -14,11 +14,13 @@ class Welcome extends My_Controller {
 			{
 			$title = "Customer-Resource";
 			$data['main'] = '/main/main_customer';
+                        $data['slideshow'] = "slideshow/slideshow";
 			}
 		else if(SITE=="channel")
 			{
 			$title = "Channel-Resource";
 			$data['main'] = '/main/main_channel';
+                        $data['slideshow'] = "slideshow/slideshow";
 			}
 			else
 			{

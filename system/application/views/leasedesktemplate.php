@@ -38,29 +38,38 @@
 	</div>
 
 	<div class="menu_container">
-	    		<div class="container_24"><?=$this->load->view('global/themes/top_menu')?></div>
+	    		<div class="container_24"><?=$this->load->view('global/themes/top_menu')?></div> 
 	 </div>
 
 <div class="main_content container_24">
   	<!-- CONTENT -->
   	
        
+          
+      
     
 
-         <div class="grid_19">
+         <div class="grid_19"> 
 
-	<?php
+
+	<?php 
+        if(isset($slideshow))
+	{
+		 $this->load->view($slideshow); 
+	}
+
+
 	if(isset($title))
 	{
 		echo "<h1 class='componentheading'>$title</h1>";
 	}
-	?>
+	?> 
 
 	<?php $this->load->view('global/warning'); ?>
 	<?php $this->load->view($main); ?>
 
 
-            </div>
+         </div>
 
          <div class="grid_5">
 

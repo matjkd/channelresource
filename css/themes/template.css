@@ -72,9 +72,9 @@ box-shadow: 3px 2px 13px #000000;
 }
 .login_content {
 
-	padding:10px;
-       
-	margin-bottom:20px;
+	padding:10px 10px 50px 10px;
+       margin-top:30px;
+	margin-bottom:180px;
 	position:relative;
         width:480px;
 	background:#ffffff;
@@ -245,17 +245,14 @@ margin-bottom:5px;
 	margin-left: auto;
 	margin-right: auto;
 
-	width:942px;
-	height:244px;
+	width:825px;
+	height:230px;
 	position:relative;
 	background: #ffffff;
-	padding:10px;
-	top:-20px;
-	z-index:0;
 	
-	-moz-box-shadow: 3px 2px 13px #000000;
--webkit-box-shadow: 3px 2px 13px #000000;
-box-shadow: 3px 2px 13px #000000;
+	
+	z-index:0;
+
 	
 }
 .slides {
