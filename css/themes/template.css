@@ -280,13 +280,19 @@ margin-bottom:5px;
 
 .footer2 {
 background:url('/images/backgrounds/footer_graphic.jpg') no-repeat top center #353e43;
-
+position:relative;
 	height:200px;
 	color: #dddddd;
 	padding-top:0px;
 }
 .footer2 a {
     color:#dddddd;
+}
+
+.container {
+    height:auto;
+    min-height:100%;
+
 }
 #partners_container {
 height:70px;

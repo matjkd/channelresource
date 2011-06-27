@@ -30,7 +30,7 @@
     </div>
   </div>
 <![endif]-->
-
+<div class="container">
          <div class="container_24">
                     <?php $this->load->view('global/menutop'); ?>
 
@@ -83,7 +83,7 @@
 ?>
 
         </div>
-
+</div>
         <div class="clear"></div>
 
 
