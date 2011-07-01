@@ -1,19 +1,5 @@
 guide admin (only visible if you have admin rights)
-<script type="text/javascript"> 
- 
-/* Here we replace each element with class 'wymeditor'
- * (typically textareas) by a WYMeditor instance.
- * 
- * We could use the 'html' option, to initialize the editor's content.
- * If this option isn't set, the content is retrieved from
- * the element being replaced.
- */
- 
-jQuery(function() {
-    jQuery('.wymeditor').wymeditor();
-});
- 
-</script> 
+
 <?php
 
 foreach($categories as $row):
