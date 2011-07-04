@@ -48,7 +48,12 @@ class Userguide extends My_Controller {
 		$this->load->vars($data);
 		$this->load->view('leasedesktemplate');
 	}
-	
+	function addguide()
+        {
+            $this->guide_model->add_guide();
+	    redirect('userguide/viewguide/');
+
+        }
 	function editguide($id)
 	{
 		$this->guide_model->update_guide($id);

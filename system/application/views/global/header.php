@@ -10,7 +10,8 @@
 <link rel='stylesheet' href='<?=base_url()?>css/jquery-ui-1.8.custom.css' type='text/css' />
 <link rel='stylesheet' href='<?=base_url()?>css/demo_table_jui.css' type='text/css' />
 
-<link  href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css" >
+<!-- Load google fonts-->
+<link href='http://fonts.googleapis.com/css?family=News+Cycle&v1' rel='stylesheet' type='text/css'>
 
 <script type='text/javascript' src='http://www.google.com/jsapi'></script>
 <script src="<?=base_url()?>js/Jquery.js" type="text/javascript"></script>

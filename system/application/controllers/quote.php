@@ -73,7 +73,7 @@ class Quote extends My_Controller {
 						$data['user_id'] = '';
 		$data['items'] = $this->Membership_model->get_all_employees();							
 		$data['main'] = '/quote/main';
-		$data['title'] = 'Lease Rate Calculator';
+		$data['title'] = 'Quoting Tool';
 		$this->load->vars($data);
 		$this->load->view('leasedesktemplate');
 	}
@@ -191,7 +191,7 @@ class Quote extends My_Controller {
 				{
 					$errors=validation_errors();
 					$data['main'] = '/quote/main';
-					$data['title'] = 'Quote Calculator';
+					$data['title'] = 'Quoting tool';
 					$this->load->vars($data);
 					$this->load->view('leasedesktemplate');
 					$run = 'no';

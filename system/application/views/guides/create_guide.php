@@ -1,4 +1,4 @@
-guide admin (only visible if you are admin)
+guide admin (only visible if you have admin rights)
 
 <?php
 
@@ -10,38 +10,32 @@ endforeach;
 ?>
 
 
-<div id="accordion" style="width:800px;">
-	<h3><a href="#">Edit</a></h3>
+
+	<h3><a href="#">Add</a></h3>
 	<div>
-		
+
 			<?php  foreach($guide as $key => $admin): ?>
-			
-			
+
+
 			<?php  $id = $admin['user_guide_id'];?>
-			
-			
-			<?=form_open("userguide/editguide/$id")?> 
+
+
+			<?=form_open("userguide/addguide/")?>
 			Title: <?=form_input('title', $admin['title'])?>
 			<br/>
 			Filename: <input type="text" name="filename" id="filename" value="<?=$admin['filename']?>"><br/>
-			
+
 			Category: <?=form_dropdown('category', $category, $admin['guide_category'])?> <br/>
-			
+
 			<textarea cols=75 rows=20 name="description" id="description" class='wymeditor'><?=$admin['description'];?></textarea><br/>
-			
-			
+
+
 			<input type="submit" class="wymupdate" />
-			<?=form_close()?> 
+			<?=form_close()?>
 			<?php endforeach;?>
-			
-			
-	</div>
-	<h3><a href="#">Add Tags</a></h3>
-	<div>
-		<p>
-		<?=$this->load->view('guides/tags')?>
-		</p>
+
+
 	</div>
 
 
-</div>
+

@@ -56,6 +56,21 @@ class Guide_model extends Model {
 		
 		return $data;
     }
+
+    function add_guide()
+    {
+        $new_guide = array(
+    				'filename' => $this->input->post('filename'),
+    				'title' => $this->input->post('title'),
+    				'guide_category' => $this->input->post('category'),
+				'description' => $this->input->post('description'),
+    				'date_modified' => now()
+            );
+        $insert = $this->db->insert('user_guides', $new_guide);
+		return $insert;
+
+
+    }
 function update_guide($id)
     {
     	

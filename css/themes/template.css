@@ -33,25 +33,33 @@ img {
 h1, h2,
 .contentheading, .componentheading, .blog_more strong,
 .nftitle {
-  font-family: 'Raleway', Arial, Helvetica, sans-serif;
-  font-size: 30px;
+   font-family: 'News Cycle', Arial, Helvetica, sans-serif;
+
   font-style: normal;
-  font-weight: 700;
+  font-weight: 100;
 
   text-decoration: none;
   text-transform: none;
   letter-spacing: 0em;
   word-spacing: 0em;
-  line-height: 1.2;
+ line-height: normal;
+}
+h1 {
+
+	color:#000000;
+	font-size: 230%;
 }
 h2 {
-	font-weight:bold;
-	color:#333333;
-	font-size: 120%;
+
+	color:#000000;
+	font-size: 180%;
 }
 h3 {
 	margin-bottom: 2px;
 	font-size: 120%;
+}
+strong, b {
+font-weight: bolder;
 }
 .news_date {
 	font-style: italic;
