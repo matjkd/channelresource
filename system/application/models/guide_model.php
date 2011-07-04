@@ -61,6 +61,28 @@ class Guide_model extends Model {
          //match category
         $cat_name = $this->input->post('category');
 
+        //check if uncategorised category exists, if not add it
+        $data = array();
+			$this->db->where('guide_cat_id', 0);
+			$query = $this->db->get('guide_cat');
+                          if ($query->num_rows() == 0)
+			{
+			        $uncat = array(
+    				'guide_cat' => 'Uncategorised',
+                                );
+                               $this->db->insert('guide_cat', $uncat);
+                               $new_id =$this->db->insert_id();
+
+                               $uncat2 = array(
+    				'guide_cat' => 'Uncategorised',
+                                 'guide_cat_id' => '0'
+                                );
+                               $this->db->where('guide_cat_id', $new_id);
+                               $this->db->update('guide_cat', $uncat2);
+
+			}
+
+
         $data = array();
 			$this->db->where('guide_cat', $cat_name);
 			$query = $this->db->get('guide_cat');
