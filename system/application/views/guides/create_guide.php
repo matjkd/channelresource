@@ -26,10 +26,15 @@ endforeach;
 			<?=form_label('Filename')?> <?=form_input('filename')?>
                         </p>
 
-                         <p>
-			<?=form_label('Category')?> <?=form_dropdown('category', $category)?>
-                         </p>
-                         
+                        
+
+                         <div class="ui-widget">
+
+                            <label for="category">Category</label>
+                            <input  type="text" name="category" id="guide_category" />
+
+                        </div>
+
                         <p>
                         <?=form_label('Description')?><br/>
 			<textarea cols=75 rows=20 name="description" id="description" class='wymeditor'></textarea><br/>

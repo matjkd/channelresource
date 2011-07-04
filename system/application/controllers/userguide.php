@@ -45,6 +45,28 @@ class Userguide extends My_Controller {
 		$data['tags'] = $this->guide_model->get_all_tags();
 		$data['assigned_tags'] = $this->guide_model->get_assigned_tags($guide_id);
 		$data['guide'] = $this->guide_model->get_guide($guide_id);
+
+
+                if(isset($guide_id)){
+                //get guide category
+                foreach($data['guide'] as $row):
+
+                  $cat_id= $row['guide_category'];
+
+                endforeach;
+
+                foreach($data['categories'] as $row):
+
+                    if($cat_id == $row['guide_cat_id']){
+
+                         $data['guide_category'] = $row['guide_cat'];
+                    }
+
+
+                endforeach;
+                }
+
+
 		$this->load->vars($data);
 		$this->load->view('leasedesktemplate');
 	}
@@ -68,7 +90,7 @@ class Userguide extends My_Controller {
 	function addguide()
         {
             $this->guide_model->add_guide();
-	    redirect('userguide/viewguide/');
+	    redirect('userguide/');
 
         }
 	function editguide($id)

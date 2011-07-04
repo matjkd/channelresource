@@ -1,16 +1,8 @@
-
+<?php if($this->session->userdata('role') == 1) {?>
 
 <a alt="add new guide" href="<?=base_url()?>userguide/createguide"><img width="16px" height="16px" alt="edit" src="<?=base_url()?>images/icons/social/add_16.png"/></a>
 Add New guide
 
-<?php
-
-foreach($categories as $row):
-	$id = $row['guide_cat_id'];
-	$cat = $row['guide_cat'];
-$category[$id] = $cat;
-endforeach;
-?>
 
 
 <div id="accordion" style="width:800px;">
@@ -22,19 +14,28 @@ endforeach;
 			
 			<?php  $id = $admin['user_guide_id'];?>
 			
+		<div id="contact_form">
+			<?=form_open("userguide/editguide/$id")?>
+
+                    <p>
+			<?=form_label('Title')?> <?=form_input('title', $admin['title'])?>
+                    </p>
+                    <p>
+			<?=form_label('Filename')?> <input type="text" name="filename" id="filename" value="<?=$admin['filename']?>"><br/>
+                    </p>
+			      <div class="ui-widget">
+
+                            <label for="category">Category</label>
+                            <input  type="text" name="category" id="guide_category" value="<?=$guide_category?>"/>
+
+                        </div>
 			
-			<?=form_open("userguide/editguide/$id")?> 
-			Title: <?=form_input('title', $admin['title'])?>
-			<br/>
-			Filename: <input type="text" name="filename" id="filename" value="<?=$admin['filename']?>"><br/>
-			
-			Category: <?=form_dropdown('category', $category, $admin['guide_category'])?> <br/>
-			
-			<textarea cols=75 rows=20 name="description" id="description" class='wymeditor'><?=$admin['description'];?></textarea><br/>
+			<textarea cols=75 rows=20 name="description" id="description" class='wymeditor'><?=$admin['description']?></textarea><br/>
 			
 			
 			<input type="submit" class="wymupdate" />
-			<?=form_close()?> 
+			<?=form_close()?>
+                </div>
 			<?php endforeach;?>
 			
 			
@@ -46,5 +47,12 @@ endforeach;
 		</p>
 	</div>
 
+        <h3><a href="#">Categories Admin</a></h3>
+	<div>
+		<p>
+		<?=$this->load->view('guides/cats')?>
+		</p>
+	</div>
 
 </div>
+	<?php }?>

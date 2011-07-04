@@ -114,3 +114,20 @@ $(function() {
 	});
 	$('.cycle').css("display", "block");
 });
+
+$(function() {
+         $( "#guide_category" ).autocomplete({
+            source: function(request, response) {
+                $.ajax({
+                  url: "/datasource/json_cats",
+                  data: { term: $("#guide_category").val()},
+                  dataType: "json",
+                  type: "POST",
+                  success: function(data){
+                  response(data);
+                  }
+                });
+              },
+            minLength: 2
+        });
+    });

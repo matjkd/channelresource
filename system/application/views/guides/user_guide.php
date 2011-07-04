@@ -1,12 +1,20 @@
+
+
+
 <?php if($guide==NULL)
 
 {
 	?>
+<?php if($this->session->userdata('role') == 1) {?>
+
+<a alt="add new guide" href="<?=base_url()?>userguide/createguide"><img width="16px" height="16px" alt="edit" src="<?=base_url()?>images/icons/social/add_16.png"/></a>
+Add New guide
+<?php } ?>
 	<p>Welcome to the Lease-Desk user guide section. Here you will find fully
 	 illustrated, interactive step-by-step instructions on how to use Lease-Desk.com
 	  within your business and if you are a Super User, how to set up and maintain 
 	  Lease-Desk. In addition, you will find full length PDF versions of the user
-	   guides, broken down by Role Type along with common F.A.Q's.</p>
+	   guides, broken down by Role Type along with common F.A.Q's..</p>
  
 <p>To access the Interactive Guides, click on any of the areas below to display
  the full menu for that area; then click on the menu item you'd like to explore.</p>
@@ -50,12 +58,13 @@
 		
 	</div>
 </div>
-	<?php if($this->session->userdata('role') == 1) {?>
 	
-	<?=$this->load->view('guides/guide_admin')?>
 	
-	<?php }?>
+
+<?=$this->load->view('guides/guide_admin')?>
+
 
 
 <?php endforeach;?>
+  
 <?php $this->load->view('guides/subnav'); ?>

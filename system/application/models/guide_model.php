@@ -56,13 +56,47 @@ class Guide_model extends Model {
 		
 		return $data;
     }
+    function match_category()
+    {
+         //match category
+        $cat_name = $this->input->post('category');
+
+        $data = array();
+			$this->db->where('guide_cat', $cat_name);
+			$query = $this->db->get('guide_cat');
+
+                        //check category exists and return the id
+                        if ($query->num_rows() == 1)
+			{
+			         return $query->row('guide_cat_id');
+			}
+
+                        //if category doesn't exist add it and return the id
+                        if($query->num_rows() == 0)
+                        {
+                                $new_cat = array(
+    				'guide_cat' => $this->input->post('category')
+
+                                );
+                               $this->db->insert('guide_cat', $new_cat);
+                                return $this->db->insert_id();
+                         }
+        $query->free_result();
+    }
 
     function add_guide()
     {
+
+       $category = $this->match_category();
+        
+
+
+
+        //insert new guide
         $new_guide = array(
     				'filename' => $this->input->post('filename'),
     				'title' => $this->input->post('title'),
-    				'guide_category' => $this->input->post('category'),
+    				'guide_category' => $category,
 				'description' => $this->input->post('description'),
     				'date_modified' => now()
             );
@@ -73,8 +107,9 @@ class Guide_model extends Model {
     }
 function update_guide($id)
     {
-    	
-    	
+
+      $category = $this->match_category();
+    	//update guide
 		$this->db->where('user_guide_id', $id);
 		$query = $this->db->get('user_guides');
 		if ($query->num_rows() == 1)
@@ -84,8 +119,8 @@ function update_guide($id)
     				$guide_update = array(
     				'filename' => $this->input->post('filename'),
     				'title' => $this->input->post('title'),
-    				'guide_category' => $this->input->post('category'),
-					'description' => $this->input->post('description'),
+    				'guide_category' => $category,
+				'description' => $this->input->post('description'),
     				'date_modified' => now()
 					);
 		}
@@ -201,5 +236,27 @@ function get_assigned_tags($id)
 		
 		return $data;
 	}
+
+         function get_guide_cats($param)
+    {
+        $data = array();
+
+
+
+        $where = "guide_cat REGEXP '^$param'";
+        $this->db->where($where);
+        $query = $this->db->get('guide_cat');
+
+        if ($query->num_rows() > 0)
+			{
+				foreach ($query->result_array() as $row)
+
+				$data[] = $row;
+
+			}
+		$query->free_result();
+
+		return $data;
+    }
  
 }
