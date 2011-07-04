@@ -43,6 +43,7 @@ h1, h2,
   letter-spacing: 0em;
   word-spacing: 0em;
  line-height: normal;
+ margin-bottom: 25px;
 }
 h1 {
 
@@ -695,6 +696,8 @@ input:focus, textarea:focus {
 	}
 #contact_form label {
 	color: #999999;
+         width:100px;
+         float:left;
 	}
 	
 #contact_form p {
@@ -707,6 +710,7 @@ margin-top:5px;
 	height: 100px;
 	line-height: 150%;
 }
+
 
 /* page sections */
 #leftside {

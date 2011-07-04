@@ -1,4 +1,7 @@
-guide admin (only visible if you are admin)
+
+
+<a alt="add new guide" href="<?=base_url()?>userguide/createguide"><img width="16px" height="16px" alt="edit" src="<?=base_url()?>images/icons/social/add_16.png"/></a>
+Add New guide
 
 <?php
 
