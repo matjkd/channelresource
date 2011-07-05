@@ -63,7 +63,7 @@ class Guide_model extends Model {
 
         //check if uncategorised category exists, if not add it
         $data = array();
-			$this->db->where('guide_cat_id', 0);
+			$this->db->where('guide_cat', 'Uncategorised');
 			$query = $this->db->get('guide_cat');
                           if ($query->num_rows() == 0)
 			{
@@ -81,28 +81,40 @@ class Guide_model extends Model {
                                $this->db->update('guide_cat', $uncat2);
 
 			}
-
-
-        $data = array();
-			$this->db->where('guide_cat', $cat_name);
-			$query = $this->db->get('guide_cat');
-
-                        //check category exists and return the id
-                        if ($query->num_rows() == 1)
-			{
-			         return $query->row('guide_cat_id');
-			}
-
-                        //if category doesn't exist add it and return the id
-                        if($query->num_rows() == 0)
+                        if($query->num_rows() == 1)
                         {
-                                $new_cat = array(
-    				'guide_cat' => $this->input->post('category')
-
+                               $id = $query->row('guide_cat_id');
+                               $uncat2 = array(
+    				'guide_cat' => 'Uncategorised',
+                                 'guide_cat_id' => '0'
                                 );
-                               $this->db->insert('guide_cat', $new_cat);
-                                return $this->db->insert_id();
-                         }
+                               $this->db->where('guide_cat_id', $id);
+                               $this->db->update('guide_cat', $uncat2);
+                        }
+         		$query->free_result();
+
+
+              //check category exists and return the id
+                        $data = array();
+                            $this->db->where('guide_cat', $cat_name);
+                            $query = $this->db->get('guide_cat');
+
+                        
+                            if ($query->num_rows() == 1)
+                            {
+                                     return $query->row('guide_cat_id');
+                            }
+
+                            //if category doesn't exist add it and return the id
+                            if($query->num_rows() == 0)
+                            {
+                                    $new_cat = array(
+                                    'guide_cat' => $this->input->post('category')
+
+                                    );
+                                   $this->db->insert('guide_cat', $new_cat);
+                                    return $this->db->insert_id();
+                             }
         $query->free_result();
     }
 
