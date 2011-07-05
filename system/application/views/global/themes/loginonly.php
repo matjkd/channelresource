@@ -7,7 +7,7 @@
 $is_logged_in = $this->session->userdata('is_logged_in');
 if(!isset($is_logged_in) || $is_logged_in != true)
 		{?>
-	<form method="post" action="<?=base_url()?>user/login/validate_credentials"  target="_blank" >
+	<form method="post" action="<?=base_url()?>user/login/validate_credentials" >
 	<div>
 		 <div id="inputs">
 			   <input type="text" id="username" name="username" title="Username" /><br/>

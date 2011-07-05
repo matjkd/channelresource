@@ -123,6 +123,12 @@ class Userguide extends My_Controller {
 		redirect('userguide/viewguide/'.$guide.'', 'refresh');
 		
 	}
+
+        function delcat($id)
+        {
+                $this->guide_model->delete_category($id);
+                redirect('userguide/');
+        }
 	
 		
 	function is_logged_in()

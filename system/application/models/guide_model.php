@@ -61,6 +61,10 @@ class Guide_model extends Model {
          //match category
         $cat_name = $this->input->post('category');
 
+        if($cat_name == NULL){
+             return 0;
+        }
+
         //check if uncategorised category exists, if not add it
         $data = array();
 			$this->db->where('guide_cat', 'Uncategorised');
@@ -271,8 +275,38 @@ function get_assigned_tags($id)
 		return $data;
 	}
 
+        function delete_category($id)
+        {
+
+            //find guides with this category and make their cat ID 0
+
+			$this->db->where('guide_category', $id);
+			$query = $this->db->get('user_guides');
+
+                        //convert ID's to 0
+                        if ($query->num_rows() > 0) {
+
+                                     $delcat = array(
+
+                                                            'guide_category' => 0,
+
+                                                            );
+
+                                    $this->db->where('guide_category', $id);
+                                    $update = $this->db->update('user_guides', $delcat);
+
+                          }
+                         $query->free_result();
+              //del category
+                       $this->db->where('guide_cat_id', $id);
+			$query = $this->db->delete('guide_cat');
+                       
+        }
+
+
+
          function get_guide_cats($param)
-    {
+        {
         $data = array();
 
 

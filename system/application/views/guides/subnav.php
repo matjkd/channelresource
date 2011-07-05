@@ -2,20 +2,50 @@
 	$(function() {
 		$("#tabs").tabs();
 	});
+
+
+
+
+	function delcat(id) {
+		var answer = confirm("are you sure you want to delete category?")
+		if (answer){
+
+			window.location = "<?=base_url()?>userguide/delcat/"+ id;
+		}
+		else{
+			alert("nothing deleted!")
+		}
+	}
+
 	</script>
 	<br/>
 <div id="tabs" style="width:795px;">
 	<ul>
 		<?php foreach($categories as $row1):?>
-            <?php if($row1['guide_cat_id'] != '0') { ?>
-		<li><a href="#tabs<?=$row1['guide_cat_id']?>"><?=$row1['guide_cat']?></a></li>
-                <?php } ?>
+                    <?php if($row1['guide_cat_id'] != '0') { ?>
+                        <li>
+                             <a href="#tabs<?=$row1['guide_cat_id']?>"><?=$row1['guide_cat']?>  </a>
+
+                            <?php if($this->session->userdata('role') == 1) {?>
+                                 <a href="#" onclick="delcat(<?=$row1['guide_cat_id']?>)"> <div style="float:right; margin-left:0px;" class="ui-icon ui-icon-circle-close"></div></a>
+                            <?php } ?>
+                        </li>
+
+                    <?php } ?>
+
 		<?php endforeach; ?>
-                <li><a href="#downloads-tab">Downloads</a></li>
+
+                <li>
+                    <a href="#downloads-tab">Downloads</a>
+                </li>
+
 		<?php if($this->session->userdata('role') == 1) {?>
-                <li><a href="#uncategorised-tab">Uncategorised</a></li>
-                <?php } ?>
-	
+
+                <li>
+                    <a href="#uncategorised-tab">Uncategorised</a>
+                </li>
+            
+                 <?php } ?>
 	</ul>
 	
 	<?php foreach($categories as $row2):
