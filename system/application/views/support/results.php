@@ -1,9 +1,5 @@
-<script src="<?=base_url()?>js/tiny_mce/tiny_mce.js" type="text/javascript"></script>				
-<script type="text/javascript">
-tinyMCE.init({
-	mode : "textareas"
-});
-</script>
+		
+
 <div>
 	
 <?php echo validation_errors('<p class="error">'); ?>	

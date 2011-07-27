@@ -52,7 +52,7 @@ class Support_model extends Model {
     				
     				'telephone'	=> $this->input->post('telephone'),	
     				'email_address'	=> $this->input->post('email_address'),
-    				'support_description' => $this->input->post('support_description'),
+                                'support_description' => $this->input->post('support_description'),
     				'support_type' => $this->input->post('support_type'),
     				'support_issue' => $this->input->post('support_issue'),
     				'support_priority' => $this->input->post('support_priority'),

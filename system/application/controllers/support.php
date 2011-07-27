@@ -61,6 +61,7 @@ class Support extends My_Controller {
 	function create_ticket()
 	{
 		//validate form entry
+         
 		$this->form_validation->set_rules('support_subject', 'support_subject', 'trim|required');
 		$this->form_validation->set_rules('email_address', 'email_address', 'trim|required');
 		
@@ -80,7 +81,7 @@ class Support extends My_Controller {
 		}
 		
 		
-			//get details of company/channel partner
+		//get details of company/channel partner
 		$data['company_details'] = $this->Membership_model->get_company_detail($data['customercompany_id']);
 		$initials = "JWS";
 		foreach($data['company_details'] as $row3):
@@ -98,7 +99,8 @@ class Support extends My_Controller {
 							 	$first_initial = substr($this->session->userdata('firstname'), 0, 1);
 							 	$last_initial = substr($this->session->userdata('lastname'), 0, 1);
 							 	$initials = "$first_initial".""."$last_initial";
-							 	//quick fix for julian having 3 initials in webCRM
+
+                                                                //quick fix for julian having 3 initials in webCRM
 							 	if ($initials=="JS")
 							 	{
 							 		$initials = "JWS";
@@ -233,10 +235,11 @@ class Support extends My_Controller {
 					
 					$this->postmark->from('noreply@lease-desk.com', 'Lease Desk Limited');
                                         $this->postmark->to('chloe@lease-desk.com');
-                                        $this->postmark->cc('mat@redstudio.co.uk');
-                                        $this->postmark->cc('debra.taylor@lease-desk.com');
+                                        $this->postmark->bcc('mat@redstudio.co.uk');
+                                        $this->postmark->cc($email_address);
+                                        
 					$this->postmark->subject('Support Request Ticket No. '.$ticket_id.'');
-					$this->postmark->message_html("Subject: $support_subject
+					$this->postmark->message_plain("Subject: $support_subject
 					
 
 Company: $company_name
@@ -315,25 +318,34 @@ End
 					
 					redirect("support/results/$ticket_id", 'refresh');
 					}
-					
+//This is if the support message is being updated
+
+
 				if ($submitted == 'Update')
 					{
 						$data['ticket_id'] = $this->input->post('ticket_id');
 						$ticket_id = $data['ticket_id'];
-						$this->session->set_flashdata('message', 'Ticket Updated');
 						
-// normal email update
+                                                $this->support_model->update_ticket($data['ticket_id']);
+
+                                                $this->session->set_flashdata('message', 'Ticket Updated');
+
+
+// normal email update if email checkbox is checked
+
+
 						if($this->input->post('email_changes')==TRUE)
 						{
 							$this->postmark->clear();
 				
 					$this->postmark->from('noreply@lease-desk.com', 'Lease Desk Limited');
                                         $this->postmark->to('chloe@lease-desk.com');
-                                        $this->postmark->cc('mat@redstudio.co.uk');
-                                        $this->postmark->cc('debra.taylor@lease-desk.com');
+                                        $this->postmark->bcc('mat@redstudio.co.uk');
+                                        $this->postmark->cc($email_address);
+                                 
 						
 					$this->postmark->subject('Support Request Ticket No. '.$ticket_id.' Updated');
-					$this->postmark->message_html("Subject: $support_subject
+					$this->postmark->message_plain("Subject: $support_subject
 					
 
 company: $company_name
@@ -391,7 +403,7 @@ End
 						}
 						
 						
-						$this->support_model->update_ticket($data['ticket_id']);
+						
 						redirect("support/results/$ticket_id", 'refresh');
 						
 						
@@ -608,13 +620,15 @@ End
 			$this->postmark->clear();
 			$this->postmark->from('noreply@lease-desk.com', 'Lease Desk Limited');
 				$this->postmark->to('chloe@lease-desk.com');
-				$this->postmark->cc('mat@redstudio.co.uk');
-				$this->postmark->cc('debra.taylor@lease-desk.com');
+			
+                                $this->postmark->cc($email_address);
+				
+                                $this->postmark->bcc('mat@redstudio.co.uk');
 			 
 			$this->postmark->subject('Reply to Support Request Ticket No '.$id.'');
-			$this->postmark->message_html("Subject: $support_subject
+			$this->postmark->message_html("Subject: $support_subject<br/><br/>
 					
-Company: $company_name
+Company: $company_name<br/><br/>
 
 Reply: $comment
 
