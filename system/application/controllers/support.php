@@ -231,11 +231,12 @@ class Support extends My_Controller {
 					
 					
 					
-					$this->email->to('chloe@lease-desk.com, debra.taylor@proctorconsulting.co.uk');
-					$this->email->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
-					$this->email->cc('mat@redstudio.co.uk, '.$email_address.''); 
-					$this->email->subject('Support Request Ticket No. '.$ticket_id.'');
-					$this->email->message("Subject: $support_subject
+					$this->postmark->from('noreply@lease-desk.com', 'Lease Desk Limited');
+                                        $this->postmark->to('chloe@lease-desk.com');
+                                        $this->postmark->cc('mat@redstudio.co.uk');
+                                        $this->postmark->cc('debra.taylor@lease-desk.com');
+					$this->postmark->subject('Support Request Ticket No. '.$ticket_id.'');
+					$this->postmark->message_html("Subject: $support_subject
 					
 
 Company: $company_name
@@ -249,21 +250,27 @@ Support Issue: $support_issue1
 Priority: $support_priority1
 				
 					");	
-					$this->email->send();
+					$this->postmark->send();
 					
-    $email1 = $this->email->print_debugger();
+   // $email1 = $this->email->print_debugger();
     
 				
 //end normal email
 // send email to webCRM
-				$this->email->clear();
+				$this->postmark->clear();
 				
-				$this->email->to('cm3208SPoYUg@b2b-email.net');
-				$this->email->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
-				$this->email->cc('mat@redstudio.co.uk'); 
+				$this->postmark->to('cm3208SPoYUg@b2b-email.net');
+				$this->postmark->from('noreply@lease-desk.com', 'Lease Desk Limited');
+
+				$this->postmark->cc('mat@redstudio.co.uk');
+
+
+
+
+
 				
-				$this->email->subject('/*/AUTO/*/');
-				$this->email->message("Start:DateTime
+				$this->postmark->subject('/*/AUTO/*/');
+				$this->postmark->message_plain("Start:DateTime
 
 End
 Start:Organisation
@@ -291,7 +298,7 @@ Start:OpportunityDelivery
 End
 				
 				");	
-				$this->email->send();
+				$this->postmark->send();
 			
 //end mailto webCRM
 					
@@ -318,14 +325,15 @@ End
 // normal email update
 						if($this->input->post('email_changes')==TRUE)
 						{
-							$this->email->clear();
+							$this->postmark->clear();
 				
-					$this->email->to('chloe@lease-desk.com, debra.taylor@proctorconsulting.co.uk');
-					$this->email->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
-					$this->email->cc('mat@redstudio.co.uk, '.$email_address.''); 
+					$this->postmark->from('noreply@lease-desk.com', 'Lease Desk Limited');
+                                        $this->postmark->to('chloe@lease-desk.com');
+                                        $this->postmark->cc('mat@redstudio.co.uk');
+                                        $this->postmark->cc('debra.taylor@lease-desk.com');
 						
-					$this->email->subject('Support Request Ticket No. '.$ticket_id.' Updated');
-					$this->email->message("Subject: $support_subject
+					$this->postmark->subject('Support Request Ticket No. '.$ticket_id.' Updated');
+					$this->postmark->message_html("Subject: $support_subject
 					
 
 company: $company_name
@@ -337,19 +345,20 @@ Support Issue: $support_issue1
 Priority: $support_priority1
 						
 						");	
-						$this->email->send();
+						$this->postmark->send();
 
 // end normal email update
 						
 						// send email to webCRM for update
-				$this->email->clear();
+				$this->postmark->clear();
 				
-				$this->email->to('cm3208SPoYUg@b2b-email.net');
-				$this->email->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
-				$this->email->cc('mat@redstudio.co.uk'); 
-				
-				$this->email->subject('/*/AUTO/*/');
-				$this->email->message("Start:DateTime
+				$this->postmark->to('cm3208SPoYUg@b2b-email.net');
+                                $this->postmark->from('noreply@lease-desk.com', 'Lease Desk Limited');
+				$this->postmark->cc('mat@redstudio.co.uk');
+
+
+				$this->postmark->subject('/*/AUTO/*/');
+				$this->postmark->message_plain("Start:DateTime
 
 End
 Start:Organisation
@@ -376,7 +385,7 @@ Start:OpportunityDelivery
 End
 				
 				");	
-				//$this->email->send();
+				//$this->postmark->send();
 			
 //end mailto webCRM for update
 						}
@@ -596,13 +605,14 @@ End
     						
 		$comment = strip_tags($this->input->post('comment'));	
 //start normal email
-			$this->email->clear();		
-			$this->email->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
-			$this->email->to('chloe@lease-desk.com, debra.taylor@proctorconsulting.co.uk'); 
-			$this->email->cc('mat@redstudio.co.uk, '.$email_address.''); 
+			$this->postmark->clear();
+			$this->postmark->from('noreply@lease-desk.com', 'Lease Desk Limited');
+				$this->postmark->to('chloe@lease-desk.com');
+				$this->postmark->cc('mat@redstudio.co.uk');
+				$this->postmark->cc('debra.taylor@lease-desk.com');
 			 
-			$this->email->subject('Reply to Support Request Ticket No '.$id.'');
-			$this->email->message("Subject: $support_subject
+			$this->postmark->subject('Reply to Support Request Ticket No '.$id.'');
+			$this->postmark->message_html("Subject: $support_subject
 					
 Company: $company_name
 
@@ -610,18 +620,19 @@ Reply: $comment
 
 				
 					");	
-					$this->email->send();
+					$this->postmark->send();
 			
 //start webcrm email		
 			
-			$this->email->clear();
+			$this->postmark->clear();
 				
-				$this->email->to('cm3208SPoYUg@b2b-email.net');
-				$this->email->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
-				$this->email->cc('mat@redstudio.co.uk'); 
+				$this->postmark->to('cm3208SPoYUg@b2b-email.net');
+                                $this->postmark->from('noreply@lease-desk.com', 'Lease Desk Limited');
+				$this->postmark->cc('mat@redstudio.co.uk');
 				
-				$this->email->subject('/*/AUTO/*/');
-				$this->email->message("Start:DateTime
+				
+				$this->postmark->subject('/*/AUTO/*/');
+				$this->postmark->message_plain("Start:DateTime
 
 End
 Start:Organisation
@@ -648,7 +659,7 @@ Start:OpportunityDelivery
 End
 				
 				");	
-				//$this->email->send();
+				//$this->postmark->send();
 //end mailto webCRM
 			redirect('support/results/'.$id.'', 'refresh');
 			
