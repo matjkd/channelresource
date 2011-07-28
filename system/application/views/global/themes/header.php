@@ -12,7 +12,17 @@
   <link rel='stylesheet' href='<?=base_url()?>css/themes/1060.css' type='text/css' />
 <link rel='stylesheet' href='<?=base_url()?>css/themes/template.css' type='text/css' />
 
+<!--[if IE 6]>
+<link rel="stylesheet" href="<?=base_url()?>css/themes/ie6.css" />
+<![endif]-->
 
+<!--[if IE 7]>
+<link rel="stylesheet" href="<?=base_url()?>css/themes/ie7.css" />
+<![endif]-->
+
+<!--[if IE 8]>
+<link rel="stylesheet" href="<?=base_url()?>css/themes/ie8.css" />
+<![endif]-->
 
 <link rel='stylesheet' href='<?=base_url()?>css/jquery-ui-1.8.custom.css' type='text/css' />
 <link rel='stylesheet' href='<?=base_url()?>css/demo_table_jui.css' type='text/css' />
