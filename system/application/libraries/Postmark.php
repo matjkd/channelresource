@@ -472,6 +472,8 @@ class Postmark {
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $encoded_data);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($ch, CURLOPT_PROXYPORT, 3128);
+                curl_setopt($ch, CURLOPT_PROXY, 'localhost');
 
 		$return = curl_exec($ch);
 		log_message('debug', 'POSTMARK JSON: ' . $encoded_data . "\nHeaders: \n\t" . implode("\n\t", $headers) . "\nReturn:\n$return");
