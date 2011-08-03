@@ -102,9 +102,9 @@ $role = $this->session->userdata('role');
     <hr/>
         <strong>Description</strong>
     <br/>
-        <textarea name='support_description' cols='155' rows='12' class='wymeditor' >
-                        <?=$support_description?>
-        </textarea>
+ <textarea name='support_description' cols='155' rows='12' style="width:100%;">
+<?=$support_description?>
+</textarea>
 </div>
 <?=form_hidden('date_added', unix_to_human(now(), TRUE, 'eu'))?>
 <?=form_hidden('user_id', $user_id)?>

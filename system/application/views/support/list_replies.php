@@ -15,11 +15,11 @@ else
 		echo form_open('support/edit_reply/'.$row['support_id'].'')
 			?>
 			<hr>
-			<?php echo "<em>Reply added by ".$row['firstname']."  - ".$row['date_added']."</em>"; ?>
-			<textarea cols='150' rows='3'  name='comment' class='wymeditor'><?=$row['comment']?></textarea>
+			<?php echo "<em>Reply added by ".$row['firstname']."  - ".$row['date_added']."</em><br/>"; ?>
+			<textarea style="width:50%;" cols='150' rows='3'  name='comment'><?=$row['comment']?></textarea>
 			
 			<?=form_hidden('comments_id', $row['comments_id'])?>
-			
+			<br/>
 			<?php echo form_submit('submit', 'Update');
 			echo form_submit('submit', 'Delete');
 			echo form_close();
