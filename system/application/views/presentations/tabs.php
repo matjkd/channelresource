@@ -58,6 +58,12 @@
 
 <img src="<?=base_url()?>images/word.png"></img>
 <a href="<?=base_url()?>images/files/CoverPage.docx" target="_blank">Cover Page (DOCX format)</a><br/>
+
+<img src="<?=base_url()?>images/pdf_button.png"></img>
+<a href="<?=base_url()?>images/files/Daisy_PLC_Case_Study.pdf" target="_blank">Daisy PLC Case Study</a><br/>
+
+<img src="<?=base_url()?>images/pdf_button.png"></img>
+<a href="<?=base_url()?>images/files/Henry_Howard_Finance_PLC_Case_Study.pdf" target="_blank">Henry Howard Finance PLC Case Study</a><br/>
 </div>
 <div id="tabs-4">
 
