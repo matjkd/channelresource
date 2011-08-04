@@ -50,6 +50,7 @@ class Support extends My_Controller {
 		$data['support_type'] = '';
 		$data['support_issue'] = '';
 		$data['support_priority'] = '';
+                $data['completion_date'] = '';
 		$data['support_description'] = '';
 		$data['support_status'] = 'Submitted';
 		$data['title'] = 'New Support-Request';

@@ -1,7 +1,14 @@
+<script type="text/javascript">
+
+	$(function() {
+		$("#datepicker").datepicker({showOtherMonths: true, selectOtherMonths: true, dateFormat: 'D, dd M yy' });
+	});
+</script>
 <?php 
 
 $user_id = $this->session->userdata('user_id');
 $role = $this->session->userdata('role');
+$datepicker = "id='datepicker'";
 ?>
 
 <div>
@@ -52,26 +59,24 @@ $role = $this->session->userdata('role');
 <div style='clear:both;'></div>
     <br/>
     <hr/>
-<div style='float:left; width:250px;'>
-<strong>Support Type</strong><br/>
+<div style='float:left; width:200px;'>
+<strong>Area</strong><br/>
     <table width=90%>
     <?php $supportarray = array(1 => 'Lease-Desk', 2=> 'Channel-Resource', 3 => 'Customer-Resource', 4 => 'Training', 5=> 'Account Review'); ?>
         <tr>
-            <td>Choose one:</td>
+          
             <td><?=form_dropdown('support_type', $supportarray, set_value('support_type', $support_type))?></td>
         </tr>
     </table>
 </div>
 
-<div style='float:left; width:250px;'>
-<strong>Issue</strong>
+<div style='float:left; width:200px;'>
+<strong>Type</strong>
 <br/>
     <table width=90%>
-        <?php $issuearray = array(1 => 'Data Error', 2=> 'System Error', 3 => 'System Crash', 4 => 'Slow Response', 5=> 'Other');?>
+        <?php $issuearray = array(1 => 'Data Error', 2=> 'System Error', 3 => 'System Crash', 4 => 'Slow Response', 6=> 'Development', 5=> 'Other');?>
         <tr>
-            <td>
-                Choose one:
-            </td>
+           
             <td>
                 <?=form_dropdown('support_issue', $issuearray, set_value('support_issue', $support_issue))?>
             </td>
@@ -79,18 +84,30 @@ $role = $this->session->userdata('role');
     </table>
 </div>
 
-<div style='float:left; width:250px;'>
+<div style='float:left; width:200px;'>
 <strong>Priority</strong>
 <br/>
     <table width=90%>
 
         <?php $priorityarray = array(4 => 'Low', 3=> 'Medium', 2 => 'High', 1 => 'Urgent'); ?>
         <tr>
-            <td>
-                Choose one:
-            </td>
+           
             <td>
                 <?=form_dropdown('support_priority', $priorityarray, set_value('support_priority', $support_priority))?>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <div style='float:left; width:200px;'>
+<strong>Date to be Completed</strong>
+<br/>
+    <table width=90%>
+
+        <tr>
+           
+            <td>
+               <?=form_input('completion_date', set_value('completion_date', $completion_date), $datepicker)?>
             </td>
         </tr>
     </table>
