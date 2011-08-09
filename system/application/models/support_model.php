@@ -26,6 +26,7 @@ class Support_model extends Model {
     				'support_type' => $this->input->post('support_type'),
     				'support_issue' => $this->input->post('support_issue'),
     				'support_priority' => $this->input->post('support_priority'),
+                                 'completion_date' => $this->input->post('completion_date'),
     				'support_status' => 'Submitted',
     				'company_id' => $this->session->userdata('company_id'),	
     				'user_id' => $this->input->post('user_id'),
@@ -56,6 +57,7 @@ class Support_model extends Model {
     				'support_type' => $this->input->post('support_type'),
     				'support_issue' => $this->input->post('support_issue'),
     				'support_priority' => $this->input->post('support_priority'),
+                                'completion_date' => $this->input->post('completion_date'),
     				'support_status' => $this->input->post('support_status'),
     				'date_updated' => $this->input->post('date_added')
 					

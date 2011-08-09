@@ -124,18 +124,19 @@ class Support extends My_Controller {
 				{
 					
 					$data['telephone'] = $this->input->post('telephone');	
-    				$data['email_address'] = $this->input->post('email_address');
-    				$data['support_subject'] = $this->input->post('support_subject');
-    				$data['support_description'] = $this->input->post('support_description');
-    				$data['support_type'] =  $this->input->post('support_type');
-    				$data['support_issue'] =  $this->input->post('support_issue');
-    				$data['support_priority'] =  $this->input->post('support_priority');
-    				$data['channel_partner_name'] =  $company_name;
-    				$data['support_status'] =  $this->input->post('support_status');
-    				$data['company_id'] =  $this->session->userdata('company_id');
-    				$data['user_id'] =  $this->input->post('user_id');
-    				$data['date_added'] =  $this->input->post('date_added');
-    				$data['date_updated'] =  $this->input->post('date_added');
+                                        $data['email_address'] = $this->input->post('email_address');
+                                        $data['support_subject'] = $this->input->post('support_subject');
+                                        $data['support_description'] = $this->input->post('support_description');
+                                        $data['support_type'] =  $this->input->post('support_type');
+                                        $data['support_issue'] =  $this->input->post('support_issue');
+                                        $data['support_priority'] =  $this->input->post('support_priority');
+                                        $data['completion_date'] =  $this->input->post('completion_date');
+                                        $data['channel_partner_name'] =  $company_name;
+                                        $data['support_status'] =  $this->input->post('support_status');
+                                        $data['company_id'] =  $this->session->userdata('company_id');
+                                        $data['user_id'] =  $this->input->post('user_id');
+                                        $data['date_added'] =  $this->input->post('date_added');
+                                        $data['date_updated'] =  $this->input->post('date_added');
 					$data['ticket_id'] = '';
 					$errors=validation_errors();
 					$data['main'] = '/support/main';
@@ -156,12 +157,17 @@ class Support extends My_Controller {
     				$support_type =  $this->input->post('support_type');
     				$support_issue =  $this->input->post('support_issue');
     				$support_priority =  $this->input->post('support_priority');
-    				
+    				$completion_date =  $this->input->post('completion_date');
     				$company_id =  $this->session->userdata('company_id');
     				$user_id =  $this->input->post('user_id');
     				$date_added =  $this->input->post('date_added');
     				$date_updated =  $this->input->post('date_added');
-					
+
+                                //work out how many days till completion date
+                                $daystillcomplete = (strtotime($completion_date))-(time());
+				 $daystillcomplete = ceil($daystillcomplete/86400);
+
+
     				if($support_priority == 1)
 	    				{
 	    					$support_priority1 = "Urgent";
@@ -194,6 +200,10 @@ class Support extends My_Controller {
 					if($support_issue == 4)
 	    				{
 	    					$support_issue1 = "Slow Response";
+	    				}
+                                        if($support_issue == 6)
+	    				{
+	    					$support_issue1 = "Development";
 	    				}
 					if($support_issue == 5)
 	    				{
@@ -251,6 +261,8 @@ Customer Tel: $telephone
 Description: $support_description
 Support Type: $support_type1
 Support Issue: $support_issue1
+
+
 Priority: $support_priority1
 				
 					");	
@@ -287,18 +299,18 @@ End
 Start:Activity
 A:99:1
 A:01:1
-A:02:3
+A:02:0
 A:03:Support Request
 A:04:CW
 A:05:Support Request $ticket_id
-A:30:{unwrap}$support_description|CR||CR|{/unwrap}
+A:30:$support_description|CR||CR|
 C:01:$support_type
 C:03:$support_issue
 C:05:$support_priority
 
 End
 Start:OpportunityDelivery
-
+A:12:$daystillcomplete
 End
 				
 				");	
@@ -457,7 +469,7 @@ End
 			$data['support_issue'] = $row['support_issue'];
 			$data['support_description'] = $row['support_description'];
 			$data['support_status'] = $row['support_status'];
-			
+			 $data['completion_date'] =   $row['completion_date'];
 			$data['support_priority'] = $row['support_priority'];
 			endforeach;
 			

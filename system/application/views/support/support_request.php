@@ -1,14 +1,25 @@
 <script type="text/javascript">
 
 	$(function() {
-		$("#datepicker").datepicker({showOtherMonths: true, selectOtherMonths: true, dateFormat: 'D, dd M yy' });
+		$("#datepicker").datepicker({
+                showOtherMonths: true,
+                selectOtherMonths: true,
+                dateFormat: 'D, dd M yy',
+                altField: "#altdatepicker",
+                altFormat: "yy-mm-dd"}
+                );
 	});
 </script>
 <?php 
 
+$humandate = new DateTime($completion_date);
+$humandate = date_format($humandate, 'D, d M Y');
+
+
 $user_id = $this->session->userdata('user_id');
 $role = $this->session->userdata('role');
 $datepicker = "id='datepicker'";
+$altdatepicker = "id='altdatepicker'";
 ?>
 
 <div>
@@ -107,7 +118,8 @@ $datepicker = "id='datepicker'";
         <tr>
            
             <td>
-               <?=form_input('completion_date', set_value('completion_date', $completion_date), $datepicker)?>
+                <?=form_input('completion_datehuman', set_value('completion_datehuman', $humandate), $datepicker)?>
+             <span style="display:none;">   <?=form_input('completion_date', set_value('completion_date', $completion_date), $altdatepicker)?></span>
             </td>
         </tr>
     </table>

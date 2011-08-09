@@ -1,8 +1,10 @@
-		
+
 
 <div>
 	
-<?php echo validation_errors('<p class="error">'); ?>	
+<?php
+
+echo validation_errors('<p class="error">'); ?>	
 	
 <?php 
 $this->load->view('admin/table');
