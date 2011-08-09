@@ -26,11 +26,12 @@ class Support_model extends Model {
     				'support_type' => $this->input->post('support_type'),
     				'support_issue' => $this->input->post('support_issue'),
     				'support_priority' => $this->input->post('support_priority'),
-                                 'completion_date' => $this->input->post('completion_date'),
+                                'completion_date' => $this->input->post('completion_date'),
     				'support_status' => 'Submitted',
     				'company_id' => $this->session->userdata('company_id'),	
     				'user_id' => $this->input->post('user_id'),
     				'date_added' => $this->input->post('date_added'),
+                               
     				'date_updated' => $this->input->post('date_added')				
 					);
 		
@@ -42,9 +43,42 @@ class Support_model extends Model {
    function update_ticket($id)
     {
     	
-    	$this->db->select('company_id');
+  
+        $this->db->where('support_id', $id);
+        $Q = $this->db->get('support');
+             foreach($Q->result_array() as $row):
+                $date_opened = $row['date_opened'];
+             endforeach;
+
+       $this->db->flush_cache();
+
+
+       $this->db->select('company_id');
 		$this->db->where('user_id', $this->input->post('user_id'));
 		$query = $this->db->get('users');
+
+                //if support status is closed  set closed date
+                if($this->input->post('support_status') == 3) {
+
+                    $closeddate = $this->input->post('date_added');
+                }
+                else
+                {
+                    $closeddate = NULL;
+                }
+
+                //set assigned date unless it has been assigned already
+               if($this->input->post('support_status') == 2 && $date_opened == NULL) {
+
+                    $openeddate = $this->input->post('date_added');
+
+               }
+               else
+                {
+                   $openeddate =   $date_opened;
+               }
+
+
 		if ($query->num_rows() == 1)
 		{
 			foreach ($query->result_array() as $row)
@@ -59,6 +93,8 @@ class Support_model extends Model {
     				'support_priority' => $this->input->post('support_priority'),
                                 'completion_date' => $this->input->post('completion_date'),
     				'support_status' => $this->input->post('support_status'),
+                                'date_closed' => $closeddate,
+                                'date_opened' => $openeddate,
     				'date_updated' => $this->input->post('date_added')
 					
 					);
