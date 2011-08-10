@@ -11,7 +11,7 @@ class Support extends My_Controller {
 		$this->load->library(array('encrypt', 'form_validation'));
 		$this->load->model('support_model');
                 $this->load->library('upload');
-		$this->load->library('s3');
+		//$this->load->library('s3');
 		
 		if($this->session->userdata('company_id')==75)
 		{
