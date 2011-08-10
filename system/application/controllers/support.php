@@ -10,6 +10,8 @@ class Support extends My_Controller {
 		$this->is_logged_in();
 		$this->load->library(array('encrypt', 'form_validation'));
 		$this->load->model('support_model');
+                $this->load->library('upload');
+		$this->load->library('s3');
 		
 		if($this->session->userdata('company_id')==75)
 		{
@@ -238,6 +240,11 @@ class Support extends My_Controller {
 					{
 					$this->support_model->add_ticket();
 					$ticket_id = mysql_insert_id();
+
+                                        //create a new bucket
+                                    $this->s3->putBucket("lease-desk/".$ticket_id."", S3::ACL_PUBLIC_READ);
+
+
 					$this->session->set_flashdata('message', 'Ticket Added');
 					
 //start normal support email
@@ -364,7 +371,7 @@ End
 company: $company_name
 
 Customer Tel: $telephone	
-Description: {unwrap}$support_description{/unwrap}
+Description: $support_description
 Support Type: $support_type1
 Support Issue: $support_issue1
 Priority: $support_priority1

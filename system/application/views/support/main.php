@@ -9,7 +9,7 @@ $user_id = $this->session->userdata('user_id');
 	
 	$attributes = array('id' => 'prospectform');
 	$hidden = array('user_id' => $user_id);
-	echo form_open('support/create_ticket', $attributes, $hidden); 
+	echo form_open_multipart('support/create_ticket', $attributes, $hidden);
 
 
 	$this->load->view('support/support_request');

@@ -46,7 +46,12 @@ $altdatepicker = "id='altdatepicker'";
             <td>Email</td>
             <td><?=form_input('email_address', set_value('email_address', $email_address))?></td>
         </tr>
-    
+
+
+          <tr>
+            <td>Attachment</td>
+            <td><input name="theFile" type="file" />  </td>
+        </tr>
      </table>
 
 </div>
