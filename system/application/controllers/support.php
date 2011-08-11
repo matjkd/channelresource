@@ -242,7 +242,9 @@ class Support extends My_Controller {
 					$ticket_id = mysql_insert_id();
 
                                         //create a new bucket
-                                    $this->s3->putBucket("lease-desk/".$ticket_id."", S3::ACL_PUBLIC_READ);
+					//$bucketname = "leasedesksupport_id".$ticket_id;
+					//$this->s3->putBucket($bucketname, S3::ACL_PUBLIC_READ);
+                                   
 
 
 					$this->session->set_flashdata('message', 'Ticket Added');
