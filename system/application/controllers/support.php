@@ -8,6 +8,7 @@ class Support extends My_Controller {
 		parent::Controller();
 			
 		$this->is_logged_in();
+                $this->load->library('user_agent');
 		$this->load->library(array('encrypt', 'form_validation'));
 		$this->load->model('support_model');
                 $this->load->library('upload');
