@@ -247,24 +247,36 @@ class Support extends My_Controller {
 					$this->s3->putBucket($bucketname, S3::ACL_PUBLIC_READ);
 
 
-                                        //retrieve uploaded file
-					$attachmentdata = $this->upload->data();
+                                       //retrieve uploaded file
+					if(!empty($_FILES) && $_FILES['file']['error'] !=4)
+                                        {
 
-                                        $filename = "test.pdf";
+					$fileName = $_FILES['file']['name'];
+					$tmpName = $_FILES['file']['tmp_name'];
+					$filelocation = $ticket_id."/".$fileName;
+
+					$thefile = file_get_contents($tmpName, true);
+
+                                        //print_r($_FILES['file']);
 					//move the file
-					if ($this->s3->putObject($attachmentdata, "lease-desk", "".$ticket_id."/".$attachmentdata.""))
-					{
-				    	//echo "We successfully uploaded your file.";
-					}
-					else
-					{
-					//	echo "Something went wrong while uploading your file... sorry.";
-					}
 
+                                            if ($this->s3->putObject($thefile, "lease-desk", $filelocation, S3:: ACL_PUBLIC_READ))
+                                            {
+                                            //echo "We successfully uploaded your file.";
+                                                $this->session->set_flashdata('message', 'Ticket Added and file uploaded successfully');
+                                            }
+                                            else
+                                            {
+                                            //	echo "Something went wrong while uploading your file... sorry.";
+                                                $this->session->set_flashdata('message', 'Ticket Added, but your file did not upload');
+                                            }
+                                        }
+                                           else
+                                           {
 
 					$this->session->set_flashdata('message', 'Ticket Added');
-					
-//start normal support email
+                                           }
+                                        //start normal support email
 					
 					
 					
@@ -365,7 +377,46 @@ End
 						
                                                 $this->support_model->update_ticket($data['ticket_id']);
 
-                                                $this->session->set_flashdata('message', 'Ticket Updated');
+                                                //create a new bucket
+					$subbucketname = "support_id".$ticket_id;
+					$bucketname = "lease-desk";
+					$this->s3->putBucket($bucketname, S3::ACL_PUBLIC_READ);
+
+
+                                        //retrieve uploaded file
+					if(!empty($_FILES) && $_FILES['file']['error'] !=4)
+                                        {
+
+					$fileName = $_FILES['file']['name'];
+					$tmpName = $_FILES['file']['tmp_name'];
+					$filelocation = $ticket_id."/".$fileName;
+
+					$thefile = file_get_contents($tmpName, true);
+
+                                        //print_r($_FILES['file']);
+					//move the file
+
+                                            if ($this->s3->putObject($thefile, "lease-desk", $filelocation, S3:: ACL_PUBLIC_READ))
+                                            {
+                                            //echo "We successfully uploaded your file.";
+                                                $this->session->set_flashdata('message', 'Ticket Updated and file uploaded successfully');
+                                            }
+                                            else
+                                            {
+                                            //	echo "Something went wrong while uploading your file... sorry.";
+                                                $this->session->set_flashdata('message', 'Ticket Updated, but your file did not upload');
+                                            }
+                                        }
+                                           else
+                                           {
+
+					$this->session->set_flashdata('message', 'Ticket updated');
+                                           }
+                                                
+
+
+
+                                               
 
 
 // normal email update if email checkbox is checked
@@ -504,6 +555,16 @@ End
 			$data['channel_partner_name'] = $row['company_name'];
 			endforeach;
 			//end of conversion
+
+                        //List File attachments
+			$bucketname = "lease-desk";
+			$data['mainbucket'] = "lease-desk";
+			$data['bucket_name'] = $data['ticket_id'];
+			$data['bucket_contents'] = $this->s3->getBucket($bucketname);
+
+
+
+                        
 			
 			$data['customeruser_id'] = $this->session->userdata('user_id');
 			$data['customercompany_id'] = $this->session->userdata('company_id');
@@ -522,6 +583,20 @@ End
 			$this->load->vars($data);
 			$this->load->view($this->template);
 		}
+
+
+               function delete_file()
+	{
+
+		$bucket = "lease-desk";
+		$folder = $this->input->post('folder');
+		$file = $this->input->post('filename');
+		$this->s3->deleteObject($bucket, $folder."/".$file);
+
+		//echo "$bucket $folder $file";
+
+		redirect($this->agent->referrer());
+	}
 		
 	function reply($id)
 	{
