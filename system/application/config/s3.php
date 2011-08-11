@@ -25,7 +25,7 @@ $config['use_ssl'] = TRUE;
 
 //	$_CI =& get_instance();
 			
-//	$config['access_key'] = 'AKIAJJPA5KSS5GCK3CJQ';
+//	$config['access_key'] = '';
 			
 			/*
 			|--------------------------------------------------------------------------
@@ -36,5 +36,5 @@ $config['use_ssl'] = TRUE;
 			|
 			*/
 			
-//	$config['secret_key'] = 'BpqgMv4y01ql4SNKt6l0zgBDEoTviN5Ce6Mkx847';
+//	$config['secret_key'] = '';
 
