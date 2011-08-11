@@ -50,7 +50,7 @@ $altdatepicker = "id='altdatepicker'";
 
           <tr>
             <td>Attachment</td>
-            <td><input name="theFile" type="file" />  </td>
+            <td><?=form_upload( 'file' )?></td>
         </tr>
      </table>
 

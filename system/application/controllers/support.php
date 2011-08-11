@@ -241,10 +241,25 @@ class Support extends My_Controller {
 					$this->support_model->add_ticket();
 					$ticket_id = mysql_insert_id();
 
-                                        //create a new bucket
-					//$bucketname = "leasedesksupport_id".$ticket_id;
-					//$this->s3->putBucket($bucketname, S3::ACL_PUBLIC_READ);
-                                   
+                                         //create a new bucket
+					$subbucketname = "support_id".$ticket_id;
+					$bucketname = "lease-desk";
+					$this->s3->putBucket($bucketname, S3::ACL_PUBLIC_READ);
+
+
+                                        //retrieve uploaded file
+					$attachmentdata = $this->upload->data();
+
+                                        $filename = "test.pdf";
+					//move the file
+					if ($this->s3->putObject($attachmentdata, "lease-desk", "".$ticket_id."/".$attachmentdata.""))
+					{
+				    	//echo "We successfully uploaded your file.";
+					}
+					else
+					{
+					//	echo "Something went wrong while uploading your file... sorry.";
+					}
 
 
 					$this->session->set_flashdata('message', 'Ticket Added');
