@@ -28,7 +28,7 @@ $user_id = $this->session->userdata('user_id');
 	
 
 <div style="clear:both">
-<h2>Current Requests:</h2>
+
 	<?php //$this->load->view('prospect/listcustomers'); ?>
 	<?php $this->load->view('support/ticketlist'); ?>
 	</div>

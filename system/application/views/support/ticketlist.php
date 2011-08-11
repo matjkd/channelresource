@@ -1,7 +1,7 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$('#support_table').dataTable({
-		"bStateSave": true,
+		"bStateSave": false,
 		"bJQueryUI": true,
 		"sPaginationType": "full_numbers"
 		
@@ -21,7 +21,7 @@ function confirmation(id) {
 	}
 }
 </script>
-
+<h2>Current Requests</h2>
 
 <table id="support_table"  width="100%" style="clear:both;">
 	<thead>

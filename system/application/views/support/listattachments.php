@@ -1,3 +1,15 @@
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#file_list').dataTable({
+		"bStateSave": false,
+		"bJQueryUI": true,
+		"sPaginationType": "full_numbers"
+
+		});
+} );
+</script>
+<h3>Attachments</h3>
+
 <table id="file_list"  width="100%" style="clear:both;">
 
 	<thead>

@@ -3,7 +3,7 @@
 <div>
 	
 <?php
-echo unix_to_human(now());
+
 echo validation_errors('<p class="error">'); ?>	
 	
 <?php 
