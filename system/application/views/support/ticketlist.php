@@ -95,6 +95,10 @@ foreach($ticket_list as $key => $row):
 				{
 					$status = "Submitted";
 				}
+                                if(($row['support_status'])=="Submitted")
+				{
+					$status = "Submitted";
+				}
 				if(($row['support_status'])==2)
 				{
 					$status = "Assigned";
