@@ -808,7 +808,7 @@ End
 	function edit_reply($id)
 	{
 		$submitted = $this->input->post('submit');
-		if ($submitted == 'Update')
+		if ($submitted == 'Edit Note')
 					{
 						if ($this->input->post('comment'))
 							{
