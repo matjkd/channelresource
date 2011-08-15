@@ -431,7 +431,7 @@ End
 					$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk Limited');
                                         $this->postmark->to('chloe@lease-desk.com');
                                         $this->postmark->bcc('mat@redstudio.co.uk');
-                                        $this->postmark->cc($email_address);
+                                        //$this->postmark->cc($email_address);
                                  
 						
 					$this->postmark->subject('Support Request Ticket No. '.$ticket_id.' Updated');
