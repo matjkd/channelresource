@@ -5,7 +5,7 @@
 
 if ($row['comment']==NULL)
 {
-	echo "There are no replies";
+	echo "There are no notes";
 	
 }
 else

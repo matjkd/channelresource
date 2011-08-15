@@ -30,9 +30,8 @@ $(document).ready(function(){
 });
 </script>
 
-
-<hr></hr>
-<a class="trigger" href="#" id="add_reply_button">Add Reply</a>
+<hr/>
+<a class="trigger" href="#" id="add_reply_button"><strong>Add Note</strong></a>
 <div class='toggle_container'>
 	
 </div>
