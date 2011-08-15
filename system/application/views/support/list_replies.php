@@ -20,7 +20,7 @@ else
 			
 			<?=form_hidden('comments_id', $row['comments_id'])?>
 			<br/>
-			<?php echo form_submit('submit', 'Update');
+			<?php echo form_submit('submit', 'Edit Note');
 			echo form_submit('submit', 'Delete');
 			echo form_close();
 				

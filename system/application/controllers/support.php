@@ -705,6 +705,10 @@ End
 	    				{
 	    					$support_issue1 = "Slow Response";
 	    				}
+					           if($support_issue == 6)
+	    				{
+	    					$support_issue1 = "Development";
+	    				}
 					if($support_issue == 5)
 	    				{
 	    					$support_issue1 = "Other";
