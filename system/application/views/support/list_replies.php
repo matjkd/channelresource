@@ -16,7 +16,7 @@ else
 			?>
 			<hr>
 			<?php echo "<em>Reply added by ".$row['firstname']."  - ".$row['date_added']."</em><br/>"; ?>
-			<textarea style="width:50%;" cols='150' rows='3'  name='comment'><?=$row['comment']?></textarea>
+			<textarea style="width:100%;" cols='150' rows='3'  name='comment'><?=$row['comment']?></textarea>
 			
 			<?=form_hidden('comments_id', $row['comments_id'])?>
 			<br/>

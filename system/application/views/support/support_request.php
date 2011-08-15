@@ -90,7 +90,7 @@ $altdatepicker = "id='altdatepicker'";
 <div style='clear:both;'></div>
     <br/>
     <hr/>
-<div style='float:left; width:200px;'>
+<div style='float:left; width:190px;'>
 <strong>Area</strong><br/>
     <table width=90%>
     <?php $supportarray = array(1 => 'Lease-Desk', 2=> 'Channel-Resource', 3 => 'Customer-Resource', 4 => 'Training', 5=> 'Account Review'); ?>
@@ -101,7 +101,7 @@ $altdatepicker = "id='altdatepicker'";
     </table>
 </div>
 
-<div style='float:left; width:200px;'>
+<div style='float:left; width:190px;'>
 <strong>Type</strong>
 <br/>
     <table width=90%>
@@ -115,7 +115,7 @@ $altdatepicker = "id='altdatepicker'";
     </table>
 </div>
 
-<div style='float:left; width:200px;'>
+<div style='float:left; width:190px;'>
 <strong>Priority</strong>
 <br/>
     <table width=90%>
@@ -130,7 +130,7 @@ $altdatepicker = "id='altdatepicker'";
     </table>
 </div>
 
-    <div style='float:left; width:200px;'>
+    <div style='float:left; width:190px;'>
 <strong>Completion Date</strong>
 <br/>
     <table width=90%>
