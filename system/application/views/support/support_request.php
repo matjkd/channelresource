@@ -23,7 +23,7 @@ $altdatepicker = "id='altdatepicker'";
 ?>
 
 <div id="contact_form">
-     <table>
+    
 
 
          <p class="Support_ID">
@@ -96,7 +96,7 @@ $altdatepicker = "id='altdatepicker'";
     <?php $supportarray = array(1 => 'Lease-Desk', 2=> 'Channel-Resource', 3 => 'Customer-Resource', 4 => 'Training', 5=> 'Account Review'); ?>
         
           
-     <?=form_dropdown('support_type', $supportarray, set_value('support_type', $support_type))?></td>
+     <?=form_dropdown('support_type', $supportarray, set_value('support_type', $support_type))?>
         
    
 </div>
