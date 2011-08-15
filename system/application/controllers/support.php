@@ -736,24 +736,17 @@ End
     						
 		$comment = strip_tags($this->input->post('comment'));	
 //start normal email
-			$this->postmark->clear();
-			$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk Limited');
-				$this->postmark->to('chloe@lease-desk.com');
-			
-                                $this->postmark->cc($email_address);
-				
-                                $this->postmark->bcc('mat@redstudio.co.uk');
-			 
-			$this->postmark->subject('Reply to Support Request Ticket No '.$id.'');
-			$this->postmark->message_html("Subject: $support_subject<br/><br/>
-					
-Company: $company_name<br/><br/>
-
-Reply: $comment
-
-				
-					");	
-					$this->postmark->send();
+//			$this->postmark->clear();
+//			$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk Limited');
+//				$this->postmark->to('chloe@lease-desk.com');
+//                                $this->postmark->cc($email_address);
+ //                               $this->postmark->bcc('mat@redstudio.co.uk');
+//			$this->postmark->subject('Reply to Support Request Ticket No '.$id.'');
+//			$this->postmark->message_html("Subject: $support_subject<br/><br/>
+//Company: $company_name<br/><br/>
+//Reply: $comment
+//					");
+//					$this->postmark->send();
 			
 //start webcrm email		
 			
