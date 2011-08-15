@@ -28,9 +28,9 @@ else
 	else
 		{
 		
-		echo "<hr><em>added by ".$row['firstname']." - ";
+		echo "<hr><strong><em>added by ".$row['firstname']." - ";
 		echo $row['date_added'];
-		echo "</em><br/>";
+		echo "</em></strong><br/>";
 		echo $row['comment'];
 		}
 }

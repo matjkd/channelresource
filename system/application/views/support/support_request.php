@@ -90,59 +90,45 @@ $altdatepicker = "id='altdatepicker'";
 <div style='clear:both;'></div>
     <br/>
     <hr/>
-<div style='float:left; width:190px;'>
+<div style='float:left; width:200px;'>
 <strong>Area</strong><br/>
-    <table width=90%>
+   
     <?php $supportarray = array(1 => 'Lease-Desk', 2=> 'Channel-Resource', 3 => 'Customer-Resource', 4 => 'Training', 5=> 'Account Review'); ?>
-        <tr>
+        
           
-            <td><?=form_dropdown('support_type', $supportarray, set_value('support_type', $support_type))?></td>
-        </tr>
-    </table>
+     <?=form_dropdown('support_type', $supportarray, set_value('support_type', $support_type))?></td>
+        
+   
 </div>
 
-<div style='float:left; width:190px;'>
+<div style='float:left; width:200px;'>
 <strong>Type</strong>
 <br/>
-    <table width=90%>
+
         <?php $issuearray = array(1 => 'Data Error', 2=> 'System Error', 3 => 'System Crash', 4 => 'Slow Response', 6=> 'Development', 5=> 'Other');?>
-        <tr>
-           
-            <td>
+    
                 <?=form_dropdown('support_issue', $issuearray, set_value('support_issue', $support_issue))?>
-            </td>
-        </tr>
-    </table>
+
 </div>
 
-<div style='float:left; width:190px;'>
+<div style='float:left; width:200px;'>
 <strong>Priority</strong>
 <br/>
-    <table width=90%>
+    
 
         <?php $priorityarray = array(4 => 'Low', 3=> 'Medium', 2 => 'High', 1 => 'Urgent'); ?>
-        <tr>
-           
-            <td>
+       
                 <?=form_dropdown('support_priority', $priorityarray, set_value('support_priority', $support_priority))?>
-            </td>
-        </tr>
-    </table>
+          
 </div>
 
-    <div style='float:left; width:190px;'>
+    <div style='float:left; width:200px;'>
 <strong>Completion Date</strong>
 <br/>
-    <table width=90%>
-
-        <tr>
-           
-            <td>
+   
                 <?=form_input('completion_datehuman', set_value('completion_datehuman', $humandate), $datepicker)?>
              <span style="display:none;">   <?=form_input('completion_date', set_value('completion_date', $completion_date), $altdatepicker)?></span>
-            </td>
-        </tr>
-    </table>
+          
 </div>
 
 
