@@ -22,54 +22,69 @@ $datepicker = "id='datepicker'";
 $altdatepicker = "id='altdatepicker'";
 ?>
 
-<div>
+<div id="contact_form">
      <table>
 
-        <tr>
-            <td>Support ID:</td>
-            <td><strong> <?=$ticket_id?></strong></td>
-        </tr>
 
-        <tr>
-            <td>Company:</td>
-            <td><strong><?=$channel_partner_name?></strong></td>
-        </tr>
-        <tr>
-            <td>Subject</td>
-            <td><?=form_input('support_subject', set_value('support_subject', $support_subject))?></td>
-        </tr>
-        <tr>
-            <td>Telephone</td>
-            <td><?=form_input('telephone', set_value('telephone', $telephone))?></td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td><?=form_input('email_address', set_value('email_address', $email_address))?></td>
-        </tr>
+         <p class="Support_ID">
+<?=form_label('Support ID')?><br/>
+ <strong> <?=$ticket_id?></strong>
+
+	</p>
+
+        <p class="Company">
+<?=form_label('Company')?><br/>
+
+ <strong><?=$channel_partner_name?></strong>
+
+	</p>
 
 
-          <tr>
-            <td>Attachment</td>
-            <td><?=form_upload( 'file' )?></td>
-        </tr>
-     </table>
+        <p class="Subject">
+<?=form_label('Subject')?><br/>
 
-</div>
+<?=form_input('support_subject', set_value('support_subject', $support_subject))?>
 
-<div>
-    <table>
+	</p>
+
+          <p class="Telephone">
+<?=form_label('Telephone')?><br/>
+
+<?=form_input('telephone', set_value('telephone', $telephone))?>
+
+	</p>
+
+
+           <p class="Email">
+<?=form_label('Email')?><br/>
+
+<?=form_input('email_address', set_value('email_address', $email_address))?>
+
+           </p>
+
+
+
+           <p class="Attachment">
+<?=form_label('Attachment')?><br/>
+
+<?=form_upload( 'file' )?>
+
+
+ <p class="Status">
+
     <?php $segment = $this->uri->segment(2);
     if ($segment == 'results')
     {
     $statusarray = array(1 => 'Submitted', 2=> 'Assigned', 3 => 'CLOSED');
-    echo "<tr><td>Status:</td><td>".form_dropdown('support_status', $statusarray, set_value('support_status', $support_status))."</td></tr> ";
+
+    echo "".form_label('Status')."<br/>".form_dropdown('support_status', $statusarray, set_value('support_status', $support_status))."";
     }
     else
     {
-    echo "<tr><td>Status:</td><td>".$support_status."</td></tr> ";
+   
     }
     ?>
-    </table>
+    </p>
 </div>
 
 <div style='clear:both;'></div>
@@ -116,7 +131,7 @@ $altdatepicker = "id='altdatepicker'";
 </div>
 
     <div style='float:left; width:200px;'>
-<strong>Date to be Completed</strong>
+<strong>Completion Date</strong>
 <br/>
     <table width=90%>
 

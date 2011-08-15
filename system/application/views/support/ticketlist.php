@@ -31,7 +31,7 @@ function confirmation(id) {
 			<th>Subject</th>
 			<th>Company</th>
 			<th>Re:</th>
-			<th>Date Changed</th>
+			<th>Updated</th>
 			<th>Status</th>
 			<th>Added By</th>
 			<th>Actions</th>

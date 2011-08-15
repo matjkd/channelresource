@@ -574,10 +574,13 @@ End
 			$data['customercompany_id'] = $this->session->userdata('company_id');
 			$data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
 			$data['rowcount'] = 0;
-			foreach($data['ticket_list'] as $countrow):
+			
+                        if($data['ticket_list']!=NULL){
+                        foreach($data['ticket_list'] as $countrow):
 			$data['rowcount'] = $data['rowcount']+1;
 			endforeach;
-			
+                        }
+                        
 			//fetch comments
 			$data['comments'] = $this->support_model->list_replies($data['ticket_id']);
 						

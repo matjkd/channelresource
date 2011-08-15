@@ -27,13 +27,13 @@ $user_id = $this->session->userdata('user_id');
 ?>
 <?=form_close()?>
 </div>
-
+<?php $this->load->view('support/response'); ?>
 <?php $this->load->view('support/listattachments'); ?>
 	
 	
 
 <div style="clear:both">
-<?php $this->load->view('support/response'); ?>
+
 <?php $this->load->view('support/list_replies'); ?>
 	
 	<?php $this->load->view('support/ticketlist'); ?>
