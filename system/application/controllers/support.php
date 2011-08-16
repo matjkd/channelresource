@@ -281,7 +281,7 @@ class Support extends My_Controller {
 					
 					
 					
-					$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk Limited');
+					$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
                                         $this->postmark->to('chloe@lease-desk.com');
                                         $this->postmark->bcc('mat@redstudio.co.uk');
                                         $this->postmark->cc($email_address);
@@ -313,7 +313,7 @@ Priority: $support_priority1
 				$this->postmark->clear();
 				
 				$this->postmark->to('cm3208SPoYUg@b2b-email.net');
-				$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk Limited');
+				$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
 
 				$this->postmark->cc('mat@redstudio.co.uk');
 
@@ -428,7 +428,7 @@ End
 						{
 							$this->postmark->clear();
 				
-					$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk Limited');
+					$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
                                         $this->postmark->to('chloe@lease-desk.com');
                                         $this->postmark->bcc('mat@redstudio.co.uk');
                                         //$this->postmark->cc($email_address);
@@ -455,7 +455,7 @@ Priority: $support_priority1
 				$this->postmark->clear();
 				
 				$this->postmark->to('cm3208SPoYUg@b2b-email.net');
-                                $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk Limited');
+                                $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
 				$this->postmark->cc('mat@redstudio.co.uk');
 
 
@@ -741,7 +741,7 @@ End
 		$comment = strip_tags($this->input->post('comment'));	
 //start normal email
 			$this->postmark->clear();
-			$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk Limited');
+			$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
 			$this->postmark->to('chloe@lease-desk.com');
 
                         $this->postmark->bcc('mat@redstudio.co.uk');
@@ -757,7 +757,7 @@ Reply: $comment
 			$this->postmark->clear();
 				
 				$this->postmark->to('cm3208SPoYUg@b2b-email.net');
-                                $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk Limited');
+                                $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
 				$this->postmark->cc('mat@redstudio.co.uk');
 				
 				
