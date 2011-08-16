@@ -216,7 +216,7 @@ class Support extends My_Controller {
 	    				
 					if($support_type == 1)
 	    				{
-	    					$support_type1 = "Lease Desk";
+	    					$support_type1 = "Lease-Desk.com";
 	    				}
 					if($support_type == 2)
 	    				{
@@ -717,7 +717,7 @@ End
 	    				
 					if($support_type == 1)
 	    				{
-	    					$support_type1 = "Lease Desk";
+	    					$support_type1 = "Lease-Desk.com";
 	    				}
 					if($support_type == 2)
 	    				{
