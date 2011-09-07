@@ -169,7 +169,7 @@ class Prospect extends My_Controller {
 					$data['main'] = '/prospect/main';
 					$data['title'] = 'Prospect Registration';
 					$this->load->vars($data);
-					$this->load->view('template');
+					$this->load->view('leasedesktemplate');
 					
 				}
 				else
@@ -207,7 +207,7 @@ class Prospect extends My_Controller {
 										
 										$this->load->vars($data);
 									
-										$this->load->view('template', 'refresh');
+										$this->load->view('leasedesktemplate', 'refresh');
 										
 										//stops the following statements running
 										$submitted = "no";
@@ -293,7 +293,7 @@ End
 					$data['title'] = 'Quote Calculator';
 					$data['main'] = '/prospect/main';
 					$this->load->vars($data);
-					$this->load->view('template');
+					$this->load->view('leasedesktemplate');
 					redirect('prospect', 'refresh');
 					
 					}
