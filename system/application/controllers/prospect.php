@@ -388,7 +388,7 @@ End
 			$this->load->vars($data);
 			$data['main'] = '/prospect/results';
 			$this->load->vars($data);
-			$this->load->view('template');
+			$this->load->view('leasedesktemplate');
 		}
 		
 	function is_logged_in()
