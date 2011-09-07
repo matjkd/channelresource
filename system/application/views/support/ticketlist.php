@@ -53,7 +53,7 @@ foreach($ticket_list as $key => $row):
 
 				if(($row['support_type'])==1)
 				{
-					$type = "Lease Desk";
+					$type = "Lease-Desk.com";
 				}
 				if(($row['support_type'])==2)
 				{

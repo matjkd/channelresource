@@ -228,12 +228,12 @@ class Prospect extends My_Controller {
 					
 					
 					
-					$this->email->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
-					$this->email->to('chloe@lease-desk.com, debra.taylor@proctorconsulting.co.uk'); 
-					$this->email->cc('mat@redstudio.co.uk'); 
+					$this->postmark->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
+					$this->postmark->to('chloe@lease-desk.com');
+					$this->postmark->bcc('mat@redstudio.co.uk');
 					
-					$this->email->subject('Channel-Resource: Prospect Added '.$possible_dup.'');
-					$this->email->message("The following $customer_status_email has been added to Channel-Resource:
+					$this->postmark->subject('Channel-Resource: Prospect Added '.$possible_dup.'');
+					$this->postmark->message("The following $customer_status_email has been added to Channel-Resource:
 
 					
 Channel Partner: ".$data['channel_partner_name']."
@@ -248,17 +248,17 @@ Subscription Type: $subscription_type
 Subscription Price: ".$data['customer_subscription_price']."
 				
 					");	
-					$this->email->send();
+					$this->postmark->send();
 					
 						// send email to webCRM
-				$this->email->clear();
+				$this->postmark->clear();
 				
-				$this->email->to('cm3208SPoYUg@b2b-email.net');
-				$this->email->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
-				$this->email->cc('mat@redstudio.co.uk'); 
+				$this->postmark->to('cm3208SPoYUg@b2b-email.net');
+				$this->postmark->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
+				$this->postmark->cc('mat@redstudio.co.uk');
 				
-				$this->email->subject('/*/AUTO/*/');
-				$this->email->message("Start:DateTime
+				$this->postmark->subject('/*/AUTO/*/');
+				$this->postmark->message_plain("Start:DateTime
 
 End
 Start:Organisation
@@ -285,7 +285,7 @@ A:07:$customer_status_email Added on Channel-Resource
 End
 				
 				");	
-				$this->email->send();
+				$this->postmark->send();
 				//end mailto webCRM
 					
 					
