@@ -228,7 +228,7 @@ class Prospect extends My_Controller {
 					
 					
 					
-					$this->postmark->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
+					$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
 					$this->postmark->to('chloe@lease-desk.com');
 					$this->postmark->bcc('mat@redstudio.co.uk');
 					
@@ -292,8 +292,8 @@ End
 					
 					$data['title'] = 'Quote Calculator';
 					$data['main'] = '/prospect/main';
-					$this->load->vars($data);
-					$this->load->view('leasedesktemplate');
+					//$this->load->vars($data);
+					//$this->load->view('leasedesktemplate');
 					redirect('prospect', 'refresh');
 					
 					}
