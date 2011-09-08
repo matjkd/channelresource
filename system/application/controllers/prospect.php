@@ -223,7 +223,7 @@ class Prospect extends My_Controller {
 					if ($submitted == 'Submit')
 					{
 					$this->prospect_model->add_customer();
-					$this->session->set_flashdata("message", "".$data['customer_name']." Added");
+					
 					
 					
 					
@@ -233,7 +233,7 @@ class Prospect extends My_Controller {
                                         $this->postmark->bcc('mat@redstudio.co.uk');
 					
 					$this->postmark->subject('Channel-Resource: Prospect Added '.$possible_dup.'');
-					$this->postmark->message("The following $customer_status_email has been added to Channel-Resource:
+					$this->postmark->message_plain("The following $customer_status_email has been added to Channel-Resource:
 
 					
 Channel Partner: ".$data['channel_partner_name']."
@@ -294,6 +294,7 @@ End
 					//$data['main'] = '/prospect/main';
 					//$this->load->vars($data);
 					//$this->load->view('leasedesktemplate');
+                                $this->session->set_flashdata("message", "".$data['customer_name']." Added");
 					redirect('prospect', 'refresh');
 					
 					}
