@@ -229,8 +229,8 @@ class Prospect extends My_Controller {
 					
 					
 					$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
-					$this->postmark->to('chloe@lease-desk.com');
-					$this->postmark->bcc('mat@redstudio.co.uk');
+                                        $this->postmark->to('chloe@lease-desk.com');
+                                        $this->postmark->bcc('mat@redstudio.co.uk');
 					
 					$this->postmark->subject('Channel-Resource: Prospect Added '.$possible_dup.'');
 					$this->postmark->message("The following $customer_status_email has been added to Channel-Resource:
@@ -253,8 +253,8 @@ Subscription Price: ".$data['customer_subscription_price']."
 						// send email to webCRM
 				$this->postmark->clear();
 				
-				$this->postmark->to('cm3208SPoYUg@b2b-email.net');
-				$this->postmark->from('info@proctorconsulting.co.uk', 'Proctor Consulting');
+                                $this->postmark->to('cm3208SPoYUg@b2b-email.net');
+				$this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
 				$this->postmark->cc('mat@redstudio.co.uk');
 				
 				$this->postmark->subject('/*/AUTO/*/');
@@ -290,8 +290,8 @@ End
 					
 					
 					
-					$data['title'] = 'Quote Calculator';
-					$data['main'] = '/prospect/main';
+					//$data['title'] = 'Quote Calculator';
+					//$data['main'] = '/prospect/main';
 					//$this->load->vars($data);
 					//$this->load->view('leasedesktemplate');
 					redirect('prospect', 'refresh');
