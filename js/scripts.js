@@ -55,6 +55,12 @@ $(function()  {
 
 	});
 
+//pretty photo
+
+$(function() {
+			$("a[rel^='prettyPhoto']").prettyPhoto();
+		});
+
 // top menu fader
  	$(function() {
 		var fadedelay = 100;

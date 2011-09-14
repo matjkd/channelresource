@@ -7,7 +7,7 @@
  <link rel='stylesheet' href='<?=base_url()?>css/system.css' type='text/css' />
 <link rel='stylesheet' href='<?=base_url()?>css/general.css' type='text/css' />
 <link rel='stylesheet' href='<?=base_url()?>css/typo.css' type='text/css' />
-
+<link rel='stylesheet' href='<?=base_url()?>css/prettyPhoto.css' type='text/css' />
  <link rel='stylesheet' href='<?=base_url()?>css/themes/style.css' type='text/css' />
   <link rel='stylesheet' href='<?=base_url()?>css/themes/1060.css' type='text/css' />
 <link rel='stylesheet' href='<?=base_url()?>css/themes/template.css' type='text/css' />
