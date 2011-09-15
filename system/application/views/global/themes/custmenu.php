@@ -24,7 +24,7 @@
 
  <div class="widebox">
 	<div>
-		 <a href="<?=base_url()?>welcome/news"><img src="<?=base_url()?>images/icons/news.png"></img></a>
+		 <a href="<?=base_url()?>news"><img src="<?=base_url()?>images/icons/news.png"></img></a>
 	</div>
 </div>
 

@@ -21,7 +21,7 @@
     		 	
     		<li>  <a href="<?=base_url()?>quote/main">Quoting Tool</a></li>
     		<li><a href="<?=base_url()?>support">Support Request</a></li>
-    		<li> <a href="<?=base_url()?>welcome/news">News</a></li>
+    		<li> <a href="<?=base_url()?>news">News</a></li>
     		<li> <a href="<?=base_url()?>welcome/directory">Directory</a></li>
     		 <li> <a href="<?=base_url()?>pricelist">Pricelists</a> </li>
                 <li> <a href="<?=base_url()?>roi/main">ROI Calculator</a> </li>

@@ -80,6 +80,22 @@ font-weight: bolder;
 box-shadow: 3px 2px 13px #000000;
 	
 }
+.news_date {
+	font-weight: bolder;
+        text-transform: uppercase;
+        font-size: 20px;
+        color: #999999;
+        padding-left:0px;
+        padding-top:15px;
+        text-align: center;
+width:70px;
+height:55px;
+background:#444444;
+position:relative;
+float:left;
+left:-10px;
+color:#ffffff;
+}
 .login_content {
 
 	padding:10px 10px 50px 10px;

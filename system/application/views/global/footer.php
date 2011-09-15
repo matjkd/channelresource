@@ -30,7 +30,7 @@
     
     <a href="<?=base_url()?>support">Support Request</a> |
     
-    <a href="<?=base_url()?>welcome/news">News</a> |
+    <a href="<?=base_url()?>news">News</a> |
     
     <a href="<?=base_url()?>welcome/directory">Directory</a> |
     

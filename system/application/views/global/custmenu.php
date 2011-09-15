@@ -14,7 +14,7 @@
     <a href="<?=base_url()?>support"><img src="<?=base_url()?>images/icons/support.png"></img></a>
     </div>
     <div>
-    <a href="<?=base_url()?>welcome/news"><img src="<?=base_url()?>images/icons/news.png"></img></a>
+    <a href="<?=base_url()?>news"><img src="<?=base_url()?>images/icons/news.png"></img></a>
     </div>
     <div>
     <a href="<?=base_url()?>welcome/directory"><img src="<?=base_url()?>images/icons/directory.png"></img></a>
