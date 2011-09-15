@@ -62,16 +62,16 @@ echo $content;
 
 
 <div id="twitterbutton">
-    <a href="http://twitter.com/share" class="twitter-share-button" data-url="<?=base_url()?>news/post/<?=$news['news_id']?>" data-count="horizontal" data-via="leasedeskdotcom">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://www.lease-desk.com/blog/post/<?=$news['news_id']?>" data-count="horizontal" data-via="leasedeskdotcom">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 </div>
 
 
 
 <!-- Place this tag where you want the +1 button to render -->
-<div  style="float:left;" class="g-plusone" data-size="medium" href="<?=base_url()?>news/post/<?=$news['news_id']?>"></div>
+<div  style="float:left;" class="g-plusone" data-size="medium" href="http://www.lease-desk.com/blog/post/<?=$news['news_id']?>"></div>
 
     <div id="likebutton">
-    <fb:like href="<?=base_url()?>news/post/<?=$news['news_id']?>" send="false" layout="button_count" width="0" height="20" show_faces="false" font=""></fb:like>
+    <fb:like href="http://www.lease-desk.com/blog/post/<?=$news['news_id']?>" send="false" layout="button_count" width="0" height="20" show_faces="false" font=""></fb:like>
 </div>
 </div>
 <div style="clear:both"></div>
