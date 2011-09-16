@@ -2,13 +2,13 @@
 <script type="text/javascript">
 //<!--
 function confirmation(id) {
-	var answer = confirm("are you sure you want to delete this customer?")
+	var answer = confirm("Are you sure you want to delete this customer?")
 	if (answer){
 		
 		window.location = "/prospect/delete_customer/"+ id;
 	}
 	else{
-		alert("nothing deleted!")
+		alert("Nothing deleted!")
 	}
 }
 //-->

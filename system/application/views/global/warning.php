@@ -6,7 +6,7 @@ if ($this->session->flashdata('message'))
 
 
 		
-			<div class="ui-widget" style="padding-bottom:10px;">
+			<div id="warningbox" class="ui-widget" style="padding-bottom:10px; width:370px;">
 				<div class='ui-state-error ui-corner-all' style='padding: 0 .7em;'>
 					<p>
 					<span class='ui-icon ui-icon-alert' style='float:left; margin-top:0px; margin-right:.3em;'></span>
@@ -31,7 +31,7 @@ if (isset($message))
 
 
 		
-			<div class="ui-widget" style="padding-bottom:10px;">
+			<div id="warningbox" class="ui-widget" style="padding-bottom:10px; width:370px;">
 				<div class='ui-state-error ui-corner-all' style='padding: 0 .7em;'>
 					<p>
 					<span class='ui-icon ui-icon-alert' style='float:left; margin-top:0px; margin-right:.3em;'></span>
@@ -48,3 +48,8 @@ if (isset($message))
 	
 <?php } ?>
 
+<script type="text/javascript">
+$(document).ready(function(){
+    setTimeout(function() { $('#warningbox').fadeOut(); }, 5000);
+});
+</script>

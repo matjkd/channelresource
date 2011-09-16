@@ -2,13 +2,13 @@
 <script type="text/javascript">
 
 function confirmation(id) {
-	var answer = confirm("are you sure you want to delete this calculation?")
+	var answer = confirm("Are you sure you want to delete this calculation?")
 	if (answer){
 		
 		window.location = "/pricelist/delete_pricelist/"+ id;
 	}
 	else{
-		alert("nothing deleted!")
+		alert("Nothing deleted!")
 	}
 }
 </script>

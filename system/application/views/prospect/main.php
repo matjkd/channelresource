@@ -1,6 +1,3 @@
-Register prospects and customers here.<br/><br/>
-
-
 <div id="leftside" >
 	
 	
