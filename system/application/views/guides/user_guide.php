@@ -10,10 +10,10 @@
 <a alt="add new guide" href="<?=base_url()?>userguide/createguide"><img width="16px" height="16px" alt="edit" src="<?=base_url()?>images/icons/social/add_16.png"/></a>
 Add New guide
 <?php } ?>
-	<p>Welcome to the Lease-Desk user guide section. Here you will find fully
+	<p>Welcome to the Lease-Desk.com user guide section. Here you will find fully
 	 illustrated, interactive step-by-step instructions on how to use Lease-Desk.com
 	  within your business and if you are a Super User, how to set up and maintain 
-	  Lease-Desk. In addition, you will find full length PDF versions of the user
+	  Lease-Desk.com. In addition, you will find full length PDF versions of the user
 	   guides, broken down by Role Type along with common F.A.Q's..</p>
  
 <p>To access the Interactive Guides, click on any of the areas below to display

@@ -13,7 +13,7 @@ class Userguide extends My_Controller {
 	function index()
 	{
 		
-		$data['title'] = 'Introduction To Lease-Desk';
+		$data['title'] = 'Introduction To Lease-Desk.com';
 		$data['main'] = '/guides/user_guide';
 		$data['flash'] = 'yes';
 		$data['all_guides'] =  $this->guide_model->get_all_guides();
