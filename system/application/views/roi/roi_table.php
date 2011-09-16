@@ -48,7 +48,7 @@ $this->table->add_row('Number of Sales People', form_input('number_of_salespeopl
 	
 	$term = array(36=>'36', 48=>'48', 60=>'60');
 	$this->table->add_row('Average Lease Term', form_dropdown('average_term', $term, set_value('average_term', $average_term), $fields));
-	$this->table->add_row('Annual Subscription to Lease Desk', form_input('subscription', set_value('subscription', $subscription), $fields));
+	$this->table->add_row('Annual Subscription to Lease-Desk.com', form_input('subscription', set_value('subscription', $subscription), $fields));
 	echo form_hidden('date_added', unix_to_human(now(), TRUE, 'eu'));
 	echo form_hidden('user_id', $user_id);
 	//echo form_input('customer_id', set_value('customer_id', $customer_id), $autohide);
