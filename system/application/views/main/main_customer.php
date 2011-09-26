@@ -10,23 +10,18 @@ enabling you to confidently use Lease-Desk.com and stay up to date on future pro
 <div style="width:825px; float:left; padding-left: 0px; margin-top:10px;  position:relative;">
 
 
-<div style="width:395px; height:129px; padding-left:10px; float:left;background:#dddddd; margin:3px 5px 5px 0px; padding-top:15px;">
+ <div class="videoholder" style="height:143px; padding:0px; width:198px; float:left; background:#8fa1a7; margin:3px 5px 5px 0px;">
+                <a href="mailto:support@lease-desk.com"  title=""><img alt="Contact Us" src="<?=base_url()?>images/icons/contactbox.jpg"/></a>
+    </div>
+        <div class="video1" style="height:143px; padding:0px; width:199px; float:left; background:#dddddd; margin:3px 5px 5px 5px;">
+              <a href="http://www.youtube.com/watch?v=8hUOhjuGPrA" rel="prettyPhoto" title=""><img alt="Welcome" src="<?=base_url()?>images/icons/welcome.jpg"/></a>
+    </div>
 
-    <div style="height:59px;  float:left;"><img alt="phone" width="370px" height="59px"  src="<?=base_url()?>images/icons/phonewide.png"/></div>
-
-
-
-
-    <div style="height:59px;  float:left;"><a href="mailto:support@lease-desk.com?subject=Customer Resource Help Required"><img alt="email" width="370px" height="59px"  src="<?=base_url()?>images/icons/emailwide.png"/>
-   </a></div>
-
-</div>
-
-        <div class="video1" style="height:143px; padding:0px; width:200px; float:left; background:#dddddd; margin:3px 5px 5px 5px;">
+        <div class="video1" style="height:143px; padding:0px; width:199px; float:left; background:#dddddd; margin:3px 5px 5px 5px;">
               <a href="http://www.youtube.com/watch?v=p0cKqIE75x0" rel="prettyPhoto" title=""><img alt="Logging a Support Request" src="<?=base_url()?>images/icons/support_video.jpg"/></a>
     </div>
 
-    <div class="video1" style="height:143px; padding:0px; width:200px; float:left; background:#dddddd;  margin:3px 0px 5px 5px;">
+    <div class="video1" style="height:143px; padding:0px; width:199px; float:left; background:#dddddd;  margin:3px 0px 5px 5px;">
         <a href="http://www.youtube.com/watch?v=z1AAFbzjj_Y" rel="prettyPhoto" title=""><img alt="The Quoting Tool" src="<?=base_url()?>images/icons/quote_video.jpg"/></a>
     </div>
 

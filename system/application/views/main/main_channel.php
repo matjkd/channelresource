@@ -23,18 +23,18 @@
    </a></div>
 
 </div>
- <div class="videoholder" style="height:143px; padding:0px; width:195px; float:left; background:#8fa1a7; margin:3px 5px 5px 0px;">
-          
+ <div class="videoholder" style="height:143px; padding:0px; width:198px; float:left; background:#8fa1a7; margin:3px 5px 5px 0px;">
+            <a href="http://www.youtube.com/watch?v=gOTMXS9W96Y" rel="prettyPhoto" title=""><img alt="Welcome" src="<?=base_url()?>images/icons/welcome.jpg"/></a>
     </div>
-        <div class="video1" style="height:143px; padding:0px; width:200px; float:left; background:#dddddd; margin:3px 5px 5px 5px;">
+        <div class="video1" style="height:143px; padding:0px; width:199px; float:left; background:#dddddd; margin:3px 5px 5px 5px;">
               <a href="http://www.youtube.com/watch?v=aLxsh4iYpQg" rel="prettyPhoto" title=""><img alt="Prospect Registration" src="<?=base_url()?>images/icons/prospect_video.jpg"/></a>
     </div>
 
-    <div class="video1" style="height:143px; padding:0px; width:200px; float:left; background:#dddddd;  margin:3px 5px 5px 5px;">
+    <div class="video1" style="height:143px; padding:0px; width:199px; float:left; background:#dddddd;  margin:3px 5px 5px 5px;">
         <a href="http://www.youtube.com/watch?v=u5lPZK5-EKs" rel="prettyPhoto" title=""><img alt="The ROI Calculator" src="<?=base_url()?>images/icons/roi_video.jpg"/></a>
     </div>
 
-  <div class="video1" style="height:143px; padding:0px; width:200px; float:left; background:#dddddd;  margin:3px 0px 5px 5px;">
+  <div class="video1" style="height:143px; padding:0px; width:198px; float:left; background:#dddddd;  margin:3px 0px 5px 5px;">
         <a href="http://www.youtube.com/watch?v=9O2nD_uAcuI" rel="prettyPhoto" title=""><img alt="Pricelists and Proposals" src="<?=base_url()?>images/icons/pricelists_video.jpg"/></a>
     </div>
 
