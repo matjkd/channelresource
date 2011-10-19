@@ -35,6 +35,7 @@ class Userguide extends My_Controller {
 		$data['flash'] = 'yes';
 		$data['all_guides'] =  $this->guide_model->get_all_guides();
 		$data['categories'] = $this->guide_model->get_guide_categories();
+                                $data['source'] = $this->guide_model->get_all_tags();
 		$guide_id = $this->uri->segment(3);
 		$data['guide'] = $this->guide_model->get_guide($guide_id);
 		$this->load->vars($data);
@@ -146,7 +147,7 @@ class Userguide extends My_Controller {
         function search_guides()
         {
             $term = $this->input->post('searchterm');
-          
+           $data['source'] = $this->guide_model->get_all_tags();
            
             //log search term
             

@@ -79,8 +79,16 @@ class Guide_model extends Model {
                     function getguides_notag($tag)
                 {
                 $data = array();
+               $pieces = explode(" ", $tag);
                
                 $this->db->like('user_guides.description', $tag);
+               foreach($pieces as $row):
+                   
+                   $this->db->or_like('user_guides.description', $row); 
+                   
+               endforeach;
+               
+               
                 $this->db->where('user_guides.guide_category >', 0);
                 $query =  $this->db->get('user_guides');
                  if ($query->num_rows() > 0)

@@ -1,18 +1,9 @@
 <script type="text/javascript">        
     
 $(function() {
+    var availableTags = [<?php $this->load->view('ajax/json_tags');?>];
          $( "#search" ).autocomplete({
-            source: function(request, response) {
-                $.ajax({
-                  url: "/datasource/json_tags",
-                  data: { term: $("#search").val()},
-                  dataType: "json",
-                  type: "POST",
-                  success: function(data){
-                  response(data);
-                  }
-                });
-              },
+            source: availableTags,
             minLength: 2
         });
     });
