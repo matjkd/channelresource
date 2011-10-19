@@ -31,7 +31,7 @@ class Userguide extends My_Controller {
                 function main()
                 {
                               //  $data['title'] = 'Search our User Guides';
-		$data['main'] = '/guides/search';
+		$data['main'] = '/guides/mainsearch';
 		$data['flash'] = 'yes';
 		$data['all_guides'] =  $this->guide_model->get_all_guides();
 		$data['categories'] = $this->guide_model->get_guide_categories();

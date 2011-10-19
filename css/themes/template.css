@@ -1044,3 +1044,28 @@ width: 100%;
     
     color:#ffffff;
 }
+
+#guidesdownloads {
+    
+    background:#dddddd;
+    margin:0px 5px 5px 0;
+    padding:10px;
+    width:240px;
+    float:left;
+    height:200px;
+    
+}
+#guidesbody {
+    
+    width:535px;
+     background:#cccccc;
+     margin:0px 0px 5px 5px;
+         height:200px;
+          padding:10px;
+         float:left;
+
+}
+#body_container {
+    width:825px;
+    position:relative;
+}
