@@ -37,6 +37,14 @@ class Datasource extends Controller {
             $this->load->vars($data);
             $this->load->view('json/guide_cats');
         }
+        
+        public function json_tags()
+        {
+             $term = $this->input->post('term');
+            $data['source'] = $this->guide_model->get_guide_tags($term);
+            $this->load->vars($data);
+            $this->load->view('json/guide_tags');
+        }
 
         function is_logged_in()
 	{

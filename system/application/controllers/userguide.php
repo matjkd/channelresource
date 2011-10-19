@@ -27,6 +27,19 @@ class Userguide extends My_Controller {
 		$this->load->vars($data);
 		$this->load->view('leasedesktemplate');
 	}
+        
+                function main()
+                {
+                                $data['title'] = 'Search our User Guides';
+		$data['main'] = '/guides/search';
+		$data['flash'] = 'yes';
+		$data['all_guides'] =  $this->guide_model->get_all_guides();
+		$data['categories'] = $this->guide_model->get_guide_categories();
+		$guide_id = $this->uri->segment(3);
+		$data['guide'] = $this->guide_model->get_guide($guide_id);
+		$this->load->vars($data);
+		$this->load->view('leasedesktemplate');
+                }
 	function viewguide()
 	{
 		$data['categories'] = $this->guide_model->get_guide_categories();	
@@ -128,6 +141,45 @@ class Userguide extends My_Controller {
         {
                 $this->guide_model->delete_category($id);
                 redirect('userguide/');
+        }
+        
+        function search_guides()
+        {
+            $term = $this->input->post('searchterm');
+          
+           
+            //log search term
+            
+            
+            //check if search term is exact match to tags
+            if($this->guide_model->matchtags($term))
+            {
+                //lists guides associated to tag
+                $data['guides'] = $this->guide_model->getguides_withtag($term);
+                
+                 $data['title'] = 'Search Results';
+		$data['main'] = '/guides/searchresults';
+		$data['flash'] = 'yes';
+		
+		$this->load->vars($data);
+		$this->load->view('leasedesktemplate');
+                
+               
+            }
+            
+            else
+            {
+            //if not exact match check search content
+                $data['guides'] = $this->guide_model->getguides_notag($term);
+                $data['title'] = 'Search Results';
+		$data['main'] = '/guides/searchresults';
+		$data['flash'] = 'yes';
+		
+		$this->load->vars($data);
+		$this->load->view('leasedesktemplate');
+            }
+            
+           
         }
 	
 		

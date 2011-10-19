@@ -9,53 +9,109 @@ class Guide_model extends Model {
       
     }
     function get_guide($id)
-    {
-    	$data = array();
-			$this->db->where('user_guide_id', $id);
-			$query = $this->db->get('user_guides');
-			if ($query->num_rows() == 1)
-			{
-				foreach ($query->result_array() as $row)
-				
-				$data[] = $row;
-				
-			}
-		$query->free_result();
-		
-		return $data;
-    }
+                {
+                    $data = array();
+                                    $this->db->where('user_guide_id', $id);
+                                    $query = $this->db->get('user_guides');
+                                    if ($query->num_rows() == 1)
+                                    {
+                                            foreach ($query->result_array() as $row)
+
+                                            $data[] = $row;
+
+                                    }
+                            $query->free_result();
+
+                            return $data;
+                }
+                
+                
  	function get_guides($section)
-    {
-    	$data = array();
-			$this->db->where('guide_section', $section);
-			$query = $this->db->get('user_guides');
-			if ($query->num_rows() > 0)
-			{
-				foreach ($query->result_array() as $row)
-				
-				$data[] = $row;
-				
-			}
-		$query->free_result();
-		
-		return $data;
-    }
+                {
+                    $data = array();
+                                    $this->db->where('guide_section', $section);
+                                    $query = $this->db->get('user_guides');
+                                    if ($query->num_rows() > 0)
+                                    {
+                                            foreach ($query->result_array() as $row)
+
+                                            $data[] = $row;
+
+                                    }
+                            $query->free_result();
+
+                            return $data;
+                }
+                   function matchtags($tag)
+                   {
+                       $data = array();
+                       $this->db->where('tag', $tag);
+                         $query =  $this->db->get('tags');
+                           if ($query->num_rows() > 0)
+                                    {
+                               return TRUE;
+                           }
+                           else
+                           {
+                               return FALSE;
+                           }
+                   }
+                function getguides_withtag($tag)
+                {
+                $data = array();
+               
+                $this->db->join('tag_links', 'user_guides.user_guide_id = tag_links.guide_id', 'LEFT');
+                $this->db->join('tags', 'tags.tag_id = tag_links.tag_id', 'RIGHT');
+                $this->db->where('tags.tag', $tag);
+                $this->db->where('user_guides.guide_category >', 0);
+                $query =  $this->db->get('user_guides');
+                 if ($query->num_rows() > 0)
+                                    {
+                                            foreach ($query->result_array() as $row)
+
+                                            $data[] = $row;
+
+                                    }
+                            $query->free_result();
+
+                            return $data;
+                }
+                    function getguides_notag($tag)
+                {
+                $data = array();
+               
+                $this->db->like('user_guides.description', $tag);
+                $this->db->where('user_guides.guide_category >', 0);
+                $query =  $this->db->get('user_guides');
+                 if ($query->num_rows() > 0)
+                                    {
+                                            foreach ($query->result_array() as $row)
+
+                                            $data[] = $row;
+
+                                    }
+                            $query->free_result();
+
+                            return $data;
+                }
+    
+    
 	 	function get_all_guides()
-    {
-    	$data = array();
-			
-			$query = $this->db->get('user_guides');
-			if ($query->num_rows() > 0)
-			{
-				foreach ($query->result_array() as $row)
-				
-				$data[] = $row;
-				
-			}
-		$query->free_result();
-		
-		return $data;
-    }
+                                {
+                                    $data = array();
+
+                                                    $query = $this->db->get('user_guides');
+                                                    if ($query->num_rows() > 0)
+                                                    {
+                                                            foreach ($query->result_array() as $row)
+
+                                                            $data[] = $row;
+
+                                                    }
+                                            $query->free_result();
+
+                                            return $data;
+                                }
     function match_category()
     {
          //match category
@@ -327,4 +383,25 @@ function get_assigned_tags($id)
 		return $data;
     }
  
+     function get_guide_tags($param)
+        {
+        $data = array();
+
+
+
+        $where = "tag REGEXP '^$param'";
+        $this->db->where($where);
+        $query = $this->db->get('tags');
+
+        if ($query->num_rows() > 0)
+			{
+				foreach ($query->result_array() as $row)
+
+				$data[] = $row;
+
+			}
+		$query->free_result();
+
+		return $data;
+    }
 }
