@@ -46,6 +46,7 @@ class Guide_model extends Model {
                    {
                        $data = array();
                        $this->db->where('tag', $tag);
+                       $this->db->join('tag_links', 'tag_links.tag_id = tags.tag_id');
                          $query =  $this->db->get('tags');
                            if ($query->num_rows() > 0)
                                     {
@@ -70,16 +71,28 @@ class Guide_model extends Model {
                                             foreach ($query->result_array() as $row)
 
                                             $data[] = $row;
+                                              $query->free_result();
+
+                                            return $data;
 
                                     }
-                            $query->free_result();
-
-                            return $data;
+                                       else
+                                    {
+                                        return FALSE;
+                                    }
+                          
                 }
                     function getguides_notag($tag)
                 {
                 $data = array();
-               $pieces = explode(" ", $tag);
+                $common_words = array("the", "of");
+                $trimtag = str_replace($common_words, "", $tag); 
+                
+                if($trimtag == NULL)
+                {
+                    return FALSE;
+                }
+               $pieces = explode(" ", $trimtag);
                
                 //$this->db->like('user_guides.description', $tag);
                foreach($pieces as $row):
@@ -96,11 +109,16 @@ class Guide_model extends Model {
                                             foreach ($query->result_array() as $row)
 
                                             $data[] = $row;
+                                            $query->free_result();
+
+                                            return $data;
 
                                     }
-                            $query->free_result();
-
-                            return $data;
+                                    else
+                                    {
+                                        return FALSE;
+                                    }
+                            
                 }
     
     

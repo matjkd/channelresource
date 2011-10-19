@@ -157,9 +157,16 @@ class Userguide extends My_Controller {
             {
                 //lists guides associated to tag
                 $data['guides'] = $this->guide_model->getguides_withtag($term);
-                
+                  if($data['guides']){
+                    $data['main'] = '/guides/searchresults';
+                }
+                else
+                {
+                      $this->session->set_flashdata('message', "Sorry, we couldn't find anything that matched your search");
+                     $data['main'] = '/guides/search';
+                }
                  $data['title'] = 'Search Results';
-		$data['main'] = '/guides/searchresults';
+		
 		$data['flash'] = 'yes';
 		
 		$this->load->vars($data);
@@ -172,8 +179,16 @@ class Userguide extends My_Controller {
             {
             //if not exact match check search content
                 $data['guides'] = $this->guide_model->getguides_notag($term);
+                if($data['guides']){
+                    $data['main'] = '/guides/searchresults';
+                }
+                else
+                {
+                    $this->session->set_flashdata('message', "Sorry, we couldn't find anything that matched your search");
+                     $data['main'] = '/guides/search';
+                }
                 $data['title'] = 'Search Results';
-		$data['main'] = '/guides/searchresults';
+		
 		$data['flash'] = 'yes';
 		
 		$this->load->vars($data);
