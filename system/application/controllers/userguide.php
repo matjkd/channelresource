@@ -163,7 +163,7 @@ class Userguide extends My_Controller {
                 else
                 {
                       $this->session->set_flashdata('message', "Sorry, we couldn't find anything that matched your search");
-                     $data['main'] = '/guides/search';
+                     redirect('userguide/main');
                 }
                  $data['title'] = 'Search Results';
 		
@@ -185,7 +185,7 @@ class Userguide extends My_Controller {
                 else
                 {
                     $this->session->set_flashdata('message', "Sorry, we couldn't find anything that matched your search");
-                     $data['main'] = '/guides/search';
+                     redirect('userguide/main');
                 }
                 $data['title'] = 'Search Results';
 		
