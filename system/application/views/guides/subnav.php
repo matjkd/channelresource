@@ -65,13 +65,13 @@
 
 	<div id="downloads-tab">
 	<img src="<?=base_url()?>images/pdf_button.png"/>
-	<a href="<?=base_url()?>images/files/normal.user.2.1.pdf" target="_blank">Normal User Guide</a>
+	<a href="<?=base_url()?>images/files/normal.user.2.2.pdf" target="_blank">Normal User Guide</a>
 	<br/>
 	<img src="<?=base_url()?>images/pdf_button.png"/>
-	<a href="<?=base_url()?>images/files/main-user.2.1.pdf" target="_blank">Main User Guide</a>
+	<a href="<?=base_url()?>images/files/main-user.2.2.pdf" target="_blank">Main User Guide</a>
 	<br/>
 	<img src="<?=base_url()?>images/pdf_button.png"/>
-	<a href="<?=base_url()?>images/files/super.user.2.1.pdf" target="_blank">Super User Guide</a>
+	<a href="<?=base_url()?>images/files/super.user.2.2.pdf" target="_blank">Super User Guide</a>
 	</div>
 
 <?php if($this->session->userdata('role') == 1) { ?>
