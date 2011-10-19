@@ -41,6 +41,7 @@
 */
 
 $route['default_controller'] = "welcome";
+$route['userguide'] = '/userguide/main';
 $route['scaffolding_trigger'] = "";
 
 
