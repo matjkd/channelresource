@@ -8,11 +8,20 @@ $(function() {
         });
     });
     </script>
+    <div id="searchbox">   
+       
 <?=form_open('userguide/search_guides')?>
-<label for="searchterm">What do you want to do?</label>
+<label for="searchterm"><h2>What do you want to do?</h2></label>
 
 
                             <input  type="text" name="searchterm" id="search" />
-                            <?=form_submit('submit', 'Search')?>
+                            
+                         <input type="submit" id="searchbutton" name="mysubmit" value="Search!" />
+                         
                             
 <?=form_close()?>
+                            
+
+    </div>
+    
+    <?=$this->load->view('global/searchmessage')?>

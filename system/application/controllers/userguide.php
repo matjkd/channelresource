@@ -30,7 +30,7 @@ class Userguide extends My_Controller {
         
                 function main()
                 {
-                                $data['title'] = 'Search our User Guides';
+                              //  $data['title'] = 'Search our User Guides';
 		$data['main'] = '/guides/search';
 		$data['flash'] = 'yes';
 		$data['all_guides'] =  $this->guide_model->get_all_guides();
@@ -162,10 +162,10 @@ class Userguide extends My_Controller {
                 }
                 else
                 {
-                      $this->session->set_flashdata('message', "Sorry, we couldn't find anything that matched your search");
+                      $this->session->set_flashdata('searchmessage', "Sorry, we couldn't find anything that matched your search");
                      redirect('userguide/main');
                 }
-                 $data['title'] = 'Search Results';
+                // $data['title'] = 'Search Results';
 		
 		$data['flash'] = 'yes';
 		
@@ -174,6 +174,7 @@ class Userguide extends My_Controller {
                 
                
             }
+            //@TODO add check if tag matches title
             
             else
             {
@@ -184,10 +185,10 @@ class Userguide extends My_Controller {
                 }
                 else
                 {
-                    $this->session->set_flashdata('message', "Sorry, we couldn't find anything that matched your search");
+                    $this->session->set_flashdata('searchmessage', "Sorry, we couldn't find anything that matched your search");
                      redirect('userguide/main');
                 }
-                $data['title'] = 'Search Results';
+                //$data['title'] = 'Search Results';
 		
 		$data['flash'] = 'yes';
 		

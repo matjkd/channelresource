@@ -1012,3 +1012,35 @@ width: 100%;
     float:left;
     padding-left:20px;
 }
+
+#searchbox {
+     width:805px;
+    padding-top:5px;
+    padding-left:10px;
+    padding-right:10px;
+    margin-bottom:10px;
+   margin-top:0px;
+    color:#ffffff;
+    height: 133px;
+    background: #4c585b;
+     background: url('/images/slides/consultancy/searchback.jpg');
+   
+    
+}
+#searchbox h2 {
+    margin-bottom:5px;
+    margin-top:20px;
+    color:#ffffff;
+}
+#searchbox input {
+    border:0px;
+     padding:5px;
+    
+}
+#searchbutton {
+    border:1px solid #dddddd;
+    background-color: #76a4b5;
+    padding:5px;
+    
+    color:#ffffff;
+}

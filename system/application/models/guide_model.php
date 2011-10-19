@@ -85,7 +85,7 @@ class Guide_model extends Model {
                     function getguides_notag($tag)
                 {
                 $data = array();
-                $common_words = array("the", "of");
+                $common_words = array("the", "of", "I", "and", "with");
                 $trimtag = str_replace($common_words, "", $tag); 
                 
                 if($trimtag == NULL)
