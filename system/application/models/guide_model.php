@@ -81,10 +81,10 @@ class Guide_model extends Model {
                 $data = array();
                $pieces = explode(" ", $tag);
                
-                $this->db->like('user_guides.description', $tag);
+                //$this->db->like('user_guides.description', $tag);
                foreach($pieces as $row):
                    
-                   $this->db->or_like('user_guides.description', $row); 
+                   $this->db->like('user_guides.description', $row); 
                    
                endforeach;
                
