@@ -34,13 +34,16 @@ function __construct()
 		if ($this->agent->is_mobile())
                                         {
                                          $data['title'] = 'Mobile Login';
+                                         $this->load->vars($data);
+		$this->load->view('mobilelogintemplate');
                                         }
 		else
                                     {
                                     $data['title'] = 'Login';
-                                    }
-		$this->load->vars($data);
+                                    $this->load->vars($data);
 		$this->load->view('logintemplate');
+                                    }
+		
 	
 	
 	
