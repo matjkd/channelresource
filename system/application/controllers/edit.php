@@ -5,7 +5,8 @@ class Edit extends My_Controller {
 	function Edit()
 	{
 		parent::Controller();
-		$this->load->library(array('encrypt', 'form_validation'));	
+		$this->load->library(array('encrypt', 'form_validation'));
+                                 $this->load->model('membership_model');
 		$this->is_logged_in();
 	}
 	function index()
@@ -45,7 +46,49 @@ class Edit extends My_Controller {
 				{
 					
 					$this->Membership_model->update_password($userid);
-					$this->session->set_flashdata('message', 'Password Changed');
+                                        
+                                                                                //send an email to the user
+                                                                                //first obtain their email address
+                                                                                   if(SITE=="customer")
+                                                                                            {
+                                                                                            $site = "Customer-Resource";
+
+                                                                                            }
+                                                                                    else if(SITE=="channel")
+                                                                                            {
+                                                                                            $site = "Channel-Resource";
+                                                                                            }
+                                                                                    $userdata = $this->membership_model->get_employee_detail($userid);   
+                                                                                    
+                                                                                    foreach($userdata as $row):
+                                                                                              $email_address = $row['email_address']; 
+                                                                                            $fullname = $row['firstname']." ".$row['lastname'];
+                                                                                            $name = $row['firstname'];
+                                                                                            $username = $row['username'];
+                                                                                                $password = $this->input->post('password');
+                                                                                    endforeach;
+                                        
+                                                                                 $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
+                                                                               $this->postmark->to($email_address);
+                                                                                //$this->postmark->to('mat@redstudio.co.uk');
+                                                                                //$this->postmark->cc($email_address);
+                                        
+					$this->postmark->subject("$site Password changed");
+					$this->postmark->message_plain("Hi $name,
+                                                
+                                                Your login details for $site have been updated:
+                                                username: $username
+                                                password: $password
+				
+					");	
+					$this->postmark->send();
+                                                                               $this->postmark->clear();
+                                                                                    
+                                        
+                                        
+                                        
+                                                                                $this->session->set_flashdata('message', 'Password Changed');
+                                                                                
 					redirect("profile/view_user/$userid", 'refresh');
 				}
 		
