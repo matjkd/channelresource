@@ -11,6 +11,9 @@
 	echo $this->table->generate();
 	$this->table->clear();
 	
+        if($currency == NULL){
+            $currency = "&pound;";
+        }
 	
 	
 ?>
