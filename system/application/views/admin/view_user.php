@@ -40,7 +40,7 @@ $(document).ready(function() {
     });
     
     $('.editablecurrency').editable("<?=site_url('/edit/edit_user')?>", { 
-        data   : " {'&pound;':'&pound;','&euro;':'&euro;','$':'$', 'selected':'<?=$row['currency']?>'}",
+        data   : " {'&#163;':'&pound;','&#0128;':'&euro;','$':'$', 'selected':'<?=$row['currency']?>'}",
         type   : 'select',
         id   : 'elementid',
         placeholder: '<?=$defaultcurrency?>',
