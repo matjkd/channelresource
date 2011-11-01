@@ -29,7 +29,7 @@ function onSelectChange2(){
  </script>
  <?php 
 $currency = trim($currency);
- if($currency == "&#0128;" || $currency == "€") {$currency2 = "€";}
+if($currency == "&#0128;" || $currency == "€") {$currency2 = "€";}
 if($currency == "&#163;" || $currency == "£") {$currency2 = "£";}
 if($currency == NULL) {$currency2 = "£";}
 if($currency == "$") {$currency2 = "$";}

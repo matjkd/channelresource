@@ -36,6 +36,7 @@ $this->table->set_heading('Results', '');
 	$this->table->add_row('Initial', $currency.$row['initial_result']);
 	$this->table->add_row('Regular', $currency.$row['regular_result']);
 	$this->table->add_row('', '');
+        $this->table->add_row('', '');
 	$this->table->add_row('', '');
 echo $this->table->generate();
 	$this->table->clear();

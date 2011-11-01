@@ -7,6 +7,7 @@ function __construct()
 		parent::__construct();
 		
 		$this->load->library(array('encrypt', 'form_validation'));
+                                $this->load->library('user_agent');
 		
 	}
 	
@@ -28,15 +29,16 @@ function __construct()
 			//$data['main'] = 'user/main_channel';
 			$title = "Welcome to the Lease-Desk.com Channel Partner Portal";
 			}
-			else
-			{
 			
-			}
 		
-		
-		
-		$data['title'] = 'Login';
-		
+		if ($this->agent->is_mobile())
+                                        {
+                                         $data['title'] = 'Mobile Login';
+                                        }
+		else
+                                    {
+                                    $data['title'] = 'Login';
+                                    }
 		$this->load->vars($data);
 		$this->load->view('logintemplate');
 	
