@@ -68,7 +68,8 @@ class Edit extends My_Controller {
                                                                                                 $password = $this->input->post('password');
                                                                                     endforeach;
                                         
-                                                                                 $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
+                                                                                    //send to user
+                                                                                $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
                                                                                $this->postmark->to($email_address);
                                                                                 //$this->postmark->to('mat@redstudio.co.uk');
                                                                                 //$this->postmark->cc($email_address);
@@ -76,15 +77,32 @@ class Edit extends My_Controller {
 					$this->postmark->subject("$site Password changed");
 					$this->postmark->message_plain("Hi $name,
                                                 
-                                                Your login details for $site have been updated:
-                                                username: $username
-                                                password: $password
+Your login details for $site have been updated:
+username: $username
+password: $password
 				
 					");	
 					$this->postmark->send();
                                                                                $this->postmark->clear();
                                                                                     
+                                                                               
+                                                                               //send to admin
+                                                                                $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
+                                                                                $this->postmark->to('chloe.maxwell@lease-desk.com');
+                                                                                $this->postmark->cc('mat@redstudio.co.uk');
+                                                                                //$this->postmark->cc($email_address);
                                         
+					$this->postmark->subject("$site Password changed");
+					$this->postmark->message_plain("Hello Admin, 
+$fullname has updated their login details for $site,
+                                                
+
+username: $username
+password: ***********
+				
+					");	
+					$this->postmark->send();
+                                                                               $this->postmark->clear();
                                         
                                         
                                                                                 $this->session->set_flashdata('message', 'Password Changed');
