@@ -8,8 +8,16 @@ class Quote_model extends Model {
         
       
     }
+    
+ 
    function add_data()
     {
+       
+       
+       $currency = $this->input->post('currency');
+       if($currency == '£'){$currency = '&#163;';}
+       if($currency == '€'){$currency = ' &#0128;';}
+       
     	$this->db->select('company_id');
 		$this->db->where('user_id', $this->input->post('user_id'));
 		$query = $this->db->get('users');
@@ -20,7 +28,7 @@ class Quote_model extends Model {
     	
     				$new_quote_insert_data = array(
     				'quote_ref' => $this->input->post('quote_ref'),
-                                                                 'currency' => $this->input->post('currency'),
+                                                                 'currency' => $currency,
     				'assigned' => $this->input->post('assigned_id'),
 					'capital' => $this->input->post('capital'),
     				'capital_type' => $this->input->post('capital_type'),
@@ -46,7 +54,9 @@ class Quote_model extends Model {
     }
    function update_data($id)
     {
-    	
+       $currency = $this->input->post('currency');
+       if($currency == '£'){$currency = '&#163;';}
+       if($currency == '€'){$currency = ' &#0128;';}
     	$this->db->select('company_id');
 		$this->db->where('user_id', $this->input->post('user_id'));
 		$query = $this->db->get('users');
@@ -68,7 +78,7 @@ class Quote_model extends Model {
     				$quote_update_data = array(
     				'quote_ref' => $this->input->post('quote_ref'),
     				'assigned' => $assigned,
-                                      'currency' => $this->input->post('currency'),
+                                      'currency' => $currency,
 					'capital' => $this->input->post('capital'),
     				'capital_type' => $this->input->post('capital_type'),
     				'amount_type' => $this->input->post('amount_type'),

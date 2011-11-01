@@ -128,6 +128,7 @@ class Quote extends My_Controller {
 	{
 		$data['quoteuser_id'] = $this->session->userdata('user_id');
 		$data['quotecompany_id'] = $this->session->userdata('company_id');
+                 $data['items'] = $this->Membership_model->get_all_employees();	
 		$segment_active = $this->uri->segment(3);
 		if($segment_active!=NULL)
 		{
@@ -306,7 +307,8 @@ class Quote extends My_Controller {
 						$data['annual_support_costs'],
 						$data['other_monthly_costs']);
 		//CALCULATION ENDS HERE
-		
+                               
+                
 		if($submitted=='Submit')
 			{
 				$this->quote_model->add_data();
@@ -335,7 +337,7 @@ class Quote extends My_Controller {
 			
 		
 		
-		$data['items'] = $this->Membership_model->get_all_employees();			
+					
 		$data['main'] = 'quote/results';
 		$data['title'] = 'Quote Results';
 		

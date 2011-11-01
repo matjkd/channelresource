@@ -27,7 +27,7 @@ function onSelectChange2(){
   });
  </script>
  
-	
+
  
  <script type="text/javascript">
 	$(function() {
@@ -36,7 +36,7 @@ function onSelectChange2(){
 			source: availableTags,
 			 select: function(event,ui){
 			$('#assign_id').val(ui.item.id);
-                                                $('#currency').val(ui.item.currency);
+                                                $('#currency' ).val(ui.item.currency);
                                                  $('#interestrate').val(ui.item.interestrate);
                                                   $('#initial').val(ui.item.initial);
                                                    $('#regular').val(ui.item.regular);
@@ -69,7 +69,7 @@ $this->table->add_row('Assign to User', form_input('assigned_name',set_value('as
 }
 $this->table->add_row('Reference (for your info)', form_input('quote_ref', set_value('quote_ref', $quote_ref), $fields));
 
-$currencychoose = array('&pound;' =>'&pound;', '&euro;' =>  '&euro;', '$' => '$');
+$currencychoose = array("&pound;"=>'&pound;', '&#0128;'=>'&#0128;', '$'=>'$');
 $this->table->add_row('Currency', form_dropdown('currency', $currencychoose,  $currency, $currencyid));
 
 $choose2 = array(1 => 'Capital Amount', 2 => 'Periodic Payment');
@@ -79,8 +79,7 @@ $this->table->add_row('<span id="output2"></span>', form_input('amount_type', se
 	
 
 
-//$this->table->add_row('Capital Amount', form_input('capital', set_value('capital', $capital), $fields));
-//$this->table->add_row('Periodic Repayment', form_input('periodic_payment', set_value('periodic_payment', $periodic_payment), $fields));	
+	
 $choose = array(1 => 'Interest Rate', 2 => 'Rate Per 1000');
 $this->table->add_row('Calculate By', form_dropdown('interest_type', $choose, set_value('interest_type', $interest_type), $jquery));
 
