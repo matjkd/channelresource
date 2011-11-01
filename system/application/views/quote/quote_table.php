@@ -25,7 +25,7 @@ function onSelectChange2(){
 
  
 
-  });
+  
  </script>
  <?php 
 $currency = trim($currency);
