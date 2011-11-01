@@ -207,7 +207,8 @@ class Quote extends My_Controller {
 				
 				foreach($data2['quote_numbers'] as $key => $row)
 					{
-						
+					
+                                    
 						$data['quote_id'] = $row['quote_id'];
 						$data['assigned'] = $row['assigned'];
 						$data['quote_ref'] = $row['quote_ref'];
