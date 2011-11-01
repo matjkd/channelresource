@@ -9,6 +9,7 @@ class Quote extends My_Controller {
 		$this->is_logged_in();
 		$this->load->library(array('encrypt', 'form_validation'));
 		$this->load->model('quote_model');
+                                $this->load->model('membership_model');
 		$this->load->plugin('to_pdf');
 		
 	}
@@ -45,12 +46,55 @@ class Quote extends My_Controller {
 		$this->pagination->initialize($config); 
 		$data['page_segment'] = $this->uri->segment(4);
 		
-		// $data['quote_list'] = $this->quote_model->list_entries($data['quotecompany_id'], $config['per_page'],$data['page_segment']);
+		
 		$data['quote_list'] = $this->quote_model->list_entries_by_user();
 		$data['rowcount'] = 0;
 		foreach($data['quote_list'] as $countrow):
 		$data['rowcount'] = $data['rowcount']+1;
 		endforeach;
+                
+                
+                                //get user data and set defaults
+                                 $userdata = $this->membership_model->get_employee_detail($data['quoteuser_id']);   
+                                 foreach($userdata as $row):
+                                     if($row['currency'] == NULL)
+                                     {
+                                         $currency = '&pound;';
+                                     }
+                                     else
+                                     {
+                                         $currency = $row['currency'];
+                                     }
+                                     
+                                      if($row['interestrate'] == NULL)
+                                     {
+                                         $interestrate = '';
+                                     }
+                                     else
+                                     {
+                                         $interestrate = $row['interestrate'];
+                                     }
+                                     
+                                     
+                                      if($row['initial'] == NULL)
+                                     {
+                                         $initial = '';
+                                     }
+                                     else
+                                     {
+                                         $initial = $row['initial'];
+                                     }
+                                     
+                                       if($row['regular'] == NULL)
+                                     {
+                                         $regular = '';
+                                     }
+                                     else
+                                     {
+                                         $regular = $row['regular'];
+                                     }
+                                     
+                                 endforeach;
 		
 						$data['quote_ref'] ='';
 						$data['assigned'] = '';
@@ -59,18 +103,19 @@ class Quote extends My_Controller {
 						$data['capital_type'] ='';
 						$data['amount_type'] ='';
 						$data['interest_type'] = '';
-						$data['calculate_by'] = '';
+						$data['calculate_by'] = $interestrate;
 						$data['interest_rate'] = '';
 						$data['rate_per_1000'] = '';
 						$data['periodic_payment'] = '';
 						$data['payment_type'] = '';
 						$data['payment_frequency'] = '';
-						$data['initial'] = '';
-						$data['regular'] = '';
+						$data['initial'] = $initial;
+						$data['regular'] = $regular;
 						$data['number_of_ports'] = '';
 						$data['annual_support_costs'] = '';
 						$data['other_monthly_costs'] = '';
 						$data['user_id'] = '';
+                                                                                                $data['currency'] = $currency;
 		$data['items'] = $this->Membership_model->get_all_employees();							
 		$data['main'] = '/quote/main';
 		$data['title'] = 'Quoting Tool';
@@ -127,6 +172,7 @@ class Quote extends My_Controller {
 		
 		$data['quote_ref'] = $this->input->post('quote_ref');
 		$data['assigned'] = $this->input->post('assigned');
+                                $data['assigned_name'] = $this->input->post('assigned_name');
 		$data['capital'] = $this->input->post('capital');
 		$data['capital_type'] = $this->input->post('capital_type');
 		$data['amount_type'] = $this->input->post('amount_type');
@@ -141,7 +187,8 @@ class Quote extends My_Controller {
 		$data['other_monthly_costs'] = $this->input->post('other_monthly_costs');
 		$data['date_added'] = $this->input->post('date_added');
 		$data['user_id'] = $this->input->post('user_id');
-		
+		$data['currency'] = $this->input->post('currency');
+                
 		$submitted = $this->input->post('submit');
 		
 		$segment_active = $this->uri->segment(3);
@@ -176,7 +223,7 @@ class Quote extends My_Controller {
 						$data['number_of_ports'] = $row['number_of_ports'];
 						$data['annual_support_costs'] = $row['annual_support_costs'];
 						$data['other_monthly_costs'] = $row['other_monthly_costs'];
-						
+						$data['currency'] = $row['currency'];
 						$data['user_id'] = $row['user_id'];
 						$data['company_id'] = $row['company_id'];
 						$data['date_added'] = $row['date_added'];

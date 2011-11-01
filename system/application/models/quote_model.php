@@ -20,6 +20,7 @@ class Quote_model extends Model {
     	
     				$new_quote_insert_data = array(
     				'quote_ref' => $this->input->post('quote_ref'),
+                                                                 'currency' => $this->input->post('currency'),
     				'assigned' => $this->input->post('assigned_id'),
 					'capital' => $this->input->post('capital'),
     				'capital_type' => $this->input->post('capital_type'),
@@ -67,6 +68,7 @@ class Quote_model extends Model {
     				$quote_update_data = array(
     				'quote_ref' => $this->input->post('quote_ref'),
     				'assigned' => $assigned,
+                                      'currency' => $this->input->post('currency'),
 					'capital' => $this->input->post('capital'),
     				'capital_type' => $this->input->post('capital_type'),
     				'amount_type' => $this->input->post('amount_type'),

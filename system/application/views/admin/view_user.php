@@ -29,6 +29,18 @@ $(document).ready(function() {
 }
     });
     
+    $('.editablecurrency').editable("<?=site_url('/edit/edit_user')?>", { 
+        data   : " {'&pound;':'&pound;','&euro;':'&euro;','$':'$', 'selected':'<?=$row['currency']?>'}",
+        type   : 'select',
+        id   : 'elementid',
+        placeholder: '<?=$row['currency']?>',
+        submit : 'OK',
+        submitdata : function() 
+        {
+            return {id : uid};
+}
+    });
+    
 });
 </script>
 
@@ -125,8 +137,49 @@ $role = $this->session->userdata('role');
 	<?=form_close()?>
  
 
- </div>	
- 
+ </div>
+<div style="clear:both;"></div>
+    
+<hr/>
+<h1>Defaults</h1>
+<table class="profiletable">	
+	<tr>
+		<td class='leftcolumn'>
+		<strong>Currency</strong>
+		</td>
+		<td>
+		 <div class='editablecurrency' id='currency' style="width:200px; margin-left:10px;"></div>
+		</td>
+	</tr>
+                 <tr>
+		<td class='leftcolumn'>
+		<strong>Interest Rate</strong>
+		</td>
+		<td>
+		 <div class='edit' id='interestrate' style="width:200px; margin-left:10px;"><?=$row['interestrate']?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class='leftcolumn'>
+		<strong>Initial</strong>
+		</td>
+		<td>
+		 <div class='edit' id='initial' style="width:200px; margin-left:10px;"><?=$row['initial']?></div>
+		</td>
+	</tr>
+	<tr>
+		<td class='leftcolumn'>
+		<strong>Regular</strong>
+		</td>
+		<td>
+		 <div class='edit' id='regular' style="width:200px; margin-left:10px;"><?=$row['regular']?></div>
+		</td>
+	</tr>
+	
+</table>
+
+
+
  <div style="clear:both">
 
 	<?php 

@@ -19,7 +19,7 @@
     you will find full length PDF versions of the user guides, broken down by Role Type along with common F.A.Q's.</p>
 
     <p>
-To access the Interactive Guides, use the search box above</p>
+To access the Interactive Guides, use the search box above.</p>
 </div>
     
 </div>
