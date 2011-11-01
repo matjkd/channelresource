@@ -1,6 +1,16 @@
 <?php echo validation_errors('<p class="error">'); ?>
 <?php 
-foreach ($user_info as $key => $row):?>
+foreach ($user_info as $key => $row):
+if($row['currency']==NULL)
+{
+    $defaultcurrency = 'Select Default Currency';
+}
+else
+{
+    $defaultcurrency = $row['currency'];
+}
+        
+        ?>
 <script>
 $(document).ready(function() {
 	var uid = "<?=$user_id?>";
@@ -33,7 +43,7 @@ $(document).ready(function() {
         data   : " {'&pound;':'&pound;','&euro;':'&euro;','$':'$', 'selected':'<?=$row['currency']?>'}",
         type   : 'select',
         id   : 'elementid',
-        placeholder: '<?=$row['currency']?>',
+        placeholder: '<?=$defaultcurrency?>',
         submit : 'OK',
         submitdata : function() 
         {
