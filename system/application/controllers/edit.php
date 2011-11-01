@@ -78,6 +78,7 @@ class Edit extends My_Controller {
 					$this->postmark->message_plain("Hi $name,
                                                 
 Your login details for $site have been updated:
+                                                
 username: $username
 password: $password
 				
@@ -94,9 +95,9 @@ password: $password
                                         
 					$this->postmark->subject("$site Password changed");
 					$this->postmark->message_plain("Hello Admin, 
-$fullname has updated their login details for $site,
                                                 
-
+$fullname has updated their login details for $site as per below,
+                                                
 username: $username
 password: ***********
 				

@@ -99,6 +99,7 @@ class Quote extends My_Controller {
 						$data['quote_ref'] ='';
 						$data['assigned'] = '';
 						$data['assigned_name'] = '';
+                                                                                                $data['assigned_id'] = '';
 						$data['capital'] ='';
 						$data['capital_type'] ='';
 						$data['amount_type'] ='';
@@ -172,6 +173,7 @@ class Quote extends My_Controller {
 		
 		$data['quote_ref'] = $this->input->post('quote_ref');
 		$data['assigned'] = $this->input->post('assigned');
+                                $data['assigned_id'] = $this->input->post('assigned_id');
                                 $data['assigned_name'] = $this->input->post('assigned_name');
 		$data['capital'] = $this->input->post('capital');
 		$data['capital_type'] = $this->input->post('capital_type');

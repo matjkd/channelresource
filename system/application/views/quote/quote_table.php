@@ -35,16 +35,25 @@ function onSelectChange2(){
 		$("#company").autocomplete({
 			source: availableTags,
 			 select: function(event,ui){
-			$('#assign_id').val(ui.item.id)}
+			$('#assign_id').val(ui.item.id);
+                                                $('#currency').val(ui.item.currency);
+                                                 $('#interestrate').val(ui.item.interestrate);
+                                                  $('#initial').val(ui.item.initial);
+                                                   $('#regular').val(ui.item.regular);
+                }
 		});
 	});
 	
 	
 </script>
-  <input type="hidden" name="assigned_id" id="assign_id" />
+  <input type="hidden" name="assigned_id" id="assign_id" value="<?=$assigned_id?>"/>
 <?php 
 $fields = "class='roifield'";
 $auto = "id='company'";
+$currencyid = "id='currency'";
+$interestid = "id='interestrate'";
+$initialid = "id='initial'";
+$regularid = "id='regular'";
 $autohide = "id='hiddenIDbox'";
 $jquery = "id='jquerytype'";
 $jquery2 = "id='jquerytype2'";
@@ -61,7 +70,7 @@ $this->table->add_row('Assign to User', form_input('assigned_name',set_value('as
 $this->table->add_row('Reference (for your info)', form_input('quote_ref', set_value('quote_ref', $quote_ref), $fields));
 
 $currencychoose = array('&pound;' =>'&pound;', '&euro;' =>  '&euro;', '$' => '$');
-$this->table->add_row('Currency', form_dropdown('currency', $currencychoose,  $currency, $fields));
+$this->table->add_row('Currency', form_dropdown('currency', $currencychoose,  $currency, $currencyid));
 
 $choose2 = array(1 => 'Capital Amount', 2 => 'Periodic Payment');
 $this->table->add_row('Capital Type', form_dropdown('capital_type', $choose2, set_value('capital_type', $capital_type), $jquery2));
@@ -75,7 +84,7 @@ $this->table->add_row('<span id="output2"></span>', form_input('amount_type', se
 $choose = array(1 => 'Interest Rate', 2 => 'Rate Per 1000');
 $this->table->add_row('Calculate By', form_dropdown('interest_type', $choose, set_value('interest_type', $interest_type), $jquery));
 
-$this->table->add_row('<span id="output"></span>', form_input('calculate_by', set_value('calculate_by', $calculate_by), $fields));
+$this->table->add_row('<span id="output"></span>', form_input('calculate_by', set_value('calculate_by', $calculate_by), $interestid));
 	
 
 //time array in hours
@@ -85,8 +94,8 @@ $this->table->add_row('<span id="output"></span>', form_input('calculate_by', se
 	//ratio array
 	$frequency = array(12=>'Monthly',4=>'Quarterly',1=>'Annually');
 	$this->table->add_row('Payment Frequency', form_dropdown('payment_frequency', $frequency, set_value('payment_frequency', $payment_frequency), $fields));
-	$this->table->add_row('Initial', form_input('initial', set_value('initial', $initial), $fields));
-	$this->table->add_row('Regular', form_input('regular', set_value('regular', $regular), $fields));
+	$this->table->add_row('Initial', form_input('initial', set_value('initial', $initial), $initialid));
+	$this->table->add_row('Regular', form_input('regular', set_value('regular', $regular), $regularid));
 	echo $this->table->generate();
 	$this->table->clear();
 	
