@@ -5,7 +5,7 @@
 
 <head>
   <meta charset="utf-8">
-/
+
   <title></title>
   <meta name="description" content="">
   <meta name="author" content="">
@@ -60,6 +60,7 @@
 </head>
 
 <body>
+
 <div data-role="page" class="type-interior"> 
 	<div data-role="header">
                     <?php if(SITE=="customer"){
@@ -74,7 +75,10 @@
         </div> 
 	<div data-role="content">
             
-         <div class="content-primary">	
+         <div class="content-primary">	    <?php
+$agent = $_SERVER['HTTP_USER_AGENT'];
+echo "User agent reported as: " . $agent . "\n";
+?>
              <h2><?=$title?></h2>
         <?php $this->load->view($main); ?>
          </div><!--/content-primary -->
