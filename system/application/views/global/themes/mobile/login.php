@@ -10,7 +10,7 @@
     
                     
 
-<input type="submit" name="submit" value="login"/>
+<input type="submit" name="submit" value="login" data-transition="pop"/>
 	
 
           </form>

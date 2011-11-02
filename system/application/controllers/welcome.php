@@ -6,6 +6,7 @@ class Welcome extends My_Controller {
 	{
 		parent::Controller();	
 		$this->is_logged_in();
+                $this->load->library('user_agent');
 	}
 	
 	function index()
@@ -26,10 +27,22 @@ class Welcome extends My_Controller {
 			{
 			$title = "Welcome";
 			}
-		
-		$data['title'] = $title;
+                        
+                        if ($this->agent->is_mobile())
+                                        {
+                                        $data['main'] = '/main/mainmobile';
+                                         $data['title'] = $title;
+                                         $this->load->vars($data);
+		$this->load->view('mobile_template');
+                                        }
+		else
+                                    {
+                                  $data['title'] = $title;
 		$this->load->vars($data);
 		$this->load->view('leasedesktemplate');
+                                    }
+		
+		
 	}
 	function guides()
 	{

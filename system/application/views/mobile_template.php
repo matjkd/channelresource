@@ -48,7 +48,7 @@
 </head>
 
 <body>
-<div data-role="page"> 
+<div data-role="page" class="type-interior"> 
 	<div data-role="header">
                     <?php if(SITE=="customer"){
                             ?><h1>Customer Resource</h1>
@@ -58,16 +58,31 @@
                     <?php }
 
                     ?>
+                        <a href="../../" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
         </div> 
 	<div data-role="content">
             
+         <div class="content-primary">	   
+        <?php $this->load->view($main); ?>
+         </div><!--/content-primary -->
             
-            Login with your username and password below:<br/>
-    
-           	<?=$this->load->view('global/themes/mobile/login')?>
+            <div class="content-secondary">
+
+					<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
+
+							<h3>More in this section</h3>
+                                                        
+                                                        <ul data-role="listview" data-theme="d" data-dividertheme="d">
+                                                                                                                            
+								<li><a href="mobile/quote">Online Quote Tool</a></li>
+                                                                                                                                <li><a href="mobile/docs">Document Library</a></li>
+                                                        </ul>
+                                        </div>
+                
+            </div>
             
-        </div> 
-	<div data-role="footer" style="text-align: center;">   &copy; Copyright 2011 Lease-Desk Ltd. Website Developed by </div> 
+       </div><!-- /content -->
+	<div data-role="footer" style="text-align: center;"> <p>&copy; Copyright 2011 Lease-Desk Ltd.</p></div> 
 </div> 
   
  
