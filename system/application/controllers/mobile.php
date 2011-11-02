@@ -267,6 +267,15 @@ class Mobile extends My_Controller {
             
             
         }
+        function list_quotes()
+        {
+              
+            $data['quote_list'] = $this->quote_model->list_entries_by_user();
+            $data['main'] = '/quote/mobile/list_quotes';
+                                $data['title'] = 'Quotes';
+                                $this->load->vars($data);
+		$this->load->view('mobile_template');
+        }
         
         function is_logged_in()
 	{

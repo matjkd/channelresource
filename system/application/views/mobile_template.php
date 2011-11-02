@@ -80,12 +80,12 @@
 
 					<div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
 
-							<h3>More in this section</h3>
+							<h3>Tools</h3>
                                                         
                                                         <ul data-role="listview" data-theme="d" data-dividertheme="d">
                                                                                                                             
 								<li><a href="<?=base_url()?>mobile/quote">Online Quote Tool</a></li>
-                                                                                                                                <li><a href="<?=base_url()?>mobile/docs">Document Library</a></li>
+                                                                                                                                <li><a href="<?=base_url()?>mobile/list_quotes">List Quotes</a></li>
                                                         </ul>
                                         </div>
                 

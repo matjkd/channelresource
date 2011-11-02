@@ -9,7 +9,7 @@
 
 <?php foreach($quote_results as $key => $row): ?>
 
-<h2>Quote Results</h2>
+
 		<ul data-role="listview" data-inset="true">
                                 <li>
                                         <h3>Captial Amount:</h3>
