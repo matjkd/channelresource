@@ -22,7 +22,10 @@
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/mobile/m/apple-touch-icon.png">
   <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
   <link rel="apple-touch-icon-precomposed" href="images/mobile/l/apple-touch-icon-precomposed.png">
+ 
+    <link rel="stylesheet" href="<?=base_url()?>css/jquery-ui-1.8.custom.css" />
   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
+
   <!-- For nokia devices: -->
   <link rel="shortcut icon" href="images/mobile/l/apple-touch-icon.png">
 
@@ -45,6 +48,12 @@
   <script src="js/mobile/libs/modernizr-custom.js"></script>
   <!-- Media Queries Polyfill https://github.com/shichuan/mobile-html5-boilerplate/wiki/Media-Queries-Polyfill -->
   <script>Modernizr.mq('(min-width:0)') || document.write('<script src="js/mobile/libs/respond.min.js">\x3C/script>')</script>
+  
+  <!-- scripts concatenated and minified via ant build script -->
+  <script src="js/mobile/mylibs/helper.js"></script>
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 </head>
 
 <body>
@@ -62,7 +71,8 @@
         </div> 
 	<div data-role="content">
             
-         <div class="content-primary">	   
+         <div class="content-primary">	
+             <h2><?=$title?></h2>
         <?php $this->load->view($main); ?>
          </div><!--/content-primary -->
             
@@ -74,8 +84,8 @@
                                                         
                                                         <ul data-role="listview" data-theme="d" data-dividertheme="d">
                                                                                                                             
-								<li><a href="mobile/quote">Online Quote Tool</a></li>
-                                                                                                                                <li><a href="mobile/docs">Document Library</a></li>
+								<li><a href="<?=base_url()?>mobile/quote">Online Quote Tool</a></li>
+                                                                                                                                <li><a href="<?=base_url()?>mobile/docs">Document Library</a></li>
                                                         </ul>
                                         </div>
                 
@@ -101,14 +111,10 @@
 
   <!-- JavaScript at the bottom for fast page loading -->
 
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/mobile/libs/jquery-1.6.2.min.js"><\/script>')</script>
 
-  <!-- scripts concatenated and minified via ant build script -->
-  <script src="js/mobile/mylibs/helper.js"></script>
-    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+
+ 
+
   <!-- end concatenated and minified scripts-->
 
   <script>

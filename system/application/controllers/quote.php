@@ -40,7 +40,7 @@ class Quote extends My_Controller {
 		$config['total_rows'] = $this->db->count_all('quote');
 		$config['per_page'] = '8'; 
 		$config['full_tag_open'] = '<div align="center"><p>';
-    	$config['full_tag_close'] = '</div></p>';
+                                $config['full_tag_close'] = '</div></p>';
 		$config['uri_segment'] = 4;
 
 		$this->pagination->initialize($config); 
