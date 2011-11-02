@@ -52,15 +52,20 @@
   <!-- scripts concatenated and minified via ant build script -->
   <script src="js/mobile/mylibs/helper.js"></script>
     <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-
+    <?php if(isset($blackberry) && $blackberry == "yes") 
+    { ?>
+        <link rel="stylesheet" href="<?=base_url()?>css/themes/mobile/blackberry.css?v=1">
+   <?php  }
+    else
+    {
+        ?>
     
  <script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
-
+<?php } ?>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 </head>
 
 <body>
-
 <div data-role="page" class="type-interior"> 
 	<div data-role="header">
                     <?php if(SITE=="customer"){
@@ -75,10 +80,7 @@
         </div> 
 	<div data-role="content">
             
-         <div class="content-primary">	    <?php
-$agent = $_SERVER['HTTP_USER_AGENT'];
-echo "User agent reported as: " . $agent . "\n";
-?>
+         <div class="content-primary">	
              <h2><?=$title?></h2>
         <?php $this->load->view($main); ?>
          </div><!--/content-primary -->

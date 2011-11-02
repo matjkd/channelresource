@@ -106,10 +106,14 @@ class Mobile extends My_Controller {
                                 $data['items'] = $this->Membership_model->get_all_employees();	
                                 $data['main'] = '/quote/mobile/quotemain';
                                 $data['title'] = 'Quoting Tool';
-                                if ($this->agent->is_mobile('blackberry'))
-                                    {
-                                        $data['blackberry'] = "yes";
-                                    }
+                             
+                                $agent = $_SERVER['HTTP_USER_AGENT'];
+
+
+                                if (eregi("BlackBerry", $agent)) {
+                                $data['blackberry'] = 'yes';
+                                }
+                               
                                    
                                 $this->load->vars($data);
 		$this->load->view('mobile_template');
