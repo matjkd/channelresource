@@ -84,8 +84,8 @@
                                                         
                                                         <ul data-role="listview" data-theme="d" data-dividertheme="d">
                                                                                                                             
-								<li><a href="<?=base_url()?>mobile/quote">Online Quote Tool</a></li>
-                                                                                                                                <li><a href="<?=base_url()?>mobile/list_quotes">List Quotes</a></li>
+								<li><a href="<?=base_url()?>mobile/quote" data-ajax="false">Online Quote Tool</a></li>
+                                                                                                                                <li><a href="<?=base_url()?>mobile/list_quotes" data-ajax="false">List Quotes</a></li>
                                                         </ul>
                                         </div>
                 

@@ -10,7 +10,7 @@
 
 
 
-<li><a href="<?=base_url()?>mobile/view_quote_results/<?=$row['quote_id']?>">
+<li><a href="<?=base_url()?>mobile/view_quote_results/<?=$row['quote_id']?>" data-ajax="false">
                                                                 <p><strong>Ref:</strong> <?=$row['quote_ref']?></p>
 				<p><strong>Assigned to:</strong> <?=$row['fname']?> <?=$row['lname']?></p>
 				<p><strong>Added By:</strong><?=$row['firstname']?> <?=$row['lastname']?></p>

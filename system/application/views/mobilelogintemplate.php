@@ -45,6 +45,12 @@
   <script src="js/mobile/libs/modernizr-custom.js"></script>
   <!-- Media Queries Polyfill https://github.com/shichuan/mobile-html5-boilerplate/wiki/Media-Queries-Polyfill -->
   <script>Modernizr.mq('(min-width:0)') || document.write('<script src="js/mobile/libs/respond.min.js">\x3C/script>')</script>
+  
+   <!-- scripts concatenated and minified via ant build script -->
+  <script src="js/mobile/mylibs/helper.js"></script>
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+  <!-- end concatenated and minified scripts-->
 </head>
 
 <body>
@@ -67,7 +73,7 @@
            	<?=$this->load->view('global/themes/mobile/login')?>
             
         </div> 
-	<div data-role="footer" style="text-align: center;">   &copy; Copyright 2011 Lease-Desk Ltd. Website Developed by </div> 
+	<div data-role="footer" style="text-align: center;"><p>&copy; Copyright 2011 Lease-Desk Ltd.</p> </div> 
 </div> 
   
  
@@ -86,15 +92,9 @@
 
   <!-- JavaScript at the bottom for fast page loading -->
 
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="js/mobile/libs/jquery-1.6.2.min.js"><\/script>')</script>
+  
 
-  <!-- scripts concatenated and minified via ant build script -->
-  <script src="js/mobile/mylibs/helper.js"></script>
-    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
-  <!-- end concatenated and minified scripts-->
+ 
 
   <script>
     // iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/

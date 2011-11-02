@@ -46,7 +46,7 @@ if($currency == "$") {$currency = "$";}
   </div>
     
           	
-<fieldset data-role="controlgroup" data-type="horizontal" >
+<fieldset data-role="controlgroup" >
 	<legend>Currency:</legend>
      	<select name="currency" id="currency" >
      	<option value="£" >£</option>
