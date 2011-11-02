@@ -31,8 +31,8 @@ function onSelectChange2(){
 $currency = trim($currency);
 if($currency == "&#0128;" || $currency == "€") {$currency2 = "€";}
 if($currency == "&#163;" || $currency == "£") {$currency2 = "£";}
-if($currency == NULL) {$currency2 = "£";}
-if($currency == "$") {$currency2 = "$";}
+if($currency == NULL) {$currency = "£";}
+if($currency == "$") {$currency = "$";}
  
  
  
@@ -81,7 +81,7 @@ $this->table->add_row('Assign to User', form_input('assigned_name',set_value('as
 $this->table->add_row('Reference (for your info)', form_input('quote_ref', set_value('quote_ref', $quote_ref), $fields));
 
 $currencychoose = array("£"=>'£', '€'=>'€', '$'=>'$');
-$this->table->add_row('Currency', form_dropdown('currency', $currencychoose,  $currency2, $currencyid));
+$this->table->add_row('Currency', form_dropdown('currency', $currencychoose,  $currency, $currencyid));
 
 $choose2 = array(1 => 'Capital Amount', 2 => 'Periodic Payment');
 $this->table->add_row('Capital Type', form_dropdown('capital_type', $choose2, set_value('capital_type', $capital_type), $jquery2));

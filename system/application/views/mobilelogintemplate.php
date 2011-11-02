@@ -54,10 +54,10 @@
     </header>
     <div id="main" role="main">
 <?php if(SITE=="customer"){
-	?><a href="<?=base_url()?>" title="customer resource"><img src="<?=base_url()?>images/logocustomer.png"></img></a>
+	?><h1>Customer Resource</h1>
 <?php }
 else if(SITE=="channel"){
-	?><a href="<?=base_url()?>" title="channel resource"><img src="<?=base_url()?>images/logo.png"></img></a>
+    ?><h1>Channel Resource</h1>
 <?php }
 
 ?>
@@ -78,6 +78,7 @@ else if(SITE=="channel"){
 
   <!-- scripts concatenated and minified via ant build script -->
   <script src="js/mobile/mylibs/helper.js"></script>
+    <script src="js/mobile/mylibs/jquerymobile.js"></script>
   <!-- end concatenated and minified scripts-->
 
   <script>
