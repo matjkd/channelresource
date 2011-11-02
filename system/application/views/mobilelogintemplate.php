@@ -22,6 +22,7 @@
   <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/mobile/m/apple-touch-icon.png">
   <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
   <link rel="apple-touch-icon-precomposed" href="images/mobile/l/apple-touch-icon-precomposed.png">
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
   <!-- For nokia devices: -->
   <link rel="shortcut icon" href="images/mobile/l/apple-touch-icon.png">
 
@@ -47,22 +48,35 @@
 </head>
 
 <body>
+<div data-role="page"> 
+	<div data-role="header">
+                    <?php if(SITE=="customer"){
+                            ?><h1>Customer Resource</h1>
+                    <?php }
+                    else if(SITE=="channel"){
+                        ?><h1>Channel Resource</h1>
+                    <?php }
 
-  <div id="container">
-    <header>
+                    ?>
+        </div> 
+	<div data-role="content">
+            
+            
+            Login with your username and password below:<br/>
+    
+           	<?=$this->load->view('global/themes/mobile/login')?>
+            
+        </div> 
+	<div data-role="footer">...</div> 
+</div> 
+  
+ 
 
-    </header>
-    <div id="main" role="main">
-<?php if(SITE=="customer"){
-	?><h1>Customer Resource</h1>
-<?php }
-else if(SITE=="channel"){
-    ?><h1>Channel Resource</h1>
-<?php }
 
-?>
+    
+    
+    
 
-    </div>
 
     <footer>
 
@@ -78,7 +92,8 @@ else if(SITE=="channel"){
 
   <!-- scripts concatenated and minified via ant build script -->
   <script src="js/mobile/mylibs/helper.js"></script>
-    <script src="js/mobile/mylibs/jquerymobile.js"></script>
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
   <!-- end concatenated and minified scripts-->
 
   <script>
