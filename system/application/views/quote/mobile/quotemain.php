@@ -36,7 +36,7 @@ if($currency == "$") {$currency = "$";}
 
   <input type="hidden" name="assigned_id" id="assign_id" value="<?=$assigned_id?>"/>
 
-
+<fieldset data-role="controlgroup" >
   <div data-role="fieldcontain">                   
     <label for="basic">Assign To User:</label>
     <input type="text" name="assigned_name" id="company" value=""  />
@@ -44,6 +44,7 @@ if($currency == "$") {$currency = "$";}
      <label for="basic">Reference (for your Info):</label>
     <input type="text" name="quote_ref" id="basic" value=""  />
   </div>
+ </fieldset>   
     
           	
 <fieldset data-role="controlgroup" >
@@ -59,12 +60,12 @@ if($currency == "$") {$currency = "$";}
           
 <fieldset data-role="controlgroup" >
 	<legend>Capital Type:</legend>
-        
+        <label for="choice-1">Capital Amount</label>
      	<input type="radio" name="capital_type" id="choice-1" value="1" checked="checked" />
-     	<label for="choice-1">Capital Amount</label>
-
+     	
+<label for="choice-2">Periodic Payment</label>
      	<input type="radio" name="capital_type" id="choice-2" value="2"  />
-     	<label for="choice-2">Periodic Payment</label>
+     	
 
      	     <input type="number" name="amount_type" id="basic" value=""  />	
 </fieldset>
@@ -72,12 +73,12 @@ if($currency == "$") {$currency = "$";}
     
 <fieldset data-role="controlgroup" >
 	<legend>Calculate By:</legend>
-        
+        <label for="calc-1">Interest Rate</label>
      	<input type="radio" name="interest_type" id="calc-1" value="1" checked="checked" />
-     	<label for="calc-1">Interest Rate</label>
-
+     	
+<label for="calc-2">Rate Per 1000</label>
      	<input type="radio" name="interest_type" id="calc-2" value="2"  />
-     	<label for="calc-2">Rate Per 1000</label>
+     	
 
      	<input type="text" name="calculate_by" value="" id="interestrate"" />	
 </fieldset>
@@ -85,29 +86,30 @@ if($currency == "$") {$currency = "$";}
     
 <fieldset data-role="controlgroup" >
 	<legend>Payment Type:</legend>
-        
+        <label for="payment-1">Advance</label>
      	<input type="radio" name="payment_type" id="payment-1" value="2" checked="checked" />
-     	<label for="payment-1">Advance</label>
-
+     	
+<label for="payment-2">Arrears</label>
      	<input type="radio" name="payment_type" id="payment-2" value="1"  />
-     	<label for="payment-2">Arrears</label>
+     	
 
      	
 </fieldset>
 
 <fieldset data-role="controlgroup" >
 	<legend>Payment Frequency:</legend>
-        
+        <label for="frequency-1">Monthly</label>
      	<input type="radio" name="payment_frequency" id="frequency-1" value="12" checked="checked" />
-     	<label for="frequency-1">Monthly</label>
-
+     	
+<label for="frequency-2">Quarterly</label>
      	<input type="radio" name="payment_frequency" id="frequency-2" value="4"  />
-     	<label for="frequency-2">Quarterly</label>
-
+     	
+<label for="frequency-3">Annually</label>
      	<input type="radio" name="payment_frequency" id="frequency-3" value="1"  />
-     	<label for="frequency-3">Annually</label>
+     	
 </fieldset>    
     
+<fieldset data-role="controlgroup" >
     
       <div data-role="fieldcontain">                   
     <label for="basic">Initial:</label>
@@ -116,6 +118,8 @@ if($currency == "$") {$currency = "$";}
      <label for="basic">Regular:</label>
     <input type="number" name="regular" id="regular" value=""  />
   </div>
+    
+</fieldset>
   
 <?=form_hidden('date_added', unix_to_human(now(), TRUE, 'eu'))?>
 <?=form_hidden('user_id', $user_id)?>

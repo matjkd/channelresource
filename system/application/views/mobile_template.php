@@ -5,7 +5,7 @@
 
 <head>
   <meta charset="utf-8">
-
+/
   <title></title>
   <meta name="description" content="">
   <meta name="author" content="">
@@ -42,7 +42,7 @@
   <!-- more tags for your 'head' to consider https://gist.github.com/849231 -->
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/mobile/mobile.css?v=1">
+  <link rel="stylesheet" href="<?=base_url()?>css/themes/mobile/mobile.css?v=1">
 
   <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
   <script src="js/mobile/libs/modernizr-custom.js"></script>
@@ -52,16 +52,10 @@
   <!-- scripts concatenated and minified via ant build script -->
   <script src="js/mobile/mylibs/helper.js"></script>
     <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-    <?php if(isset($blackberry)) 
-    {
-        
-    }
-    else
-    {
-        ?>
+
     
-<script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
-<?php } ?>
+ <script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 </head>
 
