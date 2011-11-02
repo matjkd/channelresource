@@ -61,7 +61,4 @@ $user =  $this->session->userdata('user_id');
 	</tbody>
 </table>
 
-<?php
 
-print_r($quote_list);
-?>
