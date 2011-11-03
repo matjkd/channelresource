@@ -59,9 +59,12 @@
 
 <title>
 <?php if(SITE=="customer"){
+    
+    $domain = "customer-resource.com";
 	?>Lease-Desk Customer Resource
 <?php }
 else if(SITE=="channel"){
+      $domain = "channel-resource.com";
 	?>Lease-Desk Channel Resource
 <?php }
 
@@ -72,7 +75,7 @@ else if(SITE=="channel"){
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-19623681-11']);
-  _gaq.push(['_setDomainName', 'customer-resource.com']);
+  _gaq.push(['_setDomainName', '<?=$domain?>']);
   _gaq.push(['_setAllowLinker', true]);
   _gaq.push(['_trackPageview']);
 
