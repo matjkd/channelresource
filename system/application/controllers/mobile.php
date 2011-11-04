@@ -147,14 +147,14 @@ class Mobile extends My_Controller {
                
                 
                
-            
+             
               
           }
           
          if(isset($this->message)) {
             $data['message'] = $this->message;
         }
-        if (eregi("BlackBerry", $agent)) {
+        if (eregi("BlackBerry8300", $agent)) {
             $data['blackberry'] = 'yes';
             $this->load->vars($data);
         $this->load->view('mobile/blackberry_template');
