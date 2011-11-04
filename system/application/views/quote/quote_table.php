@@ -110,7 +110,7 @@ $this->table->add_row('<span id="output"></span>', form_input('calculate_by', se
 	$this->table->clear();
 	
 	
-	$this->table->set_heading('Managed Service Pricing', '', '');
+	$this->table->set_heading('Cost per User/Port Recurring Revenue Pricing', '', '');
 	$this->table->set_empty("&nbsp;");
 	$this->table->add_row('Number of Ports/Users', form_input('number_of_ports', set_value('number_of_ports', $number_of_ports), $fields));
 	$this->table->add_row('Annual Support Costs', form_input('annual_support_costs', set_value('annual_support_costs', $annual_support_costs), $fields));

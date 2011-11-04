@@ -38,7 +38,7 @@
   <!-- Mobile viewport optimization http://goo.gl/b9SaQ -->
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
   <!-- For iPhone 4 with high-resolution Retina display: -->
@@ -92,22 +92,35 @@
 </head>
 
 <body>
+    
+    
+   
+    
+    
 <div data-role="page" class="type-interior"> 
-	<div data-role="header">
-                    <?php if(SITE=="customer"){
-                            ?><h1>Customer Resource</h1>
+    
+     <?php if(SITE=="customer"){
+                            ?><img alt="Customer Resource" src="<?=base_url()?>images/logocustomer.png" width="100%"/>
                     <?php }
                     else if(SITE=="channel"){
-                        ?><h1>Channel Resource</h1>
+                        ?><img alt="Channel Resource" src="<?=base_url()?>images/logo.png" width="100%"/>
                     <?php }
 
                     ?>
-                        <a href="../../" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
-        </div> 
+<div data-role="header" data-position="inline">
+   
+                    <h2><?=$title?></h2>
+                    <?php if(isset($quote_id)) {?>
+                       <a href="<?=base_url()?>mobile/quote/<?=$quote_id?>" data-icon="gear" class="ui-btn-right" data-ajax="false">Edit</a>
+                      <?php } ?>
+</div>
+    
 	<div data-role="content">
             
+            <?php $this->load->view('global/mobilewarning'); ?>
+            
          <div class="content-primary">	
-             <h2><?=$title?></h2>
+           
         <?php $this->load->view($main); ?>
          </div><!--/content-primary -->
             
@@ -117,7 +130,7 @@
 
 							<h3>Tools</h3>
                                                         
-                                                        <ul data-role="listview" data-theme="d" data-dividertheme="d">
+                                                        <ul data-role="listview" data-theme="c" data-dividertheme="d">
                                                                                                                             
 								<li><a href="<?=base_url()?>mobile/quote" data-ajax="false">Online Quote Tool</a></li>
                                                                                                                                 <li><a href="<?=base_url()?>mobile/list_quotes" data-ajax="false">List Quotes</a></li>

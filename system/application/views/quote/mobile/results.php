@@ -11,54 +11,84 @@
 
 
 		<ul data-role="listview" data-inset="true">
+                    
+                    <li data-role="list-divider">
+                                                            Results
+
+                                                        </li>
                                 <li>
-                                        <h3>Captial Amount:</h3>
+                                        Captial Amount:
 
                                         <p class="ui-li-aside"><strong><?=$currency.number_format($row['capital'], 2)?></strong></p>
                                 </li>
 
                                                         <li>
-                                                                        <h3>Interest Rate:</h3>
+                                                                        Interest Rate:
 
                                                                         <p class="ui-li-aside"><strong><?=$row['interest_rate']?></strong></p>
                                                         </li>
 
                                                         <li>
-                                                                <h3>Rate Per Thousand:</h3>
+                                                                Rate Per Thousand:
 
                                                                 <p class="ui-li-aside"><strong><?=$row['rate_per_1000']?></strong></p>
                                                         </li>
 
                                                         <li>
-                                                                <h3>Payment Type:</h3>
+                                                                Payment Type:
 
                                                                 <p class="ui-li-aside"><strong><?=$row['payment_type']?></strong></p>
                                                         </li>
                                                         
                                                         <li>
-                                                                <h3>Payment Frequency:</h3>
+                                                                Payment Frequency:
 
                                                                 <p class="ui-li-aside"><strong><?=$row['payment_frequency']?></strong></p>
                                                         </li>
                                                         
                                                          <li>
-                                                                <h3>Payment Profile:</h3>
+                                                                Payment Profile:
 
                                                                 <p class="ui-li-aside"><strong><?=$row['initial']."+".$row['regular']?></strong></p>
                                                         </li>
                                                         
                                                         <li>
-                                                                <h3>Initial:</h3>
+                                                                Initial:
 
                                                                 <p class="ui-li-aside"><strong><?=$currency.$row['initial_result']?></strong></p>
                                                         </li>
                                                         
                                                         
                                                         <li>
-                                                                <h3>Regular:</h3>
+                                                                Regular:
 
                                                                 <p class="ui-li-aside"><strong><?=$currency.$row['regular_result']?></strong></p>
                                                         </li>
+                                                        <li data-role="list-divider">
+                                                                Cost per User/Port Recurring Revenue Pricing
+
+                                                        </li>
+                                                        
+                                                        <li>
+                                                                Product cost per port/user:
+
+                                                                <p class="ui-li-aside"><strong><?=$currency.$row['product_cost_per_port']?></strong></p>
+                                                        </li>
+                                                        
+                                                         <li>
+                                                                Service cost per port/user:
+
+                                                                <p class="ui-li-aside"><strong><?=$currency.$row['service_cost_per_port']?></strong></p>
+                                                        </li>
+                                                          <li>
+                                                                Total Cost Per Port/User per month:
+
+                                                                <p class="ui-li-aside"><strong><?=$currency.$row['cost_per_port_per_month']?></strong></p>
+                                                        </li>
+                                                        
+                                                
+                                                        
+                                                        
                                                         
                                                         
 			
