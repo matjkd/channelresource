@@ -122,6 +122,10 @@
          <div class="content-primary">	
            
         <?php $this->load->view($main); ?>
+        
+
+
+
          </div><!--/content-primary -->
             
             <div class="content-secondary">
@@ -138,13 +142,18 @@
                                         </div>
                 
             </div>
-            
+            <br/>
+    <!-- Place this tag where you want the +1 button to render -->
+<g:plusone size="medium"></g:plusone>
+
        </div><!-- /content -->
-	<div data-role="footer" style="text-align: center;"> <p>&copy; Copyright 2011 Lease-Desk Ltd.</p></div> 
+	
+<div data-role="footer" style="text-align: center;"> 
+      
+    
+    <p>&copy; Copyright 2011 Lease-Desk Ltd.</p></div> 
 </div> 
   
- 
-
 
     
     
@@ -158,8 +167,16 @@
 
 
   <!-- JavaScript at the bottom for fast page loading -->
+<!-- Place this render call where appropriate -->
+<script type="text/javascript">
+  window.___gcfg = {lang: 'en-GB'};
 
-
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
 
  
 

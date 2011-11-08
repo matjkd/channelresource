@@ -193,6 +193,58 @@ class Quote_model extends Model {
         return $results;
         
     }
+    /**
+     *
+     * @return type 
+     */
+    function num_quotes()
+{
+	$query = $this->db->count_all_results('quote');
+	return $query;
+}
+    
+    /**
+     * 
+     */
+    function listquotes_loadmore($offset=0)
+    {
+        $data = array();
+        $company = $this->session->userdata('company_id');
+        $user = $this->session->userdata('user_id');
+        
+        if (!isset($company)|| $company > 2) {
+            $this->db->where('quote.user_id', $user);
+            $this->db->or_where('quote.assigned', $user);
+            $this->db->join('users as u', 'u.user_id=quote.user_id', 'right');
+            $this->db->select('u.firstname, u.lastname, quote.date_added, quote.quote_ref, quote.quote_id');
+        } else if (!isset($company)|| $company < 3) {
+            $this->db->join('users', 'users.user_id=quote.user_id');
+            $this->db->join('users as a', 'a.user_id=quote.assigned', 'left');
+            $this->db->select('a.firstname as fname, a.lastname as lname, users.firstname, users.lastname, quote.date_added, quote.quote_ref, quote.quote_id');
+        }
+        
+        
+        
+        $this->db->order_by('quote.date_added', 'desc');
+        $Q = $this->db->get('quote', 10, $offset);
+        if ($Q->num_rows() > 0) {
+            foreach($Q->result_array() as $row):
+            
+            $results[] = $row;
+            
+            
+            endforeach;
+            
+            
+            
+        } else {
+            $results[] = "X";
+        }
+        $Q->free_result();
+        
+        
+        return $results;
+    }
  /**
 *
 * @param type $id

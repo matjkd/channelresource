@@ -1,3 +1,4 @@
+
 <ul data-role="listview" data-split-icon="gear" data-split-theme="d" data-filter="true">
 
 <?php foreach($quote_list as $key => $row):
@@ -23,3 +24,6 @@
 
 <?php endforeach; ?>
 </ul>
+<div id="more_button">
+	more
+	</div>
