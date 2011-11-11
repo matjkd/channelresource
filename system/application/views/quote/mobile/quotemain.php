@@ -57,28 +57,28 @@ if(!isset($euro)) { $euro = FALSE; }
 
 <fieldset data-role="controlgroup" >
   <div data-role="fieldcontain">                   
-    <label for="basic">Assign To User:</label>
+    <label class="ui-btn-text" for="basic">Assign To User:</label>
     <input type="text" name="assigned_name" id="company" value="<?=set_value('assigned_name', $assigned_name)?>"  />
     
-     <label for="basic">Reference (for your Info):</label>
+     <label class="ui-btn-text" for="basic">Reference (for your Info):</label>
     <input type="text" name="quote_ref" id="basic" value="<?=set_value('quote_ref', $quote_ref)?>"  />
   </div>
  </fieldset>   
     
           	
-<fieldset data-role="controlgroup" >
+<fieldset data-role="controlgroup" class="controlgroup" data-type="horizontal">
 	<legend>Currency:</legend>
         
   
   
-  <label for="choice-a">£</label>
-     	<input type="radio" name="currency" id="choice-a" value="£" <?php echo set_radio('currency', '£', $pound); ?>/>
+  <label class="ui-btn-text" for="choice-a">£</label>
+     	<input type="radio" name="currency" id="choice-a" class="ui-icon" value="£" <?php echo set_radio('currency', '£', $pound); ?>/>
      	
-<label for="choice-b">€</label>
-     	<input type="radio" name="currency" id="choice-b" value="€"  <?php echo set_radio('currency', '€', $euro); ?>/>
+<label class="ui-btn-text" for="choice-b">€</label>
+     	<input type="radio" name="currency" id="choice-b" class="ui-icon" value="€"  <?php echo set_radio('currency', '€', $euro); ?>/>
   
-<label for="choice-c">$</label>
-     	<input type="radio" name="currency" id="choice-c" value="$"  <?php echo set_radio('currency', '$', $dollar); ?>/>
+<label class="ui-btn-text" for="choice-c">$</label>
+     	<input type="radio" name="currency" id="choice-c" class="ui-icon" value="$"  <?php echo set_radio('currency', '$', $dollar); ?>/>
   
   
 
@@ -89,11 +89,11 @@ if(!isset($euro)) { $euro = FALSE; }
           
 <fieldset data-role="controlgroup" >
 	<legend>Capital Type:</legend>
-        <label for="choice-1">Capital Amount</label>
-     	<input type="radio" name="capital_type" id="choice-1" value="1" <?php echo set_radio('capital_type', '1', $capitalval); ?>/>
+        <label class="ui-btn-text" for="choice-1">Capital Amount</label>
+     	<input type="radio" name="capital_type" class="ui-icon"  id="choice-1" value="1" <?php echo set_radio('capital_type', '1', $capitalval); ?>/>
      	
-<label for="choice-2">Periodic Payment</label>
-     	<input type="radio" name="capital_type" id="choice-2" value="2"  <?php echo set_radio('capital_type', '2', $periodicval); ?>/>
+<label class="ui-btn-text" for="choice-2">Periodic Payment</label>
+     	<input type="radio" name="capital_type" class="ui-icon"  id="choice-2" value="2"  <?php echo set_radio('capital_type', '2', $periodicval); ?>/>
      	
 
      	     <input type="number" name="amount_type" id="basic" value="<?=set_value('amount_type', $amount_type)?>"  />	
@@ -102,24 +102,24 @@ if(!isset($euro)) { $euro = FALSE; }
     
 <fieldset data-role="controlgroup" >
 	<legend>Calculate By:</legend>
-        <label for="calc-1">Interest Rate</label>
-     	<input type="radio" name="interest_type" id="calc-1" value="1" <?php echo set_radio('interest_type', '1', $interestval); ?> />
+        <label class="ui-btn-text" for="calc-1">Interest Rate</label>
+     	<input  class="ui-icon"  type="radio" name="interest_type" id="calc-1" value="1" <?php echo set_radio('interest_type', '1', $interestval); ?> />
      	
-<label for="calc-2">Rate Per 1000</label>
-     	<input type="radio" name="interest_type" id="calc-2" value="2" <?php echo set_radio('interest_type', '2', $rateper1000val); ?> />
+<label class="ui-btn-text" for="calc-2">Rate Per 1000</label>
+     	<input  class="ui-icon"  type="radio" name="interest_type" id="calc-2" value="2" <?php echo set_radio('interest_type', '2', $rateper1000val); ?> />
      	
 
-     	<input type="text" name="calculate_by" value="<?=set_value('calculate_by', $calculate_by)?>" id="interestrate" />	
+     	<input  type="text" name="calculate_by" value="<?=set_value('calculate_by', $calculate_by)?>" id="interestrate" />	
 </fieldset>
     
     
 <fieldset data-role="controlgroup" >
 	<legend>Payment Type:</legend>
-        <label for="payment-1">Advance</label>
-     	<input type="radio" name="payment_type" id="payment-1" value="2" <?php echo set_radio('payment_type', '2', $advanceval); ?> />
+        <label class="ui-btn-text" for="payment-1">Advance</label>
+     	<input type="radio" name="payment_type" id="payment-1" class="ui-icon"  value="2" <?php echo set_radio('payment_type', '2', $advanceval); ?> />
      	
-<label for="payment-2">Arrears</label>
-     	<input type="radio" name="payment_type" id="payment-2" value="1"  <?php echo set_radio('payment_type', '1', $arrearsval); ?> />
+<label class="ui-btn-text" for="payment-2">Arrears</label>
+     	<input type="radio" name="payment_type" id="payment-2"  class="ui-icon" value="1"  <?php echo set_radio('payment_type', '1', $arrearsval); ?> />
      	
 
      	
@@ -127,14 +127,14 @@ if(!isset($euro)) { $euro = FALSE; }
 
 <fieldset data-role="controlgroup" >
 	<legend>Payment Frequency:</legend>
-        <label for="frequency-1">Monthly</label>
-     	<input type="radio" name="payment_frequency" id="frequency-1" value="12" <?php echo set_radio('payment_frequency', '12', $monthlyval); ?>/>
+        <label class="ui-btn-text" for="frequency-1">Monthly</label>
+     	<input type="radio" name="payment_frequency" id="frequency-1" class="ui-icon"  value="12" <?php echo set_radio('payment_frequency', '12', $monthlyval); ?>/>
      	
-<label for="frequency-2">Quarterly</label>
-     	<input type="radio" name="payment_frequency" id="frequency-2" value="4" <?php echo set_radio('payment_frequency', '4', $quarterlyval); ?> />
+<label class="ui-btn-text" for="frequency-2">Quarterly</label>
+     	<input type="radio" name="payment_frequency" id="frequency-2"  class="ui-icon" value="4" <?php echo set_radio('payment_frequency', '4', $quarterlyval); ?> />
      	
-<label for="frequency-3">Annually</label>
-     	<input type="radio" name="payment_frequency" id="frequency-3" value="1"  <?php echo set_radio('payment_frequency', '1', $yearlyval); ?>/>
+<label class="ui-btn-text" for="frequency-3">Annually</label>
+     	<input type="radio" name="payment_frequency" id="frequency-3" class="ui-icon"  value="1"  <?php echo set_radio('payment_frequency', '1', $yearlyval); ?>/>
      	
 </fieldset>    
     
