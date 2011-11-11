@@ -163,8 +163,8 @@ class Mobile extends My_Controller {
         {
        
         $this->load->vars($data);
-        //$this->load->view('mobile_template');
-          $this->load->view('mobile/blackberry_template');
+       $this->load->view('mobile_template');
+       //   $this->load->view('mobile/blackberry_template');
         }
     }
     /**
