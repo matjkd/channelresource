@@ -1,29 +1,4 @@
-<?php
-// Copyright 2010 Google Inc. All Rights Reserved.
-
-$GA_ACCOUNT = "MO-19623681-11";
-$GA_PIXEL = "/ga.php";
-
-function googleAnalyticsGetImageUrl() {
-    global $GA_ACCOUNT, $GA_PIXEL;
-    $url = "";
-    $url .= $GA_PIXEL . "?";
-    $url .= "utmac=" . $GA_ACCOUNT;
-    $url .= "&utmn=" . rand(0, 0x7fffffff);
-    // $referer = $_SERVER["HTTP_REFERER"];
-    $query = $_SERVER["QUERY_STRING"];
-    $path = $_SERVER["REQUEST_URI"];
-    if (empty($referer)) {
-        $referer = "-";
-    }
-    $url .= "&utmr=" . urlencode($referer);
-    if (!empty($path)) {
-        $url .= "&utmp=" . urlencode($path);
-    }
-    $url .= "&guid=ON";
-    return str_replace("&", "&amp;", $url);
-}
-?><!doctype html>
+<!doctype html>
 <!-- Conditional comment for mobile ie7 http://blogs.msdn.com/b/iemobile/ -->
 <!--[if IEMobile 7 ]>    <html class="no-js iem7"> <![endif]-->
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js"> <!--<![endif]-->
@@ -49,17 +24,8 @@ function googleAnalyticsGetImageUrl() {
         <link rel="apple-touch-icon-precomposed" href="images/mobile/l/apple-touch-icon-precomposed.png">
 
         <link rel="stylesheet" href="<?= base_url() ?>css/jquery-ui-1.8.custom.css" />
-        
 
-        <!-- For nokia devices: -->
-        <link rel="shortcut icon" href="images/mobile/l/apple-touch-icon.png">
-
-        <!--iOS web app, deletable if not needed -->
-        <!--the script prevents links from opening in mobile safari. https://gist.github.com/1042026
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
-        <link rel="apple-touch-startup-image" href="img/l/splash.png">-->
+       
 
         <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
         <meta http-equiv="cleartype" content="on">
@@ -69,20 +35,12 @@ function googleAnalyticsGetImageUrl() {
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="<?= base_url() ?>css/themes/mobile/mobile.css?v=1">
 
-        <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
-        <script src="js/mobile/libs/modernizr-custom.js"></script>
-        <!-- Media Queries Polyfill https://github.com/shichuan/mobile-html5-boilerplate/wiki/Media-Queries-Polyfill -->
-        <script>Modernizr.mq('(min-width:0)') || document.write('<script src="js/mobile/libs/respond.min.js">\x3C/script>')</script>
-
-        <!-- scripts concatenated and minified via ant build script -->
-        <script src="js/mobile/mylibs/helper.js"></script>
-        <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+  
 
         <link rel="stylesheet" href="<?= base_url() ?>css/themes/mobile/blackberry.css?v=1">
 
 
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-
+        
     </head>
 
     <body>
