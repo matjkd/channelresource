@@ -234,6 +234,7 @@ class Quote_model extends Model {
     function get_data($id) {
         $data = array();
         $this->db->where('quote_id', $id);
+                $this->db->join('users', 'users.user_id=quote.user_id');
         $query = $this->db->get('quote');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row)

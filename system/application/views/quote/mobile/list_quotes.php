@@ -46,6 +46,6 @@
  </div>
 
 <br/>
-<div style="clear:both;" id="more_button">
+<div style="clear:both;" id="more_button" data-role="button" data-icon="arrow-d">
     more
 </div>

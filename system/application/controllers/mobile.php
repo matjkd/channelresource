@@ -40,6 +40,7 @@ class Mobile extends My_Controller {
 
 
         //get user data and set defaults
+        
         $userdata = $this->membership_model->get_employee_detail($data['quoteuser_id']);
         foreach ($userdata as $row2):
             if ($row2['currency'] == NULL) {
@@ -299,6 +300,26 @@ class Mobile extends My_Controller {
             $data['company_id'] = $row['company_id'];
             $data['date_added'] = $row['date_added'];
         }
+        
+            //Turn the assigned user id into the full name then get the company details
+            if ($data['assigned'] == FALSE) {
+                $customer['assigned_info'] = $this->membership_model->get_employee_detail($data['user_id']);
+                foreach ($customer['assigned_info'] as $key => $row) {
+                    $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
+                    $data['assigned_company'] = $row['company_id'];
+                    $data['assigned_email'] = $row['email_address'];
+                }
+            } else {
+                $customer['assigned_info'] = $this->membership_model->get_employee_detail($data['assigned']);
+                foreach ($customer['assigned_info'] as $key => $row) {
+                    $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
+                    $data['assigned_company'] = $row['company_id'];
+                    $data['assigned_email'] = $row['email_address'];
+                }
+            }
+        
+         
+        
         //CALCULATION STARTS HERE
         $this->load->library('calculator');
         $data['quote_results'] = $this->calculator->quote($data['capital_type'], $data['amount_type'], $data['interest_type'], $data['calculate_by'], $data['payment_type'], $data['payment_frequency'], $data['initial'], $data['regular'], $data['number_of_ports'], $data['annual_support_costs'], $data['other_monthly_costs']);
