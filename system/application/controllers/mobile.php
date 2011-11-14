@@ -156,10 +156,10 @@ class Mobile extends My_Controller {
            // $this->load->view('mobile_template');
             $this->load->view('mobile/blackberry_template');
         } else {
- $data['main'] = '/quote/mobile/quotemain_bb';
+// $data['main'] = '/quote/mobile/quotemain_bb';
             $this->load->vars($data);
-           // $this->load->view('mobile_template');
-               $this->load->view('mobile/blackberry_template');
+           $this->load->view('mobile_template');
+          //     $this->load->view('mobile/blackberry_template');
         }
     }
 
