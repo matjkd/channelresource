@@ -136,7 +136,7 @@
 
   <script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+       
 
     <!-- end concatenated and minified scripts-->
 
