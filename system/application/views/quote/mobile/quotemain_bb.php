@@ -118,8 +118,9 @@ echo form_open('mobile/quote_results', $attributes, $hidden);
 <fieldset data-role="controlgroup" >
     <div data-role="fieldcontain" class="ui-field-contain ui-body ui-br">                   
         <label class="ui-btn-text ui-input-text" for="basic">Assign To User:</label>
-        <input type="text" name="assigned_name" id="company" value="<?= set_value('assigned_name', $assigned_name) ?>" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset ui-autocomplete-input" autocomplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true" style="background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAOZJREFUeNrEkzEKhDAQRWfWCOIhRLDT1sLazuva23gADyDYWKuFoogIs05AcNXVLBabJpDkzX9MEiQieDJe8HSwgYpFHMdUFAX1fU9bTqiEMOx5HnRdB+M48sxFkPduCyRJQrZtS7iua1gM5Lrruvc94OQ9XJYlGIZx38St9hb2fR8cx8H1nFDVZpi1gyDAy2v8Bi+pEIYh7s9/GAzDIK8oz/OD9j75YDBNk4SFEDLtSvvUYJ5nME0T2ULTNLAsC3RdP9U+NUjTFKqqorVY0zQQRRH+8pQpyzJq25bWXqhw+Pff+BZgAD/OvI9PFUHuAAAAAElFTkSuQmCC); background-position: 100% 0%; background-repeat: no-repeat no-repeat; ">
-
+      
+         <input type="text" name="assigned_name" id="company" value="<?= set_value('assigned_name', $assigned_name) ?>"  class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset"/>
+        
         <label class="ui-btn-text ui-input-text" for="basic">Reference (for your Info):</label>
         <input type="text" name="quote_ref" id="basic" value="<?= set_value('quote_ref', $quote_ref) ?>" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">
     </div>
