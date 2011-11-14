@@ -41,7 +41,7 @@
 
         <!-- scripts concatenated and minified via ant build script -->
         <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-
+ <script src="<?= base_url() ?>js/mobile/libs/jquery_mobile.js"></script>
 
 
 
@@ -134,7 +134,7 @@
         })();
     </script>
 
-    <script src="<?= base_url() ?>js/mobile/libs/jquery_mobile.js"></script>
+   
 
     <script src="<?= base_url() ?>js/mobile/libs/jquery_ui.js"></script>
 
