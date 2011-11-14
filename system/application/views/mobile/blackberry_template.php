@@ -18,29 +18,34 @@
         <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
         <!-- For iPhone 4 with high-resolution Retina display: -->
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/mobile/h/apple-touch-icon.png">
+
         <!-- For first-generation iPad: -->
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/mobile/m/apple-touch-icon.png">
+
         <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
         <link rel="apple-touch-icon-precomposed" href="images/mobile/l/apple-touch-icon-precomposed.png">
 
         <link rel="stylesheet" href="<?= base_url() ?>css/jquery-ui-1.8.custom.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
 
-       
+        <!-- For nokia devices: -->
+        <link rel="shortcut icon" href="images/mobile/l/apple-touch-icon.png">
+
 
         <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
         <meta http-equiv="cleartype" content="on">
 
-        <!-- more tags for your 'head' to consider https://gist.github.com/849231 -->
-
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="<?= base_url() ?>css/themes/mobile/mobile.css?v=1">
 
-  
 
-        <link rel="stylesheet" href="<?= base_url() ?>css/themes/mobile/blackberry.css?v=1">
+        <!-- scripts concatenated and minified via ant build script -->
+        <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+ 
 
- <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-               <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
+
+
     </head>
 
     <body>
@@ -51,14 +56,13 @@
 
         <div data-role="page" class="type-interior"> 
 
-            <?php if (SITE == "customer") {
-                ?><img alt="Customer Resource" src="<?= base_url() ?>images/logocustomer.png" width="100%"/>
-            <?php
+            <?php if (SITE == "customer") { ?><img alt="Customer Resource" src="<?= base_url() ?>images/logocustomer.png" width="100%"/>
+                <?php
             } else if (SITE == "channel") {
                 ?><img alt="Channel Resource" src="<?= base_url() ?>images/logo.png" width="100%"/>
             <?php }
             ?>
-            <div data-role="header" data-position="inline" id="ui-bar">
+          <div data-role="header" data-position="inline" id="ui-bar">
 
                 <h2><?= $title ?></h2>
                 <?php if (isset($quote_id)) { ?>
@@ -71,12 +75,12 @@
                 <?php $this->load->view('global/mobilewarning'); ?>
 
                 <div class="content-primary">	
-<br/>
-                    Blackberry's are not fully supported for the online quote tool, however we are working on it!     If you have problems <a href="<?= base_url() ?>quote/main" data-ajax="false">View desktop site</a>
-                    
-                       <?php $this->load->view($main); ?>
 
-                
+                    <?php $this->load->view($main); ?>
+
+
+
+
                 </div><!--/content-primary -->
 
                 <div class="content-secondary">
@@ -93,13 +97,19 @@
                     </div>
 
                 </div>
+                <br/>
+                <!-- Place this tag where you want the +1 button to render -->
+                <g:plusone size="medium"></g:plusone>
 
             </div><!-- /content -->
-            <div data-role="footer" style="text-align: center;" id="ui-bar"> <p>&copy; Copyright 2011 Lease-Desk Ltd.<br/>
-                    <a href="<?= base_url() ?>quote/main" data-ajax="false">View desktop site</a></p></div> 
+
+            <div data-role="footer" style="text-align: center;"> 
+
+
+                <p>&copy; Copyright 2011 Lease-Desk Ltd.<br/>
+                    <a href="<?= base_url() ?>quote/main" data-ajax="false">View desktop site</a>
+                </p></div> 
         </div> 
-
-
 
 
 
@@ -113,6 +123,28 @@
     </div> <!--! end of #container -->
 
 
+    <!-- JavaScript at the bottom for fast page loading -->
+    <!-- Place this render call where appropriate -->
+    <script type="text/javascript">
+        window.___gcfg = {lang: 'en-GB'};
+
+        (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+    </script>
+
+   
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+   
+
+    <!-- end concatenated and minified scripts-->
+
+    <script>
+        // iPhone Scale Bug Fix, read this when using http://www.blog.highub.com/mobile-2/a-fix-for-iphone-viewport-scale-bug/
+        MBP.scaleFix();
+    </script>
 
 
 
