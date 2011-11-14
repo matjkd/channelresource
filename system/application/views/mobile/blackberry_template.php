@@ -39,8 +39,8 @@
 
         <link rel="stylesheet" href="<?= base_url() ?>css/themes/mobile/blackberry.css?v=1">
 
-
-        
+ <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+               <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
     </head>
 
     <body>
