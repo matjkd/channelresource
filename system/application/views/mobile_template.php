@@ -35,24 +35,15 @@
         <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
         <meta http-equiv="cleartype" content="on">
 
-        <!-- more tags for your 'head' to consider https://gist.github.com/849231 -->
-
-        <!-- Main Stylesheet -->
+               <!-- Main Stylesheet -->
         <link rel="stylesheet" href="<?= base_url() ?>css/themes/mobile/mobile.css?v=1">
 
-        <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
-        <script src="<?=base_url()?>js/mobile/libs/modernizr-custom.js"></script>
-        <!-- Media Queries Polyfill https://github.com/shichuan/mobile-html5-boilerplate/wiki/Media-Queries-Polyfill -->
-        <script>Modernizr.mq('(min-width:0)') || document.write('<script src="<?=base_url()?>js/mobile/libs/respond.min.js">\x3C/script>')</script>
-
-        <!-- scripts concatenated and minified via ant build script -->
-        <script src="<?=base_url()?>js/mobile/mylibs/helper.js"></script>
-        <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+        
+       <!-- scripts concatenated and minified via ant build script -->
+            <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
   
 
-            <script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+          
 
     </head>
 
@@ -143,7 +134,9 @@
         })();
     </script>
 
+  <script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
 
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 
     <!-- end concatenated and minified scripts-->
 

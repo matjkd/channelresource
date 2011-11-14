@@ -88,7 +88,23 @@ if ($payment_frequency == NULL) {
     $yearlyval = FALSE;
 }
 ?>
-
+<script type="text/javascript">
+    $(function() {
+        var availableTags = [<?php $this->load->view('ajax/json_users'); ?>];
+        $("#company").autocomplete({
+            source: availableTags,
+            select: function(event,ui){
+                $('#assign_id').val(ui.item.id);
+                $('#currency' ).val(ui.item.currency);
+                $('#interestrate').val(ui.item.interestrate);
+                $('#initial').val(ui.item.initial);
+                $('#regular').val(ui.item.regular);
+            }
+        });
+    });
+	
+	
+</script>
 <?php
 $user_id = $this->session->userdata('user_id');
 
