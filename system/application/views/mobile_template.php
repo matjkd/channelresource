@@ -45,6 +45,7 @@
 
 
 
+
     </head>
 
     <body>
@@ -135,8 +136,8 @@
     </script>
 
    
-
-    <script src="<?= base_url() ?>js/mobile/libs/jquery_ui.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+   
 
     <!-- end concatenated and minified scripts-->
 
