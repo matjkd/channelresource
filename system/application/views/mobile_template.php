@@ -18,10 +18,10 @@
         <!-- Home screen icon  Mathias Bynens http://goo.gl/6nVq0 -->
         <!-- For iPhone 4 with high-resolution Retina display: -->
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/mobile/h/apple-touch-icon.png">
-        
+
         <!-- For first-generation iPad: -->
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/mobile/m/apple-touch-icon.png">
-        
+
         <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
         <link rel="apple-touch-icon-precomposed" href="images/mobile/l/apple-touch-icon-precomposed.png">
 
@@ -30,20 +30,20 @@
 
         <!-- For nokia devices: -->
         <link rel="shortcut icon" href="images/mobile/l/apple-touch-icon.png">
-   
-        
+
+
         <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
         <meta http-equiv="cleartype" content="on">
 
-               <!-- Main Stylesheet -->
+        <!-- Main Stylesheet -->
         <link rel="stylesheet" href="<?= base_url() ?>css/themes/mobile/mobile.css?v=1">
 
-        
-       <!-- scripts concatenated and minified via ant build script -->
-            <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-  
 
-          
+        <!-- scripts concatenated and minified via ant build script -->
+        <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+
+
+
 
     </head>
 
@@ -55,8 +55,8 @@
 
         <div data-role="page" class="type-interior"> 
 
-<?php if (SITE == "customer") { ?><img alt="Customer Resource" src="<?= base_url() ?>images/logocustomer.png" width="100%"/>
-            <?php
+            <?php if (SITE == "customer") { ?><img alt="Customer Resource" src="<?= base_url() ?>images/logocustomer.png" width="100%"/>
+                <?php
             } else if (SITE == "channel") {
                 ?><img alt="Channel Resource" src="<?= base_url() ?>images/logo.png" width="100%"/>
             <?php }
@@ -64,18 +64,18 @@
             <div data-role="header" data-position="inline">
 
                 <h2><?= $title ?></h2>
-            <?php if (isset($quote_id)) { ?>
+                <?php if (isset($quote_id)) { ?>
                     <a href="<?= base_url() ?>mobile/quote/<?= $quote_id ?>" data-icon="gear" class="ui-btn-right" data-ajax="false">Edit</a>
-<?php } ?>
+                <?php } ?>
             </div>
 
             <div data-role="content">
 
-<?php $this->load->view('global/mobilewarning'); ?>
+                <?php $this->load->view('global/mobilewarning'); ?>
 
                 <div class="content-primary">	
 
-                <?php $this->load->view($main); ?>
+                    <?php $this->load->view($main); ?>
 
 
 
@@ -134,9 +134,9 @@
         })();
     </script>
 
-  <script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
+    <script src="<?= base_url() ?>js/mobile/libs/jquery_mobile.js"></script>
 
-       
+    <script src="<?= base_url() ?>js/mobile/libs/jquery_ui.js"></script>
 
     <!-- end concatenated and minified scripts-->
 
@@ -145,7 +145,7 @@
         MBP.scaleFix();
     </script>
 
-  
-  
+
+
 </body>
 </html>
