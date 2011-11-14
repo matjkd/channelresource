@@ -30,14 +30,8 @@
 
         <!-- For nokia devices: -->
         <link rel="shortcut icon" href="images/mobile/l/apple-touch-icon.png">
-
-        <!--iOS web app, deletable if not needed -->
-        <!--the script prevents links from opening in mobile safari. https://gist.github.com/1042026
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <script>(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")</script>
-        <link rel="apple-touch-startup-image" href="img/l/splash.png">-->
-
+   
+        
         <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
         <meta http-equiv="cleartype" content="on">
 
