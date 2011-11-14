@@ -128,26 +128,29 @@ echo form_open('mobile/quote_results', $attributes, $hidden);
 </fieldset>   
 
 
-<fieldset data-role="controlgroup" class="controlgroup" data-type="horizontal">
-    <legend>Currency:</legend>
+
+<fieldset data-role="controlgroup" class="controlgroup ui-corner-all ui-controlgroup ui-controlgroup-horizontal" data-type="horizontal"><div role="heading" class="ui-controlgroup-label">Currency:</div><div class="ui-controlgroup-controls">
+    
 
 
 
-    <label class="ui-btn-text" for="choice-a">£</label>
-    <input type="radio" name="currency" id="choice-a" class="ui-icon" value="£" <?php echo set_radio('currency', '£', $pound); ?>/>
+    <div class="ui-radio"><label class="ui-btn-text ui-btn ui-radio-off ui-corner-left ui-btn-up-c" for="choice-a" data-theme="c"><span class="ui-btn-inner ui-corner-left" aria-hidden="true"><span class="ui-btn-text">£</span></span></label><input type="radio" name="currency" id="choice-a" class="ui-icon" value="£" <?php echo set_radio('currency', '£', $pound); ?>></div>
+    
 
-    <label class="ui-btn-text" for="choice-b">€</label>
-    <input type="radio" name="currency" id="choice-b" class="ui-icon" value="€"  <?php echo set_radio('currency', '€', $euro); ?>/>
+    <div class="ui-radio"><label class="ui-btn-text ui-btn ui-radio-on ui-btn-active ui-btn-up-c" for="choice-b" data-theme="c"><span class="ui-btn-inner" aria-hidden="true"><span class="ui-btn-text">€</span></span></label><input type="radio" name="currency" id="choice-b" class="ui-icon" value="€" <?php echo set_radio('currency', '€', $euro); ?>></div>
+    
 
-    <label class="ui-btn-text" for="choice-c">$</label>
-    <input type="radio" name="currency" id="choice-c" class="ui-icon" value="$"  <?php echo set_radio('currency', '$', $dollar); ?>/>
-
-
+    <div class="ui-radio"><label class="ui-btn-text ui-btn ui-radio-off ui-corner-right ui-controlgroup-last ui-btn-up-c" for="choice-c" data-theme="c"><span class="ui-btn-inner ui-corner-right ui-controlgroup-last" aria-hidden="true"><span class="ui-btn-text">$</span></span></label><input type="radio" name="currency" id="choice-c" class="ui-icon" value="$" <?php echo set_radio('currency', '$', $dollar); ?>></div>
+    
 
 
 
 
-</fieldset>
+
+
+</div></fieldset>
+
+
 
 <fieldset data-role="controlgroup" >
     <legend>Capital Type:</legend>
