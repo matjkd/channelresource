@@ -21,30 +21,16 @@ body {
     color:#555555;
 
 }
-input {
-    display:block;
 
-    width:99%;
-    padding:3px;
-    margin:3px;
-    float:left;
-}
 
-label {
 
-    clear:both;
-    float:left;
-    display:block;
-    padding:3px;
-    margin:3px;
-    font-weight: bold;
-
-}
 
 fieldset {
-    border:0px solid #555555;
-    margin:5px;
-    padding:5px;
+    border:1px solid #555555;
+    margin:5px 5px 20px;
+    padding:15px;
+    background:#fff;
+    
 
 }
 
@@ -75,28 +61,3 @@ h2 {
     outline: 0!important;
 }
 
-.ui-btn-text{
-    float:left;
-    display:block;
-    font-size: 16px;
-
-}
-.ui-icon {
-    float:left;
-    padding: .6em 25px;
-    display: block;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    zoom: 1;
-
-
-    width: 18px;
-    height: 18px;
-}
-.controlgroup {
-    display: block;
-    width: 100%;
-
-}

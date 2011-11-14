@@ -37,7 +37,7 @@
 
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="<?= base_url() ?>css/themes/mobile/mobile.css?v=1">
-
+    <link rel="stylesheet" href="<?= base_url() ?>css/themes/mobile/blackberry.css?v=1">
 
         <!-- scripts concatenated and minified via ant build script -->
         <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
