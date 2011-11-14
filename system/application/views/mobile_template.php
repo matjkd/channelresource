@@ -54,11 +54,7 @@
         <!-- scripts concatenated and minified via ant build script -->
         <script src="<?=base_url()?>js/mobile/mylibs/helper.js"></script>
         <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
-        <?php if (isset($blackberry) && $blackberry == "yes") { ?>
-            <link rel="stylesheet" href="<?= base_url() ?>css/themes/mobile/blackberry.css?v=1">
-        <?php
-        } else {
-            ?>
+  
 
             <script src="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.js"></script>
 <?php } ?>
