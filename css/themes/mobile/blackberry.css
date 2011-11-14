@@ -16,11 +16,11 @@ root {
 }
 body {
     font-family: Helvetica,Arial,sans-serif;
-            font-size: 16px;
-            background:#efefef;
-            color:#555555;
-            
-            }
+    font-size: 16px;
+    background:#efefef;
+    color:#555555;
+
+}
 input {
     display:block;
 
@@ -45,7 +45,7 @@ fieldset {
     border:0px solid #555555;
     margin:5px;
     padding:5px;
-   
+
 }
 
 #ui-bar {
@@ -76,27 +76,27 @@ h2 {
 }
 
 .ui-btn-text{
-   float:left;
+    float:left;
     display:block;
     font-size: 16px;
-    
+
 }
 .ui-icon {
     float:left;
     padding: .6em 25px;
-display: block;
-text-overflow: ellipsis;
-overflow: hidden;
-white-space: nowrap;
-position: relative;
-zoom: 1;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    zoom: 1;
 
-    background-color: #4596CE;
+
     width: 18px;
-height: 18px;
+    height: 18px;
 }
 .controlgroup {
     display: block;
-width: 100%;
-    
+    width: 100%;
+
 }
