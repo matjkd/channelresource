@@ -313,3 +313,22 @@ textarea[contenteditable] {-webkit-appearance: none;}
   p, h2, h3 { orphans: 3; widows: 3; }
   h2, h3 { page-break-after: avoid; }
 }
+
+#more_button {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	color: #990000;
+	text-align: center;
+	padding: 5px;
+	background-color: #fff;
+
+	background-repeat: repeat-x;
+	cursor: pointer;
+	border: 1px solid #AAA;
+}
+ 
+#more_button:hover {
+	border:1px solid #bbb;
+	text-decoration:none;
+	background-position:left -78px;
+}

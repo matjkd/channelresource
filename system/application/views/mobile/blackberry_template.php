@@ -113,21 +113,8 @@
     </div> <!--! end of #container -->
 
 
-    <!-- JavaScript at the bottom for fast page loading -->
 
 
-
-
-
-    <!-- end concatenated and minified scripts-->
-
-
-
-
-
-    <script>
-
-    </script>
 
 </body>
 </html>
