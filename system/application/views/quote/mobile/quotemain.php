@@ -213,7 +213,7 @@ echo form_open('mobile/quote_results', $attributes, $hidden);
 
 
 <fieldset data-role="controlgroup" >
-    <h3>Cost per User/Port Recurring Revenue Pricing</h3>
+    <h3>Cost per User/Unit Pricing</h3>
     <div data-role="fieldcontain">                   
         <label for="basic">Number of Ports/Users:</label>
         <input type="number" name="number_of_ports" id="number_ports" value="<?= set_value('number_of_ports', $number_of_ports) ?>"  />

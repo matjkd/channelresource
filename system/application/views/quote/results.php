@@ -40,7 +40,7 @@ $this->table->set_heading('Results', '');
 	$this->table->add_row('', '');
 echo $this->table->generate();
 	$this->table->clear();
-	$this->table->set_heading('Cost per User/Port Recurring Revenue Pricing', '');
+	$this->table->set_heading('Cost per User/Unit Pricing', '');
 	$this->table->add_row('<strong>Product cost per port/user</strong>', $currency.$row['product_cost_per_port']);
 	$this->table->add_row('<strong>Service cost per port/user</strong>', $currency.$row['service_cost_per_port']);
 	$this->table->add_row('<hr>', '<hr>');

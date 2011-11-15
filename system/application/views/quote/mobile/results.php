@@ -91,7 +91,7 @@ endforeach;
             <p class="ui-li-aside"><strong><?= $currency . $row['regular_result'] ?></strong></p>
         </li>
         <li data-role="list-divider">
-            Cost per User/Port Recurring Revenue Pricing
+            Cost per User/Unit Pricing
 
         </li>
 
