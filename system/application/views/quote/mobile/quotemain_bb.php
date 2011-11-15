@@ -167,7 +167,7 @@ echo form_open('mobile/quote_results', $attributes, $hidden);
         </div>
 
 
-        <input type="number" name="amount_type" id="basic" value="" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">	
+     
     </div>
 </fieldset>
 
@@ -200,7 +200,7 @@ echo form_open('mobile/quote_results', $attributes, $hidden);
 
 
 
-        <input type="number" name="amount_type" id="basic" value="" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">	
+        <input type="number" name="amount_type" id="basic" value="<?= set_value('amount_type', $amount_type) ?>" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">	
     </div>
 </fieldset>
 
@@ -310,8 +310,6 @@ echo form_open('mobile/quote_results', $attributes, $hidden);
            <input type="radio" name="payment_frequency" id="frequency-3" class="ui-icon"  value="1"  <?php echo set_radio('payment_frequency', '1', $yearlyval); ?>/>
         </div>
 
-
-        <input type="number" name="amount_type" id="basic" value="" class="ui-input-text ui-body-c ui-corner-all ui-shadow-inset">	
     </div>
 </fieldset>
 

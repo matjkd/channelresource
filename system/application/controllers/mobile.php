@@ -157,10 +157,10 @@ class Mobile extends My_Controller {
            // $this->load->view('mobile_template');
             $this->load->view('mobile/blackberry_template');
         } else {
-// $data['main'] = '/quote/mobile/quotemain_bb';
+ $data['main'] = '/quote/mobile/quotemain_bb';
             $this->load->vars($data);
-           $this->load->view('mobile_template');
-          //     $this->load->view('mobile/blackberry_template');
+          // $this->load->view('mobile_template');
+               $this->load->view('mobile/blackberry_template');
         }
     }
 
@@ -257,6 +257,7 @@ class Mobile extends My_Controller {
                 $this->quote_model->update_data($data['quote_id']);
                 $data['message'] = "Calculation Updated";
             }
+            $data['quote_numbers'] = $this->quote_model->get_data(  $data['quote_id']);
             $data['main'] = '/quote/mobile/results';
             $data['title'] = 'Quoting Tool';
             $this->load->vars($data);
