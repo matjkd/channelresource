@@ -21,11 +21,14 @@ endforeach;
             Details
 
         </li>
+        
+     <?php if ($this->session->userdata('user_id') < 3) { ?>      
         <li>
             Assigned to:
 
             <p class="ui-li-aside"><strong><?= $assigned_name ?></strong></p>
         </li>
+        <?php } ?>
 
         <li>
             Quote Ref:
