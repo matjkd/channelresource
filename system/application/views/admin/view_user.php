@@ -1,10 +1,10 @@
 <?php echo validation_errors('<p class="error">'); ?>
 <?php
 foreach ($user_info as $key => $row):
-    if ($row['currency'] == NULL) {
+    if ($row['user_currency'] == NULL) {
         $defaultcurrency = 'Select Default Currency';
     } else {
-        $defaultcurrency = $row['currency'];
+        $defaultcurrency = $row['user_currency'];
     }
     ?>
     <script>
@@ -36,7 +36,7 @@ foreach ($user_info as $key => $row):
             });
         
             $('.editablecurrency').editable("<?= site_url('/edit/edit_user') ?>", { 
-                data   : " {'&#163;':'&pound;','&#0128;':'&euro;','$':'$', 'selected':'<?= $row['currency'] ?>'}",
+                data   : " {'&#163;':'&pound;','&#0128;':'&euro;','$':'$', 'selected':'<?= $row['user_currency'] ?>'}",
                 type   : 'select',
                 id   : 'elementid',
                 placeholder: '<?= $defaultcurrency ?>',
@@ -152,7 +152,7 @@ endforeach;
             <strong>Currency</strong>
         </td>
         <td>
-            <div class='editablecurrency' id='currency' style="width:200px; margin-left:10px;"></div>
+            <div class='editablecurrency' id='user_currency' style="width:200px; margin-left:10px;"></div>
         </td>
     </tr>
     <tr>
@@ -160,7 +160,7 @@ endforeach;
             <strong>Interest Rate</strong>
         </td>
         <td>
-            <div class='edit' id='interestrate' style="width:200px; margin-left:10px;"><?= $row['interestrate'] ?></div>
+            <div class='edit' id='user_interestrate' style="width:200px; margin-left:10px;"><?= $row['user_interestrate'] ?></div>
         </td>
     </tr>
     <tr>
@@ -168,7 +168,7 @@ endforeach;
             <strong>Initial</strong>
         </td>
         <td>
-            <div class='edit' id='initial' style="width:200px; margin-left:10px;"><?= $row['initial'] ?></div>
+            <div class='edit' id='user_initial' style="width:200px; margin-left:10px;"><?= $row['user_initial'] ?></div>
         </td>
     </tr>
     <tr>
@@ -176,7 +176,7 @@ endforeach;
             <strong>Regular</strong>
         </td>
         <td>
-            <div class='edit' id='regular' style="width:200px; margin-left:10px;"><?= $row['regular'] ?></div>
+            <div class='edit' id='user_regular' style="width:200px; margin-left:10px;"><?= $row['user_regular'] ?></div>
         </td>
     </tr>
 

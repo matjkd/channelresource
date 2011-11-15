@@ -54,29 +54,29 @@ class Quote extends My_Controller {
         //get user data and set defaults
         $userdata = $this->membership_model->get_employee_detail($data['quoteuser_id']);
         foreach($userdata as $row):
-        if ($row['currency'] == NULL) {
+        if ($row['user_currency'] == NULL) {
             $currency = '&pound;';
         } else {
-            $currency = $row['currency'];
+            $currency = $row['user_currency'];
         }
         
-        if ($row['interestrate'] == NULL) {
+        if ($row['user_interestrate'] == NULL) {
             $interestrate = '';
         } else {
-            $interestrate = $row['interestrate'];
+            $interestrate = $row['user_interestrate'];
         }
         
         
-        if ($row['initial'] == NULL) {
+        if ($row['user_initial'] == NULL) {
             $initial = '';
         } else {
-            $initial = $row['initial'];
+            $initial = $row['user_initial'];
         }
         
-        if ($row['regular'] == NULL) {
+        if ($row['user_regular'] == NULL) {
             $regular = '';
         } else {
-            $regular = $row['regular'];
+            $regular = $row['user_regular'];
         }
         
         endforeach;

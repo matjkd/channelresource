@@ -10,6 +10,7 @@ foreach ($quote_numbers as $row1):
     $firstname = $row1['firstname'];
     $lastname = $row1['lastname'];
 endforeach;
+
 ?>
 <?php foreach ($quote_results as $key => $row): ?>
 

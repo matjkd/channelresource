@@ -35,6 +35,7 @@
         <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
         <meta http-equiv="cleartype" content="on">
 
+        
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="<?= base_url() ?>css/themes/mobile/mobile.css?v=1">
 

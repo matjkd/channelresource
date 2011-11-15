@@ -43,25 +43,25 @@ class Mobile extends My_Controller {
         
         $userdata = $this->membership_model->get_employee_detail($data['quoteuser_id']);
         foreach ($userdata as $row2):
-            if ($row2['currency'] == NULL) {
+            if ($row2['user_currency'] == NULL) {
                 $currency = '&pound;';
             } else {
-                $currency = $row2['currency'];
+                $currency = $row2['user_currency'];
             }
-            if ($row2['interestrate'] == NULL) {
+            if ($row2['user_interestrate'] == NULL) {
                 $interestrate = '';
             } else {
-                $interestrate = $row2['interestrate'];
+                $interestrate = $row2['user_interestrate'];
             }
-            if ($row2['initial'] == NULL) {
+            if ($row2['user_initial'] == NULL) {
                 $initial = '';
             } else {
-                $initial = $row2['initial'];
+                $initial = $row2['user_initial'];
             }
-            if ($row2['regular'] == NULL) {
+            if ($row2['user_regular'] == NULL) {
                 $regular = '';
             } else {
-                $regular = $row2['regular'];
+                $regular = $row2['user_regular'];
             }
         endforeach;
         $data['quote_ref'] = '';
@@ -276,6 +276,7 @@ class Mobile extends My_Controller {
     function view_quote_results($id) {
         $quote_id = $id;
         $data2['quote_numbers'] = $this->quote_model->get_data($quote_id);
+         $data['quote_numbers1'] = $this->quote_model->get_data($quote_id);
         $this->load->vars($data2);
         foreach ($data2['quote_numbers'] as $key => $row) {
             $data['quote_id'] = $row['quote_id'];
