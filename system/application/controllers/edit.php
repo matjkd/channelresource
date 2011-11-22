@@ -43,8 +43,10 @@ class Edit extends My_Controller {
                 //first obtain their email address
                 if (SITE == "customer") {
                     $site = "Customer-Resource";
+                    $weburl = "www.customer-resource.com";
                 } else if (SITE == "channel") {
                     $site = "Channel-Resource";
+                     $weburl = "www.channel-resource.com";
                 }
                 $userdata = $this->membership_model->get_employee_detail($userid);
 
@@ -63,12 +65,20 @@ class Edit extends My_Controller {
                 //$this->postmark->cc($email_address);
 
                 $this->postmark->subject("$site Password changed");
-                $this->postmark->message_plain("Hi $name,
+                $this->postmark->message_html("Dear $name,<br/><br/>
                                                 
-Your login details for $site have been updated:
-                                                
-username: $username
-password: $password
+
+This is your customer login for $site . Now you can access $site  instantly online via your desktop or via the mobile web app.      <br/><br/>                                          
+<strong>Username</strong>: $username<br/>
+<strong>Password</strong>: $password<br/>
+$site Address: $weburl    <br/>
+        <br/><br/>                
+Customer Resource provides you with access to our quoting tool which allows you to calculate payments for customers with
+transparency of true cost of funds together with the ability to remove complexity in calculating cost per user pricing.  In addition, 
+Customer Resource provides you with video tutorials on how to use all areas of Lease-Desk.com. You will also find video tutorials
+on how to use Customer Resource from within the homepage.<br/><br/>
+ 
+If you require any further assistance or have any additional questions please contact us at <a href='info@lease-desk.com'>info@lease-desk.com</a>
 				
 					");
                 $this->postmark->send();
