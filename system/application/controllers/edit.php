@@ -64,7 +64,7 @@ class Edit extends My_Controller {
                 //$this->postmark->to('mat@redstudio.co.uk');
                 //$this->postmark->cc($email_address);
 
-                $this->postmark->subject("$site Password changed");
+                $this->postmark->subject("$site - Your Login Information");
                 $this->postmark->message_html("Dear $name,<br/><br/>
                                                 
 
