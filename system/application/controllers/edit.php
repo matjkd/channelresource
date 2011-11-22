@@ -68,17 +68,17 @@ class Edit extends My_Controller {
                 $this->postmark->message_html("Dear $name,<br/><br/>
                                                 
 
-This is your customer login for $site . Now you can access $site  instantly online via your desktop or via the mobile web app.      <br/><br/>                                          
+This is your customer login for $site. Now you can access $site instantly online via your desktop or via the mobile web app.      <br/><br/>                                          
 <strong>Username</strong>: $username<br/>
 <strong>Password</strong>: $password<br/>
-$site Address: $weburl    <br/>
+<strong>$site Address</strong>: $weburl    <br/>
         <br/><br/>                
 Customer Resource provides you with access to our quoting tool which allows you to calculate payments for customers with
 transparency of true cost of funds together with the ability to remove complexity in calculating cost per user pricing.  In addition, 
 Customer Resource provides you with video tutorials on how to use all areas of Lease-Desk.com. You will also find video tutorials
 on how to use Customer Resource from within the homepage.<br/><br/>
  
-If you require any further assistance or have any additional questions please contact us at <a href='info@lease-desk.com'>info@lease-desk.com</a>
+If you require any further assistance or have any additional questions please contact us at <a href='mailto:info@lease-desk.com'>info@lease-desk.com</a>
 				
 					");
                 $this->postmark->send();
