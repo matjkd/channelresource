@@ -16,10 +16,15 @@ if ($currency == NULL) {
     
     
     <!--    buttons at top right of quote results-->
-    <div style="position:absolute; top:10px; right:4px; display:block;">
+    <div style="position:absolute; top:10px; right:4px; display:block;" id="top_controls" class="<?=$quote_id?>">
 
-        <a href="<?= base_url() ?>quote/results/<?= $quote_id ?>/pdf"><button>PDF</button></a> <button type="submit" value="Reset" name="submit">Reset</button>         <button type="submit" value="Update" name="submit">Update</button>  
-
+        <button type="button" id="email-pdf" >Email PDF</button>
+        
+        <a href="<?= base_url() ?>quote/results/<?= $quote_id ?>/pdf"><button>PDF</button></a> 
+        <button type="submit" value="Reset" name="submit">Reset</button>
+        <button type="submit" value="Update" name="submit">Update</button>  
+        
+        
     </div>
 </div>
 <div id="rightside" class="ajax_box">
@@ -57,4 +62,18 @@ endforeach;
 </div>
 <div style="clear:both">
     <?php $this->load->view('quote/listentries'); ?>
+</div>
+
+
+<div id="dialog-form" title="Email PDF">
+	<p class="validateTips">All form fields are required.</p>
+
+	<form>
+	<fieldset>
+		
+		<label for="email">Email</label>
+		<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
+		
+	</fieldset>
+	</form>
 </div>

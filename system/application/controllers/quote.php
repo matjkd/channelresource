@@ -304,10 +304,12 @@ class Quote extends My_Controller {
                 $stream = FALSE;
                 $html = $this->load->view('pdf_template', $data, true);
                 $data1 = pdf_create($html, 'Quote_' . $data['quote_id'], $stream);
-                
-                write_file('./images/quotes/Quote_' . $data['quote_id'].'.pdf', $data1);
 
-                echo "email";
+                write_file('./images/quotes/Quote_' . $data['quote_id'].'.pdf', $data1);
+// now send the email
+                $email_address = $this->input->post('email');
+
+                return TRUE;
                 
             } else {
                 $this->load->vars($data);
