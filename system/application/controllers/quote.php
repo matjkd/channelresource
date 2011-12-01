@@ -283,14 +283,32 @@ class Quote extends My_Controller {
             $data['title'] = 'Quote Results';
 
             if ($this->uri->segment(4) == "pdf") {
+                
+                
+//Save a pdf to the users computer
                 $data['quote_id'] = $this->uri->segment(3);
                 $this->load->vars($data);
-
                 $this->load->helper('file');
-
-
                 $html = $this->load->view('pdf_template', $data, true);
                 pdf_create($html, 'Quote_' . $data['quote_id'] . '');
+                
+                
+            } else if ($this->uri->segment(4) == "email") {
+                
+                
+ //send an email to assigned user
+//first create pdf
+                $data['quote_id'] = $this->uri->segment(3);
+                $this->load->vars($data);
+                $this->load->helper('file');
+                $stream = FALSE;
+                $html = $this->load->view('pdf_template', $data, true);
+                $data1 = pdf_create($html, 'Quote_' . $data['quote_id'], $stream);
+                
+                write_file('./images/quotes/Quote_' . $data['quote_id'].'.pdf', $data1);
+
+                echo "email";
+                
             } else {
                 $this->load->vars($data);
                 $this->load->view('leasedesktemplate');

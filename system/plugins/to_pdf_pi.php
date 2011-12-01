@@ -10,9 +10,11 @@ function pdf_create($html, $filename, $stream=TRUE)
     if ($stream) {
         $dompdf->stream($filename.".pdf");
     } else {
-        $CI =& get_instance();
-        $CI->load->helper('file');
-        write_file("./report_temp/report_$filename.pdf", $dompdf->output());
+//        $CI =& get_instance();
+//        $CI->load->helper('file');
+//        write_file("./report_temp/report_$filename.pdf", $dompdf->output());
+        
+          return $dompdf->output();
     }
 }
 ?>
