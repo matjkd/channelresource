@@ -164,6 +164,8 @@ class Quote extends My_Controller {
         $data['user_id'] = $this->input->post('user_id');
         $data['currency'] = $this->input->post('currency');
 
+       
+       
         $submitted = $this->input->post('submit');
 
         $segment_active = $this->uri->segment(3);
@@ -282,6 +284,13 @@ class Quote extends My_Controller {
             $data['main'] = 'quote/results';
             $data['title'] = 'Quote Results';
             
+             //get added by from user ID
+        $data['employee_detail'] = $this->membership_model->get_employee_detail($data['user_id']);
+       
+        foreach( $data['employee_detail'] as $key => $row):
+            
+           $data['quote_added_by'] = $row['firstname']." ".$row['lastname'];
+        endforeach;
             
 //Save a pdf to the users computer
             if ($this->uri->segment(4) == "pdf") {

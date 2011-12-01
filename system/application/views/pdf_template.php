@@ -25,18 +25,18 @@
             }
 
             th,td {
-                padding: 3pt;
+                padding: 0pt;
             }
 
 
             table.collapse {
 
                 border-collapse: collapse;
-                border: 0.5pt solid #333333;  
+                border: 0.0pt solid #333333;  
             }
 
             table.collapse td {
-                border: 0.5pt solid #333333;
+                border: 0.0pt solid #333333;
 
             }
         </style>
@@ -46,15 +46,15 @@
 
         <table>
             <tr>
-                <td width="280px"><img style="width: 180px;" src="logo.jpg"/></td>
+                <td width="340px">&nbsp;</td>
 
-                <td align=right><h2 style="margin-bottom:3px;"> <?= $config_company_name ?></h2>
-                    <?= $config_address1 ?><br/>
-                    <?= $config_address2 ?><br/>
-                    <?= $config_address3 ?><br/>
-                    <?= $config_address4 ?><br/>
+                <td width="185px"><img style="width: 180px;" src="logo.jpg"/><br/>
+                    <div style="font-size: 7px; text-align:justify;">Lease-Desk is a company dedicated to providing user
+friendly technology to simplify complex commercial &amp;
+financial models. For further information see contact
+details below.</div>
 
-                    <?php echo "<strong>t $config_phone</strong>  <br/><strong>e </strong>$config_email<br/> <strong>w</strong> $config_website"; ?>
+                   
                 </td>
             </tr>
 
@@ -63,43 +63,51 @@
 
 <?php
 //fix currency if euro
-
+if($currency == NULL) {
+    
+    $currency = "£";
+}
 if($currency == '€') {
     $currency = "&#0128;";
 }
 
+//set date
+ $old_date_added = strtotime($date_added);
+            $new_date_added = date('l jS \of F Y', $old_date_added);
 ?>
        
 
 
         <?php
         $this->load->view('admin/table');
-
-        $this->table->add_row("<strong>Company Name</strong>: $assigned_company_name", '');
-        $this->table->add_row("<strong>User</strong>: $assigned_name", '');
-        $this->table->add_row("<strong>Email</strong>: $assigned_email", '');
-        $this->table->add_row("<strong>Quote Ref</strong>: $quote_ref", '');
+$this->table->add_row('<h2>Quote</h2>', '');
+        $this->table->add_row("<strong>Company Name</strong>: $assigned_company_name", "<strong>Added by</strong>: $quote_added_by ");
+        $this->table->add_row("<strong>Contact</strong>: $assigned_name", "<strong>Quote Reference</strong>: $quote_ref");
+        $this->table->add_row("<strong>Email</strong>: $assigned_email", "<strong>Date of Creation</strong>: $new_date_added");
+     
         foreach ($quote_results as $key => $row):
 
 
-            $this->table->add_row('<h2>Results</h2>', '');
+            $this->table->add_row('<h2>Summary</h2>', '');
             $this->table->add_row('<strong>Capital Amount</strong>', $currency . number_format($row['capital'], 2));
 
 
             $this->table->add_row('<strong>Payment Type</strong>', $row['payment_type']);
             $this->table->add_row('<strong>Payment Frequency</strong>', $row['payment_frequency']);
-            $this->table->add_row('<strong>Payment Profile</strong>', $row['initial'] . "+" . $row['regular']);
+            $this->table->add_row('<strong>Payment Profile (Initial+Regular)</strong>', $row['initial'] . "+" . $row['regular']);
             $this->table->add_row('<strong>Initial</strong>', $currency . $row['initial_result']);
             $this->table->add_row('<strong>Regular</strong>', $currency . $row['regular_result']);
+            $this->table->add_row('<strong>Annual Costs</strong>', $currency . $annual_support_costs);
+            $this->table->add_row('<strong>Other Monthly Costs</strong>', $currency . $other_monthly_costs);
             $this->table->add_row('', '');
 
-            $this->table->add_row('<h2>Managed Service Results</h2>', '');
+            $this->table->add_row('<h2>Cost per User/Unit Results</h2>', '');
 
-            $this->table->add_row('<strong>Number of ports/users</strong>', $row['number_of_ports']);
-            $this->table->add_row('<strong>Product cost per port/user</strong>', $currency . $row['product_cost_per_port']);
-            $this->table->add_row('<strong>Service cost per port/user</strong>', $currency . $row['service_cost_per_port']);
+            $this->table->add_row('<strong>Number of Users/Units</strong>', $row['number_of_ports']);
+            $this->table->add_row('<strong>Product cost per User/Unit</strong>', $currency . $row['product_cost_per_port']);
+            $this->table->add_row('<strong>Service cost per User/Unit</strong>', $currency . $row['service_cost_per_port']);
             $this->table->add_row('<hr>', '<hr>');
-            $this->table->add_row('<strong>Total Cost Per Port/User per month</strong>', $currency . $row['cost_per_port_per_month']);
+            $this->table->add_row('<strong>Total Cost Per User/Unit per month</strong>', $currency . $row['cost_per_port_per_month']);
 
             echo $this->table->generate();
             $this->table->clear();
@@ -119,8 +127,8 @@ if($currency == '€') {
 
             if ( isset($pdf) ) {
 
-            $font = Font_Metrics::get_font("verdana");;
-            $size = 6;
+            $font = Font_Metrics::get_font("sans-serif");;
+            $size = 8;
             $color = array(0,0,0);
             $text_height = Font_Metrics::get_font_height($font, $size);
 
@@ -135,33 +143,22 @@ if($currency == '€') {
 
             $y += $text_height;
 
-            $text = "ID:  <?= $quote_ref ?>";
+            $text = "";
             $pdf->text(16, $y, $text, $font, $size, $color);
 
             $pdf->close_object();
             $pdf->add_object($foot, "all");
 
-            // global $initials;
-            // $initials = $pdf->open_object();
+          
 
-            // Add an initals box
-            //$text = "Initials:";
-            //$width = Font_Metrics::get_text_width($text, $font, $size);
-            //$pdf->text($w - 16 - $width - 38, $y, $text, $font, $size, $color);
-            //$pdf->rectangle($w - 16 - 36, $y - 2, 36, $text_height + 4, array(0.5,0.5,0.5), 0.5);
+           
 
+          
 
-            //$pdf->close_object();
-            // $pdf->add_object($initials);
-
-            // Mark the document as a duplicate
-            //df->text(110, $h - 240, "DUPLICATE", Font_Metrics::get_font("verdana", "bold"),
-            //        110, array(0.85, 0.85, 0.85), 0, -52);
-
-            $text = "Page {PAGE_NUM} of {PAGE_COUNT}";  
+            $text = "e:  info@lease-desk.com | t: 01302 245310 | w: www.lease-desk.com";  
 
             // Center the text
-            $width = Font_Metrics::get_text_width("Page 1 of 2", $font, $size);
+            $width = Font_Metrics::get_text_width("e:  info@lease-desk.com | t: 01302 245310 | w: www.lease-desk.com", $font, $size);
             $pdf->page_text($w / 2 - $width / 2, $y, $text, $font, $size, $color);
 
             }
