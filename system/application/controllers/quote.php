@@ -338,7 +338,7 @@ class Quote extends My_Controller {
                    
                 $this->postmark->clear();
                  delete_files('./images/quotes/');
-                 write_file('./images/quotes/index.html');
+                 write_file('./images/quotes/index.html', '<html></html>');
                 
                echo "Email Sent to ".$email_address;
 
