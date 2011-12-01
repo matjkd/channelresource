@@ -337,8 +337,10 @@ class Quote extends My_Controller {
                 $this->postmark->send();
                    
                 $this->postmark->clear();
+                 delete_files('./images/quotes/');
+                 write_file('./images/quotes/index.html');
                 
-               
+               echo "Email Sent to ".$email_address;
 
 return;
                
