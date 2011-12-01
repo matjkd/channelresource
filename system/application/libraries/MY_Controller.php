@@ -5,6 +5,8 @@ class MY_Controller extends Controller {
 	function MY_Controller () {
 	parent::Controller();
 	
+        
+        //TODO make the data on this page come from database...
 	$config_data['config_company_name'] = "Lease-Desk Ltd";
 	$config_data['config_company_short'] = "Lease-Desk";
 	$config_data['config_address'] = "";
@@ -19,12 +21,10 @@ class MY_Controller extends Controller {
 	$config_data['config_phone'] = "01302 245310";
 	//$config_data['currency'] = "&pound;";
 	
-	$this->config_email = 'email@email.com';
-	$this->config_smtp_host = 'smtp.googlemail.com';
-	$this->config_smtp_port = 25;
-	$this->config_smtp_user = 'email@email.com';
-	$this->config_smtp_pass = 'password';
-	$this->config_company_name = 'Company';
+	$this->config_email = 'support@lease-desk.com';
+	
+	$this->config_company_name = 'Lease-Desk Ltd';
+               
 	$this->load->vars($config_data);
 	
 	}

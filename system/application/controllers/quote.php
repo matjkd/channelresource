@@ -281,11 +281,13 @@ class Quote extends My_Controller {
 
             $data['main'] = 'quote/results';
             $data['title'] = 'Quote Results';
-
-            if ($this->uri->segment(4) == "pdf") {
-                
-                
+            
+            
 //Save a pdf to the users computer
+            if ($this->uri->segment(4) == "pdf") {
+
+
+
                 $data['quote_id'] = $this->uri->segment(3);
                 $this->load->vars($data);
                 $this->load->helper('file');
@@ -293,10 +295,11 @@ class Quote extends My_Controller {
                 pdf_create($html, 'Quote_' . $data['quote_id'] . '');
                 
                 
+                      //send an email to assigned user    
             } else if ($this->uri->segment(4) == "email") {
-                
-                
- //send an email to assigned user
+
+
+      
 //first create pdf
                 $data['quote_id'] = $this->uri->segment(3);
                 $this->load->vars($data);
@@ -305,12 +308,41 @@ class Quote extends My_Controller {
                 $html = $this->load->view('pdf_template', $data, true);
                 $data1 = pdf_create($html, 'Quote_' . $data['quote_id'], $stream);
 
-                write_file('./images/quotes/Quote_' . $data['quote_id'].'.pdf', $data1);
+                write_file('./images/quotes/Quote_' . $data['quote_id'] . '.pdf', $data1);
 // now send the email
                 $email_address = $this->input->post('email');
+                $this->load->library('postmark');
 
-                return TRUE;
+//get email values
+                $config_email = $this->config_email;
+                $config_company_name = $this->config_company_name;
+
+//prepare email for sending
+                $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
+                $this->postmark->to($email_address);
+                $this->postmark->cc($config_email);
+                $this->postmark->subject('Quote');
+
+//send email
+            
+//email content
+                $this->postmark->message_html("Attached is your quote from lease-desk.
+				
+					");
+//end of email content
+
+                $this->postmark->attach('./images/quotes/Quote_' . $data['quote_id'] . '.pdf');
+
+
+                $this->postmark->send();
+                   
+                $this->postmark->clear();
                 
+               
+
+return;
+               
+             
             } else {
                 $this->load->vars($data);
                 $this->load->view('leasedesktemplate');

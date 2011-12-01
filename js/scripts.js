@@ -184,7 +184,7 @@ $(function() {
         modal: true,
         buttons: {
             Cancel: function() {
-              alert(email.val());
+              //alert(email.val());
                 $( this ).dialog( "close" );
             },
             Send: function() {
@@ -198,7 +198,7 @@ $(function() {
                 $.post('/quote/results/' + quoteID + '/email', {
                     email: email.val()
                 }, function(data) {
-
+alert(data);
                    $("#dialog-form").dialog('close');
                 });
                }

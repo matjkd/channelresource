@@ -46,7 +46,7 @@ class Edit extends My_Controller {
                     $weburl = "www.customer-resource.com";
                 } else if (SITE == "channel") {
                     $site = "Channel-Resource";
-                     $weburl = "www.channel-resource.com";
+                    $weburl = "www.channel-resource.com";
                 }
                 $userdata = $this->membership_model->get_employee_detail($userid);
 
