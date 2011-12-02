@@ -20,7 +20,7 @@ if ($currency == NULL) {
 
         <button type="button" id="email-pdf" >Email PDF</button>
         
-        <a href="<?= base_url() ?>quote/results/<?= $quote_id ?>/pdf"><button>PDF</button></a> 
+        <a href="<?= base_url() ?>quote/results/<?= $quote_id ?>/pdf"><button type="button">PDF</button></a> 
         <button type="submit" value="Reset" name="submit">Reset</button>
         <button type="submit" value="Update" name="submit">Update</button>  
         
