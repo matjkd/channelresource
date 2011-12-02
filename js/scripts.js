@@ -215,3 +215,13 @@ alert(data);
         $( "#dialog-form" ).dialog( "open" );
     });
 });
+
+// execute your scripts when the DOM is ready. this is mostly a good habit
+$(function() {
+
+	// initialize scrollable
+	$(".scrollable").scrollable();
+        $(".scrollitem img[title]").tooltip();
+
+});
+

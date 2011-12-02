@@ -37,6 +37,8 @@
 					{
 					?>
 					<li><a href="<?=base_url()?>admin">COMPANIES</a></li>
+                                        
+                                        <li><a href="<?=base_url()?>userguide/guidelist">GUIDES ADMIN</a></li>
 
 					<?php
 
