@@ -1157,12 +1157,19 @@ a.disabled {
 }   
 
 .scrollitem {
-    width:195px;
-    height: 143px;
-}
-.scrollitem img {
      height: 143px;
     width:185px;
+   margin-right:10px;
+    overflow:hidden;
+    position:relative; /* this is important  */
+     background:#000000;
+}
+.scrollitem img {
+    
+    
+	
+       
+        
 }
 
 .tooltip {

@@ -222,6 +222,10 @@ $(function() {
 	// initialize scrollable
 	$(".scrollable").scrollable();
         $(".scrollitem img[title]").tooltip();
-
+        
+        $(".scrollitem img").css({opacity: 0.9});
+   
+     
+$(".scrollitem img").crop(-60, -60, 143, 185, '/images/spacer.png');
 });
 
