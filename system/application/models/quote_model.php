@@ -77,6 +77,9 @@ class Quote_model extends Model {
         } else {
             $assigned = $assigned_id;
         }
+        
+        $timenow = unix_to_human(now(), TRUE, 'eu');
+        
         if ($query->num_rows() == 1) {
             foreach ($query->result_array() as $row)
                 $quote_update_data = array('quote_ref' => $this->input->post('quote_ref'),
@@ -94,7 +97,7 @@ class Quote_model extends Model {
                     'number_of_ports' => $this->input->post('number_of_ports'),
                     'annual_support_costs' => $this->input->post('annual_support_costs'),
                     'other_monthly_costs' => $this->input->post('other_monthly_costs'),
-                    'date_added' => $this->input->post('date_added'),
+                    'date_updated' =>  $timenow
                         //'user_id' => $this->input->post('user_id'),
                         //'company_id' => $row['company_id']
                 );
@@ -151,11 +154,11 @@ class Quote_model extends Model {
             $this->db->where('quote.user_id', $user);
             $this->db->or_where('quote.assigned', $user);
             $this->db->join('users as u', 'u.user_id=quote.user_id', 'right');
-            $this->db->select('u.firstname, u.lastname, quote.date_added, quote.quote_ref, quote.quote_id');
+            $this->db->select('u.firstname, u.lastname, quote.date_added, quote.date_updated, quote.quote_ref, quote.quote_id');
         } else if (!isset($company) || $company < 3) {
             $this->db->join('users', 'users.user_id=quote.user_id');
             $this->db->join('users as a', 'a.user_id=quote.assigned', 'left');
-            $this->db->select('a.firstname as fname, a.lastname as lname, users.firstname, users.lastname, quote.date_added, quote.quote_ref, quote.quote_id');
+            $this->db->select('a.firstname as fname, a.lastname as lname, users.firstname, users.lastname, quote.date_added, quote.date_updated, quote.quote_ref, quote.quote_id');
         }
 
 

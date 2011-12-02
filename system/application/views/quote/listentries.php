@@ -47,7 +47,15 @@ $user = $this->session->userdata('user_id');
             $deletequote = '/quote/delete/' . $row['quote_id'];
             $pdfquote = '/quote/results/' . $row['quote_id'] . '/pdf';
 
-            $old_date_added = strtotime($row['date_added']);
+            if($row['date_updated'] == NULL){
+                $date_updated = $row['date_added'];
+            }
+            else
+            {
+                  $date_updated = $row['date_updated'];
+            }
+            
+            $old_date_added = strtotime($date_updated);
             $new_date_added = date('l jS \of F Y h:i:s A', $old_date_added);
             ?>
             <tr >
