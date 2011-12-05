@@ -75,5 +75,6 @@ endforeach;
 		<input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
 		
 	</fieldset>
+            
 	</form>
 </div>

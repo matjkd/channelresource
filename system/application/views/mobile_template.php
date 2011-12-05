@@ -35,14 +35,14 @@
         <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
         <meta http-equiv="cleartype" content="on">
 
-        
+
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="<?= base_url() ?>css/themes/mobile/mobile.css?v=1">
 
 
         <!-- scripts concatenated and minified via ant build script -->
         <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
- <script src="<?= base_url() ?>js/mobile/libs/jquery_mobile.js"></script>
+        <script src="<?= base_url() ?>js/mobile/libs/jquery_mobile.js"></script>
 
 
 
@@ -51,30 +51,37 @@
 
     <body>
 
+  <div data-role="page" class="type-interior" id="one"> 
 
+        <?php if (isset($dialog) && $dialog == "yes") {
+            
+        } else { ?>
 
+          
 
+                <?php if (SITE == "customer") { ?><img alt="Customer Resource" src="<?= base_url() ?>images/logocustomer.png" width="100%"/>
+                    <?php
+                } else if (SITE == "channel") {
+                    ?><img alt="Channel Resource" src="<?= base_url() ?>images/logo.png" width="100%"/>
+                <?php }
+                ?>
+                <div data-role="header" data-position="inline">
 
-        <div data-role="page" class="type-interior"> 
-
-            <?php if (SITE == "customer") { ?><img alt="Customer Resource" src="<?= base_url() ?>images/logocustomer.png" width="100%"/>
+                    <h2><?= $title ?></h2>
+                    <?php if (isset($quote_id)) { ?>
+                        <a href="<?= base_url() ?>mobile/quote/<?= $quote_id ?>" data-icon="gear" class="ui-btn-right" data-ajax="false">Edit</a>
+                    <?php } ?>
+                    <a href="<?= base_url() ?>mobile/logout" data-icon="gear" class="ui-btn-left" data-ajax="false">Logout</a>
+                </div>
                 <?php
-            } else if (SITE == "channel") {
-                ?><img alt="Channel Resource" src="<?= base_url() ?>images/logo.png" width="100%"/>
-            <?php }
+            }
             ?>
-            <div data-role="header" data-position="inline">
-
-                <h2><?= $title ?></h2>
-                <?php if (isset($quote_id)) { ?>
-                    <a href="<?= base_url() ?>mobile/quote/<?= $quote_id ?>" data-icon="gear" class="ui-btn-right" data-ajax="false">Edit</a>
-                <?php } ?>
-                      <a href="<?= base_url() ?>mobile/logout" data-icon="gear" class="ui-btn-left" data-ajax="false">Logout</a>
-            </div>
 
             <div data-role="content">
 
                 <?php $this->load->view('global/mobilewarning'); ?>
+
+
 
                 <div class="content-primary">	
 
@@ -83,8 +90,12 @@
 
 
 
-                </div><!--/content-primary -->
+                </div>
 
+                <!--/content-primary -->
+  <?php if (isset($dialog) && $dialog == "yes") {
+            
+        } else { ?>
                 <div class="content-secondary">
 
                     <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
@@ -111,6 +122,10 @@
                 <p>&copy; Copyright 2011 Lease-Desk Ltd.<br/>
                     <a href="<?= base_url() ?>quote/main" data-ajax="false">View desktop site</a>
                 </p></div> 
+            
+              <?php
+            }
+            ?>
         </div> 
 
 
@@ -125,6 +140,9 @@
     </div> <!--! end of #container -->
 
 
+
+
+
     <!-- JavaScript at the bottom for fast page loading -->
     <!-- Place this render call where appropriate -->
     <script type="text/javascript">
@@ -137,9 +155,9 @@
         })();
     </script>
 
-   
-  <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-   
+
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+
 
     <!-- end concatenated and minified scripts-->
 

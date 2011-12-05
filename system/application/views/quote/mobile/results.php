@@ -13,12 +13,20 @@ endforeach;
 
 ?>
 <?php foreach ($quote_results as $key => $row): ?>
+<div class="ui-bar ui-bar-b">
+   
+	<a href="<?=base_url()?>mobile/print_quote/<?=$quote_id?>" data-transition="pop" >Email PDF</a>
 
+        
+        
+</div>
 
     <ul data-role="listview" data-inset="true">
 
         <li data-role="list-divider">
             Details
+            
+              
 
         </li>
         
@@ -126,4 +134,6 @@ endforeach;
 
 
 <?php endforeach; ?>
+
+
 

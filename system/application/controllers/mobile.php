@@ -353,6 +353,18 @@ class Mobile extends My_Controller {
         $this->load->vars($data);
         $this->load->view('/quote/mobile/new_messages');
     }
+    
+    function print_quote($id) {
+               $data['num_messages'] = $this->quote_model->num_quotes();
+        $data['quote_list'] = $this->quote_model->listquotes_loadmore($offset);
+        $data['quote_id'] = $id;
+        $data['main'] = '/quote/mobile/email_pdf';
+        $data['dialog'] = "yes";
+        $data['title'] = 'Email Quote';
+        $this->load->vars($data);
+        $this->load->view('mobile_template'); 
+    
+    }
 
     /**
      * logout of mobile site
