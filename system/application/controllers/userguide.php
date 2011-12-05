@@ -66,7 +66,7 @@ class Userguide extends My_Controller {
             $guide_id = $this->input->post('guide_id');
             
             $this->guide_model->delete_guide($guide_id);
-             $this->session->set_flashdata('message', 'Userguide deleted');
+             $this->session->set_flashdata('message', 'Userguide '.$guide_id.' deleted');
             redirect('userguide/guidelist');
         } else {
             redirect('userguide/');
