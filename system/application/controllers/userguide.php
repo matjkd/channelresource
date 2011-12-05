@@ -61,6 +61,18 @@ class Userguide extends My_Controller {
         }
     }
 
+    function delete_userguide() {
+        if ($this->session->userdata('role') == 1) {
+            $guide_id = $this->input->post('guide_id');
+            
+            $this->guide_model->delete_guide($guide_id);
+             $this->session->set_flashdata('message', 'Userguide deleted');
+            redirect('userguide/guidelist');
+        } else {
+            redirect('userguide/');
+        }
+    }
+
     function viewguide() {
         $data['categories'] = $this->guide_model->get_guide_categories();
         $data['all_guides'] = $this->guide_model->get_all_guides();

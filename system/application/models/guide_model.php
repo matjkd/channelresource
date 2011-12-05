@@ -122,6 +122,22 @@ class Guide_model extends Model {
         return $data;
     }
 
+    function delete_guide($id) {
+
+        //delete tags linked to guide id $id
+        $this->db->where('guide_id', $id);
+        $query = $this->db->delete('tag_links');
+
+        
+        //Delete guide with guide id $id
+        $this->db->where('user_guide_id', $id);
+        $query = $this->db->delete('user_guides');
+ 
+       
+
+        return TRUE;
+    }
+
     function match_category() {
         //match category
         $cat_name = $this->input->post('category');
