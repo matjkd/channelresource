@@ -96,8 +96,9 @@ class Guide_model extends Model {
 
     function get_all_guides() {
         $data = array();
-
+        $this->db->order_by('date_modified', 'desc');
         $query = $this->db->get('user_guides');
+
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row)
                 $data[] = $row;
@@ -106,11 +107,11 @@ class Guide_model extends Model {
 
         return $data;
     }
-    
+
     function get_recent_guides($num = 8) {
         $data = array();
-$this->db->limit($num);
-$this->db->order_by('date_modified', 'desc');
+        $this->db->limit($num);
+        $this->db->order_by('date_modified', 'desc');
         $query = $this->db->get('user_guides');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row)
@@ -119,7 +120,6 @@ $this->db->order_by('date_modified', 'desc');
         $query->free_result();
 
         return $data;
-        
     }
 
     function match_category() {
@@ -248,6 +248,7 @@ $this->db->order_by('date_modified', 'desc');
 
         return $data;
     }
+
     function get_linked_tags() {
         $data = array();
 

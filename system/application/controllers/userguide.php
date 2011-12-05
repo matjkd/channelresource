@@ -26,14 +26,13 @@ class Userguide extends My_Controller {
         $this->load->vars($data);
         $this->load->view('leasedesktemplate');
     }
-    
 
     function main() {
         //  $data['title'] = 'Search our User Guides';
         $data['main'] = '/guides/mainsearch';
         $data['flash'] = 'yes';
         $data['all_guides'] = $this->guide_model->get_all_guides();
-           $data['recent_guides'] = $this->guide_model->get_recent_guides();
+        $data['recent_guides'] = $this->guide_model->get_recent_guides();
         $data['categories'] = $this->guide_model->get_guide_categories();
         $data['source'] = $this->guide_model->get_linked_tags();
         $guide_id = $this->uri->segment(3);
@@ -41,23 +40,22 @@ class Userguide extends My_Controller {
         $this->load->vars($data);
         $this->load->view('leasedesktemplate');
     }
-    
+
     function guidelist() {
-        
-          if ($this->session->userdata('role') == 1) {
-     
-        
-          $data['main'] = '/guides/allguides';
-        $data['flash'] = 'yes';
-        $data['all_guides'] = $this->guide_model->get_all_guides();
-      
-        $data['categories'] = $this->guide_model->get_guide_categories();
-        $data['source'] = $this->guide_model->get_linked_tags();
-        $guide_id = $this->uri->segment(3);
-        $data['guide'] = $this->guide_model->get_guide($guide_id);
-        $this->load->vars($data);
-        $this->load->view('leasedesktemplate');
-              
+
+        if ($this->session->userdata('role') == 1) {
+
+
+            $data['main'] = '/guides/allguides';
+            $data['flash'] = 'yes';
+            $data['all_guides'] = $this->guide_model->get_all_guides();
+
+            $data['categories'] = $this->guide_model->get_guide_categories();
+            $data['source'] = $this->guide_model->get_linked_tags();
+            $guide_id = $this->uri->segment(3);
+            $data['guide'] = $this->guide_model->get_guide($guide_id);
+            $this->load->vars($data);
+            $this->load->view('leasedesktemplate');
         } else {
             redirect('userguide/');
         }
