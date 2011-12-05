@@ -19,7 +19,7 @@
 
             <label for="basic">Email address:</label>
             <input type="text" name="email" id="basic" value=""/>
-
+  <input type="hidden" name="mobile" id="basic" value="1"/>
              
            <a href="docs-dialogs.html" data-role="button" data-rel="back" data-theme="c" class="ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Cancel</span></span></a>    
 

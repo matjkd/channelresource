@@ -311,6 +311,7 @@ class Quote extends My_Controller {
       
 //first create pdf
                 $data['quote_id'] = $this->uri->segment(3);
+                
                 $this->load->vars($data);
                 $this->load->helper('file');
                 $stream = FALSE;
@@ -349,6 +350,14 @@ class Quote extends My_Controller {
                  delete_files('./images/quotes/');
                  write_file('./images/quotes/index.html', '<html></html>');
                 
+                 $mobile = $this->input->post('mobile');
+                 
+                 
+                 if($mobile == 1) {
+                      $this->session->set_flashdata('message', 'Quote Emailed');
+                redirect('mobile/view_quote_results/'.$data['quote_id'], 'refresh');
+                 }
+                 
                echo "Email Sent to ".$email_address;
 
 return;
