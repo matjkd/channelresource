@@ -51,15 +51,21 @@
 
     <body>
         <div data-role="page"> 
-            <div data-role="header">
-                <?php if (SITE == "customer") {
-                    ?><h1>Customer Resource</h1>
+            
+            <?php if (SITE == "customer") { ?><img alt="Customer Resource" src="<?= base_url() ?>images/logocustomer.png" width="100%"/>
                 <?php
-                } else if (SITE == "channel") {
-                    ?><h1>Channel Resource</h1>
-                <?php }
-                ?>
-            </div> 
+            } else if (SITE == "channel") {
+                ?><img alt="Channel Resource" src="<?= base_url() ?>images/logo.png" width="100%"/>
+            <?php }
+            ?>
+            <div data-role="header" data-position="inline">
+
+                <h2><?= $title ?></h2>
+                <?php if (isset($quote_id)) { ?>
+                    <a href="<?= base_url() ?>mobile/quote/<?= $quote_id ?>" data-icon="gear" class="ui-btn-right" data-ajax="false">Edit</a>
+                <?php } ?>
+                      
+            </div>
             <div data-role="content">
 
 

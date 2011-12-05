@@ -69,6 +69,7 @@
                 <?php if (isset($quote_id)) { ?>
                     <a href="<?= base_url() ?>mobile/quote/<?= $quote_id ?>" data-icon="gear" class="ui-btn-right" data-ajax="false">Edit</a>
                 <?php } ?>
+                      <a href="<?= base_url() ?>mobile/logout" data-icon="gear" class="ui-btn-left" data-ajax="false">Logout</a>
             </div>
 
             <div data-role="content">

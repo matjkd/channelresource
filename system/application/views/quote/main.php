@@ -2,6 +2,10 @@
 <div id="leftside">
 
     <?php
+        if ($currency == NULL) {
+    $currency = "&pound;";
+}
+    
     $user_id = $this->session->userdata('user_id');
 
     $attributes = array('id' => 'quoteform');

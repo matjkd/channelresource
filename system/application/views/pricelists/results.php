@@ -13,9 +13,12 @@
 		
 	echo $this->table->generate();
 	$this->table->clear();
-?>	
-
 	
+
+  if (!isset($currency) || $currency == NULL) {
+    $currency = "&pound;";
+}
+?>	
 
 </div>
 

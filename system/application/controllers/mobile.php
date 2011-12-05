@@ -40,7 +40,7 @@ class Mobile extends My_Controller {
 
 
         //get user data and set defaults
-        
+
         $userdata = $this->membership_model->get_employee_detail($data['quoteuser_id']);
         foreach ($userdata as $row2):
             if ($row2['user_currency'] == NULL) {
@@ -154,13 +154,13 @@ class Mobile extends My_Controller {
             $data['blackberry'] = 'yes';
             $data['main'] = '/quote/mobile/quotemain_bb';
             $this->load->vars($data);
-           // $this->load->view('mobile_template');
+            // $this->load->view('mobile_template');
             $this->load->view('mobile/blackberry_template');
         } else {
- //$data['main'] = '/quote/mobile/quotemain_bb';
+            //$data['main'] = '/quote/mobile/quotemain_bb';
             $this->load->vars($data);
-           $this->load->view('mobile_template');
-           //    $this->load->view('mobile/blackberry_template');
+            $this->load->view('mobile_template');
+            //    $this->load->view('mobile/blackberry_template');
         }
     }
 
@@ -257,7 +257,7 @@ class Mobile extends My_Controller {
                 $this->quote_model->update_data($data['quote_id']);
                 $data['message'] = "Calculation Updated";
             }
-            $data['quote_numbers'] = $this->quote_model->get_data(  $data['quote_id']);
+            $data['quote_numbers'] = $this->quote_model->get_data($data['quote_id']);
             $data['main'] = '/quote/mobile/results';
             $data['title'] = 'Quoting Tool';
             $this->load->vars($data);
@@ -276,7 +276,7 @@ class Mobile extends My_Controller {
     function view_quote_results($id) {
         $quote_id = $id;
         $data2['quote_numbers'] = $this->quote_model->get_data($quote_id);
-         $data['quote_numbers1'] = $this->quote_model->get_data($quote_id);
+        $data['quote_numbers1'] = $this->quote_model->get_data($quote_id);
         $this->load->vars($data2);
         foreach ($data2['quote_numbers'] as $key => $row) {
             $data['quote_id'] = $row['quote_id'];
@@ -302,26 +302,26 @@ class Mobile extends My_Controller {
             $data['company_id'] = $row['company_id'];
             $data['date_added'] = $row['date_added'];
         }
-        
-            //Turn the assigned user id into the full name then get the company details
-            if ($data['assigned'] == FALSE) {
-                $customer['assigned_info'] = $this->membership_model->get_employee_detail($data['user_id']);
-                foreach ($customer['assigned_info'] as $key => $row) {
-                    $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
-                    $data['assigned_company'] = $row['company_id'];
-                    $data['assigned_email'] = $row['email_address'];
-                }
-            } else {
-                $customer['assigned_info'] = $this->membership_model->get_employee_detail($data['assigned']);
-                foreach ($customer['assigned_info'] as $key => $row) {
-                    $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
-                    $data['assigned_company'] = $row['company_id'];
-                    $data['assigned_email'] = $row['email_address'];
-                }
+
+        //Turn the assigned user id into the full name then get the company details
+        if ($data['assigned'] == FALSE) {
+            $customer['assigned_info'] = $this->membership_model->get_employee_detail($data['user_id']);
+            foreach ($customer['assigned_info'] as $key => $row) {
+                $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
+                $data['assigned_company'] = $row['company_id'];
+                $data['assigned_email'] = $row['email_address'];
             }
-        
-         
-        
+        } else {
+            $customer['assigned_info'] = $this->membership_model->get_employee_detail($data['assigned']);
+            foreach ($customer['assigned_info'] as $key => $row) {
+                $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
+                $data['assigned_company'] = $row['company_id'];
+                $data['assigned_email'] = $row['email_address'];
+            }
+        }
+
+
+
         //CALCULATION STARTS HERE
         $this->load->library('calculator');
         $data['quote_results'] = $this->calculator->quote($data['capital_type'], $data['amount_type'], $data['interest_type'], $data['calculate_by'], $data['payment_type'], $data['payment_frequency'], $data['initial'], $data['regular'], $data['number_of_ports'], $data['annual_support_costs'], $data['other_monthly_costs']);
@@ -346,11 +346,25 @@ class Mobile extends My_Controller {
         $this->load->vars($data);
         $this->load->view('mobile_template');
     }
+
     function more_quotes($offset=0) {
         $data['quote_list'] = $this->quote_model->listquotes_loadmore($offset);
-         
+
         $this->load->vars($data);
-       $this->load->view('/quote/mobile/new_messages');
+        $this->load->view('/quote/mobile/new_messages');
+    }
+
+    /**
+     * logout of mobile site
+     */
+    function logout() {
+        $this->session->sess_destroy();
+		$is_logged_in = $this->session->userdata('is_logged_in');
+		if(!isset($is_logged_in) || $is_logged_in == true)
+		{
+			redirect($this->uri->uri_string());
+		}		
+		$this->index();
     }
 
     /**
