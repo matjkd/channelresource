@@ -20,9 +20,10 @@
       <?php if($count == 1) { echo "<div>"; } ?>
           
           
-          <div class="scrollitem">
+          <div class="scrollitem" style="background:url('http://img.youtube.com/vi/<?=$row['filename']?>/0.jpg') no-repeat; background-position:center -50px;">
               
-              <a href="<?=base_url()?>userguide/viewguide/<?=$row['user_guide_id']?>"><img src="http://img.youtube.com/vi/<?=$row['filename']?>/0.jpg" title="<?=$row['title']?>" /></a>
+              <a href="<?=base_url()?>userguide/viewguide/<?=$row['user_guide_id']?>"><img src="<?=base_url()?>images/icons/latestvideobutton.png" title="<?=$row['title']?>" /></a>
+              <div class="videocaption"><?=$row['title']?></div>
          
           </div>
             

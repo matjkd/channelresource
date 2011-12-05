@@ -1162,7 +1162,7 @@ a.disabled {
    margin-right:10px;
     overflow:hidden;
     position:relative; /* this is important  */
-     background:#000000;
+    
 }
 .scrollitem img {
     
@@ -1170,6 +1170,15 @@ a.disabled {
 	
        
         
+}
+.videocaption {
+    position:absolute;
+    bottom:5px;
+    height: 15px;
+    overflow:hidden;
+    padding:5px 10px;
+    color:#ffffff;
+    
 }
 
 .tooltip {
