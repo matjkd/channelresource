@@ -14,6 +14,7 @@
                 $("#more_button").hide();
                 //alert('hide');
             }
+            
         })
     })
 </script>
@@ -63,6 +64,8 @@
 </div>
 
 <br/>
+<?php if(isset($more) && $more == "true") { ?>
 <div style="clear:both;" id="more_button" data-role="button" data-icon="arrow-d">
     more
 </div>
+<?php } ?>

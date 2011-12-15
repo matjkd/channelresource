@@ -343,6 +343,7 @@ class Mobile extends My_Controller {
         $data['quote_list'] = $this->quote_model->listquotes_loadmore($offset);
         $data['main'] = '/quote/mobile/list_quotes';
         $data['title'] = 'Quotes';
+        $data['more'] = "true";
         $this->load->vars($data);
         $this->load->view('mobile_template');
     }

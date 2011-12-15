@@ -237,24 +237,46 @@ class Quote_model extends Model {
         $data = array();
         $company = $this->session->userdata('company_id');
         $user = $this->session->userdata('user_id');
+        $pieces = explode(" ", $term);
+
+
+
 
         if (!isset($company) || $company > 2) {
             $this->db->where('quote.user_id', $user);
             $this->db->or_where('quote.assigned', $user);
             $this->db->join('users as u', 'u.user_id=quote.user_id', 'right');
             $this->db->select('u.firstname, u.lastname, quote.date_added, quote.quote_ref, quote.quote_id');
-            $this->db->like('u.firstname', $term);
-            $this->db->or_like('u.lastname', $term);
+
+
+            foreach ($pieces as $row):
+
+                $this->db->like('u.firstname', $row);
+                $this->db->or_like('u.lastname', $row);
+
+            endforeach;
+            
         } else if (!isset($company) || $company < 3) {
             $this->db->join('users', 'users.user_id=quote.user_id');
             $this->db->join('users as a', 'a.user_id=quote.assigned', 'left');
             $this->db->select('a.firstname as fname, a.lastname as lname, users.firstname, users.lastname, quote.date_added, quote.quote_ref, quote.quote_id');
-            $this->db->like('a.firstname', $term);
-            $this->db->or_like('a.lastname', $term);
-              $this->db->or_like('users.firstname', $term);
-            $this->db->or_like('users.lastname', $term);
+
+            foreach ($pieces as $row):
+
+                $this->db->like('a.firstname', $row);
+                $this->db->or_like('a.lastname', $row);
+                $this->db->or_like('users.firstname', $row);
+                $this->db->or_like('users.lastname', $row);
+
+            endforeach;
+            
         }
-        $this->db->or_like('quote.quote_ref', $term);
+        foreach ($pieces as $row):
+
+            $this->db->or_like('quote.quote_ref', $row);
+
+        endforeach;
+
 
 
         $this->db->order_by('quote.date_added', 'desc');
