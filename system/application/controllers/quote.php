@@ -391,6 +391,7 @@ class Quote extends My_Controller {
         $is_logged_in = $this->session->userdata('is_logged_in');
         if (!isset($is_logged_in) || $is_logged_in != true) {
             $this->session->set_flashdata('message', 'You are not logged in');
+            $this->session->set_flashdata('url', current_url());
             redirect('user/login');
         }
     }
