@@ -164,8 +164,8 @@ class Quote extends My_Controller {
         $data['user_id'] = $this->input->post('user_id');
         $data['currency'] = $this->input->post('currency');
 
-       
-       
+
+
         $submitted = $this->input->post('submit');
 
         $segment_active = $this->uri->segment(3);
@@ -233,6 +233,7 @@ class Quote extends My_Controller {
                 $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
                 $data['assigned_company'] = $row['company_id'];
                 $data['assigned_email'] = $row['email_address'];
+                $data['assigned_email_2'] = $row['email_address'];
             }
         } else {
 
@@ -241,13 +242,16 @@ class Quote extends My_Controller {
                 $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
                 $data['assigned_company'] = $row['company_id'];
                 $data['assigned_email'] = $row['email_address'];
+                $data['assigned_email_2'] = "no";
             }
         }
 
-        $customer['assigned_company_details'] = $this->membership_model->get_company_detail($data['assigned_company']);
-        foreach ($customer['assigned_company_details'] as $key => $row) {
+        if (isset($data['assigned_company'])) {
+            $customer['assigned_company_details'] = $this->membership_model->get_company_detail($data['assigned_company']);
+            foreach ($customer['assigned_company_details'] as $key => $row) {
 
-            $data['assigned_company_name'] = $row['company_name'];
+                $data['assigned_company_name'] = $row['company_name'];
+            }
         }
 
         if ($run == 'yes') {
@@ -283,15 +287,15 @@ class Quote extends My_Controller {
 
             $data['main'] = 'quote/results';
             $data['title'] = 'Quote Results';
-            
-             //get added by from user ID
-        $data['employee_detail'] = $this->membership_model->get_employee_detail($data['user_id']);
-       
-        foreach( $data['employee_detail'] as $key => $row):
-            
-           $data['quote_added_by'] = $row['firstname']." ".$row['lastname'];
-        endforeach;
-            
+
+            //get added by from user ID
+            $data['employee_detail'] = $this->membership_model->get_employee_detail($data['user_id']);
+
+            foreach ($data['employee_detail'] as $key => $row):
+
+                $data['quote_added_by'] = $row['firstname'] . " " . $row['lastname'];
+            endforeach;
+
 //Save a pdf to the users computer
             if ($this->uri->segment(4) == "pdf") {
 
@@ -302,16 +306,16 @@ class Quote extends My_Controller {
                 $this->load->helper('file');
                 $html = $this->load->view('pdf_template', $data, true);
                 pdf_create($html, 'Quote_' . $data['quote_id'] . '');
-                
-                
-                      //send an email to assigned user    
+
+
+                //send an email to assigned user    
             } else if ($this->uri->segment(4) == "email") {
 
 
-      
+
 //first create pdf
                 $data['quote_id'] = $this->uri->segment(3);
-                
+
                 $this->load->vars($data);
                 $this->load->helper('file');
                 $stream = FALSE;
@@ -319,15 +323,19 @@ class Quote extends My_Controller {
                 $data1 = pdf_create($html, 'Quote_' . $data['quote_id'], $stream);
 
                 write_file('./images/quotes/Quote_' . $data['quote_id'] . '.pdf', $data1);
-                
-                
-                
+
+
+
 // now send the email
                 $email_address = $this->input->post('email');
                 $this->load->library('postmark');
 
 //check if email address matches that of the assigned user of the quote
-                
+                if ($email_address == $data['assigned_email_2']) {
+                    $extraMessage = "<br/>View your quote online <a href='http://www.customer-resource.com/quote/results/" . $data['quote_id'] . "'>here</a> ";
+                } else {
+                    $extraMessage = "";
+                }
 //get email values
                 $config_email = $this->config_email;
                 $config_company_name = $this->config_company_name;
@@ -339,10 +347,9 @@ class Quote extends My_Controller {
                 $this->postmark->subject('Quote');
 
 //send email
-            
 //email content
                 $this->postmark->message_html("Attached is your quote from lease-desk.
-				
+				$extraMessage
 					");
 //end of email content
 
@@ -350,24 +357,22 @@ class Quote extends My_Controller {
 
 
                 $this->postmark->send();
-                   
-                $this->postmark->clear();
-                 delete_files('./images/quotes/');
-                 write_file('./images/quotes/index.html', '<html></html>');
-                
-                 $mobile = $this->input->post('mobile');
-                 
-                 
-                 if($mobile == 1) {
-                      $this->session->set_flashdata('message', 'Quote Emailed');
-                redirect('mobile/view_quote_results/'.$data['quote_id'], 'refresh');
-                 }
-                 
-               echo "Email Sent to ".$email_address;
 
-return;
-               
-             
+                $this->postmark->clear();
+                delete_files('./images/quotes/');
+                write_file('./images/quotes/index.html', '<html></html>');
+
+                $mobile = $this->input->post('mobile');
+
+
+                if ($mobile == 1) {
+                    $this->session->set_flashdata('message', 'Quote Emailed');
+                    redirect('mobile/view_quote_results/' . $data['quote_id'], 'refresh');
+                }
+
+                echo "Email Sent to " . $email_address;
+
+                return;
             } else {
                 $this->load->vars($data);
                 $this->load->view('leasedesktemplate');
