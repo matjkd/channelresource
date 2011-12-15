@@ -140,7 +140,7 @@ class Quote extends My_Controller {
         $this->form_validation->set_rules('payment_type', 'payment type', 'trim|integer|required');
         $this->form_validation->set_rules('payment_frequency', 'payment_frequency', 'trim|integer|required');
         $this->form_validation->set_rules('initial', 'initial', 'trim|integer|required');
-        $this->form_validation->set_rules('regular', 'regular', 'trim|integer|required');
+        $this->form_validation->set_rules('regular', 'regular', 'trim|integer|required|is_natural_no_zero');
 
 
 
