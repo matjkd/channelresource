@@ -332,7 +332,7 @@ class Quote extends My_Controller {
 
 //check if email address matches that of the assigned user of the quote
                 if ($email_address == $data['assigned_email_2']) {
-                    $extraMessage = "<br/>View your quote online <a href='http://www.customer-resource.com/quote/results/" . $data['quote_id'] . "'>here</a> ";
+                    $extraMessage = "<br/>View your quote online <a href='".base_url()."quote/results/" . $data['quote_id'] . "'>here</a> ";
                 } else {
                     $extraMessage = "";
                 }
