@@ -77,9 +77,9 @@ class Quote_model extends Model {
         } else {
             $assigned = $assigned_id;
         }
-        
+
         $timenow = unix_to_human(now(), TRUE, 'eu');
-        
+
         if ($query->num_rows() == 1) {
             foreach ($query->result_array() as $row)
                 $quote_update_data = array('quote_ref' => $this->input->post('quote_ref'),
@@ -97,7 +97,7 @@ class Quote_model extends Model {
                     'number_of_ports' => $this->input->post('number_of_ports'),
                     'annual_support_costs' => $this->input->post('annual_support_costs'),
                     'other_monthly_costs' => $this->input->post('other_monthly_costs'),
-                    'date_updated' =>  $timenow
+                    'date_updated' => $timenow
                         //'user_id' => $this->input->post('user_id'),
                         //'company_id' => $row['company_id']
                 );
@@ -231,13 +231,59 @@ class Quote_model extends Model {
 
     /**
      *
+     * @param type $term 
+     */
+    function search_quotes($term) {
+        $data = array();
+        $company = $this->session->userdata('company_id');
+        $user = $this->session->userdata('user_id');
+
+        if (!isset($company) || $company > 2) {
+            $this->db->where('quote.user_id', $user);
+            $this->db->or_where('quote.assigned', $user);
+            $this->db->join('users as u', 'u.user_id=quote.user_id', 'right');
+            $this->db->select('u.firstname, u.lastname, quote.date_added, quote.quote_ref, quote.quote_id');
+            $this->db->like('u.firstname', $term);
+            $this->db->or_like('u.lastname', $term);
+        } else if (!isset($company) || $company < 3) {
+            $this->db->join('users', 'users.user_id=quote.user_id');
+            $this->db->join('users as a', 'a.user_id=quote.assigned', 'left');
+            $this->db->select('a.firstname as fname, a.lastname as lname, users.firstname, users.lastname, quote.date_added, quote.quote_ref, quote.quote_id');
+            $this->db->like('a.firstname', $term);
+            $this->db->or_like('a.lastname', $term);
+              $this->db->or_like('users.firstname', $term);
+            $this->db->or_like('users.lastname', $term);
+        }
+        $this->db->or_like('quote.quote_ref', $term);
+
+
+        $this->db->order_by('quote.date_added', 'desc');
+        $Q = $this->db->get('quote');
+        if ($Q->num_rows() > 0) {
+            foreach ($Q->result_array() as $row):
+
+                $results[] = $row;
+
+
+            endforeach;
+        } else {
+            $results[] = "X";
+        }
+        $Q->free_result();
+
+
+        return $results;
+    }
+
+    /**
+     *
      * @param type $id
      * @return type
      */
     function get_data($id) {
         $data = array();
         $this->db->where('quote_id', $id);
-                $this->db->join('users', 'users.user_id=quote.user_id');
+        $this->db->join('users', 'users.user_id=quote.user_id');
         $query = $this->db->get('quote');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row)
@@ -256,8 +302,5 @@ class Quote_model extends Model {
         $this->db->where('quote_id', $id);
         $this->db->delete('quote');
     }
-    
-    
-    
 
 }

@@ -347,23 +347,32 @@ class Mobile extends My_Controller {
         $this->load->view('mobile_template');
     }
 
+    function search_quotes() {
+
+        $searchterm = $this->input->post('search');
+        $data['quote_list'] = $this->quote_model->search_quotes($searchterm);
+        $data['main'] = '/quote/mobile/list_quotes';
+        $data['title'] = 'Quotes';
+        $this->load->vars($data);
+        $this->load->view('mobile_template');
+    }
+
     function more_quotes($offset=0) {
         $data['quote_list'] = $this->quote_model->listquotes_loadmore($offset);
 
         $this->load->vars($data);
         $this->load->view('/quote/mobile/new_messages');
     }
-    
+
     function print_quote($id) {
-               $data['num_messages'] = $this->quote_model->num_quotes();
+        $data['num_messages'] = $this->quote_model->num_quotes();
         $data['quote_list'] = $this->quote_model->listquotes_loadmore($offset);
         $data['quote_id'] = $id;
         $data['main'] = '/quote/mobile/email_pdf';
         $data['dialog'] = "yes";
         $data['title'] = 'Email Quote';
         $this->load->vars($data);
-        $this->load->view('mobile_template'); 
-    
+        $this->load->view('mobile_template');
     }
 
     /**
@@ -371,12 +380,11 @@ class Mobile extends My_Controller {
      */
     function logout() {
         $this->session->sess_destroy();
-		$is_logged_in = $this->session->userdata('is_logged_in');
-		if(!isset($is_logged_in) || $is_logged_in == true)
-		{
-			redirect($this->uri->uri_string());
-		}		
-		$this->index();
+        $is_logged_in = $this->session->userdata('is_logged_in');
+        if (!isset($is_logged_in) || $is_logged_in == true) {
+            redirect($this->uri->uri_string());
+        }
+        $this->index();
     }
 
     /**

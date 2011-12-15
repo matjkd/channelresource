@@ -17,6 +17,19 @@
         })
     })
 </script>
+
+<form action="<?=base_url()?>mobile/search_quotes" method="post" data-ajax="false">
+    <label for="search-basic">Search Input:</label>
+    <input type="search" name="search" id="searc-basic" value="" />
+<div data-theme="c" class="ui-btn ui-btn-up-c ui-btn-corner-all ui-shadow" aria-disabled="false"><span class="ui-btn-inner ui-btn-corner-all" aria-hidden="true"><span class="ui-btn-text">Search
+	
+	
+	</span></span><button type="submit" class="ui-btn-hidden" aria-disabled="false">Search
+	
+	
+	</button></div>
+    <br/>
+</form>
 <div >       
     <ul data-role="listview" id="main_list" data-split-icon="gear" data-split-theme="d" data-filter="true">
 
