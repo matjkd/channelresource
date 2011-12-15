@@ -75,7 +75,7 @@ class Quote_model extends Model {
         if ($assigned_id == NULL) {
             $assigned = $this->input->post('assigned');
         } else {
-            $assigned = $assigned_id;
+            $assigned = $this->input->post('assigned_id');
         }
 
         $timenow = unix_to_human(now(), TRUE, 'eu');
@@ -229,10 +229,11 @@ class Quote_model extends Model {
         return $results;
     }
 
-    /**
-     *
-     * @param type $term 
-     */
+/**
+ *
+ * @param type $term
+ * @return string 
+ */ 
     function search_quotes($term) {
         $data = array();
         $company = $this->session->userdata('company_id');

@@ -226,9 +226,9 @@ class Quote extends My_Controller {
         $this->load->model('membership_model');
 
         //Turn the assigned user id into the full name then get the company details
-        if ($data['assigned'] == FALSE) {
+        if ($data['assigned'] != 0 && $data['assigned'] != NULL) {
 
-            $customer['assigned_info'] = $this->membership_model->get_employee_detail($data['user_id']);
+            $customer['assigned_info'] = $this->membership_model->get_employee_detail($data['assigned']);
             foreach ($customer['assigned_info'] as $key => $row) {
                 $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
                 $data['assigned_company'] = $row['company_id'];
@@ -236,7 +236,7 @@ class Quote extends My_Controller {
             }
         } else {
 
-            $customer['assigned_info'] = $this->membership_model->get_employee_detail($data['assigned']);
+            $customer['assigned_info'] = $this->membership_model->get_employee_detail($data['user_id']);
             foreach ($customer['assigned_info'] as $key => $row) {
                 $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
                 $data['assigned_company'] = $row['company_id'];
@@ -319,10 +319,15 @@ class Quote extends My_Controller {
                 $data1 = pdf_create($html, 'Quote_' . $data['quote_id'], $stream);
 
                 write_file('./images/quotes/Quote_' . $data['quote_id'] . '.pdf', $data1);
+                
+                
+                
 // now send the email
                 $email_address = $this->input->post('email');
                 $this->load->library('postmark');
 
+//check if email address matches that of the assigned user of the quote
+                
 //get email values
                 $config_email = $this->config_email;
                 $config_company_name = $this->config_company_name;
