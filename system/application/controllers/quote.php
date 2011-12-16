@@ -349,7 +349,7 @@ class Quote extends My_Controller {
 
 //send email
 //email content
-                $this->postmark->message_html("Attached is your quote from lease-desk.<br/>
+                $this->postmark->message_html("Attached is your quote from Lease-Desk.<br/>
 				$extraMessage
                         <br/><br/>
                           $emessage
