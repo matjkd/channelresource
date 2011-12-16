@@ -1,8 +1,8 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-15">
-<style>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <style>
 
 body {
   margin: 0pt 22pt 24pt 22pt;
@@ -60,7 +60,24 @@ table.collapse td {
 	
 </table>
 
+<?php
+//fix currency if euro
+$currency2 = "£";
+        if ($currency == NULL) {
 
+            $currency2 = "£";
+        }
+        if ($currency == '€') {
+            $currency2 = "&#0128;";
+        }
+         if ($currency == '$') {
+            $currency2 = "$";
+        }
+
+//set date
+        $old_date_added = strtotime($date_added);
+        $new_date_added = date('l jS \of F Y', $old_date_added);
+        ?>
 
 
 
@@ -81,17 +98,17 @@ $this->table->add_row('<h2>Results</h2>', '');
 	$this->table->add_row('<strong>Payment Type</strong>', $row['payment_type']); 
 	$this->table->add_row('<strong>Payment Frequency</strong>', $row['payment_frequency']);
 	$this->table->add_row('<strong>Payment Profile</strong>', $row['initial']."+".$row['regular']);
-	$this->table->add_row('<strong>Initial</strong>', $currency.$row['initial_result']);
-	$this->table->add_row('<strong>Regular</strong>', $currency.$row['regular_result']);
+	$this->table->add_row('<strong>Initial</strong>', $currency2.$row['initial_result']);
+	$this->table->add_row('<strong>Regular</strong>', $currency2.$row['regular_result']);
 	$this->table->add_row('', '');
 
 	$this->table->add_row('<h2>Subscription Pricing Results</h2>', '');
 	
 	$this->table->add_row('<strong>Number of channels</strong>', $row['number_of_ports']);
-	$this->table->add_row('<strong>Product cost per channel</strong>', $currency.$row['product_cost_per_port']);
-	$this->table->add_row('<strong>Service cost per channel</strong>', $currency.$row['service_cost_per_port']);
+	$this->table->add_row('<strong>Product cost per channel</strong>', $currency2.$row['product_cost_per_port']);
+	$this->table->add_row('<strong>Service cost per channel</strong>', $currency2.$row['service_cost_per_port']);
 	$this->table->add_row('<hr>', '<hr>');
-	$this->table->add_row('<strong>Total Cost Per Channel per Month</strong>', $currency.$row['cost_per_port_per_month']);
+	$this->table->add_row('<strong>Total Cost Per Channel per Month</strong>', $currency2.$row['cost_per_port_per_month']);
 	
 	echo $this->table->generate();
 	$this->table->clear();

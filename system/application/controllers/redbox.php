@@ -22,10 +22,10 @@ class Redbox extends My_Controller {
         $segment_active = $this->uri->segment(3);
         if ($segment_active != NULL) {
 
-            $config['base_url'] = base_url() . 'redbox_quote/results/' . $this->uri->segment(3);
+            $config['base_url'] = base_url() . 'redbox/results/' . $this->uri->segment(3);
         } else if ($segment_active == NULL) {
 
-            $config['base_url'] = base_url() . 'redbox_quote/results/0/';
+            $config['base_url'] = base_url() . 'redbox/results/0/';
         }
 
         $config['total_rows'] = $this->db->count_all('quote');
@@ -210,7 +210,7 @@ class Redbox extends My_Controller {
         } else {
             if ($this->form_validation->run() == FALSE) {
                 $errors = validation_errors();
-                $data['main'] = '/redbox/main';
+                $data['main'] = '/redbox_quote/main';
                 $data['title'] = 'Subscription Pricing Calculator';
                 $this->load->vars($data);
                 $this->load->view('leasedesktemplate');
@@ -266,7 +266,7 @@ class Redbox extends My_Controller {
                 $this->quote_model->add_data();
                 $data['quote_id'] = mysql_insert_id();
                 $this->session->set_flashdata('message', "Calculation Added");
-                redirect('quote/results/' . $data['quote_id'] . '', 'refresh');
+                redirect('redbox/results/' . $data['quote_id'] . '', 'refresh');
             }
 
 
@@ -275,18 +275,18 @@ class Redbox extends My_Controller {
                 $data['quote_id'] = $this->input->post('quote_id');
                 $this->quote_model->update_data($data['quote_id']);
                 $this->session->set_flashdata('message', "Calculation Updated");
-                redirect('quote/results/' . $data['quote_id'] . '', 'refresh');
+                redirect('redbox/results/' . $data['quote_id'] . '', 'refresh');
             }
             if ($submitted == 'Reset') {
-                redirect('quote/main', 'refresh');
+                redirect('redbox/main', 'refresh');
             }
 
 
 
 
 
-            $data['main'] = 'quote/results';
-            $data['title'] = 'Quote Results';
+            $data['main'] = 'redbox_quote/results';
+            $data['title'] = 'Subscription Pricing Calculator';
 
             //get added by from user ID
             $data['employee_detail'] = $this->membership_model->get_employee_detail($data['user_id']);
@@ -304,7 +304,7 @@ class Redbox extends My_Controller {
                 $data['quote_id'] = $this->uri->segment(3);
                 $this->load->vars($data);
                 $this->load->helper('file');
-                $html = $this->load->view('pdf_template', $data, true);
+                $html = $this->load->view('redbox_pdf_template', $data, true);
                 pdf_create($html, 'Quote_' . $data['quote_id'] . '');
 
 
@@ -319,7 +319,7 @@ class Redbox extends My_Controller {
                 $this->load->vars($data);
                 $this->load->helper('file');
                 $stream = FALSE;
-                $html = $this->load->view('pdf_template', $data, true);
+                $html = $this->load->view('redbox_pdf_template', $data, true);
                 $data1 = pdf_create($html, 'Quote_' . $data['quote_id'], $stream);
 
                 write_file('./images/quotes/Quote_' . $data['quote_id'] . '.pdf', $data1);
@@ -333,7 +333,7 @@ class Redbox extends My_Controller {
 
 //check if email address matches that of the assigned user of the quote
                 if ($email_address == $data['assigned_email_2']) {
-                    $extraMessage = "<br/>View your quote online <a href='" . base_url() . "quote/results/" . $data['quote_id'] . "'>here</a> ";
+                    $extraMessage = "<br/>View your quote online <a href='" . base_url() . "redbox/results/" . $data['quote_id'] . "'>here</a> ";
                 } else {
                     $extraMessage = "";
                 }
