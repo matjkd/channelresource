@@ -116,10 +116,12 @@ class Guide_model extends Model {
      */
     function log_search($term, $success) {
 
+        $ip_address = $this->input->ip_address();
         //insert new guide
         $search_log = array(
             'search_term' => $term,
             'search_success' => $success,
+            'ip_address' => $ip_address,
             'date_searched' => now()
         );
         $insert = $this->db->insert('searchlog', $search_log);
