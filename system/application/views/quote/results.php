@@ -73,7 +73,7 @@ if ($currency == NULL) {
 
             <label for="email">Email</label><br/>
 
-            <input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all" />
+            <input type="text" name="email" id="email" value="<?php if(isset($assigned_email_2) && $assigned_email_2 != "no") { echo $assigned_email_2; }?>" class="text ui-widget-content ui-corner-all" />
 
         </fieldset>
 
