@@ -345,13 +345,13 @@ class Quote extends My_Controller {
                 $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
                 $this->postmark->to($email_address);
                 $this->postmark->cc($config_email);
-                $this->postmark->subject('Quote');
+                $this->postmark->subject('Lease-Desk Quotation');
 
 //send email
 //email content
-                $this->postmark->message_html("Attached is your quote from lease-desk.
+                $this->postmark->message_html("Attached is your quote from lease-desk.<br/>
 				$extraMessage
-                        <br/>
+                        <br/><br/>
                           $emessage
 					");
 //end of email content
