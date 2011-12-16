@@ -108,6 +108,24 @@ class Guide_model extends Model {
         return $data;
     }
 
+    /**
+     *
+     * @param type $term
+     * @param type $success
+     * @return type 
+     */
+    function log_search($term, $success) {
+
+        //insert new guide
+        $search_log = array(
+            'search_term' => $term,
+            'search_success' => $success,
+            'date_searched' => now()
+        );
+        $insert = $this->db->insert('searchlog', $search_log);
+        return $insert;
+    }
+
     function get_recent_guides($num = 8) {
         $data = array();
         $this->db->limit($num);
@@ -128,12 +146,12 @@ class Guide_model extends Model {
         $this->db->where('guide_id', $id);
         $query = $this->db->delete('tag_links');
 
-        
+
         //Delete guide with guide id $id
         $this->db->where('user_guide_id', $id);
         $query = $this->db->delete('user_guides');
- 
-       
+
+
 
         return TRUE;
     }

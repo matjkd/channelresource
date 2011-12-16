@@ -64,9 +64,9 @@ class Userguide extends My_Controller {
     function delete_userguide() {
         if ($this->session->userdata('role') == 1) {
             $guide_id = $this->input->post('guide_id');
-            
+
             $this->guide_model->delete_guide($guide_id);
-             $this->session->set_flashdata('message', 'Userguide '.$guide_id.' deleted');
+            $this->session->set_flashdata('message', 'Userguide ' . $guide_id . ' deleted');
             redirect('userguide/guidelist');
         } else {
             redirect('userguide/');
@@ -163,7 +163,7 @@ class Userguide extends My_Controller {
     }
 
     function search_guides() {
-        $term = $this->input->post('searchterm');
+        $term = trim($this->input->post('searchterm'));
         $data['source'] = $this->guide_model->get_all_tags();
 
         //log search term
@@ -172,9 +172,15 @@ class Userguide extends My_Controller {
             //lists guides associated to tag
             $data['guides'] = $this->guide_model->getguides_withtag($term);
             if ($data['guides']) {
+                  //add success search term to searchlog
+                $this->guide_model->log_search($term, 1);
                 $data['main'] = '/guides/searchresults';
+                 
             } else {
                 $this->session->set_flashdata('searchmessage', "Sorry, we couldn't find anything that matched your search");
+
+                //add failed search term to searchlog
+                $this->guide_model->log_search($term, 0);
                 redirect('userguide/main');
             }
             // $data['title'] = 'Search Results';
@@ -190,15 +196,20 @@ class Userguide extends My_Controller {
             //@TODO append this search onto the tag search.. put tag searches first
             $data['guides'] = $this->guide_model->getguides_notag($term);
             if ($data['guides']) {
+                  //add success search term to searchlog
+                $this->guide_model->log_search($term, 1);
                 $data['main'] = '/guides/searchresults';
             } else {
                 $this->session->set_flashdata('searchmessage', "Sorry, we couldn't find anything that matched your search");
+                //add failed search term to searchlog
+                $this->guide_model->log_search($term, 0);
                 redirect('userguide/main');
             }
             //$data['title'] = 'Search Results';
 
             $data['flash'] = 'yes';
 
+               
             $this->load->vars($data);
             $this->load->view('leasedesktemplate');
         }
