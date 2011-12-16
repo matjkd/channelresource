@@ -328,6 +328,7 @@ class Quote extends My_Controller {
 
 // now send the email
                 $email_address = $this->input->post('email');
+                $emessage = $this->input->post('emessage');
                 $this->load->library('postmark');
 
 //check if email address matches that of the assigned user of the quote
@@ -350,6 +351,8 @@ class Quote extends My_Controller {
 //email content
                 $this->postmark->message_html("Attached is your quote from lease-desk.
 				$extraMessage
+                        <br/>
+                          $emessage
 					");
 //end of email content
 

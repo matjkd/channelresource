@@ -145,6 +145,7 @@ $(function() {
  
     var quoteID = $('#top_controls').attr('class'),
     email = $("#email"),
+    emessage = $("#emessage"),
     tips = $( ".validateTips" );
     
     function updateTips( t ) {
@@ -196,7 +197,8 @@ $(function() {
                 
                if ( bValid ) {
                 $.post('/quote/results/' + quoteID + '/email', {
-                    email: email.val()
+                    email: email.val(),
+                    emessage: emessage.val()
                 }, function(data) {
 alert(data);
                    $("#dialog-form").dialog('close');
