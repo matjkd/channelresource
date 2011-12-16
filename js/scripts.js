@@ -50,7 +50,7 @@ $(function()  {
 //button replace
 
 $(function() {
-    $("button").button();
+    $("button, #linkbutton").button();
 
 
 });
