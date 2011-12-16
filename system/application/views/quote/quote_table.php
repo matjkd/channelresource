@@ -114,7 +114,7 @@ $this->table->clear();
 
 $this->table->set_heading('Cost per User/Unit Pricing', '', '');
 $this->table->set_empty("&nbsp;");
-$this->table->add_row('Number of Ports/Users', form_input('number_of_ports', set_value('number_of_ports', $number_of_ports), $fields));
+$this->table->add_row('Number of Users/Units', form_input('number_of_ports', set_value('number_of_ports', $number_of_ports), $fields));
 $this->table->add_row('Annual Support Costs', form_input('annual_support_costs', set_value('annual_support_costs', $annual_support_costs), $fields));
 $this->table->add_row('Other Monthly Costs', form_input('other_monthly_costs', set_value('other_monthly_costs', $other_monthly_costs), $fields));
 

@@ -49,10 +49,10 @@ if ($currency == NULL) {
         echo $this->table->generate();
         $this->table->clear();
         $this->table->set_heading('Cost per User/Unit Pricing', '');
-        $this->table->add_row('<strong>Product cost per port/user</strong>', $currency . $row['product_cost_per_port']);
-        $this->table->add_row('<strong>Service cost per port/user</strong>', $currency . $row['service_cost_per_port']);
+        $this->table->add_row('<strong>Product cost per user/unit</strong>', $currency . $row['product_cost_per_port']);
+        $this->table->add_row('<strong>Service cost per user/unit</strong>', $currency . $row['service_cost_per_port']);
         $this->table->add_row('<hr>', '<hr>');
-        $this->table->add_row('<strong>Total Cost Per Port/User per month</strong>', $currency . $row['cost_per_port_per_month']);
+        $this->table->add_row('<strong>Total Cost Per User/Unit per month</strong>', $currency . $row['cost_per_port_per_month']);
         echo $this->table->generate();
         $this->table->clear();
 
