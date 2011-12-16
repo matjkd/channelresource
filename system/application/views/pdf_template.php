@@ -8,26 +8,36 @@
                 margin: 0pt 22pt 24pt 22pt;
                 font-family: 'Helvetica';
                 font-size: 9px;
+                line-height: 15px;
             }
 
             table {
                 width:100%;
                 margin-top: 2em;
-
+                border: 0.0pt;
             }
 
             thead {
                 background-color: #cccccc;
+                border: 0.0pt;
             }
 
             tbody {
                 background-color: #ffffff;
+                border: 0.0pt;
             }
 
             th,td {
                 padding: 0pt;
+                border: 0.0pt;
             }
 
+            hr {
+                border: 0.5pt;
+                width:100%;
+                color: #555555;
+
+            }
 
             table.collapse {
 
@@ -48,43 +58,40 @@
             <tr>
                 <td width="340px">&nbsp;</td>
 
-                <td width="185px"><img style="width: 180px;" src="logo.jpg"/><br/>
-                    <div style="font-size: 7px; text-align:justify;">Lease-Desk is a company dedicated to providing user
-friendly technology to simplify complex commercial &amp;
-financial models. For further information see contact
-details below.</div>
+                <td width="185px"><img style="width: 180px;" src="logo.jpg"/>
 
-                   
+
+
                 </td>
             </tr>
 
         </table>
 
 
-<?php
+        <?php
 //fix currency if euro
-if($currency == NULL) {
-    
-    $currency = "£";
-}
-if($currency == '€') {
-    $currency = "&#0128;";
-}
+        if ($currency == NULL) {
+
+            $currency = "£";
+        }
+        if ($currency == '€') {
+            $currency = "&#0128;";
+        }
 
 //set date
- $old_date_added = strtotime($date_added);
-            $new_date_added = date('l jS \of F Y', $old_date_added);
-?>
-       
+        $old_date_added = strtotime($date_added);
+        $new_date_added = date('l jS \of F Y', $old_date_added);
+        ?>
+
 
 
         <?php
         $this->load->view('admin/table');
-$this->table->add_row('<h2>Quote</h2>', '');
+        $this->table->add_row('<h2>Quote</h2>', '');
         $this->table->add_row("<strong>Company Name</strong>: $assigned_company_name", "<strong>Added by</strong>: $quote_added_by ");
         $this->table->add_row("<strong>Contact</strong>: $assigned_name", "<strong>Quote Reference</strong>: $quote_ref");
         $this->table->add_row("<strong>Email</strong>: $assigned_email", "<strong>Date of Creation</strong>: $new_date_added");
-     
+
         foreach ($quote_results as $key => $row):
 
 
@@ -102,13 +109,13 @@ $this->table->add_row('<h2>Quote</h2>', '');
             $this->table->add_row('', '');
 
             $this->table->add_row('<h2>Cost per User/Unit Results</h2>', '');
-
+            $this->table->add_row('<hr noshade="noshade"/>', '<hr noshade="noshade" />');
             $this->table->add_row('<strong>Number of Users/Units</strong>', $row['number_of_ports']);
             $this->table->add_row('<strong>Product cost per User/Unit</strong>', $currency . $row['product_cost_per_port']);
             $this->table->add_row('<strong>Service cost per User/Unit</strong>', $currency . $row['service_cost_per_port']);
-            $this->table->add_row('<hr>', '<hr>');
+            $this->table->add_row('<hr noshade="noshade"/>', '<hr noshade="noshade" />');
             $this->table->add_row('<strong>Total Cost Per User/Unit per month</strong>', $currency . $row['cost_per_port_per_month']);
-
+            $this->table->add_row('<hr noshade="noshade"/>', '<hr noshade="noshade" />');
             echo $this->table->generate();
             $this->table->clear();
 
@@ -118,7 +125,10 @@ $this->table->add_row('<h2>Quote</h2>', '');
 
 
 
-
+        <div style="font-size: 9px; text-align:center; width:500px; margin:30px auto; padding-top:50px;">Lease-Desk is a company dedicated to providing user
+            friendly technology to simplify complex commercial &amp;
+            financial models. For further information see contact
+            details below.</div>
 
 
 
@@ -149,13 +159,13 @@ $this->table->add_row('<h2>Quote</h2>', '');
             $pdf->close_object();
             $pdf->add_object($foot, "all");
 
-          
 
-           
 
-          
 
-            $text = "e:  info@lease-desk.com | t: 01302 245310 | w: www.lease-desk.com";  
+
+
+
+            $text = "e:  info@lease-desk.com | t: 01302 245310 | w: www.lease-desk.com ";  
 
             // Center the text
             $width = Font_Metrics::get_text_width("e:  info@lease-desk.com | t: 01302 245310 | w: www.lease-desk.com", $font, $size);
