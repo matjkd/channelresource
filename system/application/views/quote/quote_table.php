@@ -28,6 +28,8 @@
   
 </script>
 <?php
+$currency2 = "£";
+
 $currency = trim($currency);
 if ($currency == "&#0128;" || $currency == "€") {
     $currency2 = "€";
@@ -35,12 +37,14 @@ if ($currency == "&#0128;" || $currency == "€") {
 if ($currency == "&#163;" || $currency == "£") {
     $currency2 = "£";
 }
-if ($currency == NULL) {
-    $currency = "£";
+if ($currency == NULL || $currency == "") {
+    $currency2 = "£";
 }
+
 if ($currency == "$") {
-    $currency = "$";
+    $currency2 = "$";
 }
+
 ?>
 
 
@@ -83,7 +87,7 @@ if ($this->session->userdata('company_id') < 3) {
 $this->table->add_row('Reference (for your info)', form_input('quote_ref', set_value('quote_ref', $quote_ref), $fields));
 
 $currencychoose = array("£" => '£', '€' => '€', '$' => '$');
-$this->table->add_row('Currency', form_dropdown('currency', $currencychoose, $currency, $currencyid));
+$this->table->add_row('Currency', form_dropdown('currency', $currencychoose, $currency2, $currencyid));
 
 $choose2 = array(1 => 'Capital Amount', 2 => 'Periodic Payment');
 $this->table->add_row('Capital Type', form_dropdown('capital_type', $choose2, set_value('capital_type', $capital_type), $jquery2));
