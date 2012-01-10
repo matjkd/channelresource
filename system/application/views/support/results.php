@@ -25,7 +25,7 @@
     <?php $this->load->view('support/response'); ?>
 
     <?php $this->load->view('support/list_replies'); ?>
-<div style="clear:both; padding-top:30px;">
+<div style="padding-top:30px;"></div>
     <?php $this->load->view('support/listattachments'); ?>
 
 
