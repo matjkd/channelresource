@@ -158,7 +158,7 @@ class Quote_model extends Model {
         } else if (!isset($company) || $company < 3) {
             $this->db->join('users', 'users.user_id=quote.user_id');
             $this->db->join('users as a', 'a.user_id=quote.assigned', 'left');
-            $this->db->select('a.firstname as fname, a.lastname as lname, users.firstname, users.lastname, quote.date_added, quote.date_updated, quote.quote_ref, quote.quote_id');
+            $this->db->select('a.firstname as fname, a.lastname as lname, a.email_address as aemail, users.firstname, users.lastname, quote.date_added, quote.date_updated, quote.quote_ref, quote.quote_id');
         }
 
 
@@ -229,11 +229,11 @@ class Quote_model extends Model {
         return $results;
     }
 
-/**
- *
- * @param type $term
- * @return string 
- */ 
+    /**
+     *
+     * @param type $term
+     * @return string 
+     */
     function search_quotes($term) {
         $data = array();
         $company = $this->session->userdata('company_id');
@@ -256,7 +256,6 @@ class Quote_model extends Model {
                 $this->db->or_like('u.lastname', $row);
 
             endforeach;
-            
         } else if (!isset($company) || $company < 3) {
             $this->db->join('users', 'users.user_id=quote.user_id');
             $this->db->join('users as a', 'a.user_id=quote.assigned', 'left');
@@ -270,7 +269,6 @@ class Quote_model extends Model {
                 $this->db->or_like('users.lastname', $row);
 
             endforeach;
-            
         }
         foreach ($pieces as $row):
 

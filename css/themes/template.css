@@ -25,6 +25,14 @@ p {
     font-size:12px;
     margin:10px 0 10px 0;
 }
+
+.spanlink {
+    color: #607890;
+text-decoration: underline;
+cursor: pointer;
+    
+}
+
 img {
 
     border-style: none
