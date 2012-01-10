@@ -418,7 +418,7 @@ A:99:0
 A:01:0
 A:03:Support Request
 A:04:CW
-A:05:Support Request $ticket_id UPDATED
+A:05:Support Request $ticket_id
 A:30:$support_description
 C:01:$support_type
 C:02:$completion_date
@@ -432,7 +432,7 @@ Start:OpportunityDelivery
 End
 				
 				");
-                    //$this->postmark->send();
+                    $this->postmark->send();
 //end mailto webCRM for update
                 }
 
