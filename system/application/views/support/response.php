@@ -31,7 +31,7 @@ $(document).ready(function(){
 </script>
 
 <hr/>
-<a class="trigger" href="#" id="add_reply_button"><strong>Add Note</strong></a>
+<a class="trigger" href="#" id="add_reply_button"><button>Add Note</button></a>
 <div class='toggle_container'>
 	
 </div>
