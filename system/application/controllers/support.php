@@ -414,7 +414,7 @@ Start:Person
 
 End
 Start:Activity
-A:99:0
+A:99:2
 A:01:0
 A:03:Support Request
 A:04:CW
@@ -676,7 +676,7 @@ A:99:0
 A:01:0
 A:03:Support Request
 A:04:CW
-A:05:Reply to Request $id
+A:05:Note on Request $id
 A:30:$comment
 C:01:$support_type
 C:03:$support_issue
@@ -688,7 +688,7 @@ Start:OpportunityDelivery
 End
 				
 				");
-            //$this->postmark->send();
+            $this->postmark->send();
 //end mailto webCRM
             redirect('support/results/' . $id . '', 'refresh');
         } else {
