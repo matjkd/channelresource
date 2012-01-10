@@ -39,7 +39,7 @@
 					<li><a href="<?=base_url()?>admin">COMPANIES</a></li>
                                         
                                         <li><a href="<?=base_url()?>userguide/guidelist">GUIDES ADMIN</a></li>
-
+                                        <li><a target="_blank" href="https://www.pivotaltracker.com/projects/446671">TRACKER</a></li>
 					<?php
 
 					}
