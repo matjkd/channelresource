@@ -405,6 +405,13 @@ Priority: $support_priority1
                     $this->postmark->subject('/*/AUTO/*/');
                     $this->postmark->message_plain("Start:DateTime
 
+End
+Start:Organisation
+
+End
+Start:Person
+
+End
 
 Start:Activity
 A:99:2
@@ -421,7 +428,9 @@ C:07:$ticket_id
 
 End
 
-				
+Start:OpportunityDelivery
+
+End				
 				");
                     $this->postmark->send();
 //end mailto webCRM for update
