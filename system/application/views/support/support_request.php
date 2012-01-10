@@ -123,15 +123,19 @@ $altdatepicker = "id='altdatepicker'";
     <?= form_dropdown('support_priority', $priorityarray, set_value('support_priority', $support_priority)) ?>
 
 </div>
-
-<div style='float:left; width:200px;'>
-     <?php if ($this->uri->segment(2) == "results") { ?>
+<?php if ($this->uri->segment(2) == "results") { ?>
+<div style='float:left; width:200px; display:none;'>
+   <?php } else { ?>  
+    
+    <div style='float:left; width:200px;'>
+        
+        <?php } ?>
     <strong>Estimated Completion Date</strong>
     <br/>
 
     <?= form_input('completion_datehuman', set_value('completion_datehuman', $humandate), $datepicker) ?>
     <span style="display:none;">   <?= form_input('completion_date', set_value('completion_date', $completion_date), $altdatepicker) ?></span>
-<?php } ?>
+
 </div>
 
 
