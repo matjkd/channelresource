@@ -11,9 +11,14 @@
     });
 </script>
 <?php
+if($completion_date != NULL) {
 $humandate = new DateTime($completion_date);
 $humandate = date_format($humandate, 'D, d M Y');
-
+}
+else
+{
+    $humandate = "N/A";
+}
 
 $user_id = $this->session->userdata('user_id');
 $role = $this->session->userdata('role');
@@ -74,7 +79,7 @@ $altdatepicker = "id='altdatepicker'";
         <?php
         $segment = $this->uri->segment(2);
         if ($segment == 'results') {
-            $statusarray = array(1 => 'Submitted', 2 => 'Assigned', 3 => 'CLOSED');
+            $statusarray = array(1 => 'Submitted', 4 => 'Accepted', 2 => 'Assigned', 5 => 'Awaiting Customer', 6=> 'Resolved', 7=> 'Development', 3 => 'CLOSED');
 
             echo "" . form_label('Status') . "<br/>" . form_dropdown('support_status', $statusarray, set_value('support_status', $support_status)) . "";
         } else {
@@ -120,12 +125,13 @@ $altdatepicker = "id='altdatepicker'";
 </div>
 
 <div style='float:left; width:200px;'>
-    <strong>Completion Date</strong>
+     <?php if ($this->uri->segment(2) == "results") { ?>
+    <strong>Estimated Completion Date</strong>
     <br/>
 
     <?= form_input('completion_datehuman', set_value('completion_datehuman', $humandate), $datepicker) ?>
     <span style="display:none;">   <?= form_input('completion_date', set_value('completion_date', $completion_date), $altdatepicker) ?></span>
-
+<?php } ?>
 </div>
 
 

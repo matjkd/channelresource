@@ -23,12 +23,14 @@
     <?= form_close() ?>
 </div>
     <?php $this->load->view('support/response'); ?>
+
     <?php $this->load->view('support/list_replies'); ?>
+<div style="clear:both; padding-top:30px;">
     <?php $this->load->view('support/listattachments'); ?>
 
 
 
-<div style="clear:both">
+<div style="clear:both; padding-top:30px;">
 
 
 
