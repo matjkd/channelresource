@@ -297,7 +297,7 @@ A:02:0
 A:03:Support Request
 A:04:CW
 A:05:Support Request $ticket_id
-A:30:$support_description|CR||CR|
+A:30:$support_description
 C:01:$support_type
 C:02:$completion_date
 C:03:$support_issue
@@ -405,14 +405,7 @@ Priority: $support_priority1
                     $this->postmark->subject('/*/AUTO/*/');
                     $this->postmark->message_plain("Start:DateTime
 
-End
-Start:Organisation
-A:99:0
-A:01:$company_name
-End
-Start:Person
 
-End
 Start:Activity
 A:99:2
 A:01:0
@@ -427,9 +420,7 @@ C:05:$support_priority
 C:07:$ticket_id
 
 End
-Start:OpportunityDelivery
 
-End
 				
 				");
                     $this->postmark->send();
