@@ -407,7 +407,8 @@ Priority: $support_priority1
 
 End
 Start:Organisation
-
+A:99:0
+A:01:$company_name
 End
 Start:Person
 
@@ -415,7 +416,8 @@ End
 
 Start:Activity
 A:99:2
-A:01:0
+A:01:2
+A:02:1                            
 A:03:Support Request
 A:04:CW
 A:05:Support Request $ticket_id
@@ -431,7 +433,10 @@ End
 Start:OpportunityDelivery
 
 End				
-				");
+		
+   
+                            
+                            ");
                     $this->postmark->send();
 //end mailto webCRM for update
                 }
