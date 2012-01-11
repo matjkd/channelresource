@@ -15,13 +15,14 @@
 
     $this->load->view('support/support_request');
     ?>
+    <hr/>
     <?= form_fieldset() ?>
    <input id="supportcheckbox" type="checkbox" name="email_changes" value="email">Check this box to email changes
    
     <?= form_fieldset_close() ?>
     <?= form_fieldset() ?>
-    <?= form_submit('submit', 'Reset') ?>
-    <?= form_submit('submit', 'Update') ?>
+    <input type="submit" name="submit" value="Reset" class="buttonstyle">
+   <input type="submit" name="submit" value="Update" class="buttonstyle">
     <?= form_fieldset_close() ?>
 
 <?= form_close() ?>
