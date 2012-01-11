@@ -50,7 +50,7 @@
     </table>
 </div>
 
-<div id="dialog-note" title="Email PDF " >
+<div id="dialog-note" title="Edit Note" >
     <p class="validateTips">All form fields are required.</p>
 
     <form>
