@@ -12,11 +12,11 @@
     echo form_open_multipart('support/create_ticket', $attributes, $hidden);
 
 
-    $this->load->view('support/support_request');
+    $this->load->view('support/support_request');?>
 
      <input type="reset" name="reset" value="Reset" class="buttonstyle">
    <input type="submit" name="submit" value="Update" class="buttonstyle">
-    ?>
+    
     <?= form_close() ?>
 </div>
 
