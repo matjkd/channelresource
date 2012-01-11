@@ -726,6 +726,21 @@ End
         }
         redirect('support/results/' . $id . '', 'refresh');
     }
+    
+    function edit_note() {
+        $id = $this->input->post('noteid');
+        $comment = $this->input->post('notecomment');
+        
+        if($this->support_model->update_note($id, $comment)){
+        echo "note updated";
+        }
+        else
+        {
+            echo "Error updating note. Please contact technical support";
+        }
+
+        return;
+    }
 
     function is_logged_in() {
         $is_logged_in = $this->session->userdata('is_logged_in');

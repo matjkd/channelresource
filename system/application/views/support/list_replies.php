@@ -32,12 +32,12 @@
                         <?= $row['firstname'] ?>
                     </td>
 
-                    <td>
+                    <td id="comment<?= $row['comments_id'] ?>">
                         <?= $row['comment'] ?>
                     </td>
 
                     <td>
-                        <?php if ($row['added_by'] == $this->session->userdata('user_id')) { ?><span class="spanlink" onclick="editNote(<?= $row['comment'] ?>,  <?= $row['comments_id'] ?>)">Edit</span> |  <span class="spanlink">Delete</span><?php } ?>
+                        <?php if ($row['added_by'] == $this->session->userdata('user_id')) { ?><span class="spanlink" onclick="editNote('<?= $row['comment'] ?>',  <?= $row['comments_id'] ?>)">Edit</span> |  <span class="spanlink">Delete</span><?php } ?>
                     </td>
                 </tr>
 
@@ -56,7 +56,7 @@
 
           
 
-            <input type="text" name="noteid" id="noteid" value="" class="text ui-widget-content ui-corner-all" />
+            <input type="hidden" name="noteid" id="noteid" value="" class="text ui-widget-content ui-corner-all" />
 
         </fieldset>
 

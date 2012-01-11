@@ -86,6 +86,22 @@ class Support_model extends Model {
         return $update;
     }
 
+   /**
+    *
+    * @param type $id
+    * @param type $comment
+    * @return type 
+    */
+    function update_note($id, $comment) {
+
+        $support_update_data = array(
+            'comment' => $comment,
+        );
+        $this->db->where('comments_id', $id);
+        $update = $this->db->update('support_comments', $support_update_data);
+        return $update;
+    }
+
     function list_tickets($id) {
         $data = array();
 
