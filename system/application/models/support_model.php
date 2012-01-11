@@ -101,6 +101,19 @@ class Support_model extends Model {
         $update = $this->db->update('support_comments', $support_update_data);
         return $update;
     }
+    
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
+    function delete_note($id) {
+        
+        
+        $this->db->where('comments_id', $id);
+        $update = $this->db->delete('support_comments');
+        return $update;
+    }
 
     function list_tickets($id) {
         $data = array();

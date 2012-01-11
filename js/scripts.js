@@ -334,6 +334,32 @@ function editNote(comment, noteid){
     
 }
 
+function deleteNote(id) {
+    var answer = confirm("Are you sure you want to delete this note?")
+        
+        
+           if ( answer ) {
+                    //while thinking add a loading gif icon load.gif
+                    //$('#dialog-note').append(loadergif);
+                      $.post('/support/delete_note/', {
+                        
+                        noteid: id
+                        
+                    }, function(data) {
+                        alert(data);
+                       $('#row'+id).remove();
+                        
+                    });
+                }
+                else
+                    {
+                          alert("nothing deleted!");
+                    }
+        
+        
+       
+}
+
 // execute your scripts when the DOM is ready. this is mostly a good habit
 $(function() {
 

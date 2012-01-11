@@ -741,6 +741,19 @@ End
 
         return;
     }
+    
+    function delete_note() {
+         $id = $this->input->post('noteid');
+         if($this->support_model->delete_note($id)) {
+              echo $id." deleted";
+         }
+         else
+         {
+             echo "Error deleting note. Please contact technical support";
+         }
+        
+         return;
+    }
 
     function is_logged_in() {
         $is_logged_in = $this->session->userdata('is_logged_in');

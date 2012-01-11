@@ -13,7 +13,7 @@
     <table cellpadding="0" cellspacing="0" border="0" class="display" id="notesTable">
         <thead>
             <tr>
-                <th>date</th>
+                <th>Date</th>
                 <th>Added By</th>
                 <th>Note</th>
                 <th>Actions</th> 
@@ -23,7 +23,7 @@
             <?php foreach ($comments as $key => $row): ?>
 
 
-                <tr>
+                <tr id="row<?= $row['comments_id'] ?>">
                     <td>
                         <?= $row['date_added'] ?>
                     </td>
@@ -37,7 +37,9 @@
                     </td>
 
                     <td>
-                        <?php if ($row['added_by'] == $this->session->userdata('user_id')) { ?><span class="spanlink" onclick="editNote('<?= $row['comment'] ?>',  <?= $row['comments_id'] ?>)">Edit</span> |  <span class="spanlink">Delete</span><?php } ?>
+                        <?php if ($row['added_by'] == $this->session->userdata('user_id')) { ?>
+                        <span class="spanlink" onclick="editNote('<?= $row['comment'] ?>',  <?= $row['comments_id'] ?>)">Edit</span> |  
+                        <span class="spanlink" onclick="deleteNote(<?= $row['comments_id'] ?>)">Delete</span><?php } ?>
                     </td>
                 </tr>
 
