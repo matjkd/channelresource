@@ -38,7 +38,8 @@
 
                     <td>
                         <?php if ($row['added_by'] == $this->session->userdata('user_id')) { ?>
-                        <span class="spanlink" onclick="editNote('<?= $row['comment'] ?>',  <?= $row['comments_id'] ?>)">Edit</span> |  
+                        <?php $commentupdated = str_replace('"', '\"', $row['comment']);?>
+                        <span class="spanlink" onclick='editNote("<?=form_prep($commentupdated) ?>",  <?= $row['comments_id'] ?>)'>Edit</span> |  
                         <span class="spanlink" onclick="deleteNote(<?= $row['comments_id'] ?>)">Delete</span><?php } ?>
                     </td>
                 </tr>
