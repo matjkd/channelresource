@@ -8,7 +8,7 @@
     } );
 </script>
 
-<div style="padding: 0 0 0 0px;">
+<div style="padding: 10px 0 0 0px;">
 
     <table cellpadding="0" cellspacing="0" border="0" class="display" id="notesTable">
         <thead>
@@ -37,7 +37,7 @@
                     </td>
 
                     <td>
-                        <?php if ($row['added_by'] == $this->session->userdata('user_id')) { ?><span class="spanlink">Edit</span> |  <span class="spanlink">Delete</span><?php } ?>
+                        <?php if ($row['added_by'] == $this->session->userdata('user_id')) { ?><span class="spanlink" onclick="editNote(<?= $row['comment'] ?>,  <?= $row['comments_id'] ?>)">Edit</span> |  <span class="spanlink">Delete</span><?php } ?>
                     </td>
                 </tr>
 
@@ -46,4 +46,26 @@
 
 
     </table>
+</div>
+
+<div id="dialog-note" title="Email PDF " >
+    <p class="validateTips">All form fields are required.</p>
+
+    <form>
+        <fieldset>
+
+          
+
+            <input type="text" name="noteid" id="noteid" value="" class="text ui-widget-content ui-corner-all" />
+
+        </fieldset>
+
+        <fieldset>
+            <label for="notecomment">Message</label>
+            <textarea  name="notecomment" id="notecomment" value="" class="text ui-widget-content ui-corner-all" /></textarea>
+        </fieldset>
+
+    </form>
+    
+    <div id="emailID" class="none"></div>
 </div>

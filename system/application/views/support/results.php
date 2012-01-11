@@ -14,19 +14,23 @@
 
 
     $this->load->view('support/support_request');
-    echo "Check to Email Changes";
-    echo form_checkbox('email_changes', 'email', FALSE);
-    echo "<br />";
-    echo form_submit('submit', 'Reset');
-    echo form_submit('submit', 'Update');
     ?>
-    <?= form_close() ?>
-</div>
-    <?php $this->load->view('support/response'); ?>
+    <?= form_fieldset() ?>
+   <input id="supportcheckbox" type="checkbox" name="email_changes" value="email">Check this box to email changes
+   
+    <?= form_fieldset_close() ?>
+    <?= form_fieldset() ?>
+    <?= form_submit('submit', 'Reset') ?>
+    <?= form_submit('submit', 'Update') ?>
+    <?= form_fieldset_close() ?>
 
-    <?php $this->load->view('support/list_replies'); ?>
+<?= form_close() ?>
+</div>
+<?php $this->load->view('support/response'); ?>
+
+<?php $this->load->view('support/list_replies'); ?>
 <div style="padding-top:30px;"></div>
-    <?php $this->load->view('support/listattachments'); ?>
+<?php $this->load->view('support/listattachments'); ?>
 
 
 
