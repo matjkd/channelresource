@@ -647,7 +647,7 @@ End
             $this->postmark->clear();
             $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
             $this->postmark->to('chloe@lease-desk.com');
-
+            $this->postmark->cc($email_address);
             $this->postmark->bcc('mat@redstudio.co.uk');
             $this->postmark->subject('Reply to Support Request Ticket No ' . $id . '');
             $this->postmark->message_html("Subject: $support_subject<br/><br/>
@@ -732,7 +732,7 @@ End
         $comment = $this->input->post('notecomment');
         
         if($this->support_model->update_note($id, $comment)){
-        echo "note updated";
+        echo "Note Updated";
         }
         else
         {

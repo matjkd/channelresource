@@ -270,7 +270,7 @@ $(function() {
                 $( this ).dialog( "close" );
                   
             },
-            Send: function() {
+            Update: function() {
                
                 var bValid = true;
                 bValid = bValid && checkLength( newnote, "note", 1, 255 );
