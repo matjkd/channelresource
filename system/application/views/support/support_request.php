@@ -121,7 +121,7 @@ if ($segment == 'results') {
     <?= form_dropdown('support_priority', $priorityarray, set_value('support_priority', $support_priority)) ?>
 
 </div>
-<?php if ($this->uri->segment(2) == "results") { ?>
+<?php if ($this->uri->segment(2) != "results") { ?>
     <div style='float:left; width:200px; display:none;'>
 <?php } else { ?>  
 
