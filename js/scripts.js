@@ -140,6 +140,7 @@ $(function() {
     });
 });
 
+//Popups that handle emailing quotes
 
 $(function() {
  
@@ -149,6 +150,7 @@ $(function() {
     email2 = $("#emailtable"),
     emessage2 = $("#emessage2"),
     tips = $( ".validateTips" );
+    loadergif = $('<img class="gifloader" src="/images/load.gif" />');
     
     function updateTips( t ) {
         tips
@@ -187,6 +189,7 @@ $(function() {
         modal: true,
         buttons: {
             Cancel: function() {
+                $('.gifloader').remove();
                 //alert(email.val());
                 $( this ).dialog( "close" );
             },
@@ -198,11 +201,13 @@ $(function() {
                 
                 
                 if ( bValid ) {
+                    $('#dialog-form').append(loadergif);
                     $.post('/quote/results/' + quoteID + '/email', {
                         email: email.val(),
                         emessage: emessage.val()
                     }, function(data) {
                         alert(data);
+                        $('.gifloader').remove();
                         $("#dialog-form").dialog('close');
                     });
                 }
@@ -219,7 +224,10 @@ $(function() {
         buttons: {
             Cancel: function() {
                 //alert(email.val());
+                $('.gifloader').remove();
+
                 $( this ).dialog( "close" );
+                  
             },
             Send: function() {
                
@@ -230,13 +238,16 @@ $(function() {
                 
                 
                 if ( bValid ) {
-                 
+                    //while thinking add a loading gif icon load.gif
+                    $('#dialog-form2').append(loadergif);
                     $.post('/quote/results/' + tableQuoteID2 + '/email', {
                         email: email2.val(),
                         emessage: emessage2.val()
                     }, function(data) {
                         alert(data);
-                        $("#dialog-form").dialog('close');
+                        $('.gifloader').remove();
+                        $("#dialog-form2").dialog('close');
+                        
                     });
                 }
              
@@ -250,7 +261,7 @@ $(function() {
 
 
     $( "#email-pdf" ).click(function() {
-       
+         $('.gifloader').remove();
         $( "#dialog-form" ).dialog( "open" );
     });
     
@@ -264,9 +275,7 @@ function emailpdftable2(tableQuoteID, email) {
     $('#emailtable').val(email);
         
     tableQuoteID2 = tableQuoteID;
-        
-        
-        
+    $('.gifloader').remove();
     $( "#dialog-form2" ).dialog( "open" );
         
 }
