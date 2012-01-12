@@ -121,7 +121,7 @@
 
 
                 <p>&copy; Copyright 2011 Lease-Desk Ltd.<br/>
-                    <?php if(!isset($desktop)) { $desktop = NULL; } ?>
+                    <?php if(!isset($desktop)) { $desktop = "quote/main"; } ?>
                     <a href="<?= base_url() ?><?=$desktop?>" data-ajax="false">View desktop site</a>
                 </p></div> 
             

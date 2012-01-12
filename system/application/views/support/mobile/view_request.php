@@ -8,13 +8,13 @@
     <li>Subject:<p class="ui-li-aside"><strong> <?= $support_subject ?></strong></p></li>
     <li>Company:<p class="ui-li-aside"><strong> <?= $channel_partner_name ?></strong></p></li>
     <li>Telephone:<p class="ui-li-aside"><strong> <?= $telephone ?></strong></p></li>
-    <li>Email:<p class="ui-li-aside"><strong> <?= $email_address ?></strong></p></li>
+    <li>Email:<p class="ui-li-aside"><a href="mailto:<?= $email_address ?>" ><?= $email_address ?></a></p></li>
     <li>Support Type:<p class="ui-li-aside"><strong> <?= $support_type ?></strong></p></li>
 
     <li data-role="list-divider">
         Description
     </li>
-    <li><p><?= $support_description ?></p></li>
+    <li><?= $support_description ?></li>
 </ul>
 
 
