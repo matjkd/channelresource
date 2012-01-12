@@ -86,12 +86,12 @@ class Support_model extends Model {
         return $update;
     }
 
-   /**
-    *
-    * @param type $id
-    * @param type $comment
-    * @return type 
-    */
+    /**
+     *
+     * @param type $id
+     * @param type $comment
+     * @return type 
+     */
     function update_note($id, $comment) {
 
         $support_update_data = array(
@@ -101,20 +101,25 @@ class Support_model extends Model {
         $update = $this->db->update('support_comments', $support_update_data);
         return $update;
     }
-    
+
     /**
      *
      * @param type $id
      * @return type 
      */
     function delete_note($id) {
-        
-        
+
+
         $this->db->where('comments_id', $id);
         $update = $this->db->delete('support_comments');
         return $update;
     }
 
+    /**
+     *
+     * @param type $id
+     * @return string 
+     */
     function list_tickets($id) {
         $data = array();
 

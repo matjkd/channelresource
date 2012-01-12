@@ -158,6 +158,7 @@ class Mobile extends My_Controller {
             $this->load->view('mobile/blackberry_template');
         } else {
             //$data['main'] = '/quote/mobile/quotemain_bb';
+            $data['desktop'] = 'quote/main';
             $this->load->vars($data);
             $this->load->view('mobile_template');
             //    $this->load->view('mobile/blackberry_template');
@@ -260,6 +261,7 @@ class Mobile extends My_Controller {
             $data['quote_numbers'] = $this->quote_model->get_data($data['quote_id']);
             $data['main'] = '/quote/mobile/results';
             $data['title'] = 'Quoting Tool';
+             $data['desktop'] = 'quote/main';
             $this->load->vars($data);
             $this->load->view('mobile_template');
         }
@@ -328,6 +330,7 @@ class Mobile extends My_Controller {
         //CALCULATION ENDS HERE
         $data['main'] = '/quote/mobile/results';
         $data['title'] = 'Quoting Tool';
+         $data['desktop'] = 'quote/main';
         $this->load->vars($data);
         $this->load->view('mobile_template');
     }
@@ -344,6 +347,8 @@ class Mobile extends My_Controller {
         $data['main'] = '/quote/mobile/list_quotes';
         $data['title'] = 'Quotes';
         $data['more'] = "true";
+        $data['desktop'] = 'quote/main';
+        
         $this->load->vars($data);
         $this->load->view('mobile_template');
     }
@@ -395,6 +400,7 @@ class Mobile extends My_Controller {
      */
     function is_logged_in() {
         $is_logged_in = $this->session->userdata('is_logged_in');
+         
         if (!isset($is_logged_in) || $is_logged_in != true) {
             $this->session->set_flashdata('message', 'You are not logged in');
             redirect('user/login');

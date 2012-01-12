@@ -26,7 +26,7 @@
         <link rel="apple-touch-icon-precomposed" href="images/mobile/l/apple-touch-icon-precomposed.png">
 
         <link rel="stylesheet" href="<?= base_url() ?>css/jquery-ui-1.8.custom.css" />
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0rc2/jquery.mobile-1.0rc2.min.css" />
+         <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
 
         <!-- For nokia devices: -->
         <link rel="shortcut icon" href="images/mobile/l/apple-touch-icon.png">

@@ -99,6 +99,8 @@ class Quote extends My_Controller {
         $data['items'] = $this->Membership_model->get_all_employees();
         $data['main'] = '/quote/main';
         $data['title'] = 'Quoting Tool';
+        
+         $data['desktop'] = 'quote';
         $this->load->vars($data);
         $this->load->view('leasedesktemplate');
     }
@@ -377,6 +379,8 @@ class Quote extends My_Controller {
 
                 return;
             } else {
+                
+                $data['desktop'] = 'quote';
                 $this->load->vars($data);
                 $this->load->view('leasedesktemplate');
             }

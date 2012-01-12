@@ -739,7 +739,7 @@ input:focus, textarea:focus {
 }
 
 #descriptionFixed {
-    color: #aaaaaa;
+    color: #999999;
      padding:3px;
     border: solid 1px #d0d0d0;
      background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
