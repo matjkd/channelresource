@@ -106,6 +106,7 @@
 
                             <li><a href="<?= base_url() ?>mobile/quote" data-ajax="false">Online Quote Tool</a></li>
                             <li><a href="<?= base_url() ?>mobile/list_quotes" data-ajax="false">List Quotes</a></li>
+                            <li><a href="<?= base_url() ?>mobilesupport" data-ajax="false">Support Requests</a></li>
                         </ul>
                     </div>
 
@@ -120,6 +121,7 @@
 
 
                 <p>&copy; Copyright 2011 Lease-Desk Ltd.<br/>
+                    <?php if(!isset($desktop)) { $desktop = NULL; } ?>
                     <a href="<?= base_url() ?><?=$desktop?>" data-ajax="false">View desktop site</a>
                 </p></div> 
             
