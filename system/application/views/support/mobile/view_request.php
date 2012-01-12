@@ -10,7 +10,7 @@
     <li>Telephone:<p class="ui-li-aside"><strong> <?= $telephone ?></strong></p></li>
     <li>Email:<p class="ui-li-aside"><strong> <?= $email_address ?></strong></p></li>
     <li>Support Type:<p class="ui-li-aside"><strong> <?= $support_type ?></strong></p></li>
-    <li>Priority:<p class="ui-li-aside"><strong> <?= $support_priority ?></strong></p></li>
+
     <li data-role="list-divider">
         Description
     </li>
@@ -20,9 +20,36 @@
 
 <ul data-role="listview" data-inset="true">
 
-    <li data-role="list-divider">
-       Notes
-    </li>
-    <li>Note:<p class="ui-li-aside">added by blah</p><br/>text</li>
-  
+    <?php
+    $previoustime = "none";
+    foreach ($comments as $key => $row):
+        ?>
+        <?php
+        //convert date to readable date and readbale time
+        $old_date_added = strtotime($row['date_added']);
+        $new_date_added = date('l jS \of F Y', $old_date_added);
+        $time = date('H:i', $old_date_added);
+        ?>
+
+    <?php if ($new_date_added != $previoustime) { ?>
+            <li data-role="list-divider">
+
+
+
+
+            <?= $new_date_added ?>
+            </li>
+    <?php } ?>
+            
+            
+        <li><h3>    <?= $row['firstname'] ?> <?= $row['lastname'] ?></h3>
+
+    <?= $row['comment'] ?>
+            <p class="ui-li-aside"><strong><?= $time ?></strong></p>
+        </li>
+        <?php
+        $previoustime = $new_date_added;
+
+    endforeach;
+    ?>
 </ul>

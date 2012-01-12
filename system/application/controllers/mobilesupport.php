@@ -135,6 +135,10 @@ class Mobilesupport extends My_Controller {
         $data['bucket_name'] = $data['ticket_id'];
         $data['bucket_contents'] = $this->s3->getBucket($bucketname);
 
+        //fetch notes
+        $data['comments'] = $this->support_model->list_replies($support_id);
+
+
         $data['desktop'] = 'support';
         $data['main'] = '/support/mobile/view_request';
         $data['title'] = 'Support Requests';
