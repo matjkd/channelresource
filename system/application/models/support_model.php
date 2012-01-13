@@ -124,7 +124,7 @@ class Support_model extends Model {
         $data = array();
 
         $company = $this->session->userdata('company_id');
-        //$this->db->order_by('roi.roi_ref');
+        $this->db->order_by('support_priority', 'asc');
         if (!isset($company) || $company > 2) {
             $this->db->where('support.company_id', $id);
             $this->db->join('users', 'users.user_id=support.user_id', 'right');
@@ -149,6 +149,25 @@ class Support_model extends Model {
 
 
         return $results;
+    }
+    
+    /**
+     * Auto make priority closed if  ticket is closed. 
+     * @param type $id 
+     */
+    function close_priority($id) {
+         
+        $close_priority = array(
+            'support_priority' => '99'
+           
+        );
+         $this->db->where('support_id', $id);
+        $update = $this->db->update('support',  $close_priority );
+         return $update;
+        
+        
+     
+        
     }
 
     function get_ticket($id) {

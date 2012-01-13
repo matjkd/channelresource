@@ -78,7 +78,9 @@
                 if (($row['support_priority']) == 4) {
                     $priority = "4.Low";
                 }
-
+ if (($row['support_priority']) == 99) {
+                    $priority = "5.Closed";
+                }
 
                 //   $statusarray = array(1 => 'Submitted', 4 => 'Accepted', 2 => 'Assigned', 5 => 'Awaiting Customer', 6=> 'Resolved', 7=> 'Development', 3 => 'CLOSED');
 

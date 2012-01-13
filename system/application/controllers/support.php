@@ -157,7 +157,7 @@ class Support extends My_Controller {
 
             //convert to text names
             $support_issue1 = $this->support_model->name_status('Issue', $support_issue);
-            $support_priority1  = $this->support_model->name_status('priority', $support_priority);
+            $support_priority1 = $this->support_model->name_status('priority', $support_priority);
             $support_type1 = $this->support_model->name_status('type', $support_type);
 
 
@@ -471,6 +471,13 @@ End
         if ($data['ticket_list'] != NULL) {
             foreach ($data['ticket_list'] as $countrow):
                 $data['rowcount'] = $data['rowcount'] + 1;
+
+                $support_statusx = $countrow['support_status'];
+                $support_idx = $countrow['support_id'];
+                if ($support_statusx == 3) {
+                    //convert priority to closed
+                    $this->support_model->close_priority($support_idx);
+                }
             endforeach;
         }
 
@@ -551,54 +558,12 @@ End
                 $company_name = $row3['company_name'];
             endforeach;
 
-            if ($support_priority == 1) {
-                $support_priority1 = "Urgent";
-            }
-            if ($support_priority == 2) {
-                $support_priority1 = "High";
-            }
-            if ($support_priority == 3) {
-                $support_priority1 = "Medium";
-            }
-            if ($support_priority == 4) {
-                $support_priority1 = "Low";
-            }
-
-            if ($support_issue == 1) {
-                $support_issue1 = "Data Error";
-            }
-            if ($support_issue == 2) {
-                $support_issue1 = "System Error";
-            }
-            if ($support_issue == 3) {
-                $support_issue1 = "System Crash";
-            }
-            if ($support_issue == 4) {
-                $support_issue1 = "Slow Response";
-            }
-            if ($support_issue == 6) {
-                $support_issue1 = "Development";
-            }
-            if ($support_issue == 5) {
-                $support_issue1 = "Other";
-            }
+            //convert to text names
+            $support_issue1 = $this->support_model->name_status('Issue', $support_issue);
+            $support_priority1 = $this->support_model->name_status('priority', $support_priority);
+            $support_type1 = $this->support_model->name_status('type', $support_type);
 
 
-            if ($support_type == 1) {
-                $support_type1 = "Lease-Desk.com";
-            }
-            if ($support_type == 2) {
-                $support_type1 = "Channel Resource";
-            }
-            if ($support_type == 3) {
-                $support_type1 = "Customer Resource";
-            }
-            if ($support_type == 4) {
-                $support_type1 = "Training";
-            }
-            if ($support_type == 5) {
-                $support_type1 = "Account Review";
-            }
 
 
 
@@ -653,7 +618,7 @@ Start:OpportunityDelivery
 End
 				
 				");
-            $this->postmark->send();
+            //   $this->postmark->send();
 //end mailto webCRM
             redirect('support/results/' . $id . '', 'refresh');
         } else {

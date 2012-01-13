@@ -56,6 +56,11 @@ class Mobilesupport extends My_Controller {
             $support_issue = $row['support_issue'];
             $support_priority = $row['support_priority'];
             $support_status = $row['support_status'];
+            
+            if($support_status == 3) {
+                //convert priority to closed
+               $this->support_model->close_priority($support_id);
+            }
 
 //convert to text names
             $data['support_issue'] = $this->support_model->name_status('Issue', $support_issue);
@@ -64,7 +69,7 @@ class Mobilesupport extends My_Controller {
             if ($support_status == "Submitted") {
                 $data['support_status'] = "Submitted";
             } else {
-                $data['support_status'] = $this->support_model->name_status('status', $support_type);
+                $data['support_status'] = $this->support_model->name_status('status', $support_status);
             }
         endforeach;
 
