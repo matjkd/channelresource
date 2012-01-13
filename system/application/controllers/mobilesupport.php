@@ -93,10 +93,14 @@ class Mobilesupport extends My_Controller {
         $this->load->view('mobile_template');
     }
 
+    /**
+     * 
+     */
     function addnote() {
         $id = $this->input->post('supportid');
-
+        $this->support_model->add_reply($id);
         $data['ticket_details'] = $this->support_model->get_ticket($id);
+
         foreach ($data['ticket_details'] as $row5):
 
             $support_type = $row5['support_type'];
@@ -117,6 +121,52 @@ class Mobilesupport extends My_Controller {
         } else {
             $data['support_status'] = $this->support_model->name_status('status', $support_type);
         }
+
+        $comment = strip_tags($this->input->post('comment'));
+
+        //get company detail - Try and make this a separate function. Some isn't needed here
+        //get details of company/channel partner, this could be trimmed down a touch
+        $data['company_details'] = $this->Membership_model->get_company_detail($company_id);
+        $initials = "JWS";
+        foreach ($data['company_details'] as $row3):
+
+            if ($row3['agent_id'] == NULL) {
+                $agent_id = 1;
+            } else {
+                $agent_id = $row3['agent_id'];
+                if ($row3['company_id'] == 2) {
+                    $first_initial = substr($this->session->userdata('firstname'), 0, 1);
+                    $last_initial = substr($this->session->userdata('lastname'), 0, 1);
+                    $initials = "$first_initial" . "" . "$last_initial";
+                    //quick fix for julian having 3 initials in webCRM
+                    if ($initials == "JS") {
+                        $initials = "JWS";
+                    }
+                } else {
+                    $initials = "JWS";
+                }
+            }
+
+            $company_id_agent = $row3['company_id'];
+            $company_name = $row3['company_name'];
+        endforeach;
+
+
+        //email
+        $this->postmark->clear();
+        $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
+        $this->postmark->to('chloe@lease-desk.com');
+        $this->postmark->cc($email_address);
+        $this->postmark->bcc('mat@redstudio.co.uk');
+        $this->postmark->subject('Reply to Support Request Ticket No ' . $id . '');
+        $this->postmark->message_html("Subject: $support_subject<br/><br/>
+Company: $company_name<br/><br/>
+Reply: $comment
+					");
+        $this->postmark->send();
+
+        //redirect back
+        redirect('mobilesupport/view_support_request/' . $id . '', 'refresh');
     }
 
     function is_logged_in() {

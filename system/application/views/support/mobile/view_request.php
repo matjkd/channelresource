@@ -3,8 +3,8 @@
     <form action="<?=base_url()?>mobilesupport/addnote" method="post" data-role="fieldcontain"  data-ajax="false">
         <input type="hidden" name="supportid" value="<?=$support_id?>"/>
         <div data-theme="b"   aria-disabled="false">
-            <label for="addnote">Note:</label>
-            <textarea name="addnote" id="addnote" value="" placeholder="Add a new note here"></textarea>
+            <label for="comment">Note:</label>
+            <textarea name="comment" id="comment" value="" placeholder="Add a new note here"></textarea>
         </div>
 
         <div data-theme="b" class="ui-btn ui-btn-corner-all ui-shadow ui-btn-up-b" aria-disabled="false">
