@@ -44,7 +44,7 @@
             
         <li><h3>    <?= $row['firstname'] ?> <?= $row['lastname'] ?></h3>
 
-    <?= $row['comment'] ?>
+    <?= form_prep($row['comment']) ?>
             <p class="ui-li-aside"><strong><?= $time ?></strong></p>
         </li>
         <?php
