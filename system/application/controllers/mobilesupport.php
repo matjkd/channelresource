@@ -49,76 +49,23 @@ class Mobilesupport extends My_Controller {
             $data['telephone'] = $row['telephone'];
             $data['email_address'] = $row['email_address'];
             $data['support_subject'] = $row['support_subject'];
-
-            $data['support_issue'] = $row['support_issue'];
             $data['support_description'] = $row['support_description'];
-
             $data['completion_date'] = $row['completion_date'];
-            $data['support_priority'] = $row['support_priority'];
 
-//TODO make this more elegant as it currently requires changes on multiple pages if a change is made
-            if (($row['support_type']) == 1) {
-                $type = "Lease-Desk.com";
-            }
-            if (($row['support_type']) == 2) {
-                $type = "Channel-Resource";
-            }
-            if (($row['support_type']) == 3) {
-                $type = "Customer-Resource";
-            }
-            if (($row['support_type']) == 4) {
-                $type = "Training";
-            }
-            if (($row['support_type']) == 5) {
-                $type = "Account Review";
-            }
+            $support_type = $row['support_type'];
+            $support_issue = $row['support_issue'];
+            $support_priority = $row['support_priority'];
+            $support_status = $row['support_status'];
 
-            $data['support_type'] = $type;
-
-            if (($row['support_priority']) == 1) {
-                $priority = "<span style='color:red;'>URGENT</span>";
+//convert to text names
+            $data['support_issue'] = $this->support_model->name_status('Issue', $support_issue);
+            $data['support_priority'] = $this->support_model->name_status('priority', $support_priority);
+            $data['support_type'] = $this->support_model->name_status('type', $support_type);
+            if ($support_status == "Submitted") {
+                $data['support_status'] = "Submitted";
+            } else {
+                $data['support_status'] = $this->support_model->name_status('status', $support_type);
             }
-            if (($row['support_priority']) == 2) {
-                $priority = "High";
-            }
-            if (($row['support_priority']) == 3) {
-                $priority = "Medium";
-            }
-            if (($row['support_priority']) == 4) {
-                $priority = "Low";
-            }
-
-            $data['support_priority'] = $priority;
-
-            if (($row['support_status']) == 1) {
-                $status = "Submitted";
-            }
-            if (($row['support_status']) == "Submitted") {
-                $status = "Submitted";
-            }
-            if (($row['support_status']) == 2) {
-                $status = "Assigned";
-            }
-            if (($row['support_status']) == 3) {
-                $status = "Closed";
-            }
-
-            if (($row['support_status']) == 4) {
-                $status = "Accepted";
-            }
-
-            if (($row['support_status']) == 5) {
-                $status = "Awaiting Customer";
-            }
-
-            if (($row['support_status']) == 6) {
-                $status = "Resolved";
-            }
-
-            if (($row['support_status']) == 7) {
-                $status = "Development";
-            }
-            $data['support_status'] = $status;
         endforeach;
 
         //convert channel partner id into the name
@@ -144,6 +91,32 @@ class Mobilesupport extends My_Controller {
         $data['title'] = 'Support Requests';
         $this->load->vars($data);
         $this->load->view('mobile_template');
+    }
+
+    function addnote() {
+        $id = $this->input->post('supportid');
+
+        $data['ticket_details'] = $this->support_model->get_ticket($id);
+        foreach ($data['ticket_details'] as $row5):
+
+            $support_type = $row5['support_type'];
+            $support_issue = $row5['support_issue'];
+            $support_priority = $row5['support_priority'];
+            $support_status = $row5['support_status'];
+            $email_address = $row5['email_address'];
+            $company_id = $row5['company_id'];
+            $user_id = $row5['user_id'];
+            $support_subject = $row5['support_subject'];
+        endforeach;
+
+        $data['support_issue'] = $this->support_model->name_status('Issue', $support_issue);
+        $data['support_priority'] = $this->support_model->name_status('priority', $support_priority);
+        $data['support_type'] = $this->support_model->name_status('type', $support_type);
+        if ($support_status == "Submitted") {
+            $data['support_status'] = "Submitted";
+        } else {
+            $data['support_status'] = $this->support_model->name_status('status', $support_type);
+        }
     }
 
     function is_logged_in() {

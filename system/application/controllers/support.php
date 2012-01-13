@@ -138,6 +138,9 @@ class Support extends My_Controller {
 
 
             $support_description = strip_tags($this->input->post('support_description'));
+
+
+
             $support_type = $this->input->post('support_type');
             $support_issue = $this->input->post('support_issue');
             $support_priority = $this->input->post('support_priority');
@@ -152,54 +155,10 @@ class Support extends My_Controller {
             $daystillcomplete = ceil($daystillcomplete / 86400);
 
 
-            if ($support_priority == 1) {
-                $support_priority1 = "Urgent";
-            }
-            if ($support_priority == 2) {
-                $support_priority1 = "High";
-            }
-            if ($support_priority == 3) {
-                $support_priority1 = "Medium";
-            }
-            if ($support_priority == 4) {
-                $support_priority1 = "Low";
-            }
-
-            if ($support_issue == 1) {
-                $support_issue1 = "Data Error";
-            }
-            if ($support_issue == 2) {
-                $support_issue1 = "System Error";
-            }
-            if ($support_issue == 3) {
-                $support_issue1 = "System Crash";
-            }
-            if ($support_issue == 4) {
-                $support_issue1 = "Slow Response";
-            }
-            if ($support_issue == 6) {
-                $support_issue1 = "Development";
-            }
-            if ($support_issue == 5) {
-                $support_issue1 = "Other";
-            }
-
-
-            if ($support_type == 1) {
-                $support_type1 = "Lease-Desk.com";
-            }
-            if ($support_type == 2) {
-                $support_type1 = "Channel Resource";
-            }
-            if ($support_type == 3) {
-                $support_type1 = "Customer Resource";
-            }
-            if ($support_type == 4) {
-                $support_type1 = "Training";
-            }
-            if ($support_type == 5) {
-                $support_type1 = "Account Review";
-            }
+            //convert to text names
+            $support_issue1 = $this->support_model->name_status('Issue', $support_issue);
+            $support_priority1  = $this->support_model->name_status('priority', $support_priority);
+            $support_type1 = $this->support_model->name_status('type', $support_type);
 
 
 
@@ -437,7 +396,7 @@ End
    
                             
                             ");
-                   // $this->postmark->send();
+                    // $this->postmark->send();
 //end mailto webCRM for update
                 }
 
@@ -492,6 +451,7 @@ End
         foreach ($data['channel_detail'] as $row):
             $data['channel_partner_name'] = $row['company_name'];
         endforeach;
+
         //end of conversion
         //List File attachments
         $bucketname = "lease-desk";
@@ -726,33 +686,29 @@ End
         }
         redirect('support/results/' . $id . '', 'refresh');
     }
-    
+
     function edit_note() {
         $id = $this->input->post('noteid');
         $comment = $this->input->post('notecomment');
-        
-        if($this->support_model->update_note($id, $comment)){
-        echo "Note Updated";
-        }
-        else
-        {
+
+        if ($this->support_model->update_note($id, $comment)) {
+            echo "Note Updated";
+        } else {
             echo "Error updating note. Please contact technical support";
         }
 
         return;
     }
-    
+
     function delete_note() {
-         $id = $this->input->post('noteid');
-         if($this->support_model->delete_note($id)) {
-              echo $id." deleted";
-         }
-         else
-         {
-             echo "Error deleting note. Please contact technical support";
-         }
-        
-         return;
+        $id = $this->input->post('noteid');
+        if ($this->support_model->delete_note($id)) {
+            echo $id . " deleted";
+        } else {
+            echo "Error deleting note. Please contact technical support";
+        }
+
+        return;
     }
 
     function is_logged_in() {

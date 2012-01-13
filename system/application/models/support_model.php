@@ -57,7 +57,7 @@ class Support_model extends Model {
         }
 
         //set assigned date unless it has been assigned already
-        if ($this->input->post('support_status') == 2 && $date_opened == NULL) {
+        if ($this->input->post('support_status') == 2 && !isset($date_opened)) {
 
             $openeddate = $this->input->post('date_added');
         } else {
@@ -221,6 +221,21 @@ class Support_model extends Model {
 
         $Q->free_result();
         return $comments;
+    }
+    
+    /**
+     *
+     * @param type $type
+     * @param type $value 
+     */
+    function name_status($type, $value) {
+        
+        
+        $this->db->limit(1);
+        $this->db->where('status_type', $type);
+        $this->db->where('status_value', $value);
+        $query = $this->db->get('support_status');
+        return $query->row('status_name');
     }
 
     function edit_reply($id) {
