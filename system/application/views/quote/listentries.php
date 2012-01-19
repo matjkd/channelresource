@@ -48,6 +48,13 @@ $user = $this->session->userdata('user_id');
             $deletequote = '/quote/delete/' . $row['quote_id'];
             $pdfquote = '/quote/results/' . $row['quote_id'] . '/pdf';
 
+            if (isset($row['aemail'])) {
+                $assigned_email_address = $row['aemail'];
+            }
+            else {
+                $assigned_email_address = '';
+            }
+
             if ($row['date_updated'] == NULL) {
                 $date_updated = $row['date_added'];
             } else {
@@ -66,9 +73,9 @@ $user = $this->session->userdata('user_id');
                 <td style="padding:5px;" class="<?= $row['quote_id'] ?>"><?php echo "<a href=$viewquote>View</a> | <a href='#' onclick='confirmation(" . $row['quote_id'] . ")'>Delete</a> 
                         | <a href=$pdfquote>PDF</a>" ?> |
 
-                    <span class="spanlink" onclick="emailpdftable2(<?= $row['quote_id'] ?>, '<?= $row['aemail'] ?>')" > Email</span></td>
+                    <span class="spanlink" onclick="emailpdftable2(<?= $row['quote_id'] ?>, '<?= $assigned_email_address ?>')" > Email</span></td>
             </tr>
-<?php endforeach; ?>
+        <?php endforeach; ?>
     </tbody>
 </table>
 
@@ -90,7 +97,7 @@ $user = $this->session->userdata('user_id');
         </fieldset>
 
     </form>
-    
+
     <div id="emailID" class="none"></div>
 </div>
 
