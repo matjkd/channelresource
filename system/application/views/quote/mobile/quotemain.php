@@ -116,10 +116,11 @@ echo form_open('mobile/quote_results', $attributes, $hidden);
 <input type="hidden" name="assigned_id" id="assign_id" value="<?= set_value('assigned_id') ?>"/>
 
 <fieldset data-role="controlgroup" >
-    <div data-role="fieldcontain">                   
-        <label class="ui-btn-text" for="basic">Assign To User:</label>
-        <input type="text" name="assigned_name" id="company" value="<?= set_value('assigned_name', $assigned_name) ?>"  />
-
+    <div data-role="fieldcontain">     
+        <?php if ($this->session->userdata('company_id') < 3) { ?>
+            <label class="ui-btn-text" for="basic">Assign To User:</label>
+            <input type="text" name="assigned_name" id="company" value="<?= set_value('assigned_name', $assigned_name) ?>"  />
+        <?php } ?>
         <label class="ui-btn-text" for="basic">Reference (for your Info):</label>
         <input type="text" name="quote_ref" id="basic" value="<?= set_value('quote_ref', $quote_ref) ?>"  />
     </div>
