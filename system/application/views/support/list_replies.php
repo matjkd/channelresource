@@ -38,9 +38,9 @@
 
                     <td>
                         <?php if ($row['added_by'] == $this->session->userdata('user_id')) { ?>
-                        <?php $commentupdated = str_replace('"', '\"', $row['comment']);?>
-                        <span class="spanlink" onclick='editNote("<?=form_prep($commentupdated) ?>",  <?= $row['comments_id'] ?>)'>Edit</span> |  
-                        <span class="spanlink" onclick="deleteNote(<?= $row['comments_id'] ?>)">Delete</span><?php } ?>
+                            <?php $commentupdated = str_replace('"', '\"', $row['comment']); ?>
+                            <span class="spanlink" onclick='editNote("<?= form_prep($commentupdated) ?>",  <?= $row['comments_id'] ?>)'>Edit</span> |  
+                            <span class="spanlink" onclick="deleteNote(<?= $row['comments_id'] ?>)">Delete</span><?php } ?>
                     </td>
                 </tr>
 
@@ -57,7 +57,7 @@
     <form>
         <fieldset>
 
-          
+
 
             <input type="hidden" name="noteid" id="noteid" value="" class="text ui-widget-content ui-corner-all" />
 
@@ -69,6 +69,6 @@
         </fieldset>
 
     </form>
-    
+
     <div id="emailID" class="none"></div>
 </div>

@@ -74,10 +74,8 @@ class Login extends MY_Controller {
                 redirect('welcome/');
             }
         } else { // incorrect username or password
-            $data['title'] = 'Login Failed';
-            $data['main'] = 'user/index';
-            $this->load->vars($data);
-            $this->load->view('logintemplate');
+             $this->session->set_flashdata('conf_msg', "Login Failed.");
+             redirect($this->agent->referrer(), 'refresh');
         }
     }
 
