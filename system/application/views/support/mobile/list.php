@@ -2,6 +2,7 @@
     <ul data-role="listview" id="main_list" data-split-icon="gear" data-split-theme="d" data-filter="true">
 
         <?php
+        if(isset($ticket_list)) {
         foreach ($ticket_list as $key => $row):
 
             if (($row['support_type']) == 1) {
@@ -92,7 +93,9 @@
 
 
         <?php endforeach; ?>
-
-
+            
+            <?php } else {?>
+No Requests to display
+<?php } ?>
     </ul>
 </div>
