@@ -3,7 +3,7 @@
 
         <?php
         foreach ($ticket_list as $key => $row):
-           
+
             if (($row['support_type']) == 1) {
                 $type = "Lease-Desk.com";
             }
@@ -34,7 +34,9 @@
             if (($row['support_priority']) == 4) {
                 $priority = "4.Low";
             }
-
+            if (($row['support_priority']) == 5) {
+                $priority = "5.Closed";
+            }
 
             //   $statusarray = array(1 => 'Submitted', 4 => 'Accepted', 2 => 'Assigned', 5 => 'Awaiting Customer', 6=> 'Resolved', 7=> 'Development', 3 => 'CLOSED');
 
@@ -77,17 +79,17 @@
                     <p><?= $priority ?></p>
                     <p><strong>Ref:</strong> <?= $row['support_id'] ?></p>
 
-                  
-                        <p><strong>Subject:</strong> <?= $row['support_subject'] ?></p>
-                   <p><strong>Company:</strong> <?= $row['company_name'] ?></p>
-                     <p><strong>Type:</strong> <?= $type ?></p>
- <p><strong>Status:</strong> <?= $status ?></p>
-                
+
+                    <p><strong>Subject:</strong> <?= $row['support_subject'] ?></p>
+                    <p><strong>Company:</strong> <?= $row['company_name'] ?></p>
+                    <p><strong>Type:</strong> <?= $type ?></p>
+                    <p><strong>Status:</strong> <?= $status ?></p>
+
                     <p><?= $new_date_added ?></p>
                 </a>
             </li>
 
-     
+
 
         <?php endforeach; ?>
 

@@ -154,6 +154,13 @@ class Support extends My_Controller {
             $daystillcomplete = (strtotime($completion_date)) - (time());
             $daystillcomplete = ceil($daystillcomplete / 86400);
 
+            //human completion date
+            if ($completion_date != NULL) {
+                $humandate = new DateTime($completion_date);
+                $humandate = date_format($humandate, 'D, d M Y');
+            } else {
+                $humandate = "N/A";
+            }
 
             //convert to text names
             $support_issue1 = $this->support_model->name_status('Issue', $support_issue);
@@ -342,7 +349,7 @@ End
 					
 
 company: $company_name
-
+Estimated Completion Date: $humandate
 Customer Tel: $telephone	
 Description: $support_description
 Support Type: $support_type1
