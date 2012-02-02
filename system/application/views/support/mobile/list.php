@@ -1,4 +1,4 @@
-<div >       
+<div  style="padding-bottom: 5px;">       
     <ul data-role="listview" id="main_list" data-split-icon="gear" data-split-theme="d" data-filter="true">
 
         <?php
