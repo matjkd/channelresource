@@ -24,8 +24,8 @@
     </li>
     <li>Priority:<p class="ui-li-aside"><strong> <?= $support_priority ?></strong></p></li>
     <li>Issue:<p class="ui-li-aside"><strong> <?= $support_issue ?></strong></p></li>
-    <li>Subject:<p class="ui-li-aside" style="white-space: normal"><strong> <?= $support_subject ?></strong></p></li>
-    <li>Company:<p class="ui-li-aside" style="white-space: normal"><strong> <?= $channel_partner_name ?></strong></p></li>
+    <li style="overflow: auto;">Subject:<p class="ui-li-aside"  style="white-space: normal"><strong> <?= $support_subject ?></strong></p></li>
+    <li style="overflow: auto;">Company:<p class="ui-li-aside" style="white-space: normal"><strong> <?= $channel_partner_name ?></strong></p></li>
     <li>Telephone:<p class="ui-li-aside"><strong> <?= $telephone ?></strong></p></li>
     <li>Email:<p class="ui-li-aside"><a href="mailto:<?= $email_address ?>" ><?= $email_address ?></a></p></li>
     <li>Support Type:<p class="ui-li-aside"><strong> <?= $support_type ?></strong></p></li>
