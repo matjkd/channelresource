@@ -32,6 +32,11 @@ class Support_model extends Model {
         return $insert;
     }
 
+    /**
+     *
+     * @param type $id
+     * @return type 
+     */
     function update_ticket($id) {
 
 
@@ -76,6 +81,7 @@ class Support_model extends Model {
                     'support_priority' => $this->input->post('support_priority'),
                     'completion_date' => $this->input->post('completion_date'),
                     'support_status' => $this->input->post('support_status'),
+                    'support_subject' => $this->input->post('support_subject'),
                     'date_closed' => $closeddate,
                     'date_opened' => $openeddate,
                     'date_updated' => $this->input->post('date_added')
@@ -150,24 +156,19 @@ class Support_model extends Model {
 
         return $results;
     }
-    
+
     /**
      * Auto make priority closed if  ticket is closed. 
      * @param type $id 
      */
     function close_priority($id) {
-         
+
         $close_priority = array(
             'support_priority' => '99'
-           
         );
-         $this->db->where('support_id', $id);
-        $update = $this->db->update('support',  $close_priority );
-         return $update;
-        
-        
-     
-        
+        $this->db->where('support_id', $id);
+        $update = $this->db->update('support', $close_priority);
+        return $update;
     }
 
     function get_ticket($id) {
@@ -241,15 +242,15 @@ class Support_model extends Model {
         $Q->free_result();
         return $comments;
     }
-    
+
     /**
      *
      * @param type $type
      * @param type $value 
      */
     function name_status($type, $value) {
-        
-        
+
+
         $this->db->limit(1);
         $this->db->where('status_type', $type);
         $this->db->where('status_value', $value);
