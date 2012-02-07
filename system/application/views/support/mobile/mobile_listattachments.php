@@ -1,8 +1,11 @@
+<?php     if ($bucket_contents) { ?>
 <ul data-role="listview" data-inset="true">
 
-
+ <li data-role="list-divider">
+        Attachments
+    </li>
     <?php
-    if ($bucket_contents) {
+
         foreach ($bucket_contents as $file):
 
             $fname = $file['name'];
@@ -27,7 +30,9 @@
             <?php
             }
         endforeach;
-    }
+    
     ?>
 
 </ul>
+
+<?php } ?>
