@@ -62,7 +62,7 @@ class Mobilesupport extends My_Controller {
             //List File attachments
             $bucketname = "lease-desk";
             $data['mainbucket'] = "lease-desk";
-            $data['bucket_name'] = $data['ticket_id'];
+           
             $data['bucket_contents'] = $this->s3->getBucket($bucketname);
 
             if ($support_status == 3) {
