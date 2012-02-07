@@ -36,6 +36,8 @@
     <li><?= $support_description ?></li>
 </ul>
 
+<?=$this->load->view('support/mobile/mobile_listattachments')?>
+
 
 <ul data-role="listview" data-inset="true">
 

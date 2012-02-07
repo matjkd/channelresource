@@ -432,6 +432,9 @@ End
         }
     }
 
+    /**
+     * 
+     */
     function results() {
         $data['ticket_id'] = $this->uri->segment(3);
         $data['ticket_data'] = $this->support_model->get_ticket($data['ticket_id']);
@@ -498,6 +501,9 @@ End
         $this->load->view($this->template);
     }
 
+    /**
+     * 
+     */
     function delete_file() {
 
         $bucket = "lease-desk";

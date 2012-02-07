@@ -56,10 +56,18 @@ class Mobilesupport extends My_Controller {
             $support_issue = $row['support_issue'];
             $support_priority = $row['support_priority'];
             $support_status = $row['support_status'];
-            
-            if($support_status == 3) {
+
+
+            //get bucket contents
+            //List File attachments
+            $bucketname = "lease-desk";
+            $data['mainbucket'] = "lease-desk";
+            $data['bucket_name'] = $data['ticket_id'];
+            $data['bucket_contents'] = $this->s3->getBucket($bucketname);
+
+            if ($support_status == 3) {
                 //convert priority to closed
-               $this->support_model->close_priority($support_id);
+                $this->support_model->close_priority($support_id);
             }
 
 //convert to text names
