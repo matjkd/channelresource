@@ -108,6 +108,7 @@
                             <li><a href="<?= base_url() ?>mobile/quote" data-ajax="false">Online Quote Tool</a></li>
                             <li><a href="<?= base_url() ?>mobile/list_quotes" data-ajax="false">List Quotes</a></li>
                             <li><a href="<?= base_url() ?>mobilesupport" data-ajax="false">Support Requests</a></li>
+                              <li><a href="<?= base_url() ?>mobilesupport/add_request" data-ajax="false">Add Support Request</a></li>
                         </ul>
                     </div>
 

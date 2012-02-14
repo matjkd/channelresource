@@ -180,6 +180,23 @@ Reply: $comment
         //redirect back
         redirect('mobilesupport/view_support_request/' . $id . '', 'refresh');
     }
+    
+    
+    function add_request() {
+           //get current user info
+        $data['customeruser_id'] = $this->session->userdata('user_id');
+        $data['customercompany_id'] = $this->session->userdata('company_id');
+
+        //get list of related tickets
+        $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
+
+        $data['desktop'] = 'support';
+        $data['main'] = '/support/mobile/add_request';
+        $data['title'] = 'Support Requests';
+        $this->load->vars($data);
+        $this->load->view('mobile_template');
+        
+    }
 
     function is_logged_in() {
         $is_logged_in = $this->session->userdata('is_logged_in');
