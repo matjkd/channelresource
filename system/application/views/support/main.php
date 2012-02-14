@@ -14,8 +14,8 @@
 
     $this->load->view('support/support_request');?>
 
-     <input type="reset" name="reset" value="Reset" class="buttonstyle">
-   <input type="submit" name="submit" value="Submit" class="buttonstyle">
+    <input type="reset" name="reset" value="Reset" class="buttonstyle">
+    <input type="submit" name="submit" value="Submit" class="buttonstyle">
     
     <?= form_close() ?>
 </div>

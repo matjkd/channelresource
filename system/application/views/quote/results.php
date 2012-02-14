@@ -5,7 +5,7 @@ echo form_open('quote/results', $attributes, $hidden);
 
 $this->load->view('admin/table');
 $this->load->view('quote/quote_table');
-$this->table->add_row(form_submit('submit', 'Reset'), form_submit('submit', 'Update'));
+
 echo $this->table->generate();
 $this->table->clear();
 
@@ -13,7 +13,8 @@ if ($currency == NULL) {
     $currency = "&pound;";
 }
 ?>
-
+    <input type="submit" name="submit" value="Reset" class="buttonstyle">
+    <input type="submit" name="submit" value="Update" class="buttonstyle">
 
     <!--    buttons at top right of quote results-->
     <div style="position:absolute; top:10px; right:4px; display:block;" id="top_controls" class="<?= $quote_id ?>">
@@ -24,7 +25,7 @@ if ($currency == NULL) {
         <button type="submit" value="Reset" name="submit">Reset</button>
         <button type="submit" value="Update" name="submit">Update</button>  
 
-
+ 
     </div>
 </div>
 <div id="rightside" class="ajax_box">

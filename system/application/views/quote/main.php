@@ -18,11 +18,12 @@
     $this->load->view('admin/table');
     $this->load->view('quote/quote_table');
 
-    $this->table->add_row(form_reset('reset', 'Reset'), form_submit('submit', 'Submit'));
+   
     echo $this->table->generate();
     $this->table->clear();
     ?>
-
+    <input type="reset" name="reset" value="Reset" class="buttonstyle">
+    <input type="submit" name="submit" value="Submit" class="buttonstyle">
     
 
     <?= form_close() ?>

@@ -9,7 +9,7 @@
 	
 	$this->load->view('pricelists/pricelist_table');
 	echo form_hidden('user_id', $user_id);	
-	$this->table->add_row(form_submit('submit', 'Reset'), form_submit('submit', 'Update'));
+	//$this->table->add_row(form_submit('submit', 'Reset'), form_submit('submit', 'Update'));
 		
 	echo $this->table->generate();
 	$this->table->clear();
@@ -19,7 +19,8 @@
     $currency = "&pound;";
 }
 ?>	
-
+ <input type="submit" name="submit" value="Reset" class="buttonstyle">
+    <input type="submit" name="submit" value="Update" class="buttonstyle">
 </div>
 
 <div id="rightside" class="ajax_box">

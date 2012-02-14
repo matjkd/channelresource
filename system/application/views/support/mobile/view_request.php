@@ -1,7 +1,7 @@
 <div data-role="collapsible" data-content-theme="c">
     <h3>Add Note</h3>
-    <form action="<?=base_url()?>mobilesupport/addnote" method="post" data-role="fieldcontain"  data-ajax="false">
-        <input type="hidden" name="supportid" value="<?=$support_id?>"/>
+    <form action="<?= base_url() ?>mobilesupport/addnote" method="post" data-role="fieldcontain"  data-ajax="false">
+        <input type="hidden" name="supportid" value="<?= $support_id ?>"/>
         <div data-theme="b"   aria-disabled="false">
             <label for="comment">Note:</label>
             <textarea name="comment" id="comment" value="" placeholder="Add a new note here"></textarea>
@@ -36,7 +36,7 @@
     <li><?= $support_description ?></li>
 </ul>
 
-<?=$this->load->view('support/mobile/mobile_listattachments')?>
+<?= $this->load->view('support/mobile/mobile_listattachments') ?>
 
 
 <ul data-role="listview" data-inset="true">
