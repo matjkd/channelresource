@@ -258,6 +258,14 @@ class Support_model extends Model {
         return $query->row('status_name');
     }
 
+    function get_statuses($type) {
+
+        $this->db->where('status_type', $type);
+        $this->db->order_by('status_value');
+        $query = $this->db->get('support_status');
+        return $query;
+    }
+
     function edit_reply($id) {
         $now = unix_to_human(now(), TRUE, 'eu');
         $comments_id = $this->input->post('comments_id');

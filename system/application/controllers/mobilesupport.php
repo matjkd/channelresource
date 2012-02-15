@@ -180,22 +180,41 @@ Reply: $comment
         //redirect back
         redirect('mobilesupport/view_support_request/' . $id . '', 'refresh');
     }
-    
-    
+
     function add_request() {
-           //get current user info
+        //get current user info
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
+
 
         //get list of related tickets
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
 
+        $data['channel_partner'] = '';
+
+        $data['user_id'] = '';
+        $data['ticket_id'] = '';
+        $data['telephone'] = '';
+        $data['email_address'] = '';
+        $data['support_subject'] = '';
+        $data['support_type'] = '';
+        $data['support_issue'] = '';
+        $data['support_priority'] = '';
+        $data['completion_date'] = '';
+        $data['support_description'] = '';
+        $data['support_status'] = 'Submitted';
+        $data['title'] = 'New Support-Request';
+
         $data['desktop'] = 'support';
+
+        $data['priority'] = $this->support_model->get_statuses('Priority');
+        $data['type'] = $this->support_model->get_statuses('Issue');
+        $data['area'] = $this->support_model->get_statuses('Type');
+
         $data['main'] = '/support/mobile/add_request';
         $data['title'] = 'Support Requests';
         $this->load->vars($data);
         $this->load->view('mobile_template');
-        
     }
 
     function is_logged_in() {
