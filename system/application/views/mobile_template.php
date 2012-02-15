@@ -26,7 +26,7 @@
         <link rel="apple-touch-icon-precomposed" href="images/mobile/l/apple-touch-icon-precomposed.png">
 
         <link rel="stylesheet" href="<?= base_url() ?>css/jquery-ui-1.8.custom.css" />
-      <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
 
         <!-- For nokia devices: -->
         <link rel="shortcut icon" href="images/mobile/l/apple-touch-icon.png">
@@ -51,13 +51,13 @@
 
     <body>
 
-  <div data-role="page" class="type-interior" id="one"> 
+        <div data-role="page" class="type-interior" id="one"> 
 
-        <?php if (isset($dialog) && $dialog == "yes") {
-            
-        } else { ?>
+            <?php if (isset($dialog) && $dialog == "yes") {
+                
+            } else { ?>
 
-          
+
 
                 <?php if (SITE == "customer") { ?><img alt="Customer Resource" src="<?= base_url() ?>images/logocustomer.png" width="100%"/>
                     <?php
@@ -71,7 +71,7 @@
                     <?php if (isset($quote_id)) { ?>
                         <a href="<?= base_url() ?>mobile/quote/<?= $quote_id ?>" data-icon="gear" class="ui-btn-right" data-ajax="false">Edit</a>
                     <?php } ?>
-                       
+
                     <a href="<?= base_url() ?>mobile/logout" data-icon="gear" class="ui-btn-left" data-ajax="false">Logout</a>
                 </div>
                 <?php
@@ -94,40 +94,65 @@
                 </div>
 
                 <!--/content-primary -->
-  <?php if (isset($dialog) && $dialog == "yes") {
-            
-        } else { ?>
-                <div class="content-secondary">
+                <?php if (isset($dialog) && $dialog == "yes") {
+                    
+                } else { ?>
+                    <div class="content-secondary">
 
-                    <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
+                        <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
 
-                        <h3>Tools</h3>
+                            <h3>Tools</h3>
+                            <p>
+                            <ul data-role="listview" data-theme="c" data-dividertheme="d" data-inset="true">
 
-                        <ul data-role="listview" data-theme="c" data-dividertheme="d">
+                                <li>
+                                    <a href="<?= base_url() ?>mobile/quote" data-ajax="false">
+                                        <img width="16px" height="16px" class="ui-li-icon" src="<?= base_url() ?>images/icons/mobile/161-calculator.png"/>
+                                        Online Quote Tool
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url() ?>mobile/list_quotes" data-ajax="false">
+                                        <img width="16px" height="16px" class="ui-li-icon" src="<?= base_url() ?>images/icons/mobile/33-cabinet.png"/>
+                                        List Quotes
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url() ?>mobilesupport" data-ajax="false">
+                                        <img width="16px" height="16px" class="ui-li-icon" src="<?= base_url() ?>images/icons/mobile/44-shoebox.png"/>
+                                        Support Requests
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url() ?>mobilesupport/add_request" data-ajax="false">
+                                        <img width="16px" height="16px" class="ui-li-icon" src="<?= base_url() ?>images/icons/mobile/40-inbox.png"/>
+                                        Add Support Request
+                                    </a>
+                                </li>
+                            </ul>
+                            </p>
+                        </div>
 
-                            <li><a href="<?= base_url() ?>mobile/quote" data-ajax="false">Online Quote Tool</a></li>
-                            <li><a href="<?= base_url() ?>mobile/list_quotes" data-ajax="false">List Quotes</a></li>
-                            <li><a href="<?= base_url() ?>mobilesupport" data-ajax="false">Support Requests</a></li>
-                              <li><a href="<?= base_url() ?>mobilesupport/add_request" data-ajax="false">Add Support Request</a></li>
-                        </ul>
                     </div>
+                    <br/>
+                    <!-- Place this tag where you want the +1 button to render -->
+                    <g:plusone size="medium"></g:plusone>
 
-                </div>
-                <br/>
-                <!-- Place this tag where you want the +1 button to render -->
-                <g:plusone size="medium"></g:plusone>
+                </div><!-- /content -->
 
-            </div><!-- /content -->
-
-            <div data-role="footer" style="text-align: center;"> 
+                <div data-role="footer" style="text-align: center;"> 
 
 
-                <p>&copy; Copyright 2011 Lease-Desk Ltd.<br/>
-                    <?php if(!isset($desktop)) { $desktop = "quote/main"; } ?>
-                    <a href="<?= base_url() ?><?=$desktop?>" data-ajax="false">View desktop site</a>
-                </p></div> 
-            
-              <?php
+                    <p>&copy; Copyright 2011 Lease-Desk Ltd.<br/>
+                        <?php
+                        if (!isset($desktop)) {
+                            $desktop = "quote/main";
+                        }
+                        ?>
+                        <a href="<?= base_url() ?><?= $desktop ?>" data-ajax="false">View desktop site</a>
+                    </p></div> 
+
+                <?php
             }
             ?>
         </div> 
