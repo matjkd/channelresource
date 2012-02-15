@@ -14,7 +14,7 @@ $role = $this->session->userdata('role');
         <div data-role="fieldcontain">     
 
             <label class="ui-btn-text" for="basic">Subject:</label>
-            <input type="text" name="support_subject" id="basic" value="<?= set_value('support_subject', $support_subject) ?>"  />
+            <input type="text" name="support_subject" id="basic" value="<?= set_value('support_subject') ?>"  />
         </div>
     </fieldset>   
 

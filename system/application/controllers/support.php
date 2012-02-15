@@ -60,8 +60,12 @@ class Support extends My_Controller {
     function create_ticket() {
         //validate form entry
 
-        $this->form_validation->set_rules('support_subject', 'support_subject', 'trim|required');
-        $this->form_validation->set_rules('email_address', 'email_address', 'trim|required');
+        $this->form_validation->set_rules('support_subject', 'Subject', 'trim|required');
+        $this->form_validation->set_rules('email_address', 'Email Address', 'trim|required');
+
+        $data['prioritylist'] = $this->support_model->get_statuses('Priority');
+        $data['type'] = $this->support_model->get_statuses('Issue');
+        $data['areas'] = $this->support_model->get_statuses('Type');
 
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
@@ -127,10 +131,22 @@ class Support extends My_Controller {
             $data['date_updated'] = $this->input->post('date_added');
             $data['ticket_id'] = '';
             $errors = validation_errors();
-            $data['main'] = '/support/main';
-            $data['title'] = 'Support Request';
-            $this->load->vars($data);
-            $this->load->view($this->template);
+
+            //determine if request comes from mobile site and redirect accordingly
+            if ($mobile == 1) {
+                $data['message'] = $errors;
+                $data['main'] = '/support/mobile/add_request';
+                $data['title'] = 'Support Requests';
+                $this->load->vars($data);
+                $this->load->view('mobile_template');
+                
+            } else if ($mobile == 0) {
+
+                $data['main'] = '/support/main';
+                $data['title'] = 'Support Request';
+                $this->load->vars($data);
+                $this->load->view($this->template);
+            }
         } else {
 
             $telephone = $this->input->post('telephone');

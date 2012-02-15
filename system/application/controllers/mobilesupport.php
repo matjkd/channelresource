@@ -196,7 +196,7 @@ Reply: $comment
         $data['ticket_id'] = '';
         $data['telephone'] = '';
         $data['email_address'] = '';
-        $data['support_subject'] = '';
+        //$data['support_subject'] = '';
         $data['support_type'] = '';
         $data['support_issue'] = '';
         $data['support_priority'] = '';
