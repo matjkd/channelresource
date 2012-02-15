@@ -3,4 +3,4 @@ system/application/config/config.php
 system/application/config/email.php
 system/application/config/postmark.php
 system/application/libraries/MY_Controller.php
-nbproject/
+nbproject/*
