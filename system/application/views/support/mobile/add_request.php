@@ -15,19 +15,11 @@ $role = $this->session->userdata('role');
 
             <label class="ui-btn-text" for="basic">Subject:</label>
             <input type="text" name="support_subject" id="basic" value="<?= set_value('support_subject') ?>"  />
-        </div>
-    </fieldset>   
-
-    <fieldset data-role="controlgroup" >
-        <div data-role="fieldcontain">     
+        
 
             <label class="ui-btn-text" for="basic">Telephone:</label>
             <input type="text" name="telephone" id="basic" value="<?= set_value('telephone', $telephone) ?>"  />
-        </div>
-    </fieldset> 
-
-    <fieldset data-role="controlgroup" >
-        <div data-role="fieldcontain">     
+        
 
             <label class="ui-btn-text" for="basic">Email:</label>
             <input type="text" name="email_address" id="basic" value="<?= set_value('email_address', $email_address) ?>"  />
@@ -35,7 +27,7 @@ $role = $this->session->userdata('role');
     </fieldset>   
 
     <fieldset data-role="controlgroup" >
-        <div data-role="fieldcontain">     
+       
 
             <label class="ui-btn-text" for="basic">Area:</label>
             <select name="support_type" id="support_type">
@@ -46,11 +38,11 @@ $role = $this->session->userdata('role');
 
 
             </select>
-        </div>
+       
     </fieldset>   
 
     <fieldset data-role="controlgroup" >
-        <div data-role="fieldcontain">     
+      
 
             <label class="ui-btn-text" for="basic">Type:</label>
             <select name="support_issue" id="support_issue">
@@ -61,11 +53,11 @@ $role = $this->session->userdata('role');
 
 
             </select>
-        </div>
+       
     </fieldset>   
 
     <fieldset data-role="controlgroup" >
-        <div data-role="fieldcontain">     
+      
 
             <label class="ui-btn-text" for="basic">Priority:</label>
             <select name="support_priority" id="support_priority">
@@ -76,7 +68,7 @@ $role = $this->session->userdata('role');
 
 
             </select>
-        </div>
+       
     </fieldset>  
 
     <fieldset data-role="controlgroup" >
