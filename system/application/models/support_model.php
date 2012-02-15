@@ -263,7 +263,15 @@ class Support_model extends Model {
         $this->db->where('status_type', $type);
         $this->db->order_by('status_value');
         $query = $this->db->get('support_status');
-        return $query;
+        
+        
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row)
+                $data[] = $row;
+        }
+        $query->free_result();
+
+        return $data;
     }
 
     function edit_reply($id) {

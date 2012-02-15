@@ -207,9 +207,9 @@ Reply: $comment
 
         $data['desktop'] = 'support';
 
-        $data['priority'] = $this->support_model->get_statuses('Priority');
+        $data['prioritylist'] = $this->support_model->get_statuses('Priority');
         $data['type'] = $this->support_model->get_statuses('Issue');
-        $data['area'] = $this->support_model->get_statuses('Type');
+        $data['areas'] = $this->support_model->get_statuses('Type');
 
         $data['main'] = '/support/mobile/add_request';
         $data['title'] = 'Support Requests';
