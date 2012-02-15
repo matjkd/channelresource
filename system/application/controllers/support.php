@@ -66,6 +66,7 @@ class Support extends My_Controller {
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
+        $mobile = $this->input->post('mobile');
         $data['rowcount'] = 0;
 
 
@@ -176,7 +177,7 @@ class Support extends My_Controller {
                 //create a new bucket
                 $subbucketname = "support_id" . $ticket_id;
                 $bucketname = "lease-desk";
-                if($this->s3->putBucket($bucketname, S3::ACL_PUBLIC_READ)) {
+                if ($this->s3->putBucket($bucketname, S3::ACL_PUBLIC_READ)) {
                     //upload success
                 } else {
                     //upload failed
@@ -289,7 +290,12 @@ End
                 $this->load->vars($data);
                 $this->load->view($this->template);
 
-                redirect("support/results/$ticket_id", 'refresh');
+
+                if ($mobile == 1) {
+                    redirect("mobilesupport/view_support_request/$ticket_id", 'refresh');
+                } else if ($mobile == 0) {
+                    redirect("support/results/$ticket_id", 'refresh');
+                }
             }
 //This is if the support message is being updated
 
@@ -411,12 +417,12 @@ End
                     //end mailto webCRM for update
                 }
 
-                
-                $mobile = $this->input->post('mobile');
-                
-                if ($mobile =="yes") {
+
+
+
+                if ($mobile == 1) {
                     redirect("mobilesupport/view_support_request/$ticket_id", 'refresh');
-                } else {
+                } else if ($mobile == 0) {
                     redirect("support/results/$ticket_id", 'refresh');
                 }
             }

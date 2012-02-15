@@ -165,7 +165,7 @@ $altdatepicker = "id='altdatepicker'";
             </textarea>
         <? } ?>
     </div>
-    <?= form_hidden('mobile', 'no') ?>
+    <?= form_hidden('mobile', 0) ?>
     <?= form_hidden('date_added', unix_to_human(now(), TRUE, 'eu')) ?>
     <?= form_hidden('user_id', $user_id) ?>
 
