@@ -176,7 +176,11 @@ class Support extends My_Controller {
                 //create a new bucket
                 $subbucketname = "support_id" . $ticket_id;
                 $bucketname = "lease-desk";
-                $this->s3->putBucket($bucketname, S3::ACL_PUBLIC_READ);
+                if($this->s3->putBucket($bucketname, S3::ACL_PUBLIC_READ)) {
+                    //upload success
+                } else {
+                    //upload failed
+                }
 
 
                 //retrieve uploaded file
@@ -404,12 +408,17 @@ End
                             
                             ");
                     // $this->postmark->send();
-//end mailto webCRM for update
+                    //end mailto webCRM for update
                 }
 
-
-
-                redirect("support/results/$ticket_id", 'refresh');
+                
+                $mobile = $this->input->post('mobile');
+                
+                if ($mobile =="yes") {
+                    redirect("mobilesupport/view_support_request/$ticket_id", 'refresh');
+                } else {
+                    redirect("support/results/$ticket_id", 'refresh');
+                }
             }
             if ($submitted == 'Reset') {
                 redirect('support', 'refresh');

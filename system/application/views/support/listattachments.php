@@ -1,3 +1,4 @@
+<?php     if ($bucket_contents) { ?>
 <script type="text/javascript">
     $(document).ready(function() {
         $('#file_list').dataTable({
@@ -67,3 +68,5 @@
         ?>
     </tbody>
 </table>
+
+<?php } ?>

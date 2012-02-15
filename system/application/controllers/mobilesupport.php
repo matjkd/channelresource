@@ -216,6 +216,12 @@ Reply: $comment
         $this->load->vars($data);
         $this->load->view('mobile_template');
     }
+    
+    function post_request() {
+        
+        
+        
+    }
 
     function is_logged_in() {
         $is_logged_in = $this->session->userdata('is_logged_in');

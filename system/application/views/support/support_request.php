@@ -130,18 +130,18 @@ $altdatepicker = "id='altdatepicker'";
         <?php } ?>
         <strong>Estimated Completion Date</strong>
         <br/>
-   <?php if (!isset($role) || $role != 1) { ?>
-                
-        <?=$humandate?>
-        
-         <?php   } else { ?>
-                
-             <?= form_input('completion_datehuman', set_value('completion_datehuman', $humandate), $datepicker) ?>
-        <span style="display:none;">   <?= form_input('completion_date', set_value('completion_date', $completion_date), $altdatepicker) ?></span>
-                
-          <?php  }    ?>
-   
-        
+        <?php if (!isset($role) || $role != 1) { ?>
+
+            <?= $humandate ?>
+
+        <?php } else { ?>
+
+            <?= form_input('completion_datehuman', set_value('completion_datehuman', $humandate), $datepicker) ?>
+            <span style="display:none;">   <?= form_input('completion_date', set_value('completion_date', $completion_date), $altdatepicker) ?></span>
+
+        <?php } ?>
+
+
 
     </div>
 
@@ -165,6 +165,7 @@ $altdatepicker = "id='altdatepicker'";
             </textarea>
         <? } ?>
     </div>
+    <?= form_hidden('mobile', 'no') ?>
     <?= form_hidden('date_added', unix_to_human(now(), TRUE, 'eu')) ?>
     <?= form_hidden('user_id', $user_id) ?>
 
