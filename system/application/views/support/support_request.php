@@ -141,7 +141,7 @@ $altdatepicker = "id='altdatepicker'";
         <?= form_label('Priority') ?><br/>
 
 
-        <select name="support_issue" id="support_issue">
+        <select name="support_priority" id="support_priority">
             <?php foreach ($prioritylist as $row): ?>
                 <?php
                 if ($row['status_value'] == $support_priority) {
