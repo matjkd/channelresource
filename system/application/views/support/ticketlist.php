@@ -55,24 +55,19 @@
                 endforeach;
 
 
+                   foreach ($prioritylist as $statusrow):
 
-                if (($row['support_priority']) == 1) {
-                    $priority = "1.<span style='color:red;'>URGENT</span>";
-                }
-                if (($row['support_priority']) == 2) {
-                    $priority = "2.High";
-                }
-                if (($row['support_priority']) == 3) {
-                    $priority = "3.Medium";
-                }
-                if (($row['support_priority']) == 4) {
-                    $priority = "4.Low";
-                }
-                if (($row['support_priority']) == 99) {
-                    $priority = "5.Closed";
-                }
+                    if (($row['support_priority']) == $statusrow['status_value']) {
+                        $priority = $statusrow['status_value'].".".$statusrow['status_name'];
+                    }
+                    if($statusrow['status_value'] == 1) {
+                        $priority = "<span style='color:red;'>".$priority."</span>";
+                    } else if($statusrow['status_value'] != 1) {
+                         $priority = "<span style='color:black;'>".$priority."</span>";
+                    }
+                endforeach;
 
-
+          
                 foreach ($statuslist as $statusrow):
 
                     if (($row['support_status']) == $statusrow['status_value']) {
