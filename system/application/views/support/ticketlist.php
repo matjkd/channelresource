@@ -47,22 +47,12 @@
             foreach ($ticket_list as $key => $row):
 
 
+                foreach ($areas as $statusrow):
 
-                if (($row['support_type']) == 1) {
-                    $type = "Lease-Desk.com";
-                }
-                if (($row['support_type']) == 2) {
-                    $type = "Channel-Resource";
-                }
-                if (($row['support_type']) == 3) {
-                    $type = "Customer-Resource";
-                }
-                if (($row['support_type']) == 4) {
-                    $type = "Training";
-                }
-                if (($row['support_type']) == 5) {
-                    $type = "Account Review";
-                }
+                    if (($row['support_type']) == $statusrow['status_value']) {
+                        $type = $statusrow['status_name'];
+                    }
+                endforeach;
 
 
 
@@ -78,40 +68,21 @@
                 if (($row['support_priority']) == 4) {
                     $priority = "4.Low";
                 }
- if (($row['support_priority']) == 99) {
+                if (($row['support_priority']) == 99) {
                     $priority = "5.Closed";
                 }
 
-                //   $statusarray = array(1 => 'Submitted', 4 => 'Accepted', 2 => 'Assigned', 5 => 'Awaiting Customer', 6=> 'Resolved', 7=> 'Development', 3 => 'CLOSED');
 
-                if (($row['support_status']) == 1) {
-                    $status = "Submitted";
-                }
-                if (($row['support_status']) == "Submitted") {
-                    $status = "Submitted";
-                }
-                if (($row['support_status']) == 2) {
-                    $status = "Assigned";
-                }
-                if (($row['support_status']) == 3) {
-                    $status = "Closed";
+                foreach ($statuslist as $statusrow):
+
+                    if (($row['support_status']) == $statusrow['status_value']) {
+                        $status = $statusrow['status_name'];
+                    }
+                endforeach;
+                if (!isset($status)) {
+                    $status = "Submitted.";
                 }
 
-                if (($row['support_status']) == 4) {
-                    $status = "Accepted";
-                }
-
-                if (($row['support_status']) == 5) {
-                    $status = "Awaiting Customer";
-                }
-
-                if (($row['support_status']) == 6) {
-                    $status = "Resolved";
-                }
-
-                if (($row['support_status']) == 7) {
-                    $status = "Development";
-                }
 
 
 
