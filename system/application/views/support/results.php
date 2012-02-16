@@ -27,6 +27,17 @@
 
 <?= form_close() ?>
 </div>
+ <div style="position:absolute; top:10px; right:4px; display:block;" id="top_controls" >
+
+     
+        <a id="linkbutton" href="<?= base_url() ?>support">New Support Request</a>
+      
+
+ 
+    </div>
+
+
+
 <?php $this->load->view('support/response'); ?>
 
 <?php $this->load->view('support/list_replies'); ?>
