@@ -24,15 +24,10 @@ $datepicker = "id='datepicker'";
 $altdatepicker = "id='altdatepicker'";
 ?>
 
-<div id="contact_form">
 
 
 
-    <p class="Support_ID">
-        <?= form_label('Support ID') ?><br/>
-        <strong> <?= $ticket_id ?></strong>
-
-    </p>
+<div id="contact_form" class="support_form">
 
     <p class="Company">
         <?= form_label('Company') ?><br/>
@@ -41,7 +36,18 @@ $altdatepicker = "id='altdatepicker'";
 
     </p>
 
+</div>
+<div id="contact_form" class="support_form">
+    <p class="Support_ID">
+        <?= form_label('Support ID') ?><br/>
+        <strong> <?= $ticket_id ?></strong>
 
+    </p>
+</div>
+<div style="clear:both"></div>
+<hr/>
+
+<div id="contact_form" class="support_form">
     <p class="Subject">
         <?= form_label('Subject') ?><br/>
 
@@ -72,64 +78,98 @@ $altdatepicker = "id='altdatepicker'";
         <?= form_upload('file') ?>
 
 
-    <p class="Status">
 
-        <?php
-        $segment = $this->uri->segment(2);
-        if ($segment == 'results') {
-            $statusarray = array(1 => 'Submitted', 4 => 'Accepted', 2 => 'Assigned', 5 => 'Awaiting Customer', 6 => 'Resolved', 7 => 'Development', 3 => 'CLOSED');
+</div>
 
-            echo "" . form_label('Status') . "<br/>" . form_dropdown('support_status', $statusarray, set_value('support_status', $support_status)) . "";
-        } else {
-            
-        }
-        ?>
+
+<div id="contact_form" class="support_form">
+    <p>
+
+
+        <?= form_label('Area') ?><br/>
+
+
+
+
+        <select name="support_type" id="support_type">
+            <?php foreach ($areas as $row): ?>
+                <?php
+                if ($row['status_value'] == $support_type) {
+                    $selectedarea = "selected='selected'";
+                } else {
+                    $selectedarea = "";
+                }
+                ?>
+                <option value="<?= $row['status_value'] ?>" <?= $selectedarea ?>><?= $row['status_name'] ?></option>
+                <?php $selectedarea = ""; ?>
+            <?php endforeach; ?>
+
+
+        </select>
+
+
     </p>
-</div>
 
-<div style='clear:both;'></div>
-<br/>
-<hr/>
-<div style='float:left; width:200px;'>
-    <strong>Area</strong><br/>
-
-    <?php $supportarray = array(1 => 'Lease-Desk.com', 2 => 'Channel-Resource', 3 => 'Customer-Resource', 4 => 'Training', 5 => 'Account Review'); ?>
+    <p>
 
 
-    <?= form_dropdown('support_type', $supportarray, set_value('support_type', $support_type)) ?>
+        <?= form_label('Type') ?><br/>
 
 
-</div>
-
-<div style='float:left; width:200px;'>
-    <strong>Type</strong>
-    <br/>
-
-    <?php $issuearray = array(1 => 'Data Error', 2 => 'System Error', 3 => 'System Crash', 4 => 'Slow Response', 6 => 'Development', 5 => 'Other'); ?>
-
-    <?= form_dropdown('support_issue', $issuearray, set_value('support_issue', $support_issue)) ?>
-
-</div>
-
-<div style='float:left; width:200px;'>
-    <strong>Priority</strong>
-    <br/>
+        <select name="support_issue" id="support_issue">
+            <?php foreach ($type as $row): ?>
+                <?php
+                if ($row['status_value'] == $support_issue) {
+                    $selectedtype = "selected='selected'";
+                } else {
+                    $selectedtype = "";
+                }
+                ?>
+                <option value="<?= $row['status_value'] ?>" <?= $selectedtype ?>><?= $row['status_name'] ?></option>
+                <?php $selectedtype = ""; ?>
+            <?php endforeach; ?>
 
 
-    <?php $priorityarray = array(4 => 'Low', 3 => 'Medium', 2 => 'High', 1 => 'Urgent'); ?>
+        </select>
 
-    <?= form_dropdown('support_priority', $priorityarray, set_value('support_priority', $support_priority)) ?>
 
-</div>
-<?php if ($this->uri->segment(2) != "results") { ?>
-    <div style='float:left; width:200px; display:none;'>
-    <?php } else { ?>  
+    </p>
 
-        <div style='float:left; width:200px;'>
+
+    <p>
+
+        <?= form_label('Priority') ?><br/>
+
+
+        <select name="support_issue" id="support_issue">
+            <?php foreach ($prioritylist as $row): ?>
+                <?php
+                if ($row['status_value'] == $support_priority) {
+                    $selectedpriority = "selected='selected'";
+                } else {
+                    $selectedpriority = "";
+                }
+                ?>
+                <option value="<?= $row['status_value'] ?>" <?= $selectedpriority ?>><?= $row['status_name'] ?></option>
+                <?php $selectedpriority = ""; ?>
+            <?php endforeach; ?>
+
+
+        </select>
+
+    </p>
+
+
+    <p>
+        <?php if ($this->uri->segment(2) != "results") { ?>
+
+        <?php } else { ?>  
+
+
 
         <?php } ?>
-        <strong>Estimated Completion Date</strong>
-        <br/>
+        <?= form_label('Estimated Completion Date') ?><br/>
+
         <?php if (!isset($role) || $role != 1) { ?>
 
             <?= $humandate ?>
@@ -143,31 +183,63 @@ $altdatepicker = "id='altdatepicker'";
 
 
 
-    </div>
+    </p>
+
+    <p class="Status">
+
+        <?php
+        $segment = $this->uri->segment(2);
+        if ($segment == 'results') {
+         ?>
+         <?= form_label('Status') ?><br/>
+          <select name="support_status" id="support_status">
+            <?php foreach ($statuslist as $row): ?>
+                <?php
+                if ($row['status_value'] == $support_status) {
+                    $selectedstatus = "selected='selected'";
+                } else {
+                    $selectedstatus = "";
+                }
+                ?>
+                <option value="<?= $row['status_value'] ?>" <?= $selectedstatus ?>><?= $row['status_name'] ?></option>
+                <?php $selectedstatus = ""; ?>
+            <?php endforeach; ?>
 
 
-    <div style='clear:both;'>
-        <br/>
-        <hr/>
-        <strong>Description</strong>
-        <br/>
+        </select>
+        
+        
+        <?php
+        } else {
+            
+        }
+        ?>
+    </p>
 
-        <?php if ($this->uri->segment(2) == "results") { ?>
-            <div id="descriptionFixed">
+</div>
+<div style='clear:both;'></div>
+<div>
+    <br/>
+    <hr/>
+    <strong>Description</strong>
+    <br/>
 
-                <?= $support_description ?>
+    <?php if ($this->uri->segment(2) == "results") { ?>
+        <div id="descriptionFixed">
 
-            </div>
-            <?= form_hidden('support_description', $support_description) ?>
-        <? } else { ?>
-            <textarea  name='support_description' cols='155' rows='5' style="width:100%;">
+            <?= $support_description ?>
 
-            </textarea>
-        <? } ?>
-    </div>
-    <?= form_hidden('mobile', 0) ?>
-    <?= form_hidden('date_added', unix_to_human(now(), TRUE, 'eu')) ?>
-    <?= form_hidden('user_id', $user_id) ?>
+        </div>
+        <?= form_hidden('support_description', $support_description) ?>
+    <? } else { ?>
+        <textarea  name='support_description' cols='155' rows='5' style="width:100%;">
+
+        </textarea>
+    <? } ?>
+</div>
+<?= form_hidden('mobile', 0) ?>
+<?= form_hidden('date_added', unix_to_human(now(), TRUE, 'eu')) ?>
+<?= form_hidden('user_id', $user_id) ?>
 
 
-    <input type="hidden" name="channel_partner" value="<?php echo $channel_partner_name; ?>" id="hiddenIDbox"/>
+<input type="hidden" name="channel_partner" value="<?php echo $channel_partner_name; ?>" id="hiddenIDbox"/>

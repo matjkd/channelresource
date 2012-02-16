@@ -261,7 +261,7 @@ class Support_model extends Model {
     function get_statuses($type) {
 
         $this->db->where('status_type', $type);
-        $this->db->order_by('status_value');
+        $this->db->order_by('status_id');
         $query = $this->db->get('support_status');
         
         

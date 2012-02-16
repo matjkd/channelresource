@@ -37,6 +37,7 @@ class Support extends My_Controller {
 
         endforeach;
 
+
         $data['channel_partner'] = '';
 
         $data['user_id'] = '';
@@ -51,6 +52,12 @@ class Support extends My_Controller {
         $data['support_description'] = '';
         $data['support_status'] = 'Submitted';
         $data['title'] = 'New Support-Request';
+
+        $data['prioritylist'] = $this->support_model->get_statuses('Priority');
+        $data['type'] = $this->support_model->get_statuses('Issue');
+        $data['areas'] = $this->support_model->get_statuses('Type');
+        $data['statuslist'] = $this->support_model->get_statuses('status');
+        
         $this->load->vars($data);
         $data['main'] = '/support/main';
         $this->load->vars($data);
@@ -139,7 +146,6 @@ class Support extends My_Controller {
                 $data['title'] = 'Support Requests';
                 $this->load->vars($data);
                 $this->load->view('mobile_template');
-                
             } else if ($mobile == 0) {
 
                 $data['main'] = '/support/main';
@@ -470,6 +476,10 @@ End
         $data['ticket_id'] = $this->uri->segment(3);
         $data['ticket_data'] = $this->support_model->get_ticket($data['ticket_id']);
 
+        $data['prioritylist'] = $this->support_model->get_statuses('Priority');
+        $data['type'] = $this->support_model->get_statuses('Issue');
+        $data['areas'] = $this->support_model->get_statuses('Type');
+        $data['statuslist'] = $this->support_model->get_statuses('status');
         foreach ($data['ticket_data'] as $row):
 
 

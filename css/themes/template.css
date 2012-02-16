@@ -701,6 +701,12 @@ body > #container {
     color: #666;
     font-size: 12px;
 }
+
+/* support */
+.support_form {
+    float:left;
+    width:48%;
+}
 /* Contact Form */
 #contact_form input, textarea {
     padding:3px;
@@ -720,7 +726,7 @@ input:focus, textarea:focus {
 }
 #contact_form label {
     color: #999999;
-    width:100px;
+    width:200px;
     float:left;
 }
 
