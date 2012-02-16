@@ -3,12 +3,24 @@
         $('#support_table').dataTable({
             "bStateSave": false,
             "bJQueryUI": true,
-            "sPaginationType": "full_numbers"
+            "sPaginationType": "full_numbers",
+              "aaSorting": [[ 0, "asc" ]],
+              "aoColumnDefs": [ 
+						{ "bSearchable": false, "bVisible": false, "aTargets": [ 0 ] }
+					]
+           
 
         });
     } );
 
+    $(document).ready(function() {
+        $('#closed_table').dataTable({
+            "bStateSave": false,
+            "bJQueryUI": true,
+            "sPaginationType": "full_numbers"
 
+        });
+    } );
 
     function confirmation(id) {
         var answer = confirm("Are you sure you want to delete this ticket?")
@@ -26,6 +38,7 @@
 <table id="support_table"  width="100%" style="clear:both;">
     <thead>
         <tr>
+            <th>Order</th>
             <th>Priority</th>
             <th>ID</th>
             <th>Subject</th>
@@ -40,7 +53,10 @@
     <tbody>
         <?php
         $user = $this->session->userdata('user_id');
-
+        $priority = "";
+        $type = "";
+       
+        $order = "";
         if ($ticket_list == NULL) {
             
         } else {
@@ -55,19 +71,20 @@
                 endforeach;
 
 
-                   foreach ($prioritylist as $statusrow):
+                foreach ($prioritylist as $statusrow):
 
                     if (($row['support_priority']) == $statusrow['status_value']) {
-                        $priority = $statusrow['status_value'].".".$statusrow['status_name'];
+                        $priority = $statusrow['status_name'];
+                        $order = $statusrow['status_value'];
                     }
-                    if($statusrow['status_value'] == 1) {
-                        $priority = "<span style='color:red;'>".$priority."</span>";
-                    } else if($statusrow['status_value'] != 1) {
-                         $priority = "<span style='color:black;'>".$priority."</span>";
+                    if ($statusrow['status_value'] == 1) {
+                        $priority = "<span  style='color:red;'>" . $priority . "</span>";
+                    } else if ($statusrow['status_value'] != 1) {
+                        $priority = "<span  style='color:#000000;'>" . $priority . "</span>";
                     }
                 endforeach;
 
-          
+
                 foreach ($statuslist as $statusrow):
 
                     if (($row['support_status']) == $statusrow['status_value']) {
@@ -84,6 +101,7 @@
                 $viewticket = '/support/results/' . $row['support_id'];
                 ?>
                 <tr >
+                    <td style="padding:5px;"><?= $order ?></td>
                     <td style="padding:5px;"><?= $priority ?></td>
                     <td style="padding:5px;"><?= $row['support_id'] ?></td>
                     <td style="padding:5px;"><?= $row['support_subject'] ?></td>
@@ -100,3 +118,6 @@
         ?>
     </tbody>
 </table>
+
+<?=
+$this->load->view('support/closedtickets')?>
