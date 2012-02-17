@@ -23,7 +23,7 @@ class Support extends My_Controller {
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
-         $data['closed_ticket_list'] = $this->support_model->list_closed_tickets($data['customercompany_id']);
+        $data['closed_ticket_list'] = $this->support_model->list_closed_tickets($data['customercompany_id']);
 
         if ($data['ticket_list'] != NULL) {
             $data['rowcount'] = 0;
@@ -31,8 +31,8 @@ class Support extends My_Controller {
                 $data['rowcount'] = $data['rowcount'] + 1;
             endforeach;
         }
-        
-         if ($data['closed_ticket_list'] != NULL) {
+
+        if ($data['closed_ticket_list'] != NULL) {
             $data['rowcount'] = 0;
             foreach ($data['closed_ticket_list'] as $countrow):
                 $data['rowcount'] = $data['rowcount'] + 1;
@@ -541,8 +541,8 @@ End
                 }
             endforeach;
         }
-        
-          if ($data['closed_ticket_list'] != NULL) {
+
+        if ($data['closed_ticket_list'] != NULL) {
             foreach ($data['closed_ticket_list'] as $countrow):
                 $data['rowcount'] = $data['rowcount'] + 1;
 
@@ -646,17 +646,22 @@ End
 
             $comment = strip_tags($this->input->post('comment'));
 //start normal email
-            $this->postmark->clear();
-            $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
-            $this->postmark->to('customer-resource@lease-desk.com');
-            $this->postmark->cc($email_address);
-            $this->postmark->bcc('mat@redstudio.co.uk');
-            $this->postmark->subject('Reply to Support Request Ticket No ' . $id . '');
-            $this->postmark->message_html("Subject: $support_subject<br/><br/>
+            if ($this->input->post('email_changes') == TRUE) {
+                $this->postmark->clear();
+                $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
+                $this->postmark->to('customer-resource@lease-desk.com');
+                $this->postmark->cc($email_address);
+                $this->postmark->bcc('mat@redstudio.co.uk');
+                $this->postmark->subject('Reply to Support Request Ticket No ' . $id . '');
+                $this->postmark->message_html("Subject: $support_subject<br/><br/>
 Company: $company_name<br/><br/>
 Reply: $comment
-					");
-            $this->postmark->send();
+                    
+             ");
+
+
+                $this->postmark->send();
+            }
 
 //start webcrm email		
 
@@ -695,6 +700,8 @@ Start:OpportunityDelivery
 End
 				
 				");
+
+
             //   $this->postmark->send();
 //end mailto webCRM
             redirect('support/results/' . $id . '', 'refresh');

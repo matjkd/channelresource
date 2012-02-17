@@ -20,7 +20,7 @@
         $priority = "";
         $type = "";
         $status = "";
-        if ($ticket_list == NULL) {
+        if ($closed_ticket_list == NULL) {
             
         } else {
             foreach ($closed_ticket_list as $key => $row):
