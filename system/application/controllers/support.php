@@ -23,10 +23,18 @@ class Support extends My_Controller {
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
+         $data['closed_ticket_list'] = $this->support_model->list_closed_tickets($data['customercompany_id']);
 
         if ($data['ticket_list'] != NULL) {
             $data['rowcount'] = 0;
             foreach ($data['ticket_list'] as $countrow):
+                $data['rowcount'] = $data['rowcount'] + 1;
+            endforeach;
+        }
+        
+         if ($data['closed_ticket_list'] != NULL) {
+            $data['rowcount'] = 0;
+            foreach ($data['closed_ticket_list'] as $countrow):
                 $data['rowcount'] = $data['rowcount'] + 1;
             endforeach;
         }
@@ -57,7 +65,7 @@ class Support extends My_Controller {
         $data['type'] = $this->support_model->get_statuses('Issue');
         $data['areas'] = $this->support_model->get_statuses('Type');
         $data['statuslist'] = $this->support_model->get_statuses('status');
-        
+
         $this->load->vars($data);
         $data['main'] = '/support/main';
         $this->load->vars($data);
@@ -77,6 +85,7 @@ class Support extends My_Controller {
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
+
         $mobile = $this->input->post('mobile');
         $data['rowcount'] = 0;
 
@@ -517,10 +526,24 @@ End
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
+        $data['closed_ticket_list'] = $this->support_model->list_closed_tickets($data['customercompany_id']);
         $data['rowcount'] = 0;
 
         if ($data['ticket_list'] != NULL) {
             foreach ($data['ticket_list'] as $countrow):
+                $data['rowcount'] = $data['rowcount'] + 1;
+
+                $support_statusx = $countrow['support_status'];
+                $support_idx = $countrow['support_id'];
+                if ($support_statusx == 3) {
+                    //convert priority to closed
+                    $this->support_model->close_priority($support_idx);
+                }
+            endforeach;
+        }
+        
+          if ($data['closed_ticket_list'] != NULL) {
+            foreach ($data['closed_ticket_list'] as $countrow):
                 $data['rowcount'] = $data['rowcount'] + 1;
 
                 $support_statusx = $countrow['support_status'];

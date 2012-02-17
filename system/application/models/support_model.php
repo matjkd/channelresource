@@ -21,7 +21,7 @@ class Support_model extends Model {
                     'support_issue' => $this->input->post('support_issue'),
                     'support_priority' => $this->input->post('support_priority'),
                     'completion_date' => NULL,
-                    'support_status' => 'Submitted',
+                    'support_status' => 1,
                     'company_id' => $this->session->userdata('company_id'),
                     'user_id' => $this->input->post('user_id'),
                     'date_added' => $this->input->post('date_added'),
@@ -131,6 +131,44 @@ class Support_model extends Model {
 
         $company = $this->session->userdata('company_id');
         $this->db->order_by('support_priority', 'asc');
+        $this->db->where('support_status !=', 3);
+        if (!isset($company) || $company > 2) {
+            $this->db->where('support.company_id', $id);
+            $this->db->join('users', 'users.user_id=support.user_id', 'right');
+            $this->db->join('company', 'company.company_id=support.company_id', 'left');
+        } else if (!isset($company) || $company < 3) {
+            $this->db->join('users', 'users.user_id=support.user_id');
+            $this->db->join('company', 'company.company_id=support.company_id', 'left');
+        }
+        $Q = $this->db->get('support');
+        if ($Q->num_rows() > 0) {
+            foreach ($Q->result_array() as $row):
+
+                $results[] = $row;
+
+
+            endforeach;
+        }
+        else {
+            $results = NULL;
+        }
+        $Q->free_result();
+
+
+        return $results;
+    }
+    
+    /**
+     *
+     * @param type $id
+     * @return string 
+     */
+    function list_closed_tickets($id) {
+        $data = array();
+
+        $company = $this->session->userdata('company_id');
+        $this->db->order_by('support_priority', 'asc');
+        $this->db->where('support_status', 3);
         if (!isset($company) || $company > 2) {
             $this->db->where('support.company_id', $id);
             $this->db->join('users', 'users.user_id=support.user_id', 'right');

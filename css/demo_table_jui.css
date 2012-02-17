@@ -31,23 +31,29 @@
  * jQuery UI specific styling
  */
 
-.paging_two_button .fg-button {
+.paging_two_button .ui-button {
 	float: left;
 	cursor: pointer;
 	* cursor: hand;
 }
 
-.paging_full_numbers .fg-button {
+.paging_full_numbers .ui-button {
 	padding: 2px 6px;
+	margin: 0;
 	cursor: pointer;
 	* cursor: hand;
+	color: #333 !important;
+}
+
+.dataTables_paginate .ui-button {
+	margin-right: -0.1em !important;
 }
 
 .paging_full_numbers {
 	width: 350px !important;
 }
 
-.fg-toolbar {
+.dataTables_wrapper .ui-toolbar {
 	padding: 5px;
 }
 
@@ -55,11 +61,38 @@
 	width: auto;
 }
 
+.dataTables_info {
+	padding-top: 3px;
+}
+
 table.display thead th {
 	padding: 3px 0px 3px 10px;
 	cursor: pointer;
 	* cursor: hand;
 }
+
+div.dataTables_wrapper .ui-widget-header {
+	font-weight: normal;
+}
+
+
+/*
+ * Sort arrow icon positioning
+ */
+table.display thead th div.DataTables_sort_wrapper {
+	position: relative;
+	padding-right: 20px;
+	padding-right: 20px;
+}
+
+table.display thead th div.DataTables_sort_wrapper span {
+	position: absolute;
+	top: 50%;
+	margin-top: -8px;
+	right: 0;
+}
+
+
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -77,8 +110,6 @@ table.display thead th {
 
 .dataTables_wrapper {
 	position: relative;
-	min-height:102px;
-	_height: 302px;
 	clear: both;
 }
 
@@ -91,7 +122,7 @@ table.display thead th {
 	border: 1px solid #ddd;
 	text-align: center;
 	color: #999;
-	
+	font-size: 11px;
 	padding: 2px 0;
 }
 
@@ -149,12 +180,13 @@ table.display {
 	margin: 0 auto;
 	width: 100%;
 	clear: both;
+	border-collapse: collapse;
 }
 
 table.display tfoot th {
-	padding: 3px 10px;
-	border-top: 1px solid black;
+	padding: 3px 0px 3px 10px;
 	font-weight: bold;
+	font-weight: normal;
 }
 
 table.display tr.heading2 td {
@@ -176,15 +208,23 @@ table.display td.center {
  */
 
 .sorting_asc {
-	background: url('../images/sort_asc.jpg') no-repeat center right;
+	background: url('../images/sort_asc.png') no-repeat center right;
 }
 
 .sorting_desc {
-	background: url('../images/sort_desc.jpg') no-repeat center right;
+	background: url('../images/sort_desc.png') no-repeat center right;
 }
 
 .sorting {
-	background: url('../images/sort_both.jpg') no-repeat center right;
+	background: url('../images/sort_both.png') no-repeat center right;
+}
+
+.sorting_asc_disabled {
+	background: url('../images/sort_asc_disabled.png') no-repeat center right;
+}
+
+.sorting_desc_disabled {
+	background: url('../images/sort_desc_disabled.png') no-repeat center right;
 }
 
 
@@ -238,7 +278,7 @@ table.display tr.even.gradeU {
 
 
 tr.odd {
-	background-color: #eeeeee;
+	background-color: #E2E4FF;
 }
 
 tr.even {
@@ -252,6 +292,10 @@ tr.even {
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * Misc
  */
+.dataTables_scroll {
+	clear: both;
+}
+
 .top, .bottom {
 	padding: 15px;
 	background-color: #F5F5F5;
@@ -296,8 +340,8 @@ td.details {
 	width: 40%;
 }
 
-.paging_full_numbers span.paginate_button,
- 	.paging_full_numbers span.paginate_active {
+.paging_full_numbers a.paginate_button,
+ 	.paging_full_numbers a.paginate_active {
 	border: 1px solid #aaa;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -305,26 +349,28 @@ td.details {
 	margin: 0 3px;
 	cursor: pointer;
 	*cursor: hand;
+	color: #333 !important;
 }
 
-.paging_full_numbers span.paginate_button {
+.paging_full_numbers a.paginate_button {
 	background-color: #ddd;
 }
 
-.paging_full_numbers span.paginate_button:hover {
+.paging_full_numbers a.paginate_button:hover {
 	background-color: #ccc;
+	text-decoration: none !important;
 }
 
-.paging_full_numbers span.paginate_active {
+.paging_full_numbers a.paginate_active {
 	background-color: #99B3FF;
 }
 
 table.display tr.even.row_selected td {
-	background-color: #ffffff;
+	background-color: #B0BED9;
 }
 
 table.display tr.odd.row_selected td {
-	background-color: #cccccc;
+	background-color: #9FAFD1;
 }
 
 
@@ -333,7 +379,7 @@ table.display tr.odd.row_selected td {
  */
 /* For the standard odd/even */
 tr.odd td.sorting_1 {
-	background-color: #dddddd;
+	background-color: #D3D6FF;
 }
 
 tr.odd td.sorting_2 {
@@ -345,7 +391,7 @@ tr.odd td.sorting_3 {
 }
 
 tr.even td.sorting_1 {
-	background-color: #ffffff;
+	background-color: #EAEBFF;
 }
 
 tr.even td.sorting_2 {
