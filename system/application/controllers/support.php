@@ -243,7 +243,7 @@ class Support extends My_Controller {
 
 
                 $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
-                $this->postmark->to('chloe@lease-desk.com');
+                $this->postmark->to('customer-resource@lease-desk.com');
                 $this->postmark->bcc('mat@redstudio.co.uk');
                 $this->postmark->cc($email_address);
 
@@ -380,7 +380,7 @@ End
                     $this->postmark->clear();
 
                     $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
-                    $this->postmark->to('chloe@lease-desk.com');
+                    $this->postmark->to('customer-resource@lease-desk.com');
                     $this->postmark->bcc('mat@redstudio.co.uk');
                     $this->postmark->cc($email_address);
 
@@ -648,7 +648,7 @@ End
 //start normal email
             $this->postmark->clear();
             $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
-            $this->postmark->to('chloe@lease-desk.com');
+            $this->postmark->to('customer-resource@lease-desk.com');
             $this->postmark->cc($email_address);
             $this->postmark->bcc('mat@redstudio.co.uk');
             $this->postmark->subject('Reply to Support Request Ticket No ' . $id . '');
