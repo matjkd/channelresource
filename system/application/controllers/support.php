@@ -81,6 +81,7 @@ class Support extends My_Controller {
         $data['prioritylist'] = $this->support_model->get_statuses('Priority');
         $data['type'] = $this->support_model->get_statuses('Issue');
         $data['areas'] = $this->support_model->get_statuses('Type');
+        $data['statuslist'] = $this->support_model->get_statuses('status');
 
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
