@@ -267,7 +267,7 @@ class Quote extends My_Controller {
             if ($submitted == 'Submit') {
                 $this->quote_model->add_data();
                 $data['quote_id'] = mysql_insert_id();
-                $this->session->set_flashdata('message', "Calculation Added");
+                $this->session->set_flashdata('message', "Quote Added");
                 redirect('quote/results/' . $data['quote_id'] . '', 'refresh');
             }
 
@@ -276,7 +276,7 @@ class Quote extends My_Controller {
             if ($submitted == 'Update') {
                 $data['quote_id'] = $this->input->post('quote_id');
                 $this->quote_model->update_data($data['quote_id']);
-                $this->session->set_flashdata('message', "Calculation Updated");
+                $this->session->set_flashdata('message', "Quote Updated");
                 redirect('quote/results/' . $data['quote_id'] . '', 'refresh');
             }
             if ($submitted == 'Reset') {
