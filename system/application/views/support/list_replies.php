@@ -57,9 +57,9 @@
     <form>
         <fieldset>
 
-
-
             <input type="hidden" name="noteid" id="noteid" value="" class="text ui-widget-content ui-corner-all" />
+            
+             <input type="hidden" name="ticketid" id="ticketid" value="<?=$ticket_id?>"  />
 
         </fieldset>
 
@@ -67,7 +67,10 @@
             <label for="notecomment">Message</label>
             <textarea  name="notecomment" id="notecomment" value="" class="text ui-widget-content ui-corner-all" /></textarea>
         </fieldset>
-
+<br/>
+<div  id="notecheckbox">
+    <input type="checkbox" name="email_changes" value="email">Check this box to email changes
+</div>
     </form>
 
     <div id="emailID" class="none"></div>

@@ -150,6 +150,7 @@ $(function() {
     email2 = $("#emailtable"),
     emessage2 = $("#emessage2"),
     newnote = $("#notecomment"),
+   
     tips = $( ".validateTips" ),
     
     loadergif = $('<img class="gifloader" src="/images/load.gif" />');
@@ -272,6 +273,13 @@ $(function() {
             },
             Update: function() {
                
+                
+               var checkboxval = "";
+               supportID = $("#ticketid").val();
+               $('#notecheckbox  :checkbox:checked').each(function(i){
+      checkboxval = $(this).val();
+    });
+               
                 var bValid = true;
                 bValid = bValid && checkLength( newnote, "note", 1, 255 );
                 
@@ -280,7 +288,9 @@ $(function() {
                     $('#dialog-note').append(loadergif);
                     $.post('/support/edit_note/', {
                         notecomment: newnote.val(),
-                        noteid: noteid2
+                        noteid: noteid2,
+                        checkbox: checkboxval,
+                        supportID: supportID
                         
                     }, function(data) {
                         alert(data);

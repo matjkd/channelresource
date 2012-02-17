@@ -73,7 +73,7 @@ class Support extends My_Controller {
     }
 
     function create_ticket() {
-        //validate form entry
+//validate form entry
 
         $this->form_validation->set_rules('support_subject', 'Subject', 'trim|required');
         $this->form_validation->set_rules('email_address', 'Email Address', 'trim|required');
@@ -99,8 +99,8 @@ class Support extends My_Controller {
                 $data['rowcount'] = $data['rowcount'] + 1;
             endforeach;
         }
-        
-         if ($data['closed_ticket_list'] != NULL) {
+
+        if ($data['closed_ticket_list'] != NULL) {
             $data['rowcount'] = 0;
             foreach ($data['closed_ticket_list'] as $countrow):
                 $data['rowcount'] = $data['rowcount'] + 1;
@@ -108,7 +108,7 @@ class Support extends My_Controller {
         }
 
 
-        //get details of company/channel partner
+//get details of company/channel partner
         $data['company_details'] = $this->Membership_model->get_company_detail($data['customercompany_id']);
         $initials = "JWS";
         foreach ($data['company_details'] as $row3):
@@ -122,7 +122,7 @@ class Support extends My_Controller {
                     $last_initial = substr($this->session->userdata('lastname'), 0, 1);
                     $initials = "$first_initial" . "" . "$last_initial";
 
-                    //quick fix for julian having 3 initials in webCRM
+//quick fix for julian having 3 initials in webCRM
                     if ($initials == "JS") {
                         $initials = "JWS";
                     }
@@ -157,7 +157,7 @@ class Support extends My_Controller {
             $data['ticket_id'] = '';
             $errors = validation_errors();
 
-            //determine if request comes from mobile site and redirect accordingly
+//determine if request comes from mobile site and redirect accordingly
             if ($mobile == 1) {
                 $data['message'] = $errors;
                 $data['main'] = '/support/mobile/add_request';
@@ -191,11 +191,11 @@ class Support extends My_Controller {
             $date_added = $this->input->post('date_added');
             $date_updated = $this->input->post('date_added');
 
-            //work out how many days till completion date
+//work out how many days till completion date
             $daystillcomplete = (strtotime($completion_date)) - (time());
             $daystillcomplete = ceil($daystillcomplete / 86400);
 
-            //human completion date
+//human completion date
             if ($completion_date != NULL) {
                 $humandate = new DateTime($completion_date);
                 $humandate = date_format($humandate, 'D, d M Y');
@@ -203,7 +203,7 @@ class Support extends My_Controller {
                 $humandate = "N/A";
             }
 
-            //convert to text names
+//convert to text names
             $support_issue1 = $this->support_model->name_status('Issue', $support_issue);
             $support_priority1 = $this->support_model->name_status('priority', $support_priority);
             $support_type1 = $this->support_model->name_status('type', $support_type);
@@ -214,17 +214,17 @@ class Support extends My_Controller {
                 $this->support_model->add_ticket();
                 $ticket_id = mysql_insert_id();
 
-                //create a new bucket
+//create a new bucket
                 $subbucketname = "support_id" . $ticket_id;
                 $bucketname = "lease-desk";
                 if ($this->s3->putBucket($bucketname, S3::ACL_PUBLIC_READ)) {
-                    //upload success
+//upload success
                 } else {
-                    //upload failed
+//upload failed
                 }
 
 
-                //retrieve uploaded file
+//retrieve uploaded file
                 if (!empty($_FILES) && $_FILES['file']['error'] != 4) {
 
                     $fileName = $_FILES['file']['name'];
@@ -233,21 +233,21 @@ class Support extends My_Controller {
 
                     $thefile = file_get_contents($tmpName, true);
 
-                    //print_r($_FILES['file']);
-                    //move the file
+//print_r($_FILES['file']);
+//move the file
 
                     if ($this->s3->putObject($thefile, "lease-desk", $filelocation, S3:: ACL_PUBLIC_READ)) {
-                        //echo "We successfully uploaded your file.";
+//echo "We successfully uploaded your file.";
                         $this->session->set_flashdata('message', 'Ticket Added and file uploaded successfully');
                     } else {
-                        //	echo "Something went wrong while uploading your file... sorry.";
+//	echo "Something went wrong while uploading your file... sorry.";
                         $this->session->set_flashdata('message', 'Ticket Added, but your file did not upload');
                     }
                 } else {
 
                     $this->session->set_flashdata('message', 'Ticket Added');
                 }
-                //start normal support email
+//start normal support email
 
 
 
@@ -275,7 +275,7 @@ Priority: $support_priority1
 					");
                 $this->postmark->send();
 
-                // $email1 = $this->email->print_debugger();
+// $email1 = $this->email->print_debugger();
 //end normal email
 // send email to webCRM
                 $this->postmark->clear();
@@ -346,13 +346,13 @@ End
 
                 $this->support_model->update_ticket($data['ticket_id']);
 
-                //create a new bucket
+//create a new bucket
                 $subbucketname = "support_id" . $ticket_id;
                 $bucketname = "lease-desk";
                 $this->s3->putBucket($bucketname, S3::ACL_PUBLIC_READ);
 
 
-                //retrieve uploaded file
+//retrieve uploaded file
                 if (!empty($_FILES) && $_FILES['file']['error'] != 4) {
 
                     $fileName = $_FILES['file']['name'];
@@ -361,14 +361,14 @@ End
 
                     $thefile = file_get_contents($tmpName, true);
 
-                    //print_r($_FILES['file']);
-                    //move the file
+//print_r($_FILES['file']);
+//move the file
 
                     if ($this->s3->putObject($thefile, "lease-desk", $filelocation, S3:: ACL_PUBLIC_READ)) {
-                        //echo "We successfully uploaded your file.";
+//echo "We successfully uploaded your file.";
                         $this->session->set_flashdata('message', 'Ticket Updated and file uploaded successfully');
                     } else {
-                        //	echo "Something went wrong while uploading your file... sorry.";
+//	echo "Something went wrong while uploading your file... sorry.";
                         $this->session->set_flashdata('message', 'Ticket Updated, but your file did not upload');
                     }
                 } else {
@@ -410,7 +410,7 @@ Priority: $support_priority1
                     $this->postmark->send();
 
 // end normal email update
-                    // send email to webCRM for update
+// send email to webCRM for update
                     $this->postmark->clear();
 
                     $this->postmark->to('cm3208SPoYUg@b2b-email.net');
@@ -453,8 +453,8 @@ End
    
                             
                             ");
-                    // $this->postmark->send();
-                    //end mailto webCRM for update
+// $this->postmark->send();
+//end mailto webCRM for update
                 }
 
 
@@ -515,14 +515,14 @@ End
         endforeach;
 
 
-        //convert channel partner id into the name
+//convert channel partner id into the name
         $data['channel_detail'] = $this->Membership_model->get_company_detail($data['company_id']);
         foreach ($data['channel_detail'] as $row):
             $data['channel_partner_name'] = $row['company_name'];
         endforeach;
 
-        //end of conversion
-        //List File attachments
+//end of conversion
+//List File attachments
         $bucketname = "lease-desk";
         $data['mainbucket'] = "lease-desk";
         $data['bucket_name'] = $data['ticket_id'];
@@ -545,7 +545,7 @@ End
                 $support_statusx = $countrow['support_status'];
                 $support_idx = $countrow['support_id'];
                 if ($support_statusx == 3) {
-                    //convert priority to closed
+//convert priority to closed
                     $this->support_model->close_priority($support_idx);
                 }
             endforeach;
@@ -558,13 +558,13 @@ End
                 $support_statusx = $countrow['support_status'];
                 $support_idx = $countrow['support_id'];
                 if ($support_statusx == 3) {
-                    //convert priority to closed
+//convert priority to closed
                     $this->support_model->close_priority($support_idx);
                 }
             endforeach;
         }
 
-        //fetch comments
+//fetch comments
         $data['comments'] = $this->support_model->list_replies($data['ticket_id']);
 
         $data['title'] = 'Support Request';
@@ -584,7 +584,7 @@ End
         $file = $this->input->post('filename');
         $this->s3->deleteObject($bucket, $folder . "/" . $file);
 
-        //echo "$bucket $folder $file";
+//echo "$bucket $folder $file";
 
         redirect($this->agent->referrer());
     }
@@ -603,8 +603,8 @@ End
             $this->session->set_flashdata('message', 'Reply added');
 
 
-            // send email to webCRM and certain admins
-            //get other support data
+// send email to webCRM and certain admins
+//get other support data
             $data['ticket_details'] = $this->support_model->get_ticket($id);
             foreach ($data['ticket_details'] as $row5):
 
@@ -617,8 +617,8 @@ End
                 $support_subject = $row5['support_subject'];
             endforeach;
 
-            //get company detail
-            //get details of company/channel partner, this could be trimmed down a touch
+//get company detail
+//get details of company/channel partner, this could be trimmed down a touch
             $data['company_details'] = $this->Membership_model->get_company_detail($company_id);
             $initials = "JWS";
             foreach ($data['company_details'] as $row3):
@@ -631,7 +631,7 @@ End
                         $first_initial = substr($this->session->userdata('firstname'), 0, 1);
                         $last_initial = substr($this->session->userdata('lastname'), 0, 1);
                         $initials = "$first_initial" . "" . "$last_initial";
-                        //quick fix for julian having 3 initials in webCRM
+//quick fix for julian having 3 initials in webCRM
                         if ($initials == "JS") {
                             $initials = "JWS";
                         }
@@ -644,7 +644,7 @@ End
                 $company_name = $row3['company_name'];
             endforeach;
 
-            //convert to text names
+//convert to text names
             $support_issue1 = $this->support_model->name_status('Issue', $support_issue);
             $support_priority1 = $this->support_model->name_status('priority', $support_priority);
             $support_type1 = $this->support_model->name_status('type', $support_type);
@@ -711,7 +711,7 @@ End
 				");
 
 
-            //   $this->postmark->send();
+//   $this->postmark->send();
 //end mailto webCRM
             redirect('support/results/' . $id . '', 'refresh');
         } else {
@@ -726,20 +726,20 @@ End
             if ($this->input->post('comment')) {
                 $this->support_model->edit_reply($id);
                 $this->session->set_flashdata('message', 'Reply Changed');
-                //redirect('support/results/'.$id.'', 'refresh');
+//redirect('support/results/'.$id.'', 'refresh');
             } else {
                 $this->session->set_flashdata('message', 'Nothing Changed');
-                //redirect('support/results/'.$id.'', 'refresh');
+//redirect('support/results/'.$id.'', 'refresh');
             }
         }
         if ($submitted == 'Delete') {
             if ($this->input->post('comment')) {
                 $this->support_model->delete_reply($id);
                 $this->session->set_flashdata('message', 'Reply Deleted');
-                //redirect('support/results/'.$id.'', 'refresh');
+//redirect('support/results/'.$id.'', 'refresh');
             } else {
                 $this->session->set_flashdata('message', 'Nothing Deleted');
-                //redirect('support/results/'.$id.'', 'refresh');
+//redirect('support/results/'.$id.'', 'refresh');
             }
         }
         redirect('support/results/' . $id . '', 'refresh');
@@ -747,10 +747,60 @@ End
 
     function edit_note() {
         $id = $this->input->post('noteid');
-        $comment = $this->input->post('notecomment');
+        $supportid = $this->input->post('supportID');
+        $comment = strip_tags($this->input->post('notecomment'));
+        $checkbox = $this->input->post('checkbox');
+
+//set email address, company name support subject, support ticket id
+
 
         if ($this->support_model->update_note($id, $comment)) {
-            echo "Note Updated";
+
+            if ($checkbox) {
+
+//get other support data
+                $data['ticket_details'] = $this->support_model->get_ticket($supportid);
+                foreach ($data['ticket_details'] as $row5):
+
+                    $support_type = $row5['support_type'];
+                    $support_issue = $row5['support_issue'];
+                    $support_priority = $row5['support_priority'];
+                    $email_address = $row5['email_address'];
+                    $company_id = $row5['company_id'];
+                    $user_id = $row5['user_id'];
+                    $support_subject = $row5['support_subject'];
+                endforeach;
+//get company name from company id
+                $data['company_details'] = $this->Membership_model->get_company_detail($company_id);
+                foreach ($data['company_details'] as $row3):
+
+                    $company_id_agent = $row3['company_id'];
+                    $company_name = $row3['company_name'];
+
+                endforeach;
+//start normal email
+                $this->postmark->clear();
+                $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
+                $this->postmark->to('customer-resource@lease-desk.com');
+                $this->postmark->cc($email_address);
+                $this->postmark->bcc('mat@redstudio.co.uk');
+                $this->postmark->subject('Note updated on Support Request Ticket No ' . $supportid . '');
+                $this->postmark->message_html("Subject: $support_subject<br/><br/>
+Company: $company_name<br/><br/>
+Reply: $comment
+                    
+            ");
+
+
+                $this->postmark->send();
+                $this->postmark->clear();
+
+
+                echo "Email Sent $supportid";
+            } else {
+
+                echo "Note Updated";
+            }
         } else {
             echo "Error updating note. Please contact technical support";
         }
