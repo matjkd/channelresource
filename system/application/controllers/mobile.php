@@ -250,13 +250,13 @@ class Mobile extends My_Controller {
             if ($submitted == "Submit") {
                 $this->quote_model->add_data();
                 $data['quote_id'] = mysql_insert_id();
-                $data['message'] = "Calculation Added";
+                $data['message'] = "Quote Saved";
             }
 
             if ($submitted == "Update") {
                 $data['quote_id'] = $this->input->post('quote_id');
                 $this->quote_model->update_data($data['quote_id']);
-                $data['message'] = "Calculation Updated";
+                $data['message'] = "Quote Updated";
             }
             $data['quote_numbers'] = $this->quote_model->get_data($data['quote_id']);
             $data['main'] = '/quote/mobile/results';
