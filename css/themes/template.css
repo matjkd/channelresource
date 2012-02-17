@@ -920,7 +920,7 @@ tr.sectiontableentry2 td {
 }
 
 /* prev, next, prevPage and nextPage buttons */
-a.prev, a.next, a.prevPage, a.nextPage {
+a.vidprev, a.vidnext, a.vidprevPage, a.vidnextPage {
     display:block;
     width:18px;
     height:18px;
