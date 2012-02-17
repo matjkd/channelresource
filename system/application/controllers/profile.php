@@ -20,6 +20,13 @@ class Profile extends MY_Controller {
         }
         $data['customercompany_id'] = $this->session->userdata('company_id');
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
+        $data['closed_ticket_list'] = $this->support_model->list_closed_tickets($data['customercompany_id']);
+
+
+        $data['prioritylist'] = $this->support_model->get_statuses('Priority');
+        $data['type'] = $this->support_model->get_statuses('Issue');
+        $data['areas'] = $this->support_model->get_statuses('Type');
+        $data['statuslist'] = $this->support_model->get_statuses('status');
 
         $data['rowcount'] = 0;
         if ($data['ticket_list'] != NULL) {
@@ -27,6 +34,16 @@ class Profile extends MY_Controller {
                 $data['rowcount'] = $data['rowcount'] + 1;
             endforeach;
         }
+          
+               
+         if ($data['closed_ticket_list'] != NULL) {
+            $data['rowcount'] = 0;
+            foreach ($data['closed_ticket_list'] as $countrow):
+                $data['rowcount'] = $data['rowcount'] + 1;
+            endforeach;
+        }
+        
+        
         $data['main'] = '/admin/view_user';
         $data['title'] = "User Details";
         $this->load->vars($data);
