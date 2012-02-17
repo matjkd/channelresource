@@ -25,6 +25,11 @@ class Mobilesupport extends My_Controller {
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
 
+        $data['prioritylist'] = $this->support_model->get_statuses('Priority');
+        $data['type'] = $this->support_model->get_statuses('Issue');
+        $data['areas'] = $this->support_model->get_statuses('Type');
+        $data['statuslist'] = $this->support_model->get_statuses('status');
+
         //get list of related tickets
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
 
@@ -216,10 +221,8 @@ Reply: $comment
         $this->load->vars($data);
         $this->load->view('mobile_template');
     }
-    
+
     function post_request() {
-        
-        
         
     }
 
