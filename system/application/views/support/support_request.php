@@ -22,6 +22,7 @@ $user_id = $this->session->userdata('user_id');
 $role = $this->session->userdata('role');
 $datepicker = "id='datepicker'";
 $altdatepicker = "id='altdatepicker'";
+$auto = "id='company'";
 ?>
 
 
@@ -48,6 +49,20 @@ $altdatepicker = "id='altdatepicker'";
 <hr/>
 
 <div id="contact_form" class="support_form">
+    
+ <?php   if ($this->session->userdata('company_id') < 3) { ?>
+    
+     <p class="assign">
+        <?= form_label('Assign to User') ?><br/>
+
+        <?= form_input('assign_name', set_value('assigned_name', $assigned_name), $auto) ?>
+
+    </p>
+    
+    
+<?php }?>
+    
+    
     <p class="Subject">
         <?= form_label('Subject') ?><br/>
 

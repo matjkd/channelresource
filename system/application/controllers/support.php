@@ -50,6 +50,9 @@ class Support extends My_Controller {
 
         $data['user_id'] = '';
         $data['ticket_id'] = '';
+        $data['assigned'] = '';
+        $data['assigned_name'] = '';
+        $data['assigned_id'] = '';
         $data['telephone'] = '';
         $data['email_address'] = '';
         $data['support_subject'] = '';
@@ -502,6 +505,7 @@ End
 
 
             $data['user_id'] = $row['user_id'];
+        $data['assigned'] = $row['assigned_to'];
             $data['company_id'] = $row['company_id'];
             $data['telephone'] = $row['telephone'];
             $data['email_address'] = $row['email_address'];
@@ -513,6 +517,28 @@ End
             $data['completion_date'] = $row['completion_date'];
             $data['support_priority'] = $row['support_priority'];
         endforeach;
+        
+        
+         //Turn the assigned user id into the full name then get the company details
+        if ($data['assigned'] != 0 && $data['assigned'] != NULL) {
+
+            $customer['assigned_info'] = $this->Membership_model->get_employee_detail($data['assigned']);
+            foreach ($customer['assigned_info'] as $key => $row) {
+                $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
+                $data['assigned_company'] = $row['company_id'];
+                $data['assigned_email'] = $row['email_address'];
+                $data['assigned_email_2'] = $row['email_address'];
+            }
+        } else {
+
+            $customer['assigned_info'] = $this->Membership_model->get_employee_detail($data['user_id']);
+            foreach ($customer['assigned_info'] as $key => $row) {
+                $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
+                $data['assigned_company'] = $row['company_id'];
+                $data['assigned_email'] = $row['email_address'];
+                $data['assigned_email_2'] = "no";
+            }
+        }
 
 
 //convert channel partner id into the name
