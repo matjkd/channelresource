@@ -118,6 +118,6 @@
         ?>
     </tbody>
 </table>
-
-<?=
-$this->load->view('support/closedtickets')?>
+<div style="clear:both; margin-top:20px;">
+<?=$this->load->view('support/closedtickets')?>
+</div>
