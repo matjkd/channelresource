@@ -31,7 +31,7 @@
 
 
 
-<div style="clear:both">
+<div style="clear:both; margin-top:20px;">
 
 <?php //$this->load->view('prospect/listcustomers');  ?>
 <?php $this->load->view('support/ticketlist'); ?>
