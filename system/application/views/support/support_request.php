@@ -76,7 +76,7 @@ $altdatepicker = "id='altdatepicker'";
         <?= form_label('Attachment') ?><br/>
 
         <?= form_upload('file') ?>
-
+    </p>
 
 
 </div>
