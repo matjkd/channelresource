@@ -11,7 +11,7 @@
 <body>
     <?= form_open('support/add_reply/' . $ticket_id . '') ?>
 
-    <textarea cols='155' rows='3'  name='comment' ></textarea>
+    <textarea style="width:100%;" rows='3'  name='comment' ></textarea>
     <br/>
 
     <input id="supportcheckbox" type="checkbox" name="email_changes" value="email">Check this box to email changes<br/>
