@@ -107,6 +107,11 @@ endforeach;
 
         </li>
 
+         <li>
+            Number of Users:
+
+            <p class="ui-li-aside"><strong><?= $row['number_of_ports'] ?></strong></p>
+        </li>
         <li>
             Product cost per port/user:
 

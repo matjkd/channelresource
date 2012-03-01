@@ -50,6 +50,7 @@ if ($currency == NULL) {
         echo $this->table->generate();
         $this->table->clear();
         $this->table->set_heading('Cost per User/Unit Pricing', '');
+          $this->table->add_row('<strong>Number of Users</strong>',  $row['number_of_ports']);
         $this->table->add_row('<strong>Product cost per user/unit</strong>', $currency . $row['product_cost_per_port']);
         $this->table->add_row('<strong>Service cost per user/unit</strong>', $currency . $row['service_cost_per_port']);
         $this->table->add_row('<hr>', '<hr>');
