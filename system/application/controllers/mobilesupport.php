@@ -62,7 +62,15 @@ class Mobilesupport extends My_Controller {
             $support_priority = $row['support_priority'];
             $support_status = $row['support_status'];
 
-
+//human completion date
+            if ($data['completion_date'] != NULL) {
+                $humandate = new DateTime($data['completion_date']);
+                $data['humandate'] = date_format($humandate, 'D, d M Y');
+            } else {
+                $data['humandate']  = "N/A";
+            }
+            
+            
             //get bucket contents
             //List File attachments
             $bucketname = "lease-desk";
