@@ -126,6 +126,7 @@ class Quote extends My_Controller {
         $config['full_tag_close'] = '</div></p>';
         $config['uri_segment'] = 4;
 
+        //TODO should be able to remove pagination here
         $this->pagination->initialize($config);
         $data['page_segment'] = $this->uri->segment(4);
         //$data['quote_list'] = $this->quote_model->list_entries($data['quotecompany_id'], $config['per_page'],$data['page_segment']);

@@ -24,6 +24,7 @@ class Support extends My_Controller {
         $data['customercompany_id'] = $this->session->userdata('company_id');
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
         $data['closed_ticket_list'] = $this->support_model->list_closed_tickets($data['customercompany_id']);
+        $data['items'] = $this->Membership_model->get_all_employees();
 
         if ($data['ticket_list'] != NULL) {
             $data['rowcount'] = 0;
@@ -144,6 +145,9 @@ class Support extends My_Controller {
         if ($this->form_validation->run() == FALSE) {
 
             $data['telephone'] = $this->input->post('telephone');
+            $data['assigned'] = $this->input->post('assigned');
+            $data['assigned_id'] = $this->input->post('assigned_id');
+            $data['assigned_name'] = $this->input->post('assigned_name');
             $data['email_address'] = $this->input->post('email_address');
             $data['support_subject'] = $this->input->post('support_subject');
             $data['support_description'] = $this->input->post('support_description');
@@ -501,11 +505,14 @@ End
         $data['type'] = $this->support_model->get_statuses('Issue');
         $data['areas'] = $this->support_model->get_statuses('Type');
         $data['statuslist'] = $this->support_model->get_statuses('status');
+
+        $data['items'] = $this->Membership_model->get_all_employees();
         foreach ($data['ticket_data'] as $row):
 
 
             $data['user_id'] = $row['user_id'];
-        $data['assigned'] = $row['assigned_to'];
+            $data['assigned'] = $row['assigned_to'];
+            $data['assigned_id'] = $row['assigned_to'];
             $data['company_id'] = $row['company_id'];
             $data['telephone'] = $row['telephone'];
             $data['email_address'] = $row['email_address'];
@@ -517,9 +524,9 @@ End
             $data['completion_date'] = $row['completion_date'];
             $data['support_priority'] = $row['support_priority'];
         endforeach;
-        
-        
-         //Turn the assigned user id into the full name then get the company details
+
+
+        //Turn the assigned user id into the full name then get the company details
         if ($data['assigned'] != 0 && $data['assigned'] != NULL) {
 
             $customer['assigned_info'] = $this->Membership_model->get_employee_detail($data['assigned']);

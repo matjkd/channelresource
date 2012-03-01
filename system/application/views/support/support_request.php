@@ -9,6 +9,20 @@
             altFormat: "yy-mm-dd"}
     );
     });
+
+    $(function() {
+        var availableTags = [<?php $this->load->view('ajax/json_users'); ?>];
+        $("#company").autocomplete({
+            source: availableTags,
+            select: function(event,ui){
+                $('#assign_id').val(ui.item.id);
+                $('#currency' ).val(ui.item.currency);
+               
+            }
+        });
+    });
+	
+	
 </script>
 <?php
 if ($completion_date != NULL) {
@@ -26,7 +40,7 @@ $auto = "id='company'";
 ?>
 
 
-
+<input type="hidden" name="assigned_id" id="assign_id" value="<?= $assigned_id ?>"/>
 
 <div id="contact_form" class="support_form">
 
@@ -56,7 +70,7 @@ $auto = "id='company'";
         <?= form_label('Assign to User') ?><br/>
 
         <?= form_input('assign_name', set_value('assigned_name', $assigned_name), $auto) ?>
-
+<input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">
     </p>
     
     

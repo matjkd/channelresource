@@ -20,6 +20,7 @@ class Support_model extends Model {
                     'support_type' => $this->input->post('support_type'),
                     'support_issue' => $this->input->post('support_issue'),
                     'support_priority' => $this->input->post('support_priority'),
+                    'assigned_to' => $this->input->post('assigned_id'),
                     'completion_date' => NULL,
                     'support_status' => 1,
                     'company_id' => $this->session->userdata('company_id'),
@@ -81,6 +82,7 @@ class Support_model extends Model {
                     'support_priority' => $this->input->post('support_priority'),
                     'completion_date' => $this->input->post('completion_date'),
                     'support_status' => $this->input->post('support_status'),
+                    'assigned_to' => $this->input->post('assigned_id'),
                     'support_subject' => $this->input->post('support_subject'),
                     'date_closed' => $closeddate,
                     'date_opened' => $openeddate,
@@ -157,7 +159,7 @@ class Support_model extends Model {
 
         return $results;
     }
-    
+
     /**
      *
      * @param type $id
@@ -301,8 +303,8 @@ class Support_model extends Model {
         $this->db->where('status_type', $type);
         $this->db->order_by('status_id');
         $query = $this->db->get('support_status');
-        
-        
+
+
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row)
                 $data[] = $row;
