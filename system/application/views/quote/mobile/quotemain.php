@@ -63,8 +63,8 @@ if ($payment_type == 1) {
     $arrearsval = TRUE;
 }
 if ($payment_type == NULL) {
-    $advanceval = FALSE;
-    $arrearsval = TRUE;
+    $advanceval = TRUE;
+    $arrearsval = FALSE;
 }
 
 if ($payment_frequency == 12) {
