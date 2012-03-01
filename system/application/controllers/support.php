@@ -822,8 +822,12 @@ End
                 $this->postmark->cc($email_address);
                 $this->postmark->bcc('mat@redstudio.co.uk');
                 $this->postmark->subject('Note updated on Support Request Ticket No ' . $supportid . '');
-                $this->postmark->message_html("Subject: $support_subject<br/><br/>
-Company: $company_name<br/><br/>
+                $this->postmark->message_plain("Subject: $support_subject
+                        
+                        
+Company: $company_name
+                        
+                        
 Reply: $comment
                     
             ");
