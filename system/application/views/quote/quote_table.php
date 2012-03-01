@@ -3,10 +3,11 @@
 	
         $("#jquerytype").change(onSelectChange);
         $("#jquerytype2").change(onSelectChange2);
-        $('[name=annual_support_costs]').change(changeUserValue);
-          $('[name=other_monthly_costs]').change(changeUserValue);
+        $('[name=annual_support_costs]').blur(changeUserValue);
+          $('[name=other_monthly_costs]').blur(changeUserValue);
        
     });
+    
     function onSelectChange(){
         var selected = $("#jquerytype option:selected");		
         var output = "";

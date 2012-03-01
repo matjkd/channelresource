@@ -89,11 +89,12 @@ if ($payment_frequency == NULL) {
 }
 ?>
 <script type="text/javascript">
-    
+ $(document).ready(function() {   
     $('#support_costs').blur(changeUserValue);
     $('#monthly_costs').blur(changeUserValue);
     
     function changeUserValue(){
+       
         var supportcosts = $("#support_costs");	
         var monthlycosts = $("#monthly_costs");	
         var totalcosts = supportcosts.val() + monthlycosts.val(); 
@@ -103,6 +104,7 @@ if ($payment_frequency == NULL) {
         }
         $("#number_ports").val(output);
     }
+ });
 	
     
     $(function() {
