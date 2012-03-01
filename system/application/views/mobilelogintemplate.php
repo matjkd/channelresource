@@ -60,7 +60,7 @@
             ?>
             <div data-role="header" data-position="inline">
 
-                <h2><?= $title ?></h2>
+               <h2 style="white-space: normal; padding-left:10px;"><?= $title ?></h2>
                 <?php if (isset($quote_id)) { ?>
                     <a href="<?= base_url() ?>mobile/quote/<?= $quote_id ?>" data-icon="gear" class="ui-btn-right" data-ajax="false">Edit</a>
                 <?php } ?>
