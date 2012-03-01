@@ -132,10 +132,13 @@ class Support_model extends Model {
         $data = array();
 
         $company = $this->session->userdata('company_id');
+        $user = $this->session->userdata('user_id');
+
         $this->db->order_by('support_priority', 'asc');
-        $this->db->where('support_status !=', 3);
+        $this->db->having('support_status !=', 3);
         if (!isset($company) || $company > 2) {
             $this->db->where('support.company_id', $id);
+            $this->db->or_where('support.assigned_to', $user);
             $this->db->join('users', 'users.user_id=support.user_id', 'right');
             $this->db->join('company', 'company.company_id=support.company_id', 'left');
         } else if (!isset($company) || $company < 3) {
@@ -169,13 +172,18 @@ class Support_model extends Model {
         $data = array();
 
         $company = $this->session->userdata('company_id');
+        $user = $this->session->userdata('user_id');
+
         $this->db->order_by('support_priority', 'asc');
-        $this->db->where('support_status', 3);
+      
         if (!isset($company) || $company > 2) {
             $this->db->where('support.company_id', $id);
+            $this->db->or_where('support.assigned_to', $user);
+              $this->db->having('support_status', 3);
             $this->db->join('users', 'users.user_id=support.user_id', 'right');
             $this->db->join('company', 'company.company_id=support.company_id', 'left');
         } else if (!isset($company) || $company < 3) {
+              $this->db->where('support_status', 3);
             $this->db->join('users', 'users.user_id=support.user_id');
             $this->db->join('company', 'company.company_id=support.company_id', 'left');
         }
