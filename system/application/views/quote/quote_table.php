@@ -3,6 +3,8 @@
 	
         $("#jquerytype").change(onSelectChange);
         $("#jquerytype2").change(onSelectChange2);
+        $('[name=annual_support_costs]').change(changeUserValue);
+          $('[name=other_monthly_costs]').change(changeUserValue);
        
     });
     function onSelectChange(){
@@ -20,6 +22,17 @@
             output = selected.text();
         }
         $("#output2").html(output);
+    }
+    
+     function changeUserValue(){
+        var supportcosts = $("[name=annual_support_costs]");	
+        var monthlycosts = $("[name=other_monthly_costs]");	
+        var totalcosts = supportcosts.val() + monthlycosts.val(); 
+        var output =  $("[name=number_of_ports]").val();
+        if(totalcosts > 0  && output < 1){
+            output = 1;
+        }
+        $("[name=number_of_ports]").val(output);
     }
 
 
@@ -68,6 +81,7 @@ if ($currency == "$") {
 <input type="hidden" name="assigned_id" id="assign_id" value="<?= $assigned_id ?>"/>
 <?php
 $fields = "class='roifield'";
+
 $auto = "id='company'";
 $currencyid = "id='currency'";
 $interestid = "id='interestrate'";

@@ -89,6 +89,22 @@ if ($payment_frequency == NULL) {
 }
 ?>
 <script type="text/javascript">
+    
+    $('#support_costs').blur(changeUserValue);
+    $('#monthly_costs').blur(changeUserValue);
+    
+    function changeUserValue(){
+        var supportcosts = $("#support_costs");	
+        var monthlycosts = $("#monthly_costs");	
+        var totalcosts = supportcosts.val() + monthlycosts.val(); 
+        var output =  $("#number_ports").val();
+        if(totalcosts > 0  && output < 1){
+            output = 1;
+        }
+        $("#number_ports").val(output);
+    }
+	
+    
     $(function() {
         var availableTags = [<?php $this->load->view('ajax/json_users'); ?>];
         $("#company").autocomplete({
@@ -102,7 +118,9 @@ if ($payment_frequency == NULL) {
             }
         });
     });
-	
+    
+     
+    
 	
 </script>
 <?php
