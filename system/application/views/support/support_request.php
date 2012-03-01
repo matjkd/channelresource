@@ -25,7 +25,7 @@
 	
 </script>
 <?php
-if ($completion_date != NULL) {
+if ($completion_date != NULL && $completion_date != "0000-00-00") {
     $humandate = new DateTime($completion_date);
     $humandate = date_format($humandate, 'D, d M Y');
 } else {

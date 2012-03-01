@@ -63,7 +63,7 @@ class Mobilesupport extends My_Controller {
             $support_status = $row['support_status'];
 
 //human completion date
-            if ($data['completion_date'] != NULL) {
+            if ($data['completion_date'] != NULL && $data['completion_date'] != "0000-00-00") {
                 $humandate = new DateTime($data['completion_date']);
                 $data['humandate'] = date_format($humandate, 'D, d M Y');
             } else {

@@ -70,6 +70,13 @@ class Support_model extends Model {
             $openeddate = $date_opened;
         }
 
+        //set completion date if it isn't set
+        if ($this->input->post('completion_date') == "0000-00-00" || $this->input->post('completion_date') == "") {
+            $completion_date = "";
+        } else {
+            $completion_date = $this->input->post('completion_date');
+        }
+
 
         if ($query->num_rows() == 1) {
             foreach ($query->result_array() as $row)
@@ -80,7 +87,7 @@ class Support_model extends Model {
                     'support_type' => $this->input->post('support_type'),
                     'support_issue' => $this->input->post('support_issue'),
                     'support_priority' => $this->input->post('support_priority'),
-                    'completion_date' => $this->input->post('completion_date'),
+                    'completion_date' => $completion_date,
                     'support_status' => $this->input->post('support_status'),
                     'assigned_to' => $this->input->post('assigned_id'),
                     'support_subject' => $this->input->post('support_subject'),
@@ -175,15 +182,15 @@ class Support_model extends Model {
         $user = $this->session->userdata('user_id');
 
         $this->db->order_by('support_priority', 'asc');
-      
+
         if (!isset($company) || $company > 2) {
             $this->db->where('support.company_id', $id);
             $this->db->or_where('support.assigned_to', $user);
-              $this->db->having('support_status', 3);
+            $this->db->having('support_status', 3);
             $this->db->join('users', 'users.user_id=support.user_id', 'right');
             $this->db->join('company', 'company.company_id=support.company_id', 'left');
         } else if (!isset($company) || $company < 3) {
-              $this->db->where('support_status', 3);
+            $this->db->where('support_status', 3);
             $this->db->join('users', 'users.user_id=support.user_id');
             $this->db->join('company', 'company.company_id=support.company_id', 'left');
         }

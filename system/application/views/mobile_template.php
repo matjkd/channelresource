@@ -43,6 +43,9 @@
         <!-- scripts concatenated and minified via ant build script -->
         <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
         <script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+        <link rel="stylesheet" href="<?= base_url() ?>css/mobile/jquery.ui.datepicker.mobile.css" /> 
+       
+        <script src="<?= base_url() ?>js/mobile/jquery.ui.datepicker.mobile.js"></script>
 
 
 
