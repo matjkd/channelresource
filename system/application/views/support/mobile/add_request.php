@@ -7,7 +7,7 @@
        $(document).ready(function(){
 	
      
-       $("#datewatch").click(convertDate);
+       $("#datewatch").live(convertDate);
          $(".ui-state-default").click(convertDate);
        
     });
