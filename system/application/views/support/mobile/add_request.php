@@ -1,6 +1,6 @@
 <script>
     //reset type=date inputs to text
- $(function() {
+    $(function() {
         $("#datepicker").datepicker({
             showOtherMonths: true,
             selectOtherMonths: true,
@@ -11,7 +11,7 @@
     });
 
 
- $(function() {
+    $(function() {
         var availableTags = [<?php $this->load->view('ajax/json_users'); ?>];
         $("#company").autocomplete({
             source: availableTags,
@@ -45,29 +45,48 @@ $role = $this->session->userdata('role');
 
 
 <form action="<?= base_url() ?>support/create_ticket" method="post" data-ajax="false">
-    
-    
+
+
     <input type="hidden" name="assigned_id" id="assign_id" value="<?= $assigned_id ?>"/>
-    
-    
-    
-    
+
+
+
+
     <fieldset data-role="controlgroup" >
         <div data-role="fieldcontain">     
-            
-          <?php   if ($this->session->userdata('company_id') < 3) { ?>
-    
-     <p class="assign">
-       <label class="ui-btn-text" for="basic">Assign to user:</label>
-  <input type="text" name="assign_name" id='company' value="<?= set_value('assign_name', $assigned_name) ?>"  />
-       
-<input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">
-    </p>
-    
-    
-<?php }?>
-            
-            
+
+            <?php if ($this->session->userdata('company_id') < 3) { ?>
+                <p class="assign">
+                       <label class="ui-btn-text" for="basic">Company:</label>
+                    <select name="company_owner" id="company_owner">
+                        <?php foreach ($companies as $row): ?>
+                            <?php
+                            if ($row['company_id'] == $company_id) {
+                                $selectedcompany = "selected='selected'";
+                            } else {
+                                $selectedcompany = "";
+                            }
+                            ?>
+                            <option value="<?= $row['company_id'] ?>" <?= $selectedcompany ?>><?= $row['company_name'] ?></option>
+                            <?php $selectedcompany = ""; ?>
+                        <?php endforeach; ?>
+
+
+                    </select>
+                </p>
+
+
+                <p class="assign">
+                    <label class="ui-btn-text" for="basic">Assign to user:</label>
+                    <input type="text" name="assign_name" id='company' value="<?= set_value('assign_name', $assigned_name) ?>"  />
+
+                    <input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">
+                </p>
+
+
+            <?php } ?>
+
+
 
             <label class="ui-btn-text" for="basic">Subject:</label>
             <input type="text" name="support_subject" id="basic" value="<?= set_value('support_subject') ?>"  />
@@ -134,24 +153,24 @@ $role = $this->session->userdata('role');
 
 
     <fieldset data-role="controlgroup" >
-       
 
-            <label class="ui-btn-text" for="support_description">Description:</label><br/>
-            <textarea type="text" name="support_description" id="basic" ><?= set_value('support_description', $support_description) ?></textarea>
-        
+
+        <label class="ui-btn-text" for="support_description">Description:</label><br/>
+        <textarea type="text" name="support_description" id="basic" ><?= set_value('support_description', $support_description) ?></textarea>
+
     </fieldset>   
-    
-        <fieldset data-role="controlgroup" > 
-      
+
+    <fieldset data-role="controlgroup" > 
+
         <label for="date">Estimated Completion Date:</label>
-           <?php if (!isset($role) || $role != 1) { ?>
+        <?php if (!isset($role) || $role != 1) { ?>
 
             <?= $humandate ?>
 
         <?php } else { ?>
             <?= form_input('completion_datehuman', set_value('completion_datehuman', $humandate), $datepicker) ?>
             <span style="display:none;">   <?= form_input('completion_date', set_value('completion_date', $completion_date), $altdatepicker) ?></span>
-      <?php } ?>
+        <?php } ?>
     </fieldset>  
 
     <?= form_hidden('mobile', 1) ?>

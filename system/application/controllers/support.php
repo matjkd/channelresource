@@ -70,6 +70,8 @@ class Support extends My_Controller {
         $data['areas'] = $this->support_model->get_statuses('Type');
         $data['statuslist'] = $this->support_model->get_statuses('status');
 
+        $data['companies'] = $this->Membership_model->get_companies();
+
         $this->load->vars($data);
         $data['main'] = '/support/main';
         $this->load->vars($data);
@@ -144,6 +146,12 @@ class Support extends My_Controller {
         $submitted = $this->input->post('submit');
         if ($this->form_validation->run() == FALSE) {
 
+            if (isset($this->input->post('company_owner'))) {
+                $data['company_id'] = $this->input->post('company_owner');
+            } else {
+                $data['company_id'] = $this->session->userdata('company_id');
+            }
+
             $data['telephone'] = $this->input->post('telephone');
             $data['assigned'] = $this->input->post('assigned');
             $data['assigned_id'] = $this->input->post('assigned_id');
@@ -157,7 +165,7 @@ class Support extends My_Controller {
             $data['completion_date'] = $this->input->post('completion_date');
             $data['channel_partner_name'] = $company_name;
             $data['support_status'] = $this->input->post('support_status');
-            $data['company_id'] = $this->session->userdata('company_id');
+
             $data['user_id'] = $this->input->post('user_id');
             $data['date_added'] = $this->input->post('date_added');
             $data['date_updated'] = $this->input->post('date_added');
@@ -188,12 +196,17 @@ class Support extends My_Controller {
             $support_description = strip_tags($this->input->post('support_description'));
 
 
+            if (isset($this->input->post('company_owner'))) {
+                $company_id = $this->input->post('company_owner');
+            } else {
+                $company_id = $this->session->userdata('company_id');
+            }
 
             $support_type = $this->input->post('support_type');
             $support_issue = $this->input->post('support_issue');
             $support_priority = $this->input->post('support_priority');
             $completion_date = $this->input->post('completion_date');
-            $company_id = $this->session->userdata('company_id');
+
             $user_id = $this->input->post('user_id');
             $date_added = $this->input->post('date_added');
             $date_updated = $this->input->post('date_added');
@@ -254,9 +267,9 @@ class Support extends My_Controller {
 
                     $this->session->set_flashdata('message', 'Ticket Added');
                 }
-                
-                
-                
+
+
+
 //start normal support email
 
 
@@ -509,6 +522,7 @@ End
         $data['areas'] = $this->support_model->get_statuses('Type');
         $data['statuslist'] = $this->support_model->get_statuses('status');
 
+        $data['companies'] = $this->Membership_model->get_companies();
         $data['items'] = $this->Membership_model->get_all_employees();
         foreach ($data['ticket_data'] as $row):
 

@@ -46,9 +46,31 @@ $auto = "id='company'";
 
     <p class="Company">
         <?= form_label('Company') ?><br/>
+<?php   if ($this->session->userdata('company_id') < 3) { ?>
+    
+   
 
+       <select name="company_owner" id="company_owner">
+            <?php foreach ($companies as $row): ?>
+                <?php
+                if ($row['company_id'] == $company_id) {
+                    $selectedcompany = "selected='selected'";
+                } else {
+                    $selectedcompany = "";
+                }
+                ?>
+                <option value="<?= $row['company_id'] ?>" <?= $selectedcompany ?>><?= $row['company_name'] ?></option>
+                <?php $selectedcompany = ""; ?>
+            <?php endforeach; ?>
+
+
+        </select>
+   
+    
+    
+<?php } else { ?>
         <strong><?= $channel_partner_name ?></strong>
-
+<?php } ?>
     </p>
 
 </div>
