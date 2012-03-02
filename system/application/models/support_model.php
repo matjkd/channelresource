@@ -21,7 +21,7 @@ class Support_model extends Model {
                     'support_issue' => $this->input->post('support_issue'),
                     'support_priority' => $this->input->post('support_priority'),
                     'assigned_to' => $this->input->post('assigned_id'),
-                    'completion_date' => NULL,
+                    'completion_date' => $this->input->post('completion_date'),
                     'support_status' => 1,
                     'company_id' => $this->session->userdata('company_id'),
                     'user_id' => $this->input->post('user_id'),

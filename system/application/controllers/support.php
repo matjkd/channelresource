@@ -254,6 +254,9 @@ class Support extends My_Controller {
 
                     $this->session->set_flashdata('message', 'Ticket Added');
                 }
+                
+                
+                
 //start normal support email
 
 

@@ -7,8 +7,8 @@
        $(document).ready(function(){
 	
      
-       $("#datewatch").live(convertDate);
-         $(".ui-state-default").click(convertDate);
+       $("#datewatch").live('click', convertDate);
+         $(".ui-state-default").live('click', convertDate);
        
     });
     
@@ -16,9 +16,11 @@
         var oldDate = $("#datewatch").attr('value');	
       
       
-            output = oldDate;
+            displaydate = $.datepicker.formatDate('DD, MM, d, yy', new Date(oldDate));
+            databasedate = $.datepicker.formatDate('yy-mm-dd', new Date(oldDate));
         
-        $("[name=completiondate]").val(output);
+        $("[name=completion_date_display]").val(displaydate);
+        $("[name=completion_date]").val(databasedate);
     }
     
 </script>
@@ -27,6 +29,15 @@
  * 
  * 
  */
+
+if ($completion_date != NULL && $completion_date != "0000-00-00") {
+    $humandate = new DateTime($completion_date);
+    $humandate = date_format($humandate, 'D, d M Y');
+} else {
+    $humandate = "N/A";
+}
+
+
 
 $user_id = $this->session->userdata('user_id');
 $role = $this->session->userdata('role');
@@ -112,8 +123,16 @@ $role = $this->session->userdata('role');
         <fieldset data-role="controlgroup" > 
       
         <label for="date">Estimated Completion Date:</label>
-        <input type="date" name="datewatch" id="datewatch" value=""  />	
-       <input type="text" name="completiondate" id="date" value=""  />
+           <?php if (!isset($role) || $role != 1) { ?>
+
+            <?= $humandate ?>
+
+        <?php } else { ?>
+        
+        <input type="text" name="completion_date_display" id="displaydate" value=""  />
+         <input style="display:none;" type="text" name="completion_date" id="altdatedatepicker" value=""  />
+        <input style="display:none;" type="date" name="datewatch" id="datewatch" value=""  />	
+      <?php } ?>
     </fieldset>  
 
     <?= form_hidden('mobile', 1) ?>
