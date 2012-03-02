@@ -50,6 +50,9 @@ class Mobilesupport extends My_Controller {
         foreach ($data['ticket_data'] as $row):
             $data['support_id'] = $support_id;
             $data['user_id'] = $row['user_id'];
+                 $data['assigned'] = $row['assigned_to'];
+            $data['assigned_id'] = $row['assigned_to'];
+            
             $data['company_id'] = $row['company_id'];
             $data['telephone'] = $row['telephone'];
             $data['email_address'] = $row['email_address'];
@@ -61,16 +64,38 @@ class Mobilesupport extends My_Controller {
             $support_issue = $row['support_issue'];
             $support_priority = $row['support_priority'];
             $support_status = $row['support_status'];
+            
+            
+              //Turn the assigned user id into the full name then get the company details
+        if ($data['assigned'] != 0 && $data['assigned'] != NULL) {
+
+            $customer['assigned_info'] = $this->Membership_model->get_employee_detail($data['assigned']);
+            foreach ($customer['assigned_info'] as $key => $row) {
+                $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
+                $data['assigned_company'] = $row['company_id'];
+                $data['assigned_email'] = $row['email_address'];
+                $data['assigned_email_2'] = $row['email_address'];
+            }
+        } else {
+
+            $customer['assigned_info'] = $this->Membership_model->get_employee_detail($data['user_id']);
+            foreach ($customer['assigned_info'] as $key => $row) {
+                $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
+                $data['assigned_company'] = $row['company_id'];
+                $data['assigned_email'] = $row['email_address'];
+                $data['assigned_email_2'] = "no";
+            }
+        }
 
 //human completion date
             if ($data['completion_date'] != NULL && $data['completion_date'] != "0000-00-00") {
                 $humandate = new DateTime($data['completion_date']);
                 $data['humandate'] = date_format($humandate, 'D, d M Y');
             } else {
-                $data['humandate']  = "N/A";
+                $data['humandate'] = "N/A";
             }
-            
-            
+
+
             //get bucket contents
             //List File attachments
             $bucketname = "lease-desk";
@@ -198,7 +223,7 @@ Reply: $comment
         //get current user info
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
-
+        $data['items'] = $this->Membership_model->get_all_employees();
 
         //get list of related tickets
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
@@ -207,6 +232,9 @@ Reply: $comment
 
         $data['user_id'] = '';
         $data['ticket_id'] = '';
+         $data['assigned'] = '';
+        $data['assigned_name'] = '';
+        $data['assigned_id'] = '';
         $data['telephone'] = '';
         $data['email_address'] = '';
         //$data['support_subject'] = '';

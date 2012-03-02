@@ -22,6 +22,13 @@
     <li data-role="list-divider">
         Support Request ID: <?= $support_id ?> - <?= $support_status ?>
     </li>
+      <?php   if ($this->session->userdata('company_id') < 3) { ?>
+    
+     <li style="overflow: auto;">Assigned to:<p class="ui-li-aside" style="white-space: normal"><strong> <?= $assigned_name ?></strong></p></li>
+    
+    <?php } ?>
+    
+    
     <li>Priority:<p class="ui-li-aside"><strong> <?= $support_priority ?></strong></p></li>
     <li>Issue:<p class="ui-li-aside"><strong> <?= $support_issue ?></strong></p></li>
     <li style="overflow: auto;">Subject:<p class="ui-li-aside"  style="white-space: normal"><strong> <?= $support_subject ?></strong></p></li>

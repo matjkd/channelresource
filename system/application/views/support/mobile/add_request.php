@@ -9,25 +9,19 @@
             altFormat: "yy-mm-dd"}
     );
     });
-//       $(document).ready(function(){
-//	
-//     
-////       $("#datewatch").live('click', convertDate);
-////         $(".ui-state-default").live('click', convertDate);
-//       
-//    });
-//    
-//       function convertDate(){
-//        var oldDate = $("#datewatch").attr('value');	
-//      
-//      
-//            displaydate = $.datepicker.formatDate('DD, MM, d, yy', new Date(oldDate));
-//            databasedate = $.datepicker.formatDate('yy-mm-dd', new Date(oldDate));
-//        
-//        $("[name=completion_date_display]").val(displaydate);
-//        $("[name=completion_date]").val(databasedate);
-//    }
-//    
+
+
+ $(function() {
+        var availableTags = [<?php $this->load->view('ajax/json_users'); ?>];
+        $("#company").autocomplete({
+            source: availableTags,
+            select: function(event,ui){
+                $('#assign_id').val(ui.item.id);
+                $('#currency' ).val(ui.item.currency);
+               
+            }
+        });
+    });
 </script>
 <?php
 /*
@@ -51,8 +45,29 @@ $role = $this->session->userdata('role');
 
 
 <form action="<?= base_url() ?>support/create_ticket" method="post" data-ajax="false">
+    
+    
+    <input type="hidden" name="assigned_id" id="assign_id" value="<?= $assigned_id ?>"/>
+    
+    
+    
+    
     <fieldset data-role="controlgroup" >
         <div data-role="fieldcontain">     
+            
+          <?php   if ($this->session->userdata('company_id') < 3) { ?>
+    
+     <p class="assign">
+       <label class="ui-btn-text" for="basic">Assign to user:</label>
+  <input type="text" name="assign_name" id='company' value="<?= set_value('assign_name', $assigned_name) ?>"  />
+       
+<input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">
+    </p>
+    
+    
+<?php }?>
+            
+            
 
             <label class="ui-btn-text" for="basic">Subject:</label>
             <input type="text" name="support_subject" id="basic" value="<?= set_value('support_subject') ?>"  />
