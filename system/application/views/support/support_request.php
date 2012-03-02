@@ -254,16 +254,10 @@ $auto = "id='company'";
     <br/>
 
     <?php if ($this->uri->segment(2) == "results") { ?>
-        <div id="descriptionFixed">
-
-            <?= $support_description ?>
-
-        </div>
+        <div id="descriptionFixed"><?= $support_description ?></div>
         <?= form_hidden('support_description', $support_description) ?>
     <? } else { ?>
-        <textarea  name='support_description' cols='155' rows='5' style="width:100%;">
-
-        </textarea>
+        <textarea  name='support_description' cols='155' rows='5' style="width:100%;"></textarea>
     <? } ?>
 </div>
 <?= form_hidden('mobile', 0) ?>
