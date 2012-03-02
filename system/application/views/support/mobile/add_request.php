@@ -1,28 +1,33 @@
 <script>
     //reset type=date inputs to text
-    $( document ).bind( "mobileinit", function(){
-        $.mobile.page.prototype.options.degradeInputs.date = true;
-    });	
-    
-       $(document).ready(function(){
-	
-     
-       $("#datewatch").live('click', convertDate);
-         $(".ui-state-default").live('click', convertDate);
-       
+ $(function() {
+        $("#datepicker").datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            dateFormat: 'D, dd M yy',
+            altField: "#altdatepicker",
+            altFormat: "yy-mm-dd"}
+    );
     });
-    
-       function convertDate(){
-        var oldDate = $("#datewatch").attr('value');	
-      
-      
-            displaydate = $.datepicker.formatDate('DD, MM, d, yy', new Date(oldDate));
-            databasedate = $.datepicker.formatDate('yy-mm-dd', new Date(oldDate));
-        
-        $("[name=completion_date_display]").val(displaydate);
-        $("[name=completion_date]").val(databasedate);
-    }
-    
+//       $(document).ready(function(){
+//	
+//     
+////       $("#datewatch").live('click', convertDate);
+////         $(".ui-state-default").live('click', convertDate);
+//       
+//    });
+//    
+//       function convertDate(){
+//        var oldDate = $("#datewatch").attr('value');	
+//      
+//      
+//            displaydate = $.datepicker.formatDate('DD, MM, d, yy', new Date(oldDate));
+//            databasedate = $.datepicker.formatDate('yy-mm-dd', new Date(oldDate));
+//        
+//        $("[name=completion_date_display]").val(displaydate);
+//        $("[name=completion_date]").val(databasedate);
+//    }
+//    
 </script>
 <?php
 /*
@@ -37,7 +42,8 @@ if ($completion_date != NULL && $completion_date != "0000-00-00") {
     $humandate = "N/A";
 }
 
-
+$datepicker = "id='datepicker'";
+$altdatepicker = "id='altdatepicker'";
 
 $user_id = $this->session->userdata('user_id');
 $role = $this->session->userdata('role');
@@ -128,10 +134,8 @@ $role = $this->session->userdata('role');
             <?= $humandate ?>
 
         <?php } else { ?>
-        
-        <input type="text" name="completion_date_display" id="displaydate" value=""  />
-         <input style="display:none;" type="text" name="completion_date" id="altdatedatepicker" value=""  />
-        <input style="display:none;" type="date" name="datewatch" id="datewatch" value=""  />	
+            <?= form_input('completion_datehuman', set_value('completion_datehuman', $humandate), $datepicker) ?>
+            <span style="display:none;">   <?= form_input('completion_date', set_value('completion_date', $completion_date), $altdatepicker) ?></span>
       <?php } ?>
     </fieldset>  
 
