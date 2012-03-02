@@ -11,34 +11,38 @@ class Support_model extends Model {
         $this->db->where('user_id', $this->input->post('user_id'));
         $query = $this->db->get('users');
 
+        $owner = $this->input->post('company_owner');
 
+        if ($owner != NULL) {
+            $company_owner = $this->input->post('company_owner');
+        } else {
+            $company_owner = $this->session->userdata('company_id');
+        }
 
 
         if ($query->num_rows() == 1) {
-            foreach ($query->result_array() as $row)
-                if (isset($this->input->post('company_owner'))) {
-                    $company_owner = $this->input->post('company_owner');
-                } else {
-                    $company_owner = $this->session->userdata('company_id');
-                }
+            foreach ($query->result_array() as $row):
 
 
-            $new_ticket_insert_data = array(
-                'telephone' => $this->input->post('telephone'),
-                'email_address' => $this->input->post('email_address'),
-                'support_subject' => $this->input->post('support_subject'),
-                'support_description' => $this->input->post('support_description'),
-                'support_type' => $this->input->post('support_type'),
-                'support_issue' => $this->input->post('support_issue'),
-                'support_priority' => $this->input->post('support_priority'),
-                'assigned_to' => $this->input->post('assigned_id'),
-                'completion_date' => $this->input->post('completion_date'),
-                'support_status' => 1,
-                'company_id' => $company_owner,
-                'user_id' => $this->input->post('user_id'),
-                'date_added' => $this->input->post('date_added'),
-                'date_updated' => $this->input->post('date_added')
-            );
+
+
+                $new_ticket_insert_data = array(
+                    'telephone' => $this->input->post('telephone'),
+                    'email_address' => $this->input->post('email_address'),
+                    'support_subject' => $this->input->post('support_subject'),
+                    'support_description' => $this->input->post('support_description'),
+                    'support_type' => $this->input->post('support_type'),
+                    'support_issue' => $this->input->post('support_issue'),
+                    'support_priority' => $this->input->post('support_priority'),
+                    'assigned_to' => $this->input->post('assigned_id'),
+                    'completion_date' => $this->input->post('completion_date'),
+                    'support_status' => 1,
+                    'company_id' => $company_owner,
+                    'user_id' => $this->input->post('user_id'),
+                    'date_added' => $this->input->post('date_added'),
+                    'date_updated' => $this->input->post('date_added')
+                );
+            endforeach;
         }
         $insert = $this->db->insert('support', $new_ticket_insert_data);
         return $insert;
@@ -88,16 +92,16 @@ class Support_model extends Model {
             $completion_date = $this->input->post('completion_date');
         }
 
-
+        $owner = $this->input->post('company_owner');
+        if ($owner != NULL) {
+            $company_owner = $this->input->post('company_owner');
+        } else {
+            $company_owner = $this->session->userdata('company_id');
+        }
         if ($query->num_rows() == 1) {
-            foreach ($query->result_array() as $row)
-                if (isset($this->input->post('company_owner'))) {
-                    $company_owner = $this->input->post('company_owner');
-                } else {
-                    $company_owner = $this->session->userdata('company_id');
-                }
-                
-                
+            foreach ($query->result_array() as $row):
+
+
                 $support_update_data = array(
                     'telephone' => $this->input->post('telephone'),
                     'email_address' => $this->input->post('email_address'),
@@ -109,11 +113,12 @@ class Support_model extends Model {
                     'support_status' => $this->input->post('support_status'),
                     'assigned_to' => $this->input->post('assigned_id'),
                     'support_subject' => $this->input->post('support_subject'),
-                     'company_id' => $company_owner,
+                    'company_id' => $company_owner,
                     'date_closed' => $closeddate,
                     'date_opened' => $openeddate,
                     'date_updated' => $this->input->post('date_added')
                 );
+            endforeach;
         }
         $this->db->where('support_id', $id);
         $update = $this->db->update('support', $support_update_data);

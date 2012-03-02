@@ -146,7 +146,11 @@ class Support extends My_Controller {
         $submitted = $this->input->post('submit');
         if ($this->form_validation->run() == FALSE) {
 
-            if (isset($this->input->post('company_owner'))) {
+            $owner = $this->input->post('company_owner');
+
+
+
+            if ($owner != NULL) {
                 $data['company_id'] = $this->input->post('company_owner');
             } else {
                 $data['company_id'] = $this->session->userdata('company_id');
@@ -196,11 +200,14 @@ class Support extends My_Controller {
             $support_description = strip_tags($this->input->post('support_description'));
 
 
-            if (isset($this->input->post('company_owner'))) {
+            $owner = $this->input->post('company_owner');
+            if ($owner != NULL) {
                 $company_id = $this->input->post('company_owner');
             } else {
                 $company_id = $this->session->userdata('company_id');
             }
+
+
 
             $support_type = $this->input->post('support_type');
             $support_issue = $this->input->post('support_issue');
