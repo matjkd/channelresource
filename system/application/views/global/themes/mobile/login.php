@@ -1,4 +1,4 @@
-<form method="post" action="<?=base_url()?>user/login/validate_credentials" >
+<form method="post" action="<?=base_url()?>user/login/validate_credentials"  data-ajax="false">
 
   <div data-role="fieldcontain">                   
     <label for="basic">Username:</label>
