@@ -1,16 +1,16 @@
-<form method="post" action="<?=base_url()?>user/login/validate_credentials"  data-ajax="false">
+<form method="post" action="<?= base_url() ?>user/login/validate_credentials"  data-ajax="false">
 
-  <div data-role="fieldcontain">                   
-    <label for="basic">Username:</label>
-    <input type="text" name="username" id="basic" value=""  />
-    
-     <label for="basic">Password:</label>
-    <input type="password" name="password" id="basic" value=""  />
-  </div>
-    
-                    
+    <div data-role="fieldcontain">                   
+        <label for="basic">Username:</label>
+        <input type="text" name="username" id="basic" value=""  />
 
-<input type="submit" name="submit" value="login" data-transition="pop"/>
-	
+        <label for="basic">Password:</label>
+        <input type="password" name="password" id="basic" value=""  />
+    </div>
 
-          </form>
+
+
+    <input type="submit" name="submit" value="login"/>
+
+
+</form>

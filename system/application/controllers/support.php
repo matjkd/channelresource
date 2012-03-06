@@ -93,7 +93,8 @@ class Support extends My_Controller {
         $data['customercompany_id'] = $this->session->userdata('company_id');
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
         $data['closed_ticket_list'] = $this->support_model->list_closed_tickets($data['customercompany_id']);
-
+        $data['companies'] = $this->Membership_model->get_companies();
+        $data['items'] = $this->Membership_model->get_all_employees();
         $mobile = $this->input->post('mobile');
         $data['rowcount'] = 0;
 
