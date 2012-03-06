@@ -45,7 +45,7 @@
                 $new_date_added = date('l jS \of F Y H:i:s', $old_date_added);
 
 
-                if ($row['completion_date'] != "0000-00-00") {
+                if ($row['completion_date'] != "0000-00-00" && $row['completion_date'] != "") {
                     $old_completion_date = strtotime($row['completion_date']);
                     $new_completion_date = date('l jS \of F Y', $old_completion_date);
                 } else {
