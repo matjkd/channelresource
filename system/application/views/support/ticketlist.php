@@ -45,6 +45,7 @@
             <th>Company</th>
             <th>Re:</th>
             <th>Updated</th>
+             <th>Estimated Completion Date</th>
             <th>Status</th>
             <th>Added By</th>
             <th>Actions</th>
@@ -96,7 +97,8 @@
                 }
 
 
-
+  $old_completion_date  = strtotime($row['completion_date']);
+                $new_completion_date = date('l jS \of F Y', $old_completion_date);
 
                 $viewticket = '/support/results/' . $row['support_id'];
                 ?>
@@ -108,6 +110,7 @@
                     <td style="padding:5px;"><?= $row['company_name'] ?></td>
                     <td style="padding:5px;"><?= $type ?></td>
                     <td style="padding:5px;"><?= $row['date_updated'] ?></td>
+                    <td style="padding:5px;"><?= $new_completion_date ?></td>
                     <td style="padding:5px;"><?= $status ?></td>
                     <td style="padding:5px;"><?= $row['firstname'] ?> <?= $row['lastname'] ?></td>
                     <td style="padding:5px;"><?= "<a href=$viewticket>View</a> | <a href='#' onclick='confirmation(" . $row['support_id'] . ")'>Delete</a>" ?></td>
