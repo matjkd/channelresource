@@ -209,7 +209,12 @@ class Support extends My_Controller {
 
             $owner = $this->input->post('company_owner');
             if ($owner != NULL) {
-                $company_id = $this->input->post('company_owner');
+                 $company_id = $this->input->post('company_owner');
+                
+                $data['owner_company_details'] = $this->Membership_model->get_company_detail($company_id);
+                foreach ($data['owner_company_details'] as $row4):
+                    $company_name = $row4['company_name'];
+                endforeach;
             } else {
                 $company_id = $this->session->userdata('company_id');
             }
