@@ -60,13 +60,13 @@
                         <p><strong>Ref:</strong> <?= $row['support_id'] ?></p>
 
 
-                        <p><strong>Subject:</strong> <?= $row['support_subject'] ?></p>
-                        <p><strong>Company:</strong> <?= $row['company_name'] ?></p>
-                        <p><strong>Type:</strong> <?= $type ?></p>
-                        <p><strong>Status:</strong> <?= $status ?></p>
-                        <p><strong>Estimated Completion Date:</strong> <?= $new_completion_date ?></p>
+                        <p style="white-space: normal"><strong>Subject:</strong> <?= $row['support_subject'] ?></p>
+                        <p style="white-space: normal"><strong>Company:</strong> <?= $row['company_name'] ?></p>
+                        <p style="white-space: normal"><strong>Type:</strong> <?= $type ?></p>
+                        <p style="white-space: normal"><strong>Status:</strong> <?= $status ?></p>
+                        <p   style="white-space: normal"><strong>Estimated Completion Date:</strong> <?= $new_completion_date ?></p>
 
-                        <p><?= $new_date_added ?></p>
+                        <p  style="white-space: normal"><strong>Date Added:</strong><?= $new_date_added ?></p>
                     </a>
                 </li>
 
