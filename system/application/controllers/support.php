@@ -315,6 +315,13 @@ Priority: $support_priority1
 // $email1 = $this->email->print_debugger();
 //end normal email
 // send email to webCRM
+                $webCRMyear = date('Y');
+                $webCRMmonth = date('n');
+                $webCRMday = date('j');
+                $webCRMhour = date('G');
+                $webCRMminute = date('i');
+                $webCRMseconds = date('s');
+                $webCRMGMT = str_replace(0, '', date('O'));
                 $this->postmark->clear();
 
                 $this->postmark->to('cm3208SPoYUg@b2b-email.net');
@@ -329,6 +336,15 @@ Priority: $support_priority1
 
                 $this->postmark->subject('/*/AUTO/*/');
                 $this->postmark->message_plain("Start:DateTime
+                        
+A:01:$webCRMyear 
+A:02:$webCRMmonth 
+A:03:$webCRMday
+A:04:$webCRMhour
+A:05:$webCRMminute
+A:06:$webCRMseconds
+A:07:$webCRMGMT
+
 
 End
 Start:Organisation
