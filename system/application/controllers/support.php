@@ -738,7 +738,13 @@ End
                 $this->postmark->cc($email_address);
                 $this->postmark->bcc('mat@redstudio.co.uk');
                 $this->postmark->subject('Reply to Support Request Ticket No ' . $id . '');
-                $this->postmark->message_plain("Subject: $support_subject
+                $this->postmark->message_plain("
+                        
+The following Support Request has been replied to:
+                        
+Support Request: $id                        
+                        
+Subject: $support_subject
                         
                         
 Company: $company_name
