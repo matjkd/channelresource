@@ -336,16 +336,7 @@ Priority: $support_priority1
 
                 $this->postmark->subject('/*/AUTO/*/');
                 $this->postmark->message_plain("Start:DateTime
-                        
-A:01:$webCRMyear 
-A:02:$webCRMmonth 
-A:03:$webCRMday
-A:04:$webCRMhour
-A:05:$webCRMminute
-A:06:$webCRMseconds
-
-
-
+ 
 End
 Start:Organisation
 A:99:0
