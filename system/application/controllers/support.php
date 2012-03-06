@@ -363,7 +363,7 @@ A:04:CW
 A:05:Support Request $ticket_id
 A:30:$support_description
 C:01:$support_type
-C:02:$completion_date
+C:08:$completion_date
 C:03:$support_issue
 C:05:$support_priority
 C:07:$ticket_id
