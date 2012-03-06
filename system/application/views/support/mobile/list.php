@@ -43,9 +43,14 @@
 
                 $old_date_added = strtotime($row['date_added']);
                 $new_date_added = date('l jS \of F Y H:i:s', $old_date_added);
-                
-                 $old_completion_date  = strtotime($row['completion_date']);
-                $new_completion_date = date('l jS \of F Y', $old_completion_date);
+
+
+                if ($row['completion_date'] != "0000-00-00") {
+                    $old_completion_date = strtotime($row['completion_date']);
+                    $new_completion_date = date('l jS \of F Y', $old_completion_date);
+                } else {
+                    $new_completion_date = "N/A";
+                }
                 ?>
 
 
@@ -59,7 +64,7 @@
                         <p><strong>Company:</strong> <?= $row['company_name'] ?></p>
                         <p><strong>Type:</strong> <?= $type ?></p>
                         <p><strong>Status:</strong> <?= $status ?></p>
-                          <p><strong>Estimated Completion Date:</strong> <?= $new_completion_date  ?></p>
+                        <p><strong>Estimated Completion Date:</strong> <?= $new_completion_date ?></p>
 
                         <p><?= $new_date_added ?></p>
                     </a>

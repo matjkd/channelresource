@@ -96,9 +96,12 @@
                     $status = "Submitted.";
                 }
 
-
+if($row['completion_date'] != "0000-00-00") {
   $old_completion_date  = strtotime($row['completion_date']);
                 $new_completion_date = date('l jS \of F Y', $old_completion_date);
+} else {
+    $new_completion_date = "N/A";
+}
 
                 $viewticket = '/support/results/' . $row['support_id'];
                 ?>
