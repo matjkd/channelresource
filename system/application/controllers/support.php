@@ -184,18 +184,7 @@ class Support extends My_Controller {
             $errors = validation_errors();
             
             
-            //get user that added it
-              $customer['added_by_info'] = $this->Membership_model->get_employee_detail($data['user_id']);
-            foreach ($customer['added_by_info'] as $key => $row) {
-                $ticket_added_by = "" . $row['firstname'] . " " . $row['lastname'] . "";
-                $data['added_by_company'] = $row['company_id'];
-                  $data['added_by_company_details'] = $this->Membership_model->get_company_detail(   $data['added_by_company']);
-                foreach ($data['added_by_company_details'] as $row4):
-                    $added_by_company_name = $row4['company_name'];
-                endforeach;
-                
-            }
-
+           
 //determine if request comes from mobile site and redirect accordingly
             if ($mobile == 1) {
                 $data['message'] = $errors;
@@ -211,6 +200,20 @@ class Support extends My_Controller {
                 $this->load->view($this->template);
             }
         } else {
+            
+            
+             //get user that added it
+              $customer['added_by_info'] = $this->Membership_model->get_employee_detail($this->input->post('user_id'));
+            foreach ($customer['added_by_info'] as $key => $row) {
+                $ticket_added_by = "" . $row['firstname'] . " " . $row['lastname'] . "";
+                $data['added_by_company'] = $row['company_id'];
+                  $data['added_by_company_details'] = $this->Membership_model->get_company_detail(   $data['added_by_company']);
+                foreach ($data['added_by_company_details'] as $row4):
+                    $added_by_company_name = $row4['company_name'];
+                endforeach;
+                
+            }
+
 
             $telephone = $this->input->post('telephone');
             $email_address = $this->input->post('email_address');
