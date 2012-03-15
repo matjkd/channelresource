@@ -122,9 +122,9 @@ class Support extends My_Controller {
 
            
             
-                if ($row3['company_id'] == 2) {
+             
 
-                   $assigned_id = $this->input->post('assigned_id');
+                   $assigned_id = $this->input->post('assigned');
                     if ($assigned_id > 0) {
                         //get assigned usename 
                         $assigned_data = $this->Membership_model->get_employee_detail($assigned_id);
@@ -145,9 +145,7 @@ class Support extends My_Controller {
                     if ($initials == "JS") {
                         $initials = "JWS";
                     }
-                } else {
-                    $initials = "JWS";
-                }
+              
           
 
             $company_id_agent = $row3['company_id'];
