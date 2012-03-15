@@ -124,7 +124,7 @@ class Support extends My_Controller {
             
              
 
-                   $assigned_id = $this->input->post('assigned');
+                   $assigned_id = $this->input->post('assigned_id');
                     if ($assigned_id > 0) {
                         //get assigned usename 
                         $assigned_data = $this->Membership_model->get_employee_detail($assigned_id);

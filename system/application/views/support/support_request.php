@@ -53,7 +53,7 @@ $auto = "id='company'";
        <select name="company_owner" id="company_owner">
             <?php foreach ($companies as $row): ?>
                 <?php
-                if ($row['company_id'] == $company_id) {
+                if (isset($company_id) && $row['company_id'] == $company_id) {
                     $selectedcompany = "selected='selected'";
                 } else {
                     $selectedcompany = "";
