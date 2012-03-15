@@ -120,10 +120,8 @@ class Support extends My_Controller {
         $initials = "JWS";
         foreach ($data['company_details'] as $row3):
 
-            if ($row3['agent_id'] == NULL) {
-                $agent_id = 1;
-            } else {
-                $agent_id = $row3['agent_id'];
+           
+            
                 if ($row3['company_id'] == 2) {
 
                    $assigned_id = $this->input->post('assigned_id');
@@ -150,7 +148,7 @@ class Support extends My_Controller {
                 } else {
                     $initials = "JWS";
                 }
-            }
+          
 
             $company_id_agent = $row3['company_id'];
             $company_name = $row3['company_name'];
