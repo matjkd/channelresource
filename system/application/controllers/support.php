@@ -125,8 +125,22 @@ class Support extends My_Controller {
             } else {
                 $agent_id = $row3['agent_id'];
                 if ($row3['company_id'] == 2) {
-                    $first_initial = substr($this->session->userdata('firstname'), 0, 1);
-                    $last_initial = substr($this->session->userdata('lastname'), 0, 1);
+
+                   $assigned_id = $this->input->post('assigned_id');
+                    if ($assigned_id > 0) {
+                        //get assigned usename 
+                        $assigned_data = $this->Membership_model->get_employee_detail($assigned_id);
+                        foreach ($assigned_data as $key => $row) :
+
+                            $first_initial = substr($row['firstname'], 0, 1);
+                            $last_initial = substr($row['lastname'], 0, 1);
+                            
+                        endforeach;
+                    } else {
+
+                        $first_initial = substr($this->session->userdata('firstname'), 0, 1);
+                        $last_initial = substr($this->session->userdata('lastname'), 0, 1);
+                    }
                     $initials = "$first_initial" . "" . "$last_initial";
 
 //quick fix for julian having 3 initials in webCRM
@@ -153,12 +167,11 @@ class Support extends My_Controller {
 
             if ($owner != NULL) {
                 $data['company_id'] = $this->input->post('company_owner');
-                
+
                 $data['owner_company_details'] = $this->Membership_model->get_company_detail($data['company_id']);
                 foreach ($data['owner_company_details'] as $row4):
                     $company_name = $row4['company_name'];
                 endforeach;
-                
             } else {
                 $data['company_id'] = $this->session->userdata('company_id');
             }
@@ -182,9 +195,9 @@ class Support extends My_Controller {
             $data['date_updated'] = $this->input->post('date_added');
             $data['ticket_id'] = '';
             $errors = validation_errors();
-            
-            
-           
+
+
+
 //determine if request comes from mobile site and redirect accordingly
             if ($mobile == 1) {
                 $data['message'] = $errors;
@@ -200,18 +213,17 @@ class Support extends My_Controller {
                 $this->load->view($this->template);
             }
         } else {
-            
-            
-             //get user that added it
-              $customer['added_by_info'] = $this->Membership_model->get_employee_detail($this->input->post('user_id'));
+
+
+            //get user that added it
+            $customer['added_by_info'] = $this->Membership_model->get_employee_detail($this->input->post('user_id'));
             foreach ($customer['added_by_info'] as $key => $row) {
                 $ticket_added_by = "" . $row['firstname'] . " " . $row['lastname'] . "";
                 $data['added_by_company'] = $row['company_id'];
-                  $data['added_by_company_details'] = $this->Membership_model->get_company_detail(   $data['added_by_company']);
+                $data['added_by_company_details'] = $this->Membership_model->get_company_detail($data['added_by_company']);
                 foreach ($data['added_by_company_details'] as $row4):
                     $added_by_company_name = $row4['company_name'];
                 endforeach;
-                
             }
 
 
@@ -225,9 +237,9 @@ class Support extends My_Controller {
 
             $owner = $this->input->post('company_owner');
             if ($owner != NULL) {
-                 $company_id = $this->input->post('company_owner');
-                
-             $data['owner_company_details'] = $this->Membership_model->get_company_detail($company_id);
+                $company_id = $this->input->post('company_owner');
+
+                $data['owner_company_details'] = $this->Membership_model->get_company_detail($company_id);
                 foreach ($data['owner_company_details'] as $row4):
                     $company_name = $row4['company_name'];
                 endforeach;
@@ -375,7 +387,7 @@ A:99:1
 A:01:1
 A:02:0
 A:03:Support Request
-A:04:CW
+A:04:$initials 
 A:05:Support Request $ticket_id
 A:30:$support_description
 C:01:$support_type
