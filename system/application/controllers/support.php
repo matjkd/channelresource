@@ -182,6 +182,19 @@ class Support extends My_Controller {
             $data['date_updated'] = $this->input->post('date_added');
             $data['ticket_id'] = '';
             $errors = validation_errors();
+            
+            
+            //get user that added it
+              $customer['added_by_info'] = $this->Membership_model->get_employee_detail($data['user_id']);
+            foreach ($customer['added_by_info'] as $key => $row) {
+                $ticket_added_by = "" . $row['firstname'] . " " . $row['lastname'] . "";
+                $data['added_by_company'] = $row['company_id'];
+                  $data['added_by_company_details'] = $this->Membership_model->get_company_detail(   $data['added_by_company']);
+                foreach ($data['added_by_company_details'] as $row4):
+                    $added_by_company_name = $row4['company_name'];
+                endforeach;
+                
+            }
 
 //determine if request comes from mobile site and redirect accordingly
             if ($mobile == 1) {
@@ -211,7 +224,7 @@ class Support extends My_Controller {
             if ($owner != NULL) {
                  $company_id = $this->input->post('company_owner');
                 
-                $data['owner_company_details'] = $this->Membership_model->get_company_detail($company_id);
+             $data['owner_company_details'] = $this->Membership_model->get_company_detail($company_id);
                 foreach ($data['owner_company_details'] as $row4):
                     $company_name = $row4['company_name'];
                 endforeach;
@@ -299,8 +312,11 @@ class Support extends My_Controller {
                 $this->postmark->cc($email_address);
 
                 $this->postmark->subject('Support Request Ticket No. ' . $ticket_id . '');
-                $this->postmark->message_plain("Subject: $support_subject
-					
+                $this->postmark->message_plain("The following Support Request has been created by $ticket_added_by at $added_by_company_name
+                        
+Support Request $ticket_id  
+                        
+Subject: $support_subject
 
 Company: $company_name
 
@@ -308,9 +324,10 @@ Customer Tel: $telephone
 	
 
 Description: $support_description
+                        
 Support Type: $support_type1
+                        
 Support Issue: $support_issue1
-
 
 Priority: $support_priority1
 				
