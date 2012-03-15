@@ -74,7 +74,7 @@
                 <?= $this->load->view('global/themes/mobile/login') ?>
 
             </div> 
-            <div data-role="footer" style="text-align: center;"><p>&copy; Copyright 2011 Lease-Desk Ltd.</p> </div> 
+            <div data-role="footer" style="text-align: center;"><p>&copy; Copyright 2011 Proctor Consulting UK Ltd.</p> </div> 
         </div> 
 
 

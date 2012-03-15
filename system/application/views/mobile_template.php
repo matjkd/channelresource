@@ -146,7 +146,7 @@
                 <div data-role="footer" style="text-align: center;"> 
 
 
-                    <p>&copy; Copyright 2011 Lease-Desk Ltd.<br/>
+                    <p>&copy; Copyright 2011 Proctor Consulting UK Ltd.<br/>
                         <?php
                         if (!isset($desktop)) {
                             $desktop = "quote/main";

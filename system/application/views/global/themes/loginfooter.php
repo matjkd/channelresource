@@ -2,7 +2,7 @@
 <div class="container_24">
 <div align="center">
 
-        &copy; Copyright 2011 Lease-Desk Ltd. Website Developed by <a href="http://www.redstudio.co.uk">Redstudio Design Limited</a>
+        &copy; Copyright 2011 Proctor Consulting UK Ltd. Website Developed by <a href="http://www.redstudio.co.uk">Redstudio Design Limited</a>
         <br/>
 
 
