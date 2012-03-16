@@ -99,8 +99,8 @@ class Quote extends My_Controller {
         $data['items'] = $this->Membership_model->get_all_employees();
         $data['main'] = '/quote/main';
         $data['title'] = 'Quoting Tool';
-        
-         $data['desktop'] = 'quote';
+
+        $data['desktop'] = 'quote';
         $this->load->vars($data);
         $this->load->view('leasedesktemplate');
     }
@@ -336,7 +336,7 @@ class Quote extends My_Controller {
 
 //check if email address matches that of the assigned user of the quote
                 if ($email_address == $data['assigned_email_2']) {
-                    $extraMessage = "<br/>View your quote online <a href='".base_url()."quote/results/" . $data['quote_id'] . "'>here</a> ";
+                    $extraMessage = "<br/>View your quote online <a href='" . base_url() . "quote/results/" . $data['quote_id'] . "'>here</a> ";
                 } else {
                     $extraMessage = "";
                 }
@@ -352,10 +352,13 @@ class Quote extends My_Controller {
 
 //send email
 //email content
-                $this->postmark->message_html("Attached is your quote from Lease-Desk.<br/>
-				$extraMessage
-                        <br/><br/>
-                          $emessage
+                $this->postmark->message_plain("Attached is your quote from Lease-Desk.
+                        
+$extraMessage
+                      
+                        
+
+$emessage
 					");
 //end of email content
 
@@ -380,7 +383,7 @@ class Quote extends My_Controller {
 
                 return;
             } else {
-                
+
                 $data['desktop'] = 'quote';
                 $this->load->vars($data);
                 $this->load->view('leasedesktemplate');
