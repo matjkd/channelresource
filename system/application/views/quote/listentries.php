@@ -62,7 +62,7 @@ $user = $this->session->userdata('user_id');
             }
 
             $old_date_added = strtotime($date_updated);
-            $new_date_added = date('l jS \of F Y h:i:s A', $old_date_added);
+            $new_date_added = date('l jS \of F Y H:i:s', $old_date_added);
             ?>
             <tr >
                 <td style="padding:5px;"><?= $row['quote_ref'] ?></td>

@@ -246,7 +246,7 @@ $(function() {
                     $('#dialog-form2').append(loadergif);
                     $.post('/quote/results/' + tableQuoteID2 + '/email', {
                         email: email2.val(),
-                        emessage: emessage2.val()
+                        emessage: emessage.val()
                     }, function(data) {
                         alert(data);
                         $('.gifloader').remove();
