@@ -384,3 +384,6 @@ $(function() {
 
 });
 
+$(window).load(function() { 
+     $("#blocker").fadeOut();
+});

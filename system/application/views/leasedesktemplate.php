@@ -45,7 +45,9 @@
             <!-- CONTENT -->
 
 
-
+<div id="blocker">
+   <div><img src="<?=base_url()?>images/load.gif"/> <br/>Loading...</div>
+</div>
 
 
 
@@ -103,5 +105,7 @@ if (SITE == "customer") {
             </div>
         </div>
 
+        
+        
     </body>
 </html>
