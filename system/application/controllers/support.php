@@ -137,8 +137,8 @@ class Support extends My_Controller {
             $contact_person = $this->input->post('assigned_id');
             if ($contact_person > 0) {
                 //get assigned usename 
-                $$contact_person_data = $this->Membership_model->get_employee_detail($contact_person);
-                foreach ($$contact_person_data as $key => $row) :
+                $contact_person_data = $this->Membership_model->get_employee_detail($contact_person);
+                foreach ($contact_person_data as $key => $row) :
 
                     $contact_person_name = $row['firstname'] . " " . $row['lastname'];
 
