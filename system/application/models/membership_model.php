@@ -52,7 +52,8 @@ class Membership_model extends Model {
 
     function get_employees($id) {
         $data = array();
-        $this->db->where('company_id', $id);
+        $this->db->where('users.company_id', $id);
+        $this->db->join('company', 'users.company_id = company.company_id');
         $query = $this->db->get('users');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row)

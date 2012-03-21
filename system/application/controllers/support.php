@@ -24,7 +24,19 @@ class Support extends My_Controller {
         $data['customercompany_id'] = $this->session->userdata('company_id');
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
         $data['closed_ticket_list'] = $this->support_model->list_closed_tickets($data['customercompany_id']);
-        $data['items'] = $this->Membership_model->get_all_employees();
+
+        //if admin get all employees, if not just get from user company
+        if ($this->session->userdata('role') < 3) {
+            $data['items'] = $this->Membership_model->get_all_employees();
+        } else {
+
+            $owner_company_id = $this->session->userdata('company_id');
+            $data['items'] = $this->Membership_model->get_employees($owner_company_id);
+        }
+
+
+        //get members of proctor consulting
+        $data['responsibleusers'] = $this->Membership_model->get_employees('2');
 
         if ($data['ticket_list'] != NULL) {
             $data['rowcount'] = 0;
@@ -52,6 +64,7 @@ class Support extends My_Controller {
         $data['user_id'] = '';
         $data['ticket_id'] = '';
         $data['assigned'] = '';
+        $data['responsible'] = '';
         $data['assigned_name'] = '';
         $data['assigned_id'] = '';
         $data['telephone'] = '';
@@ -120,33 +133,45 @@ class Support extends My_Controller {
         $initials = "JWS";
         foreach ($data['company_details'] as $row3):
 
-           
-            
-             
 
-                   $assigned_id = $this->input->post('assigned_id');
-                    if ($assigned_id > 0) {
-                        //get assigned usename 
-                        $assigned_data = $this->Membership_model->get_employee_detail($assigned_id);
-                        foreach ($assigned_data as $key => $row) :
+            $contact_person = $this->input->post('assigned_id');
+            if ($contact_person > 0) {
+                //get assigned usename 
+                $$contact_person_data = $this->Membership_model->get_employee_detail($contact_person);
+                foreach ($$contact_person_data as $key => $row) :
 
-                            $first_initial = substr($row['firstname'], 0, 1);
-                            $last_initial = substr($row['lastname'], 0, 1);
-                            
-                        endforeach;
-                    } else {
+                    $contact_person_name = $row['firstname'] . " " . $row['lastname'];
 
-                        $first_initial = substr($this->session->userdata('firstname'), 0, 1);
-                        $last_initial = substr($this->session->userdata('lastname'), 0, 1);
-                    }
-                    $initials = "$first_initial" . "" . "$last_initial";
+                endforeach;
+            } else {
+
+                $contact_person_name = '';
+            }
+
+            $responsible = $this->input->post('responsible');
+
+            if ($responsible > 0) {
+                //get resopnsible name 
+                $responsible_data = $this->Membership_model->get_employee_detail($responsible);
+                foreach ($responsible_data as $key => $row) :
+
+                    $first_initial = substr($row['firstname'], 0, 1);
+                    $last_initial = substr($row['lastname'], 0, 1);
+
+                endforeach;
+            } else {
+
+                $first_initial = substr($this->session->userdata('firstname'), 0, 1);
+                $last_initial = substr($this->session->userdata('lastname'), 0, 1);
+            }
+            $initials = "$first_initial" . "" . "$last_initial";
 
 //quick fix for julian having 3 initials in webCRM
-                    if ($initials == "JS") {
-                        $initials = "JWS";
-                    }
-              
-          
+            if ($initials == "JS") {
+                $initials = "JWS";
+            }
+
+
 
             $company_id_agent = $row3['company_id'];
             $company_name = $row3['company_name'];
@@ -174,6 +199,7 @@ class Support extends My_Controller {
 
             $data['telephone'] = $this->input->post('telephone');
             $data['assigned'] = $this->input->post('assigned');
+            $data['responsible'] = $this->input->post('responsible');
             $data['assigned_id'] = $this->input->post('assigned_id');
             $data['assigned_name'] = $this->input->post('assigned_name');
             $data['email_address'] = $this->input->post('email_address');
@@ -385,6 +411,7 @@ A:02:0
 A:03:Support Request
 A:04:$initials 
 A:05:Support Request $ticket_id
+A:07: $contact_person_name
 A:30:$support_description
 C:01:$support_type
 C:08:$completion_date
@@ -577,13 +604,24 @@ End
         $data['statuslist'] = $this->support_model->get_statuses('status');
 
         $data['companies'] = $this->Membership_model->get_companies();
-        $data['items'] = $this->Membership_model->get_all_employees();
+        $data['responsibleusers'] = $this->Membership_model->get_employees('2');
+        //if admin get all employees, if not just get from user company
+        if ($this->session->userdata('role') < 3) {
+            $data['items'] = $this->Membership_model->get_all_employees();
+        } else {
+
+            $owner_company_id = $this->session->userdata('company_id');
+            $data['items'] = $this->Membership_model->get_employees($owner_company_id);
+        }
+
+
         foreach ($data['ticket_data'] as $row):
 
 
             $data['user_id'] = $row['user_id'];
             $data['assigned'] = $row['assigned_to'];
             $data['assigned_id'] = $row['assigned_to'];
+            $data['responsible'] = $row['responsible'];
             $data['company_id'] = $row['company_id'];
             $data['telephone'] = $row['telephone'];
             $data['email_address'] = $row['email_address'];

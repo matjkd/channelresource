@@ -39,6 +39,7 @@ class Support_model extends Model {
                     'support_status' => 1,
                     'company_id' => $company_owner,
                     'user_id' => $this->input->post('user_id'),
+                    'responsible' => $this->input->post('responsible'),
                     'date_added' => $this->input->post('date_added'),
                     'date_updated' => $this->input->post('date_added')
                 );
@@ -114,6 +115,7 @@ class Support_model extends Model {
                     'assigned_to' => $this->input->post('assigned_id'),
                     'support_subject' => $this->input->post('support_subject'),
                     'company_id' => $company_owner,
+                    'responsible' => $this->input->post('responsible'),
                     'date_closed' => $closeddate,
                     'date_opened' => $openeddate,
                     'date_updated' => $this->input->post('date_added')

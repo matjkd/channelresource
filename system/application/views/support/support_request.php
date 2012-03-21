@@ -88,17 +88,58 @@ $auto = "id='company'";
     
  <?php   if ($this->session->userdata('company_id') < 3) { ?>
     
+    
      <p class="assign">
-        <?= form_label('Assign to User') ?><br/>
+        <?= form_label('Responsible') ?><br/>
+
+         <select name="responsible" id="company_owner">
+            <?php foreach ($responsibleusers as $row): ?>
+                <?php
+                if (isset($responsible) && $row['user_id'] == $responsible) {
+                    $selectedid = "selected='selected'";
+                } else {
+                    $selectedid = "";
+                }
+                ?>
+                <option value="<?= $row['user_id'] ?>" <?= $selectedid ?>><?= $row['firstname'] ?> <?= $row['lastname'] ?></option>
+                <?php $selectedid = ""; ?>
+            <?php endforeach; ?>
+
+
+        </select>
+        
+            </p>
+    
+     <p class="assign">
+        <?= form_label('Contact Person') ?><br/>
 
         <?= form_input('assign_name', set_value('assigned_name', $assigned_name), $auto) ?>
 <input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">
     </p>
     
     
-<?php }?>
-    
-    
+<?php } else {?>
+     <p class="assign">
+        <?= form_label('Contact Person') ?><br/>
+
+         <select name="assigned_id" id="company_owner">
+            <?php foreach ($items as $row): ?>
+                <?php
+                if (isset($assigned) && $row['user_id'] == $assigned) {
+                    $selectedid = "selected='selected'";
+                } else {
+                    $selectedid = "";
+                }
+                ?>
+                <option value="<?= $row['user_id'] ?>" <?= $selectedid ?>><?= $row['firstname'] ?> <?= $row['lastname'] ?></option>
+                <?php $selectedid = ""; ?>
+            <?php endforeach; ?>
+
+
+        </select>
+        
+            </p>
+    <?php } ?>
     <p class="Subject">
         <?= form_label('Subject') ?><br/>
 
