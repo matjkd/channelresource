@@ -39,7 +39,7 @@
     <script src="<?= base_url() ?>js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>js/jquery-ui-1.8.custom.min.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>js/plugins.js" type="text/javascript"></script>
-    <script src="<?= base_url() ?>js/scripts.js" type="text/javascript"></script>
+    <script src="<?= base_url() ?>js/scripts.js?220312" type="text/javascript"></script>
 
 
 
