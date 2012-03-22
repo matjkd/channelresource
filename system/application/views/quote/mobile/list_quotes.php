@@ -39,7 +39,7 @@
 
 
             $old_date_added = strtotime($row['date_added']);
-            $new_date_added = date('l jS \of F Y h:i:s A', $old_date_added);
+            $new_date_added = date('l jS \of F Y H:i:s ', $old_date_added);
             ?>
 
 
