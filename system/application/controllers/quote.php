@@ -352,11 +352,24 @@ class Quote extends My_Controller {
 
 //send email
 //email content
-                $this->postmark->message_plain("Attached is your quote from Lease-Desk.
+                $this->postmark->message_html("
+<html>
+<head>
+                        <style type='text/css'>
+                        body 
+                        font-family:Arial;
+                         font-size:14px;
+                        }
+                        </style>
                         
-$extraMessage
+</head>
+<body>
+Please find attached your quote from Lease-Desk<br/><br/>
+                        
+$extraMessage<br/><br/>
 
-$emessage");
+$emessage
+</body>");
 //end of email content
 
                 $this->postmark->attach('./images/quotes/Quote_' . $data['quote_id'] . '.pdf');

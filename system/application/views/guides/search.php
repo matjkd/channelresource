@@ -16,7 +16,7 @@
 
     <input  type="text" name="searchterm" id="search" />
 
-    <input type="submit" id="searchbutton" name="mysubmit" value="Search!" />
+    <input type="submit" id="searchbutton" name="mysubmit" value="Search" />
 
 
     <?= form_close() ?>
