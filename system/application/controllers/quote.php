@@ -356,7 +356,7 @@ class Quote extends My_Controller {
 <html>
 <head>
                         <style type='text/css'>
-                        body 
+                        body {
                         font-family:Arial;
                          font-size:14px;
                         }
