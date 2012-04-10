@@ -7,7 +7,7 @@ if ($this->session->flashdata('message'))
 
 		
 			<div id="warningbox" class="ui-widget" style="padding-bottom:10px; width:370px;">
-				<div class='ui-state-error ui-corner-all' style='padding: 0 .7em;'>
+				<div class='ui-state-highlight ui-corner-all' style='padding: 0 .7em;'>
 					<p>
 					<span class='ui-icon ui-icon-alert' style='float:left; margin-top:0px; margin-right:.3em;'></span>
 				<?=$this->session->flashdata('message')?>
@@ -32,7 +32,7 @@ if (isset($message))
 
 		
 			<div id="warningbox" class="ui-widget" style="padding-bottom:10px; width:370px;">
-				<div class='ui-state-error ui-corner-all' style='padding: 0 .7em;'>
+				<div class='ui-state-highlight ui-corner-all' style='padding: 0 .7em;'>
 					<p>
 					<span class='ui-icon ui-icon-alert' style='float:left; margin-top:0px; margin-right:.3em;'></span>
 				<?=$message?>
