@@ -120,6 +120,7 @@ class Membership_model extends Model {
     function get_user($id) {
         $data = array();
         $this->db->where('user_id', $id);
+        $this->db->join('company', 'users.company_id = company.company_id');
         $query = $this->db->get('users');
         if ($query->num_rows() == 1) {
             foreach ($query->result_array() as $row)

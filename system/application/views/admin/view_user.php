@@ -20,8 +20,8 @@ foreach ($user_info as $key => $row):
                 {
                     return {id : uid};
                 }
-        
-            	        
+            
+                	        
             });
 
             $('.editable').editable("<?= site_url('/edit/edit_user') ?>", { 
@@ -34,7 +34,7 @@ foreach ($user_info as $key => $row):
                     return {id : uid};
                 }
             });
-        
+            
             $('.editablecurrency').editable("<?= site_url('/edit/edit_user') ?>", { 
                 data   : " {'&#163;':'&pound;','&#0128;':'&euro;','$':'$', 'selected':'<?= $row['user_currency'] ?>'}",
                 type   : 'select',
@@ -46,7 +46,7 @@ foreach ($user_info as $key => $row):
                     return {id : uid};
                 }
             });
-        
+            
         });
     </script>
 
@@ -54,19 +54,31 @@ foreach ($user_info as $key => $row):
 
         <table class="profiletable">
 
-    <?php
-    $firstname = "<div class='edit' id='firstname'>" . $row['firstname'] . "</div>";
-    $lastname = "<div class='edit' id='lastname'>" . $row['lastname'] . "</div>";
-    $email = "<div class='edit' id='email_address'>" . $row['email_address'] . "</div>";
-    $userrole = "<div class='editable' id='role'></div>";
-    $username = $row['username'];
-    echo "
-	<tr>
+            <?php
+            $firstname = "<div class='edit' id='firstname'>" . $row['firstname'] . "</div>";
+            $lastname = "<div class='edit' id='lastname'>" . $row['lastname'] . "</div>";
+            $email = "<div class='edit' id='email_address'>" . $row['email_address'] . "</div>";
+            $userrole = "<div class='editable' id='role'></div>";
+            $username = $row['username'];
+
+           ?>
+<tr>
+                                
+		<td class='leftcolumn'>
+		<strong>Company</strong>
+		</td>
+		<td>
+		<?=$row['company_name']?>
+		</td>
+	</tr>	
+    
+    <tr>
+                                
 		<td class='leftcolumn'>
 		<strong>Username</strong>
 		</td>
 		<td>
-		 $username
+		 <?=$username?>
 		</td>
 	</tr>
 	<tr>
@@ -74,7 +86,7 @@ foreach ($user_info as $key => $row):
 		<strong>Firstname</strong>
 		</td>
 		<td>
-		 $firstname
+		 <?=$firstname?>
 		</td>
 	</tr>
 	<tr>
@@ -82,7 +94,7 @@ foreach ($user_info as $key => $row):
 		<strong>Surname</strong>
 		</td>
 		<td>
-		 $lastname
+		 <?=$lastname?>
 		</td>
 	</tr>
 	<tr>
@@ -90,38 +102,39 @@ foreach ($user_info as $key => $row):
 		<strong>Email</strong>
 		</td>
 		<td>
-		 $email
+		 <?=$email?>
 		</td>
-	</tr>";
-    $role = $this->session->userdata('role');
-    if ($role == 1) {
-        echo "<tr>
+	</tr>
+        <?php
+            $role = $this->session->userdata('role');
+            if ($role == 1) { ?>
+                <tr>
 		<td class='leftcolumn'>
 		<strong>Role</strong>
 		</td>
 		<td>
-		 $userrole
+		 <?=$userrole?>
 		</td>
-	</tr>";
-    }
+	</tr>
+            <?php } ?>
 
 
 
-
-endforeach;
-?>
+<?php
+        endforeach;
+        ?>
     </table>
 </div>
 <div style="width:48%; float:right; padding-top:15px;">
     <strong>Reset user password:</strong>
-        <?= form_open('edit/edit_password') ?>
+    <?= form_open('edit/edit_password') ?>
     <table class="profiletable">	
         <tr>
             <td class='leftcolumn'>
                 <strong>Password</strong>
             </td>
             <td>
-<?php echo form_password('password'); ?>
+                <?php echo form_password('password'); ?>
             </td>
         </tr>
         <tr>
@@ -129,16 +142,16 @@ endforeach;
                 <strong>Re-Type Password</strong>
             </td>
             <td>
-<?php echo form_password('password2'); ?>
+                <?php echo form_password('password2'); ?>
             </td>
         </tr>
 
 
     </table>
 
-<?= form_hidden('user_id', $user_id) ?>
-<?= form_submit('submit', 'Submit') ?>
-<?= form_close() ?>
+    <?= form_hidden('user_id', $user_id) ?>
+    <?= form_submit('submit', 'Submit') ?>
+    <?= form_close() ?>
 
 
 </div>
@@ -186,9 +199,9 @@ endforeach;
 
 <div style="clear:both">
 
-<?php
-if (($this->session->userdata('user_id')) == $user_id) {
-    $this->load->view('admin/tabs');
-}
-?>
+    <?php
+    if (($this->session->userdata('user_id')) == $user_id) {
+        $this->load->view('admin/tabs');
+    }
+    ?>
 </div>
