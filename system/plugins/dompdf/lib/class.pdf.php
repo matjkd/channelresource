@@ -4669,7 +4669,7 @@ class  Cpdf {
 
     $tmp =  get_magic_quotes_runtime();
 
-    set_magic_quotes_runtime(0);
+   // set_magic_quotes_runtime(0);
 
     $data =  file_get_contents($img);
 
