@@ -50,7 +50,7 @@ foreach ($user_info as $key => $row):
         });
     </script>
 
-    <div style="width:50%; float:left;">
+    <div style="width:50%; float:left; padding-top:15px;">
 
         <table class="profiletable">
 
@@ -112,7 +112,7 @@ endforeach;
 ?>
     </table>
 </div>
-<div style="width:48%; float:right;">
+<div style="width:48%; float:right; padding-top:15px;">
     <strong>Reset user password:</strong>
         <?= form_open('edit/edit_password') ?>
     <table class="profiletable">	

@@ -57,7 +57,9 @@ function confirmuser(id) {
 		<?php endforeach;  ?>
 	</tbody>
 </table>
+<br/>
 
-Add User<br/>
+<strong>Add User</strong><br/>
+<hr/>
 <?=$this->load->view('admin/add_user')?>
 
