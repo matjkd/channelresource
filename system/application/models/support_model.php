@@ -264,6 +264,38 @@ class Support_model extends Model {
 
         return $data;
     }
+    
+    function get_all_ticket_data($id) {
+        
+        $data = array();
+        $this->db->where('support_id', $id);
+        
+        //get company name
+        $this->db->join('company', 'company.company_id = support.company_id', 'left');
+        
+        //get assigned to
+         $this->db->join('users as assigned', 'assigned.user_id = support.assigned_to', 'left');
+         
+        //get responsible
+         $this->db->join('users as responsible', 'responsible.user_id = support.responsible', 'left');
+         
+          //get contact person
+         $this->db->join('users as contactPerson', 'contactPerson.user_id = support.contact_person', 'left');
+         
+         //get user id
+           $this->db->join('users as userID', 'userID.user_id = support.user_id', 'left');
+           
+        $query = $this->db->get('support');
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row)
+                $data[] = $row;
+        }
+        $query->free_result();
+
+        return $data;
+        
+        
+    }
 
     function get_customer($id) {
         $data = array();

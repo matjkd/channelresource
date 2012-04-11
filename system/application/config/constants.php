@@ -56,7 +56,7 @@ switch($_SERVER['HTTP_HOST'])
     break;
     
     default:
-        define('SITE', 'default');
+        define('SITE', 'channel');
     break;
 }
 // Define Ajax Request

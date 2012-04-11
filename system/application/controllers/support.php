@@ -91,6 +91,35 @@ class Support extends My_Controller {
         $this->load->view($this->template);
     }
 
+    
+    function emailonscreen($support_id) {
+       $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id); 
+        $data['emailType'] = 'newRequest';
+        $this->load->vars($data);
+        $this->load->view('emails/emailTemplate', $data, true);
+    }
+    
+    
+    /*
+     *  Function for hadling all emails.. Hopefully.
+     * 
+     */
+
+    function send_email($to, $support_id, $type) {
+
+        //Get all data from support request
+        $data['supportRequest'] = $this->support_model->get_ticket($support_id);
+        $data['emailType'] = $type;
+        $this->load->vars($data);
+        $msg = $this->load->view('emails/emailTemplate', $data, true);
+        $this->postmark->message_html("
+                       
+                        $msg
+                       
+                                               
+                        ");
+    }
+
     function create_ticket() {
 //validate form entry
 
