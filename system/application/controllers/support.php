@@ -518,7 +518,7 @@ End
                     $this->postmark->clear();
 
                     //start normal update support email
-                    $subject = "Support Request Ticket No. " . $ticket_id . "UPDATED";
+                    $subject = "Support Request Ticket No. " . $ticket_id . " UPDATED";
                     $this->send_email($email_address, $ticket_id, $subject, 'emails/updateTicket');
 
 
