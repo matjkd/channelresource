@@ -1,6 +1,6 @@
 <?php foreach($supportRequest as $row): ?>
 
-The following Support Request has been created by $ticket_added_by at $added_by_company_name
+<p>The following Support Request has been created by $ticket_added_by at $added_by_company_name</p>
                         
 Support Request <?=$row['support_id']?>
                         

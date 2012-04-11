@@ -94,10 +94,11 @@ class Support extends My_Controller {
     
     function emailonscreen($support_id) {
        $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id); 
+       print_r($data['supportRequest']);
         $data['emailType'] = 'emails/newRequest';
         $data['title'] = 'title';
         $this->load->vars($data);
-        $this->load->view('emails/emailTemplate', $data, true);
+        $this->load->view('emails/emailTemplate');
     }
     
     
