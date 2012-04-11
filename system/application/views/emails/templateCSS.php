@@ -22,6 +22,9 @@
 			*/
 			body, .backgroundTable{
 				/*@editable*/ background-color:#FAFAFA;
+                                   font-family:Arial;
+                         font-size:14px;
+                                
 			}
 
 			/**

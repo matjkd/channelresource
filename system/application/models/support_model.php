@@ -290,7 +290,9 @@ class Support_model extends Model {
         $this->db->select('contactPerson.firstname as contactfirstname, contactPerson.lastname as contactlastname');
         $this->db->select('userID.firstname as userfirstname, userID.lastname as userlastname');
         $this->db->select('company.company_name');
-        $this->db->select('support.support_id, support.telephone, support.email_address, support.support_subject, support.support_description, support.date_added, support.date_updated, support.support_priority, support.completion_date, support.date_closed');
+        $this->db->select('support.support_id, support.telephone, support.email_address, support.support_subject, support.support_description, support.date_added, support.date_updated');
+        $this->db->select('support.support_priority, support.support_issue, support.support_type,   support.completion_date, support.date_closed');
+
         $query = $this->db->get('support');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row)

@@ -91,35 +91,54 @@ class Support extends My_Controller {
         $this->load->view($this->template);
     }
 
-    
     function emailonscreen($support_id) {
-       $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id); 
-       print_r($data['supportRequest']);
+        $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id);
+        print_r($data['supportRequest']);
+        foreach ($data['supportRequest'] as $row):
+
+            $data['support_issue'] = $this->support_model->name_status('Issue', $row['support_issue']);
+            $data['support_priority'] = $this->support_model->name_status('priority', $row['support_priority']);
+            $data['support_type'] = $this->support_model->name_status('type', $row['support_type']);
+
+        endforeach;
         $data['emailType'] = 'emails/newRequest';
-        $data['title'] = 'title';
+        $data['title'] = "Support Request Ticket No. " . $support_id;
         $this->load->vars($data);
         $this->load->view('emails/emailTemplate');
     }
-    
-    
+
     /*
      *  Function for hadling all emails.. Hopefully.
      * 
      */
 
-    function send_email($to, $support_id, $type) {
+    function send_email($to, $support_id, $type='emails/newRequest') {
 
-        //Get all data from support request
-        $data['supportRequest'] = $this->support_model->get_ticket($support_id);
+        $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id);
+        print_r($data['supportRequest']);
+        foreach ($data['supportRequest'] as $row):
+
+            $data['support_issue'] = $this->support_model->name_status('Issue', $row['support_issue']);
+            $data['support_priority'] = $this->support_model->name_status('priority', $row['support_priority']);
+            $data['support_type'] = $this->support_model->name_status('type', $row['support_type']);
+
+        endforeach;
         $data['emailType'] = $type;
+        $data['title'] = "Support Request Ticket No. " . $support_id;
         $this->load->vars($data);
         $msg = $this->load->view('emails/emailTemplate', $data, true);
+        $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
+        $this->postmark->to('customer-resource@lease-desk.com');
+        $this->postmark->bcc('mat@redstudio.co.uk');
+        $this->postmark->cc($to);
         $this->postmark->message_html("
                        
                         $msg
                        
                                                
                         ");
+
+        $this->postmark->send();
     }
 
     function create_ticket() {
@@ -371,36 +390,7 @@ class Support extends My_Controller {
 
 
 //start normal support email
-
-
-
-                $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
-                $this->postmark->to('customer-resource@lease-desk.com');
-                $this->postmark->bcc('mat@redstudio.co.uk');
-                $this->postmark->cc($email_address);
-
-                $this->postmark->subject('Support Request Ticket No. ' . $ticket_id . '');
-                $this->postmark->message_plain("The following Support Request has been created by $ticket_added_by at $added_by_company_name
-                        
-Support Request $ticket_id  
-                        
-Subject: $support_subject
-
-Company: $company_name
-
-Customer Tel: $telephone	
-	
-
-Description: $support_description
-                        
-Support Type: $support_type1
-                        
-Support Issue: $support_issue1
-
-Priority: $support_priority1
-				
-					");
-                $this->postmark->send();
+                $this->send_email($email_address, $ticket_id, 'emails/newRequest');
 
 // $email1 = $this->email->print_debugger();
 //end normal email

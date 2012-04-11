@@ -1,23 +1,31 @@
-<?php foreach($supportRequest as $row): ?>
+<?php foreach ($supportRequest as $row): ?>
 
-<p>The following Support Request has been created by $ticket_added_by at $added_by_company_name</p>
-                        
-Support Request <?=$row['support_id']?>
-                        
-Subject: <?=$row['support_subject']?>
+    <?php if ($row['assignedfirstname'] != NULL) { ?>
+        <p>The following Support Request has been logged by <?= $row['userfirstname'] ?> <?= $row['userlastname'] ?> at 
+            <?= $row['company_name'] ?> on behalf of <?= $row['assignedfirstname'] ?> <?= $row['assignedlastname'] ?></p>
+    <?php } else { ?>
+        <p>The following Support Request has been logged by  <?= $row['userfirstname'] ?> <?= $row['userlastname'] ?></p>
+    <?php } ?>                     
+    <p>
 
-Company: $company_name
+    <h4> Support Request <?= $row['support_id'] ?></h4>
 
-Customer Tel: $telephone	
-	
+        <strong>Subject:</strong> <?= $row['support_subject'] ?><br/>
 
-Description: <?=$row['support_description']?>
-                        
-Support Type: $support_type1
-                        
-Support Issue: $support_issue1
+        <strong>Company: </strong> <?= $row['company_name'] ?> <br/>
 
-Priority: $support_priority1
+        <strong>Customer Tel:</strong>  <?= $row['telephone'] ?> 	<br/>
 
+
+        <strong>Description: </strong><?= $row['support_description'] ?><br/>
+
+        <strong>Support Type:</strong> <?=$support_type?><br/>
+
+        <strong>Support Issue:</strong> <?=$support_issue?><br/>
+
+        <strong>Priority: </strong><?=$support_priority?><br/>
+
+
+    </p>
 
 <?php endforeach; ?>
