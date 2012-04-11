@@ -312,9 +312,7 @@ class Support_model extends Model {
         $this->db->where('support_id', $id);
 
         //get company name
-        $this->db->join('company
-
-        ', 'company.company_id = support.company_id', 'left');
+        $this->db->join('company', 'company.company_id = support.company_id', 'left');
 
         //get assigned to
         $this->db->join('users as assigned', 'assigned.user_id = support.assigned_to', 'left');
