@@ -106,6 +106,7 @@ class Support_model extends Model {
                 $support_update_data = array(
                     'telephone' => $this->input->post('telephone'),
                     'email_address' => $this->input->post('email_address'),
+                    'updated_by' =>$this->session->userdata('user_id'),
                     'support_description' => $this->input->post('support_description'),
                     'support_type' => $this->input->post('support_type'),
                     'support_issue' => $this->input->post('support_issue'),
@@ -282,12 +283,16 @@ class Support_model extends Model {
         //get contact person
         $this->db->join('users as contactPerson', 'contactPerson.user_id = support.contact_person', 'left');
 
+          //get updated by person
+        $this->db->join('users as updatedBy', 'updatedBy.user_id = support.updated_by', 'left');
+        
         //get user id
         $this->db->join('users as userID', 'userID.user_id = support.user_id', 'left');
 
         $this->db->select('assigned.user_id as assignedID, assigned.firstname as assignedfirstname, assigned.lastname as assignedlastname');
         $this->db->select('responsible.user_id as responsibleuserID, responsible.firstname as responsiblefirstname, responsible.lastname as responsiblelastname');
         $this->db->select('contactPerson.user_id as contactID, contactPerson.firstname as contactfirstname, contactPerson.lastname as contactlastname');
+        $this->db->select('updatedBy.user_id as updatedbyID, updatedBy.firstname as updatedbyfirstname, updatedBy.lastname as updatedbylastname');
         $this->db->select('userID.user_id as userID, userID.firstname as userfirstname, userID.lastname as userlastname');
         $this->db->select('company.company_name');
         $this->db->select('support.support_id, support.telephone, support.email_address, support.support_subject, support.support_description, support.date_added, support.date_updated');

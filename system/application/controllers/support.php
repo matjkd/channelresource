@@ -101,7 +101,7 @@ class Support extends My_Controller {
             $data['support_type'] = $this->support_model->name_status('type', $row['support_type']);
 
         endforeach;
-        $data['emailType'] = 'emails/newRequest';
+        $data['emailType'] = 'emails/updateTicket';
         $data['title'] = "Support Request Ticket No. " . $support_id;
         $this->load->vars($data);
         $this->load->view('emails/emailTemplate');
@@ -112,7 +112,7 @@ class Support extends My_Controller {
      * 
      */
 
-    function send_email($to, $support_id, $type='emails/newRequest') {
+    function send_email($to, $support_id, $type='emails/newRequest', $append = '') {
 
         $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id);
         print_r($data['supportRequest']);
@@ -124,7 +124,7 @@ class Support extends My_Controller {
 
         endforeach;
         $data['emailType'] = $type;
-        $data['title'] = "Support Request Ticket No. " . $support_id;
+        $data['title'] = "Support Request Ticket No. " . $support_id . " - " . $append;
         $this->load->vars($data);
         $msg = $this->load->view('emails/emailTemplate', $data, true);
         $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
@@ -139,6 +139,7 @@ class Support extends My_Controller {
                         ");
 
         $this->postmark->send();
+        $this->postmark->clear();
     }
 
     function create_ticket() {
@@ -513,30 +514,14 @@ End
                 if ($this->input->post('email_changes') == TRUE) {
                     $this->postmark->clear();
 
-                    $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
-                    $this->postmark->to('customer-resource@lease-desk.com');
-                    $this->postmark->bcc('mat@redstudio.co.uk');
-                    $this->postmark->cc($email_address);
+                    //start normal support email
+                    $this->send_email($email_address, $ticket_id, 'emails/updateTicket', 'UPDATED');
 
 
-                    $this->postmark->subject('Support Request Ticket No. ' . $ticket_id . ' Updated');
-                    $this->postmark->message_plain("Subject: $support_subject
-					
 
-company: $company_name
-Estimated Completion Date: $humandate
-Customer Tel: $telephone	
-Description: $support_description
-Support Type: $support_type1
-Support Issue: $support_issue1
-Priority: $support_priority1
-						
-						");
-                    $this->postmark->send();
 
 // end normal email update
 // send email to webCRM for update
-                    $this->postmark->clear();
 
                     $this->postmark->to('cm3208SPoYUg@b2b-email.net');
                     $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
