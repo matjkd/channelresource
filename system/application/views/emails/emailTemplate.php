@@ -14,4 +14,5 @@
         <?=$this->load->view($emailType)?>
         
     </body>
+    
 </html>
