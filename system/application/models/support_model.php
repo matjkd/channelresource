@@ -106,7 +106,7 @@ class Support_model extends Model {
                 $support_update_data = array(
                     'telephone' => $this->input->post('telephone'),
                     'email_address' => $this->input->post('email_address'),
-                    'updated_by' =>$this->session->userdata('user_id'),
+                    'updated_by' => $this->session->userdata('user_id'),
                     'support_description' => $this->input->post('support_description'),
                     'support_type' => $this->input->post('support_type'),
                     'support_issue' => $this->input->post('support_issue'),
@@ -266,13 +266,55 @@ class Support_model extends Model {
         return $data;
     }
 
+    /*
+     * 
+     */
+
+    function get_all_reply_data($id) {
+        $data = array();
+        $this->db->where('comments_id', $id);
+
+        //get contact person
+        $this->db->join('users', 'users.user_id = support_comments.added_by', 'left');
+
+        //get support info
+        $this->db->join('support', 'support.support_id = support_comments.support_id', 'left');
+
+        //get company from user
+        $this->db->join('company as usercompany', 'usercompany.company_id = users.company_id', 'left');
+
+        //get company from support request
+        $this->db->join('company as supportcompany', 'supportcompany.company_id = support.company_id', 'left');
+
+        $this->db->select('supportcompany.company_id as supportcompanyid, supportcompany.company_name as supportCompanyName');
+        $this->db->select('usercompany.company_id as usercompanyid, usercompany.company_name as userCompanyName');
+        $this->db->select('users.firstname, users.lastname');
+        $this->db->select('support.support_id, support.support_subject');
+        $this->db->select('support_comments.comments_id, support_comments.comment');
+
+        $query = $this->db->get('support_comments');
+        if ($query->num_rows() > 0) {
+            foreach ($query->result_array() as $row)
+                $data[] = $row;
+        }
+        $query->free_result();
+
+        return $data;
+    }
+
+    /*
+     * 
+     */
+
     function get_all_ticket_data($id) {
 
         $data = array();
         $this->db->where('support_id', $id);
 
         //get company name
-        $this->db->join('company', 'company.company_id = support.company_id', 'left');
+        $this->db->join('company
+
+        ', 'company.company_id = support.company_id', 'left');
 
         //get assigned to
         $this->db->join('users as assigned', 'assigned.user_id = support.assigned_to', 'left');
@@ -283,9 +325,9 @@ class Support_model extends Model {
         //get contact person
         $this->db->join('users as contactPerson', 'contactPerson.user_id = support.contact_person', 'left');
 
-          //get updated by person
+        //get updated by person
         $this->db->join('users as updatedBy', 'updatedBy.user_id = support.updated_by', 'left');
-        
+
         //get user id
         $this->db->join('users as userID', 'userID.user_id = support.user_id', 'left');
 
@@ -296,7 +338,7 @@ class Support_model extends Model {
         $this->db->select('userID.user_id as userID, userID.firstname as userfirstname, userID.lastname as userlastname');
         $this->db->select('company.company_name');
         $this->db->select('support.support_id, support.telephone, support.email_address, support.support_subject, support.support_description, support.date_added, support.date_updated');
-        $this->db->select('support.support_priority, support.support_issue, support.support_type,   support.completion_date, support.date_closed');
+        $this->db->select('support.support_priority, support.support_issue, support.support_type, support.completion_date, support.date_closed');
 
         $query = $this->db->get('support');
         if ($query->num_rows() > 0) {
@@ -314,7 +356,8 @@ class Support_model extends Model {
         $query = $this->db->get('customers');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row)
-                $data[] = $row;
+                $data[] =
+                        $row;
         }
         $query->free_result();
 
@@ -335,9 +378,10 @@ class Support_model extends Model {
         );
 
         $insert = $this->db->insert('support_comments', $new_reply_insert_data);
+        $ticket_id = mysql_insert_id();
         $this->db->where('support_id', $id);
         $this->db->update('support', $update_date);
-        return $insert;
+        return $ticket_id;
     }
 
     function list_replies($id) {
@@ -393,7 +437,7 @@ class Support_model extends Model {
             foreach ($query->result_array() as $row)
                 $data[] = $row;
         }
-        $query->free_result();
+
 
         return $data;
     }
@@ -446,7 +490,23 @@ class Support_model extends Model {
         } else {
             $this->db->where('support_id', $id);
             $this->db->limit(1);
-            $this->db->delete('support');
+            $this->db->delete('support
+
+        
+
+        
+
+        
+
+         
+
+        
+
+        
+
+        
+
+        ');
         }
     }
 

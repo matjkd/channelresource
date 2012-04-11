@@ -92,44 +92,46 @@ class Support extends My_Controller {
     }
 
     function emailonscreen($support_id) {
-        $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id);
-        print_r($data['supportRequest']);
-        foreach ($data['supportRequest'] as $row):
-
-            $data['support_issue'] = $this->support_model->name_status('Issue', $row['support_issue']);
-            $data['support_priority'] = $this->support_model->name_status('priority', $row['support_priority']);
-            $data['support_type'] = $this->support_model->name_status('type', $row['support_type']);
-
-        endforeach;
-        $data['emailType'] = 'emails/updateTicket';
+        
+          $data['supportReply'] = $this->support_model->get_all_reply_data($support_id);
+        print_r($data['supportReply']);
+       
+        $data['emailType'] = 'emails/newReply';
         $data['title'] = "Support Request Ticket No. " . $support_id;
         $this->load->vars($data);
         $this->load->view('emails/emailTemplate');
     }
 
     /*
-     *  Function for hadling all emails.. Hopefully.
+     *  Function for handling all emails.. Hopefully.
      * 
      */
 
-    function send_email($to, $support_id, $type='emails/newRequest', $append = '') {
+    function send_email($to, $support_id, $subject, $type='emails/newRequest', $support = 'support') {
 
+        if($support == 'support') {
         $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id);
-        print_r($data['supportRequest']);
-        foreach ($data['supportRequest'] as $row):
+           foreach ($data['supportRequest'] as $row):
 
             $data['support_issue'] = $this->support_model->name_status('Issue', $row['support_issue']);
             $data['support_priority'] = $this->support_model->name_status('priority', $row['support_priority']);
             $data['support_type'] = $this->support_model->name_status('type', $row['support_type']);
 
         endforeach;
+        }
+        
+         if($support == 'reply') {
+        $data['supportReply'] = $this->support_model->get_all_reply_data($support_id);
+        }
+     
         $data['emailType'] = $type;
-        $data['title'] = "Support Request Ticket No. " . $support_id . " - " . $append;
+        $data['title'] = $subject;
         $this->load->vars($data);
         $msg = $this->load->view('emails/emailTemplate', $data, true);
         $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
         $this->postmark->to('customer-resource@lease-desk.com');
         $this->postmark->bcc('mat@redstudio.co.uk');
+        $this->postmark->subject($data['title']);
         $this->postmark->cc($to);
         $this->postmark->message_html("
                        
@@ -391,7 +393,8 @@ class Support extends My_Controller {
 
 
 //start normal support email
-                $this->send_email($email_address, $ticket_id, 'emails/newRequest');
+                $subject = "Support Request Ticket No. " . $ticket_id;
+                $this->send_email($email_address, $ticket_id, $subject, 'emails/newRequest');
 
 // $email1 = $this->email->print_debugger();
 //end normal email
@@ -514,8 +517,9 @@ End
                 if ($this->input->post('email_changes') == TRUE) {
                     $this->postmark->clear();
 
-                    //start normal support email
-                    $this->send_email($email_address, $ticket_id, 'emails/updateTicket', 'UPDATED');
+                    //start normal update support email
+                    $subject = "Support Request Ticket No. " . $ticket_id . "UPDATED";
+                    $this->send_email($email_address, $ticket_id, $subject, 'emails/updateTicket');
 
 
 
@@ -747,10 +751,10 @@ End
 
         if ($this->input->post('comment')) {
 
-            $this->support_model->add_reply($id);
-            $this->session->set_flashdata('message', 'Reply added');
-
-
+            $reply_id = $this->support_model->add_reply($id);
+             $this->session->set_flashdata('message', 'Reply added');
+            
+           
 // send email to webCRM and certain admins
 //get other support data
             $data['ticket_details'] = $this->support_model->get_ticket($id);
@@ -804,30 +808,14 @@ End
             $comment = strip_tags($this->input->post('comment'));
 //start normal email
             if ($this->input->post('email_changes') == TRUE) {
-                $this->postmark->clear();
-                $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
-                $this->postmark->to('customer-resource@lease-desk.com');
-                $this->postmark->cc($email_address);
-                $this->postmark->bcc('mat@redstudio.co.uk');
-                $this->postmark->subject('Reply to Support Request Ticket No ' . $id . '');
-                $this->postmark->message_plain("
-                        
-The following Support Request has been replied to:
-                        
-Support Request: $id                        
-                        
-Subject: $support_subject
-                        
-                        
-Company: $company_name
-                        
-                        
-Reply: $comment
-                    
-             ");
+                             
+                $subject = 'Reply to Support Request Ticket No ' . $id;
+                $this->send_email($email_address,  $reply_id, $subject, $type='emails/newReply', $support = 'reply'); 
+               
+                
 
 
-                $this->postmark->send();
+                
             }
 
 //start webcrm email		
