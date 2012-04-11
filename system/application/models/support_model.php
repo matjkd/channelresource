@@ -285,10 +285,10 @@ class Support_model extends Model {
         //get user id
         $this->db->join('users as userID', 'userID.user_id = support.user_id', 'left');
 
-        $this->db->select('assigned.firstname as assignedfirstname, assigned.lastname as assignedlastname');
-        $this->db->select('responsible.firstname as responsiblefirstname, responsible.lastname as responsiblelastname');
-        $this->db->select('contactPerson.firstname as contactfirstname, contactPerson.lastname as contactlastname');
-        $this->db->select('userID.firstname as userfirstname, userID.lastname as userlastname');
+        $this->db->select('assigned.user_id as assignedID, assigned.firstname as assignedfirstname, assigned.lastname as assignedlastname');
+        $this->db->select('responsible.user_id as responsibleuserID, responsible.firstname as responsiblefirstname, responsible.lastname as responsiblelastname');
+        $this->db->select('contactPerson.user_id as contactID, contactPerson.firstname as contactfirstname, contactPerson.lastname as contactlastname');
+        $this->db->select('userID.user_id as userID, userID.firstname as userfirstname, userID.lastname as userlastname');
         $this->db->select('company.company_name');
         $this->db->select('support.support_id, support.telephone, support.email_address, support.support_subject, support.support_description, support.date_added, support.date_updated');
         $this->db->select('support.support_priority, support.support_issue, support.support_type,   support.completion_date, support.date_closed');
