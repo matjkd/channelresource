@@ -56,25 +56,24 @@ class Support_model extends Model {
      */
     function update_ticket($id) {
 
-
-
-
-
-
-
-
         // update the ticket
         $this->db->where('support_id', $id);
         $Q = $this->db->get('support');
         foreach ($Q->result_array() as $row):
             $date_opened = $row['date_opened'];
+        $data1['log'] = $row;
         endforeach;
 
-
         $this->db->flush_cache();
+        print_r($data1['log']);
+  $this->db->insert('support_log', $data1['log']);
+        
 
-        $this->db->insert('support_log', $Q->row_data);
-        $this->db->flush_cache();
+  $this->db->flush_cache();
+      
+        
+        
+     
         $this->db->select('company_id');
         $this->db->where('user_id', $this->input->post('user_id'));
         $query = $this->db->get('users');
