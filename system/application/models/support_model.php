@@ -73,7 +73,7 @@ class Support_model extends Model {
 
         $this->db->flush_cache();
 
-        $this->db->insert('support_log', $Q->result_array());
+        $this->db->insert('support_log', $Q->row_data);
         $this->db->flush_cache();
         $this->db->select('company_id');
         $this->db->where('user_id', $this->input->post('user_id'));
