@@ -170,7 +170,7 @@ class Support_model extends Model {
 
         $this->db->order_by('support_priority', 'asc');
         $this->db->having('support_status !=', 3);
-        $this->db->or_having('support_status !=', 99);
+        $this->db->having('support_status !=', 99);
         if (!isset($company) || $company > 2) {
             $this->db->where('support.company_id', $id);
             $this->db->or_where('support.assigned_to', $user);
