@@ -132,6 +132,7 @@ class Support extends My_Controller {
                 $data['support_issue'] = $this->support_model->name_status('Issue', $row['support_issue']);
                 $data['support_priority'] = $this->support_model->name_status('priority', $row['support_priority']);
                 $data['support_type'] = $this->support_model->name_status('type', $row['support_type']);
+                $data['support_status'] = $this->support_model->name_status('status', $row['support_status']);
 
             endforeach;
 
@@ -142,6 +143,7 @@ class Support extends My_Controller {
                 $data['support_issueLog'] = $this->support_model->name_status('Issue', $row['support_issue']);
                 $data['support_priorityLog'] = $this->support_model->name_status('priority', $row['support_priority']);
                 $data['support_typeLog'] = $this->support_model->name_status('type', $row['support_type']);
+                $data['support_statusLog'] = $this->support_model->name_status('status', $row['support_status']);
 
             endforeach;
         }
