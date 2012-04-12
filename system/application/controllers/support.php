@@ -925,25 +925,12 @@ End
 
                 endforeach;
 //start normal email
-                $this->postmark->clear();
-                $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
-                $this->postmark->to('customer-resource@lease-desk.com');
-                $this->postmark->cc($email_address);
-                $this->postmark->bcc('mat@redstudio.co.uk');
-                $this->postmark->subject('Note updated on Support Request Ticket No ' . $supportid . '');
-                $this->postmark->message_plain("Subject: $support_subject
-                        
-                        
-Company: $company_name
-                        
-                        
-Reply: $comment
-                    
-            ");
-
-
-                $this->postmark->send();
-                $this->postmark->clear();
+                               
+                
+                 $subject = 'Note updated on Support Request Ticket No ' . $supportid;
+                $this->send_email($email_address,  $id, $subject, $type='emails/editReply', $support = 'reply'); 
+                
+   
 
 
                 echo "Email Sent $supportid";
