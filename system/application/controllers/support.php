@@ -118,6 +118,16 @@ class Support extends My_Controller {
             $data['support_type'] = $this->support_model->name_status('type', $row['support_type']);
 
         endforeach;
+        
+        //get log of current support request
+        $data['supportRequestLog'] = $this->support_model->get_all_ticket_data($support_id, 'support_log');
+           foreach ($data['supportRequestLog'] as $row):
+
+            $data['support_issueLog'] = $this->support_model->name_status('Issue', $row['support_issue']);
+            $data['support_priorityLog'] = $this->support_model->name_status('priority', $row['support_priority']);
+            $data['support_typeLog'] = $this->support_model->name_status('type', $row['support_type']);
+
+        endforeach;
         }
         
          if($support == 'reply') {

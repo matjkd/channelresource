@@ -61,19 +61,20 @@ class Support_model extends Model {
         $Q = $this->db->get('support');
         foreach ($Q->result_array() as $row):
             $date_opened = $row['date_opened'];
-        $data1['log'] = $row;
+            $data1['log'] = $row;
         endforeach;
 
         $this->db->flush_cache();
-        print_r($data1['log']);
-  $this->db->insert('support_log', $data1['log']);
-        
 
-  $this->db->flush_cache();
-      
-        
-        
-     
+        //copy table data to log before updating
+        $this->db->insert('support_log', $data1['log']);
+
+
+        $this->db->flush_cache();
+
+
+
+
         $this->db->select('company_id');
         $this->db->where('user_id', $this->input->post('user_id'));
         $query = $this->db->get('users');
@@ -315,28 +316,28 @@ class Support_model extends Model {
      * 
      */
 
-    function get_all_ticket_data($id) {
+    function get_all_ticket_data($id, $table="support") {
 
         $data = array();
         $this->db->where('support_id', $id);
 
         //get company name
-        $this->db->join('company', 'company.company_id = support.company_id', 'left');
+        $this->db->join('company', 'company.company_id = '.$table.'.company_id', 'left');
 
         //get assigned to
-        $this->db->join('users as assigned', 'assigned.user_id = support.assigned_to', 'left');
+        $this->db->join('users as assigned', 'assigned.user_id = '.$table.'.assigned_to', 'left');
 
         //get responsible
-        $this->db->join('users as responsible', 'responsible.user_id = support.responsible', 'left');
+        $this->db->join('users as responsible', 'responsible.user_id = '.$table.'.responsible', 'left');
 
         //get contact person
-        $this->db->join('users as contactPerson', 'contactPerson.user_id = support.contact_person', 'left');
+        $this->db->join('users as contactPerson', 'contactPerson.user_id = '.$table.'.contact_person', 'left');
 
         //get updated by person
-        $this->db->join('users as updatedBy', 'updatedBy.user_id = support.updated_by', 'left');
+        $this->db->join('users as updatedBy', 'updatedBy.user_id = '.$table.'.updated_by', 'left');
 
         //get user id
-        $this->db->join('users as userID', 'userID.user_id = support.user_id', 'left');
+        $this->db->join('users as userID', 'userID.user_id = '.$table.'.user_id', 'left');
 
         $this->db->select('assigned.user_id as assignedID, assigned.firstname as assignedfirstname, assigned.lastname as assignedlastname');
         $this->db->select('responsible.user_id as responsibleuserID, responsible.firstname as responsiblefirstname, responsible.lastname as responsiblelastname');
@@ -344,10 +345,11 @@ class Support_model extends Model {
         $this->db->select('updatedBy.user_id as updatedbyID, updatedBy.firstname as updatedbyfirstname, updatedBy.lastname as updatedbylastname');
         $this->db->select('userID.user_id as userID, userID.firstname as userfirstname, userID.lastname as userlastname');
         $this->db->select('company.company_name');
-        $this->db->select('support.support_id, support.telephone, support.email_address, support.support_subject, support.support_description, support.date_added, support.date_updated');
-        $this->db->select('support.support_priority, support.support_issue, support.support_type, support.completion_date, support.date_closed');
+        $this->db->select(''.$table.'.support_id, '.$table.'.telephone, '.$table.'.email_address, '.$table.'.support_subject, '.$table.'.support_description, '.$table.'.date_added, '.$table.'.date_updated');
+        $this->db->select(''.$table.'.support_priority, '.$table.'.support_issue, '.$table.'.support_type, '.$table.'.completion_date, '.$table.'.date_closed');
+        $this->db->limit(1);
+        $query = $this->db->get($table);
 
-        $query = $this->db->get('support');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row)
                 $data[] = $row;
