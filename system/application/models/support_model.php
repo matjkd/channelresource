@@ -348,7 +348,7 @@ class Support_model extends Model {
         $this->db->select(''.$table.'.support_id, '.$table.'.telephone, '.$table.'.email_address, '.$table.'.support_subject, '.$table.'.support_description, '.$table.'.date_added, '.$table.'.date_updated');
         $this->db->select(''.$table.'.support_priority, '.$table.'.support_issue, '.$table.'.support_type, '.$table.'.completion_date, '.$table.'.date_closed');
         $this->db->limit(1);
-        $this->db->order_by($table.".date_updated", "asc");
+        $this->db->order_by($table.".date_updated", "desc");
         $query = $this->db->get($table);
 
         if ($query->num_rows() > 0) {
