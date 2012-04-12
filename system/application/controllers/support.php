@@ -92,11 +92,27 @@ class Support extends My_Controller {
     }
 
     function emailonscreen($support_id) {
-        
-          $data['supportReply'] = $this->support_model->get_all_reply_data($support_id);
-        print_r($data['supportReply']);
-       
-        $data['emailType'] = 'emails/newReply';
+
+        $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id);
+        foreach ($data['supportRequest'] as $row):
+
+            $data['support_issue'] = $this->support_model->name_status('Issue', $row['support_issue']);
+            $data['support_priority'] = $this->support_model->name_status('priority', $row['support_priority']);
+            $data['support_type'] = $this->support_model->name_status('type', $row['support_type']);
+            $data['support_status'] = $this->support_model->name_status('status', $row['support_status']);
+        endforeach;
+
+        //get log of current support request
+        $data['supportRequestLog'] = $this->support_model->get_all_ticket_data($support_id, 'support_log');
+        foreach ($data['supportRequestLog'] as $row):
+
+            $data['support_issueLog'] = $this->support_model->name_status('Issue', $row['support_issue']);
+            $data['support_priorityLog'] = $this->support_model->name_status('priority', $row['support_priority']);
+            $data['support_typeLog'] = $this->support_model->name_status('type', $row['support_type']);
+            $data['support_statusLog'] = $this->support_model->name_status('status', $row['support_status']);
+
+        endforeach;
+        $data['emailType'] = 'emails/updateTicket';
         $data['title'] = "Support Request Ticket No. " . $support_id;
         $this->load->vars($data);
         $this->load->view('emails/emailTemplate');
@@ -109,31 +125,31 @@ class Support extends My_Controller {
 
     function send_email($to, $support_id, $subject, $type='emails/newRequest', $support = 'support') {
 
-        if($support == 'support') {
-        $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id);
-           foreach ($data['supportRequest'] as $row):
+        if ($support == 'support') {
+            $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id);
+            foreach ($data['supportRequest'] as $row):
 
-            $data['support_issue'] = $this->support_model->name_status('Issue', $row['support_issue']);
-            $data['support_priority'] = $this->support_model->name_status('priority', $row['support_priority']);
-            $data['support_type'] = $this->support_model->name_status('type', $row['support_type']);
+                $data['support_issue'] = $this->support_model->name_status('Issue', $row['support_issue']);
+                $data['support_priority'] = $this->support_model->name_status('priority', $row['support_priority']);
+                $data['support_type'] = $this->support_model->name_status('type', $row['support_type']);
 
-        endforeach;
-        
-        //get log of current support request
-        $data['supportRequestLog'] = $this->support_model->get_all_ticket_data($support_id, 'support_log');
-           foreach ($data['supportRequestLog'] as $row):
+            endforeach;
 
-            $data['support_issueLog'] = $this->support_model->name_status('Issue', $row['support_issue']);
-            $data['support_priorityLog'] = $this->support_model->name_status('priority', $row['support_priority']);
-            $data['support_typeLog'] = $this->support_model->name_status('type', $row['support_type']);
+            //get log of current support request
+            $data['supportRequestLog'] = $this->support_model->get_all_ticket_data($support_id, 'support_log');
+            foreach ($data['supportRequestLog'] as $row):
 
-        endforeach;
+                $data['support_issueLog'] = $this->support_model->name_status('Issue', $row['support_issue']);
+                $data['support_priorityLog'] = $this->support_model->name_status('priority', $row['support_priority']);
+                $data['support_typeLog'] = $this->support_model->name_status('type', $row['support_type']);
+
+            endforeach;
         }
-        
-         if($support == 'reply') {
-        $data['supportReply'] = $this->support_model->get_all_reply_data($support_id);
+
+        if ($support == 'reply') {
+            $data['supportReply'] = $this->support_model->get_all_reply_data($support_id);
         }
-     
+
         $data['emailType'] = $type;
         $data['title'] = $subject;
         $this->load->vars($data);
@@ -762,9 +778,9 @@ End
         if ($this->input->post('comment')) {
 
             $reply_id = $this->support_model->add_reply($id);
-             $this->session->set_flashdata('message', 'Reply added');
-            
-           
+            $this->session->set_flashdata('message', 'Reply added');
+
+
 // send email to webCRM and certain admins
 //get other support data
             $data['ticket_details'] = $this->support_model->get_ticket($id);
@@ -818,14 +834,9 @@ End
             $comment = strip_tags($this->input->post('comment'));
 //start normal email
             if ($this->input->post('email_changes') == TRUE) {
-                             
+
                 $subject = 'Reply to Support Request Ticket No ' . $id;
-                $this->send_email($email_address,  $reply_id, $subject, $type='emails/newReply', $support = 'reply'); 
-               
-                
-
-
-                
+                $this->send_email($email_address, $reply_id, $subject, $type = 'emails/newReply', $support = 'reply');
             }
 
 //start webcrm email		
@@ -935,12 +946,12 @@ End
 
                 endforeach;
 //start normal email
-                               
-                
-                 $subject = 'Note updated on Support Request Ticket No ' . $supportid;
-                $this->send_email($email_address,  $id, $subject, $type='emails/editReply', $support = 'reply'); 
-                
-   
+
+
+                $subject = 'Note updated on Support Request Ticket No ' . $supportid;
+                $this->send_email($email_address, $id, $subject, $type = 'emails/editReply', $support = 'reply');
+
+
 
 
                 echo "Email Sent $supportid";

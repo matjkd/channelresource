@@ -24,6 +24,8 @@
         <strong>Support Issue:</strong> <?= $support_issue ?> <?php if($support_issue != $support_issueLog) { echo "(changed from ".$support_issueLog.")"; }?><br/><br/>
 
         <strong>Priority: </strong><?= $support_priority ?> <?php if($support_priority != $support_priorityLog) { echo "(changed from ".$support_priorityLog.")"; }?><br/><br/>
+        
+         <strong>Status: </strong><?= $support_status ?> <?php if($support_status != $support_statusLog) { echo "(changed from ".$support_statusLog.")"; }?><br/><br/>
 
         <br/>
         Originally added by <?= $row['userfirstname'] ?> <?= $row['userlastname'] ?>

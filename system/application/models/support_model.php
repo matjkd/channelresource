@@ -319,7 +319,7 @@ class Support_model extends Model {
     function get_all_ticket_data($id, $table="support") {
 
         $data = array();
-        $this->db->where('support_id', $id);
+        $this->db->where($table.'.support_id', $id);
 
         //get company name
         $this->db->join('company', 'company.company_id = '.$table.'.company_id', 'left');
@@ -346,7 +346,7 @@ class Support_model extends Model {
         $this->db->select('userID.user_id as userID, userID.firstname as userfirstname, userID.lastname as userlastname');
         $this->db->select('company.company_name');
         $this->db->select(''.$table.'.support_id, '.$table.'.telephone, '.$table.'.email_address, '.$table.'.support_subject, '.$table.'.support_description, '.$table.'.date_added, '.$table.'.date_updated');
-        $this->db->select(''.$table.'.support_priority, '.$table.'.support_issue, '.$table.'.support_type, '.$table.'.completion_date, '.$table.'.date_closed');
+        $this->db->select(''.$table.'.support_status, '.$table.'.support_priority, '.$table.'.support_issue, '.$table.'.support_type, '.$table.'.completion_date, '.$table.'.date_closed');
         $this->db->limit(1);
         $this->db->order_by($table.".date_updated", "desc");
         $query = $this->db->get($table);
