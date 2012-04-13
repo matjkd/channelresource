@@ -1,10 +1,10 @@
 <?php foreach ($supportRequest as $row): ?>
 
     <?php if ($row['assignedfirstname'] != NULL && $row['assignedID'] != $row['userID']) { ?>
-        <p>The following Support Request has been logged by <?= $row['userfirstname'] ?> <?= $row['userlastname'] ?> at 
-            <?= $row['company_name'] ?> on behalf of <?= $row['assignedfirstname'] ?> <?= $row['assignedlastname'] ?></p>
+        <p>The following Support Request has been logged by <?= $row['userfirstname'] ?> <?= $row['userlastname'] ?> at <?= $row['user_company_name'] ?>
+             on behalf of <?= $row['assignedfirstname'] ?> <?= $row['assignedlastname'] ?> at <?= $row['assigned_company_name'] ?></p>
     <?php } else { ?>
-        <p>The following Support Request has been logged by  <?= $row['userfirstname'] ?> <?= $row['userlastname'] ?></p>
+        <p>The following Support Request has been logged by  <?= $row['userfirstname'] ?> <?= $row['userlastname'] ?> at <?= $row['user_company_name'] ?></p>
     <?php } ?>                     
     <p>
 

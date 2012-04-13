@@ -1,4 +1,5 @@
-<?php
+<?php if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
 
 class Support extends My_Controller {
 
@@ -94,6 +95,7 @@ class Support extends My_Controller {
     function emailonscreen($support_id) {
 
         $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id);
+        print_r($data['supportRequest']);
         foreach ($data['supportRequest'] as $row):
 
             $data['support_issue'] = $this->support_model->name_status('Issue', $row['support_issue']);
@@ -112,7 +114,7 @@ class Support extends My_Controller {
             $data['support_statusLog'] = $this->support_model->name_status('status', $row['support_status']);
 
         endforeach;
-        $data['emailType'] = 'emails/updateTicket';
+        $data['emailType'] = 'emails/newRequest';
         $data['title'] = "Support Request Ticket No. " . $support_id;
         $this->load->vars($data);
         $this->load->view('emails/emailTemplate');

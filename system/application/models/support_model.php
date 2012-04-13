@@ -1,5 +1,8 @@
 <?php
 
+if (!defined('BASEPATH'))
+    exit('No direct script access allowed');
+
 class Support_model extends Model {
 
     function __construct() {
@@ -319,25 +322,30 @@ class Support_model extends Model {
     function get_all_ticket_data($id, $table="support") {
 
         $data = array();
-        $this->db->where($table.'.support_id', $id);
+        $this->db->where($table . '.support_id', $id);
 
         //get company name
-        $this->db->join('company', 'company.company_id = '.$table.'.company_id', 'left');
+        $this->db->join('company', 'company.company_id = ' . $table . '.company_id', 'left');
 
         //get assigned to
-        $this->db->join('users as assigned', 'assigned.user_id = '.$table.'.assigned_to', 'left');
+        $this->db->join('users as assigned', 'assigned.user_id = ' . $table . '.assigned_to', 'left');
+        $this->db->join('company as assignedCompany', 'assignedCompany.company_id = assigned.company_id', 'left');
 
         //get responsible
-        $this->db->join('users as responsible', 'responsible.user_id = '.$table.'.responsible', 'left');
+        $this->db->join('users as responsible', 'responsible.user_id = ' . $table . '.responsible', 'left');
+        $this->db->join('company as responsibleCompany', 'responsibleCompany.company_id = responsible.company_id', 'left');
 
         //get contact person
-        $this->db->join('users as contactPerson', 'contactPerson.user_id = '.$table.'.contact_person', 'left');
+        $this->db->join('users as contactPerson', 'contactPerson.user_id = ' . $table . '.contact_person', 'left');
+        $this->db->join('company as contactCompany', 'contactCompany.company_id = contactPerson.company_id', 'left');
 
         //get updated by person
-        $this->db->join('users as updatedBy', 'updatedBy.user_id = '.$table.'.updated_by', 'left');
+        $this->db->join('users as updatedBy', 'updatedBy.user_id = ' . $table . '.updated_by', 'left');
+        $this->db->join('company as updatedbyCompany', 'updatedbyCompany.company_id = updatedBy.company_id', 'left');
 
         //get user id
-        $this->db->join('users as userID', 'userID.user_id = '.$table.'.user_id', 'left');
+        $this->db->join('users as userID', 'userID.user_id = ' . $table . '.user_id', 'left');
+        $this->db->join('company as userCompany', 'userCompany.company_id = userID.company_id', 'left');
 
         $this->db->select('assigned.user_id as assignedID, assigned.firstname as assignedfirstname, assigned.lastname as assignedlastname');
         $this->db->select('responsible.user_id as responsibleuserID, responsible.firstname as responsiblefirstname, responsible.lastname as responsiblelastname');
@@ -345,10 +353,17 @@ class Support_model extends Model {
         $this->db->select('updatedBy.user_id as updatedbyID, updatedBy.firstname as updatedbyfirstname, updatedBy.lastname as updatedbylastname');
         $this->db->select('userID.user_id as userID, userID.firstname as userfirstname, userID.lastname as userlastname');
         $this->db->select('company.company_name');
-        $this->db->select(''.$table.'.support_id, '.$table.'.telephone, '.$table.'.email_address, '.$table.'.support_subject, '.$table.'.support_description, '.$table.'.date_added, '.$table.'.date_updated');
-        $this->db->select(''.$table.'.support_status, '.$table.'.support_priority, '.$table.'.support_issue, '.$table.'.support_type, '.$table.'.completion_date, '.$table.'.date_closed');
+
+        $this->db->select('assignedCompany.company_name as assigned_company_name');
+        $this->db->select('responsibleCompany.company_name as responsible_company_name');
+        $this->db->select('contactCompany.company_name as contact_company_name');
+        $this->db->select('updatedbyCompany.company_name as updated_by_company_name');
+         $this->db->select('userCompany.company_name as user_company_name');
+
+        $this->db->select('' . $table . '.support_id, ' . $table . '.telephone, ' . $table . '.email_address, ' . $table . '.support_subject, ' . $table . '.support_description, ' . $table . '.date_added, ' . $table . '.date_updated');
+        $this->db->select('' . $table . '.support_status, ' . $table . '.support_priority, ' . $table . '.support_issue, ' . $table . '.support_type, ' . $table . '.completion_date, ' . $table . '.date_closed');
         $this->db->limit(1);
-        $this->db->order_by($table.".date_updated", "desc");
+        $this->db->order_by($table . ".date_updated", "desc");
         $query = $this->db->get($table);
 
         if ($query->num_rows() > 0) {
