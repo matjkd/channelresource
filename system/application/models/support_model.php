@@ -515,23 +515,7 @@ class Support_model extends Model {
         } else {
             $this->db->where('support_id', $id);
             $this->db->limit(1);
-            $this->db->delete('support
-
-        
-
-        
-
-        
-
-         
-
-        
-
-        
-
-        
-
-        ');
+            $this->db->delete('support');
         }
     }
 
