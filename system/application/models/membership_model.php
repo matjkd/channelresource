@@ -117,6 +117,20 @@ class Membership_model extends Model {
 
         return $insert;
     }
+    
+    function check_username($username) {
+        
+         $data = array();
+        $this->db->where('username', $username);
+        
+        $query = $this->db->get('users');
+        if ($query->num_rows() > 0) {
+           return false;
+        }
+        $query->free_result();
+
+        return true;
+    }
 
     function get_user($id) {
         $data = array();

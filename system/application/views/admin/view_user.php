@@ -20,8 +20,22 @@ foreach ($user_info as $key => $row):
                 {
                     return {id : uid};
                 }
-            
-                	        
+                
+                    	        
+            });
+                
+            $(".editUsername").editable("<?= site_url('/edit/edit_username') ?>", 
+            {
+                indicator : 'Saving...',
+                id   : 'elementid',
+                submit : 'OK',
+                tooltip   : 'Click to edit...',
+                submitdata : function() 
+                {
+                    return {id : uid};
+                }
+                
+                    	        
             });
 
             $('.editable').editable("<?= site_url('/edit/edit_user') ?>", { 
@@ -34,7 +48,7 @@ foreach ($user_info as $key => $row):
                     return {id : uid};
                 }
             });
-            
+                
             $('.editablecurrency').editable("<?= site_url('/edit/edit_user') ?>", { 
                 data   : " {'&#163;':'&pound;','&#0128;':'&euro;','$':'$', 'selected':'<?= $row['user_currency'] ?>'}",
                 type   : 'select',
@@ -46,7 +60,7 @@ foreach ($user_info as $key => $row):
                     return {id : uid};
                 }
             });
-            
+                
         });
     </script>
 
@@ -55,72 +69,73 @@ foreach ($user_info as $key => $row):
         <table class="profiletable">
 
             <?php
+            $username = $row['username'];
+            $usernameEdit = "<div class='editUsername' id='username'>" . $username . "</div>";
             $firstname = "<div class='edit' id='firstname'>" . $row['firstname'] . "</div>";
             $lastname = "<div class='edit' id='lastname'>" . $row['lastname'] . "</div>";
             $email = "<div class='edit' id='email_address'>" . $row['email_address'] . "</div>";
             $userrole = "<div class='editable' id='role'></div>";
-            $username = $row['username'];
+            ?>
+            <tr>
 
-           ?>
-<tr>
-                                
-		<td class='leftcolumn'>
-		<strong>Company</strong>
-		</td>
-		<td>
-		<?=$row['company_name']?>
-		</td>
-	</tr>	
-    
-    <tr>
-                                
-		<td class='leftcolumn'>
-		<strong>Username</strong>
-		</td>
-		<td>
-		 <?=$username?>
-		</td>
-	</tr>
-	<tr>
-		<td class='leftcolumn'>
-		<strong>Firstname</strong>
-		</td>
-		<td>
-		 <?=$firstname?>
-		</td>
-	</tr>
-	<tr>
-		<td class='leftcolumn'>
-		<strong>Surname</strong>
-		</td>
-		<td>
-		 <?=$lastname?>
-		</td>
-	</tr>
-	<tr>
-		<td class='leftcolumn'>
-		<strong>Email</strong>
-		</td>
-		<td>
-		 <?=$email?>
-		</td>
-	</tr>
-        <?php
-            $role = $this->session->userdata('role');
-            if ($role == 1) { ?>
+                <td class='leftcolumn'>
+                    <strong>Company</strong>
+                </td>
+                <td>
+    <?= $row['company_name'] ?>
+                </td>
+            </tr>	
+
+            <tr>
+
+                <td class='leftcolumn'>
+                    <strong>Username:</strong>
+                </td>
+                <td>
+    <?= $usernameEdit ?>
+                </td>
+            </tr>
+            <tr>
+                <td class='leftcolumn'>
+                    <strong>Firstname</strong>
+                </td>
+                <td>
+    <?= $firstname ?>
+                </td>
+            </tr>
+            <tr>
+                <td class='leftcolumn'>
+                    <strong>Surname</strong>
+                </td>
+                <td>
+    <?= $lastname ?>
+                </td>
+            </tr>
+            <tr>
+                <td class='leftcolumn'>
+                    <strong>Email</strong>
+                </td>
+                <td>
+    <?= $email ?>
+                </td>
+            </tr>
+    <?php
+    $role = $this->session->userdata('role');
+    if ($role == 1) {
+        ?>
                 <tr>
-		<td class='leftcolumn'>
-		<strong>Role</strong>
-		</td>
-		<td>
-		 <?=$userrole?>
-		</td>
-	</tr>
+                    <td class='leftcolumn'>
+                        <strong>Role</strong>
+                    </td>
+                    <td>
+                        <?= $userrole ?>
+                    </td>
+                </tr>
             <?php } ?>
 
 
 
-<?php
+            <?php
         endforeach;
         ?>
     </table>
