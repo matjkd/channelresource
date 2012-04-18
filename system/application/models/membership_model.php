@@ -22,6 +22,7 @@ class Membership_model extends Model {
 
     function get_companies() {
         $data = array();
+        $this->db->order_by('company_name');
         $Q = $this->db->get('company');
         if ($Q->num_rows() > 0) {
             foreach ($Q->result_array() as $row)
