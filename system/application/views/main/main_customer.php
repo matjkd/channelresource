@@ -14,7 +14,7 @@ enabling you to confidently use Lease-Desk.com and stay up to date on future pro
                 <a href="mailto:support@lease-desk.com"  title=""><img alt="Contact Us" src="<?=base_url()?>images/icons/contactbox.jpg"/></a>
     </div>
         <div class="video1" style="height:143px; padding:0px; width:199px; float:left; background:#dddddd; margin:3px 5px 5px 5px;">
-              <a href="http://www.youtube.com/watch?v=8hUOhjuGPrA" rel="prettyPhoto" title=""><img alt="Welcome" src="<?=base_url()?>images/icons/welcome.jpg"/></a>
+              <a href="http://www.youtube.com/watch?v=9xHxoSLhtn8" rel="prettyPhoto" title=""><img alt="Welcome" src="<?=base_url()?>images/icons/welcome.jpg"/></a>
     </div>
 
         <div class="video1" style="height:143px; padding:0px; width:199px; float:left; background:#dddddd; margin:3px 5px 5px 5px;">
@@ -22,7 +22,7 @@ enabling you to confidently use Lease-Desk.com and stay up to date on future pro
     </div>
 
     <div class="video1" style="height:143px; padding:0px; width:199px; float:left; background:#dddddd;  margin:3px 0px 5px 5px;">
-        <a href="http://www.youtube.com/watch?v=z1AAFbzjj_Y" rel="prettyPhoto" title=""><img alt="The Quoting Tool" src="<?=base_url()?>images/icons/quote_video.jpg"/></a>
+        <a href="http://www.youtube.com/watch?v=tXmqPXIVlGg" rel="prettyPhoto" title=""><img alt="The Quoting Tool" src="<?=base_url()?>images/icons/quote_video.jpg"/></a>
     </div>
 
     
