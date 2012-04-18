@@ -22,7 +22,7 @@
     
     <?php } else { ?>
         
-        <input id="supportcheckbox" type="checkbox" name="email_changes" value="email" checked="yes" style="display:none;">Check this box to email changes<br/>
+        <input id="supportcheckbox" type="checkbox" name="email_changes" value="email" checked="yes" style="display:none;">
         <?php } ?>
     
     <input type="submit" name="submit" value="Submit" class="buttonstyle">
