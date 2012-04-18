@@ -148,7 +148,8 @@ class Mobilesupport extends My_Controller {
      */
     function addnote() {
         $id = $this->input->post('supportid');
-        $this->support_model->add_reply($id);
+
+        $reply_id = $this->support_model->add_reply($id);
         $data['ticket_details'] = $this->support_model->get_ticket($id);
 
         foreach ($data['ticket_details'] as $row5):
@@ -203,21 +204,68 @@ class Mobilesupport extends My_Controller {
 
 
         //email
-        $this->postmark->clear();
-        $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
-        $this->postmark->to('chloe@lease-desk.com');
-        $this->postmark->cc($email_address);
-        $this->postmark->bcc('mat@redstudio.co.uk');
-        $this->postmark->subject('Reply to Support Request Ticket No ' . $id . '');
-        $this->postmark->message_plain("Subject: $support_subject
-                
-Company: $company_name
-Reply: $comment
-					");
-        $this->postmark->send();
+
+
+        $subject = 'Reply to Support Request Ticket No ' . $id;
+        $this->send_email($email_address, $reply_id, $subject, $type = 'emails/newReply', $support = 'reply');
 
         //redirect back
         redirect('mobilesupport/view_support_request/' . $id . '', 'refresh');
+    }
+
+    /*
+     *  Function for handling all emails.. This needs to be moved into a helper or 
+     * model because it is the same as the one in the support controller
+     * 
+     */
+
+    function send_email($to, $support_id, $subject, $type='emails/newRequest', $support = 'support') {
+
+        if ($support == 'support') {
+            $data['supportRequest'] = $this->support_model->get_all_ticket_data($support_id);
+            foreach ($data['supportRequest'] as $row):
+
+                $data['support_issue'] = $this->support_model->name_status('Issue', $row['support_issue']);
+                $data['support_priority'] = $this->support_model->name_status('priority', $row['support_priority']);
+                $data['support_type'] = $this->support_model->name_status('type', $row['support_type']);
+                $data['support_status'] = $this->support_model->name_status('status', $row['support_status']);
+
+            endforeach;
+
+            //get log of current support request
+            $data['supportRequestLog'] = $this->support_model->get_all_ticket_data($support_id, 'support_log');
+            foreach ($data['supportRequestLog'] as $row):
+
+                $data['support_issueLog'] = $this->support_model->name_status('Issue', $row['support_issue']);
+                $data['support_priorityLog'] = $this->support_model->name_status('priority', $row['support_priority']);
+                $data['support_typeLog'] = $this->support_model->name_status('type', $row['support_type']);
+                $data['support_statusLog'] = $this->support_model->name_status('status', $row['support_status']);
+
+            endforeach;
+        }
+
+        if ($support == 'reply') {
+            $data['supportReply'] = $this->support_model->get_all_reply_data($support_id);
+        }
+
+        $data['emailType'] = $type;
+        $data['title'] = $subject;
+        $this->load->vars($data);
+        $msg = $this->load->view('emails/emailTemplate', $data, true);
+        $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
+        $this->postmark->to('customer-resource@lease-desk.com');
+        $this->postmark->bcc('mat@redstudio.co.uk');
+        $this->postmark->subject($data['title']);
+        $this->postmark->cc($to);
+        $this->postmark->message_html("
+                       
+                        $msg
+                       
+                                               
+                        ");
+
+        $this->postmark->send();
+        $this->postmark->clear();
     }
 
     function add_request() {
