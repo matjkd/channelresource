@@ -77,14 +77,40 @@ $role = $this->session->userdata('role');
 
 
                 <p class="assign">
-                    <label class="ui-btn-text" for="basic">Assign to user:</label>
+                    <label class="ui-btn-text" for="basic">Contact Person:</label>
                     <input type="text" name="assign_name" id='company' value="<?= set_value('assign_name', $assigned_name) ?>"  />
 
                     <input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">
                 </p>
 
 
-            <?php } ?>
+            <?php } else { ?>
+                
+                
+                <p class="assign">
+        <label class="ui-btn-text" for="basic">Contact Person:</label>
+
+         <select name="assigned_id" id="company_owner">
+            <?php foreach ($items as $row): ?>
+                <?php
+                if (isset($assigned) && $row['user_id'] == $assigned) {
+                    $selectedid = "selected='selected'";
+                } else {
+                    $selectedid = "";
+                }
+                ?>
+                <option value="<?= $row['user_id'] ?>" <?= $selectedid ?>><?= $row['firstname'] ?> <?= $row['lastname'] ?></option>
+                <?php $selectedid = ""; ?>
+            <?php endforeach; ?>
+
+
+        </select>
+        
+            </p>
+                
+                
+                
+                <?php } ?>
 
 
 
