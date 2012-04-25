@@ -272,7 +272,17 @@ class Mobilesupport extends My_Controller {
         //get current user info
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
-        $data['items'] = $this->Membership_model->get_all_employees();
+        
+        //if admin get all employees, if not just get from user company
+        if ($this->session->userdata('role') < 3) {
+            $data['items'] = $this->Membership_model->get_all_employees();
+        } else {
+
+            $owner_company_id = $this->session->userdata('company_id');
+            $data['items'] = $this->Membership_model->get_employees($owner_company_id);
+        }
+        
+        
         $data['companies'] = $this->Membership_model->get_companies();
         //get list of related tickets
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
