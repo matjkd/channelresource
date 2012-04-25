@@ -7,15 +7,15 @@
 
   
                         
-<strong>Support Request:</strong> <?= $row['support_id'] ?>      <br/>                 
+<strong>Support Request:</strong> <?= $row['support_id'] ?>      <br/> <br/>                  
                         
-<strong>Subject:</strong> <?= $row['support_subject'] ?><br/>
-                        
-                        
-<strong>Company:</strong> <?= $row['supportCompanyName'] ?><br/>
+<strong>Subject:</strong> <?= $row['support_subject'] ?><br/> <br/> 
                         
                         
-<strong>Reply:</strong>  <?= $row['comment'] ?><br/>
+<strong>Company:</strong> <?= $row['supportCompanyName'] ?><br/> <br/> 
+                        
+                        
+<strong>Reply:</strong>  <?= $row['comment'] ?><br/> <br/> 
 
 
     </p>
