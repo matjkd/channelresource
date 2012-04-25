@@ -282,6 +282,8 @@ class Mobilesupport extends My_Controller {
             $data['items'] = $this->Membership_model->get_employees($owner_company_id);
         }
         
+          //get members of proctor consulting
+        $data['responsibleusers'] = $this->Membership_model->get_employees('2');
         
         $data['companies'] = $this->Membership_model->get_companies();
         //get list of related tickets
