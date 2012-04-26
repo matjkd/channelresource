@@ -10,7 +10,7 @@
 		<?=$this->load->view('/emails/templateCSS')?>
 	</head>
     <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0">
-    	test
+    
         <?=$this->load->view($emailType)?>
         
     </body>

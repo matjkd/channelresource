@@ -17,7 +17,17 @@
     ?>
     <hr/>
     <?= form_fieldset() ?>
-   <input id="supportcheckbox" type="checkbox" name="email_changes" value="email">Check this box to email changes
+    
+    <?php
+
+        $role = $this->session->userdata('role');
+        if ($role == 1) { ?>
+   <input id="supportcheckbox" type="checkbox" name="email_changes" value="email" checked="yes">Check this box to email changes
+   
+   <?php } else { ?>
+        
+        <input id="supportcheckbox" type="checkbox" name="email_changes" value="email" checked="yes" style="display:none;">
+        <?php } ?>
    
     <?= form_fieldset_close() ?>
     <?= form_fieldset() ?>

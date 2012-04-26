@@ -15,7 +15,7 @@ class Edit extends My_Controller {
 
     function edit_user() {
 
-        //need to work out how to get the user id to here, i used 7 as a test
+     
         $data['user_id'] = $this->input->post('id');
         $data['field'] = $this->input->post('elementid');
         $data['value'] = $this->input->post('value');
@@ -25,6 +25,27 @@ class Edit extends My_Controller {
         $update = $this->input->post('value');
         $this->output->set_output($update);
     }
+    
+    
+    function edit_username() {
+        
+        $data['user_id'] = $this->input->post('id');
+        $data['field'] = $this->input->post('elementid');
+        $data['value'] = $this->input->post('value');
+        
+        if($this->Membership_model->check_username($data['value'])) {
+        $this->Membership_model->edit_user($data['user_id'], $data['field'], $data['value']);
+
+        $update = $this->input->post('value');
+        
+        } else {
+            $update = "username already in use";
+        }
+        
+        
+        $this->output->set_output($update);
+    }
+    
 
     function edit_password() {
         $userid = $this->input->post('user_id');
