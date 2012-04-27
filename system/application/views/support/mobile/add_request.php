@@ -56,14 +56,14 @@ $role = $this->session->userdata('role');
         <div data-role="fieldcontain">     
 
             <?php if ($this->session->userdata('company_id') < 3) { ?>
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
                 <p class="assign">
-                       <label class="ui-btn-text" for="basic">Company:</label>
+                    <label class="ui-btn-text" for="basic">Company:</label>
                     <select name="company_owner" id="company_owner">
                         <?php foreach ($companies as $row): ?>
                             <?php
@@ -81,28 +81,28 @@ $role = $this->session->userdata('role');
                     </select>
                 </p>
 
-                
-                
-                 <p class="assign">
-         <label class="ui-btn-text" for="basic">Responsible:</label>
-
-         <select name="responsible" id="company_owner">
-            <?php foreach ($responsibleusers as $row): ?>
-                <?php
-                if (isset($responsible) && $row['user_id'] == $responsible) {
-                    $selectedid = "selected='selected'";
-                } else {
-                    $selectedid = "";
-                }
-                ?>
-                <option value="<?= $row['user_id'] ?>" <?= $selectedid ?>><?= $row['firstname'] ?> <?= $row['lastname'] ?></option>
-                <?php $selectedid = ""; ?>
-            <?php endforeach; ?>
 
 
-        </select>
-        
-            </p>
+                <p class="assign">
+                    <label class="ui-btn-text" for="basic">Responsible:</label>
+
+                    <select name="responsible" id="company_owner">
+                        <?php foreach ($responsibleusers as $row): ?>
+                            <?php
+                            if (isset($responsible) && $row['user_id'] == $responsible) {
+                                $selectedid = "selected='selected'";
+                            } else {
+                                $selectedid = "";
+                            }
+                            ?>
+                            <option value="<?= $row['user_id'] ?>" <?= $selectedid ?>><?= $row['firstname'] ?> <?= $row['lastname'] ?></option>
+                            <?php $selectedid = ""; ?>
+                        <?php endforeach; ?>
+
+
+                    </select>
+
+                </p>
 
                 <p class="assign">
                     <label class="ui-btn-text" for="basic">Contact Person:</label>
@@ -113,37 +113,37 @@ $role = $this->session->userdata('role');
 
 
             <?php } else { ?>
-                
-                
+
+
                 <p class="assign">
-        <label class="ui-btn-text" for="basic">Contact Person:</label>
+                    <label class="ui-btn-text" for="basic">Contact Person:</label>
 
-         <select name="assigned_id" id="company_owner">
-            <?php foreach ($items as $row): ?>
-                <?php
-                if (isset($assigned) && $row['user_id'] == $assigned) {
-                    $selectedid = "selected='selected'";
-                } else {
-                    $selectedid = "";
-                }
-                ?>
-                <option value="<?= $row['user_id'] ?>" <?= $selectedid ?>><?= $row['firstname'] ?> <?= $row['lastname'] ?></option>
-                <?php $selectedid = ""; ?>
-            <?php endforeach; ?>
+                    <select name="assigned_id" id="company_owner">
+                        <?php foreach ($items as $row): ?>
+                            <?php
+                            if (isset($assigned) && $row['user_id'] == $assigned) {
+                                $selectedid = "selected='selected'";
+                            } else {
+                                $selectedid = "";
+                            }
+                            ?>
+                            <option value="<?= $row['user_id'] ?>" <?= $selectedid ?>><?= $row['firstname'] ?> <?= $row['lastname'] ?></option>
+                            <?php $selectedid = ""; ?>
+                        <?php endforeach; ?>
 
 
-        </select>
-        
-            </p>
-                
-                
-                
-                <?php } ?>
+                    </select>
+
+                </p>
+
+
+
+            <?php } ?>
 
 
 
             <label class="ui-btn-text" for="basic">Subject:</label>
-            <input type="text" name="support_subject" id="basic" value="<?= set_value('support_subject') ?>"  />
+            <input type="text" name="support_subject" id="basic" value="<?= set_value('support_subject', $support_subject) ?>"  />
 
 
             <label class="ui-btn-text" for="basic">Telephone:</label>
@@ -175,11 +175,20 @@ $role = $this->session->userdata('role');
 
         <label class="ui-btn-text" for="basic">Type:</label>
         <select name="support_issue" id="support_issue">
+
+
+
             <?php foreach ($type as $row): ?>
-                <option value="<?= $row['status_value'] ?>"><?= $row['status_name'] ?></option>
-
+                <?php
+                if ($row['status_value'] == $support_issue) {
+                    $selectedtype = "selected='selected'";
+                } else {
+                    $selectedtype = "";
+                }
+                ?>
+                <option value="<?= $row['status_value'] ?>" <?= $selectedtype ?>><?= $row['status_name'] ?></option>
+                <?php $selectedtype = ""; ?>
             <?php endforeach; ?>
-
 
         </select>
 
