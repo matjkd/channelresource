@@ -143,14 +143,16 @@ $role = $this->session->userdata('role');
     </fieldset>   
 
     <fieldset data-role="controlgroup" >
-        <p>
-            <label class="ui-btn-text" for="support_subject">Subject:</label>
-            <input type="text" name="support_subject" id="support_subject" value="<?= set_value('support_subject', $support_subject) ?>"  />
-        </p>
+      
 
         <p>
             <label class="ui-btn-text" for="telephone">Telephone:</label>
             <input type="text" name="telephone" id="telephone" value="<?= set_value('telephone', $telephone) ?>"  />
+        </p>
+        
+          <p>
+            <label class="ui-btn-text" for="support_subject">Subject:</label>
+            <input type="text" name="support_subject" id="support_subject" value="<?= set_value('support_subject', $support_subject) ?>"  />
         </p>
 
         <p>
