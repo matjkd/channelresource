@@ -245,11 +245,18 @@ $role = $this->session->userdata('role');
 
 
     <fieldset data-role="controlgroup" >
-
-
+    
         <label class="ui-btn-text" for="support_description">Description:</label><br/>
+    <?php if ($resultsview == 1) { ?>
+        <div id="descriptionFixed"><?= $support_description ?></div>
+        <?= form_hidden('support_description', $support_description) ?>
+    <? } else { ?>
+       
+   
+        
+    
         <textarea type="text" name="support_description" id="basic" ><?= set_value('support_description', $support_description) ?></textarea>
-
+ <? } ?>
     </fieldset>   
 
     <?php if ($resultsview == 1) { ?>
