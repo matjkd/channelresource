@@ -281,6 +281,17 @@ $role = $this->session->userdata('role');
     <?= form_hidden('user_id', $user_id) ?>
 
     <?php if ($resultsview == 1) { ?>
+
+        <?php $role = $this->session->userdata('role');
+        if ($role == 1) { ?>
+            <input id="supportcheckbox" type="checkbox" name="email_changes" value="email" checked="yes">Check this box to email changes
+
+        <?php } else { ?>
+
+            <input id="supportcheckbox" type="checkbox" name="email_changes" value="email" checked="yes" style="display:none;">
+        <?php } ?>
+
+<input type="hidden" name="ticket_id" id="ticket_id" value="<?= $ticket_id ?>"/>
         <input type="submit" name="submit" value="Update">
     <?php } else { ?>
         <?= form_submit('submit', 'Submit') ?>
