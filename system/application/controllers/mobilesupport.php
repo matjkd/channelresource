@@ -42,6 +42,7 @@ class Mobilesupport extends My_Controller {
 
     function view_support_request($support_id) {
         //get current user info
+          $data['ticket_id'] = $support_id;
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
 
