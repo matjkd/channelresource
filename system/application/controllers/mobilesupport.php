@@ -362,6 +362,27 @@ class Mobilesupport extends My_Controller {
             $data['completion_date'] = $row['completion_date'];
             $data['support_priority'] = $row['support_priority'];
         endforeach;
+        
+         //Turn the assigned user id into the full name then get the company details
+        if ($data['assigned'] != 0 && $data['assigned'] != NULL) {
+
+            $customer['assigned_info'] = $this->Membership_model->get_employee_detail($data['assigned']);
+            foreach ($customer['assigned_info'] as $key => $row) {
+                $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
+                $data['assigned_company'] = $row['company_id'];
+                $data['assigned_email'] = $row['email_address'];
+                $data['assigned_email_2'] = $row['email_address'];
+            }
+        } else {
+
+            $customer['assigned_info'] = $this->Membership_model->get_employee_detail($data['user_id']);
+            foreach ($customer['assigned_info'] as $key => $row) {
+                $data['assigned_name'] = "" . $row['firstname'] . " " . $row['lastname'] . "";
+                $data['assigned_company'] = $row['company_id'];
+                $data['assigned_email'] = $row['email_address'];
+                $data['assigned_email_2'] = "no";
+            }
+        }
 
         $data['title'] = 'Edit Support-Request';
 
