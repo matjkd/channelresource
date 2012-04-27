@@ -101,14 +101,14 @@ $role = $this->session->userdata('role');
 
 
                     </select>
-
+  <input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">
                 </p>
 
                 <p class="assign">
                     <label class="ui-btn-text" for="assign_name">Contact Person:</label>
                     <input type="text" name="assign_name" id='company' value="<?= set_value('assign_name', $assigned_name) ?>"  />
 
-                    <input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">
+                  
                 </p>
 
 
@@ -143,23 +143,24 @@ $role = $this->session->userdata('role');
     </fieldset>   
 
     <fieldset data-role="controlgroup" >
-      
 
+        <p>
+            <label class="ui-btn-text" for="support_subject">Subject:</label>
+            <input type="text" name="support_subject" id="support_subject" value="<?= set_value('support_subject', $support_subject) ?>"  />
+        </p>
+        
         <p>
             <label class="ui-btn-text" for="telephone">Telephone:</label>
             <input type="text" name="telephone" id="telephone" value="<?= set_value('telephone', $telephone) ?>"  />
         </p>
-        
-          <p>
-            <label class="ui-btn-text" for="support_subject">Subject:</label>
-            <input type="text" name="support_subject" id="support_subject" value="<?= set_value('support_subject', $support_subject) ?>"  />
-        </p>
+
+
 
         <p>
             <label class="ui-btn-text" for="email_address">Email:</label>
-            <input type="text" name="email_address" id="email" value="<?= set_value('email_address', $email_address) ?>"  />
+            <input type="text" name="email_address" id="email_address" value="<?= set_value('email_address', $email_address) ?>"  />
         </p>
-       
+
     </fieldset>   
 
 
