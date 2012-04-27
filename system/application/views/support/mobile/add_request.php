@@ -133,7 +133,7 @@ $role = $this->session->userdata('role');
 
 
                     </select>
-
+ <input type="hidden" name="value" value="" id="hiddenIDbox">
                 </p>
 
 
