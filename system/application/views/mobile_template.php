@@ -75,7 +75,7 @@
                         <a href="<?= base_url() ?>mobile/quote/<?= $quote_id ?>" data-icon="gear" class="ui-btn-right" data-ajax="false">Edit</a>
                     <?php } ?>
                         
-                         <?php if (isset($ticket_id)) { ?>
+                         <?php if (isset($ticket_id) && $ticket_id != "") { ?>
                         <a href="<?= base_url() ?>mobilesupport/edit_request/<?= $ticket_id ?>" data-icon="gear" class="ui-btn-right" data-ajax="false">Edit</a>
                     <?php } ?>
 
