@@ -161,8 +161,15 @@ $role = $this->session->userdata('role');
         <label class="ui-btn-text" for="basic">Area:</label>
         <select name="support_type" id="support_type">
             <?php foreach ($areas as $row): ?>
-                <option value="<?= $row['status_value'] ?>"><?= $row['status_name'] ?></option>
-
+                <?php
+                if ($row['status_value'] == $support_type) {
+                    $selectedarea = "selected='selected'";
+                } else {
+                    $selectedarea = "";
+                }
+                ?>
+                <option value="<?= $row['status_value'] ?>" <?= $selectedarea ?>><?= $row['status_name'] ?></option>
+                <?php $selectedarea = ""; ?>
             <?php endforeach; ?>
 
 
@@ -203,8 +210,15 @@ $role = $this->session->userdata('role');
         <label class="ui-btn-text" for="support_priority">Priority:</label>
         <select name="support_priority" id="support_priority">
             <?php foreach ($prioritylist as $row): ?>
-                <option value="<?= $row['status_value'] ?>"><?= $row['status_name'] ?></option>
-
+                <?php
+                if ($row['status_value'] == $support_priority) {
+                    $selectedpriority = "selected='selected'";
+                } else {
+                    $selectedpriority = "";
+                }
+                ?>
+                <option value="<?= $row['status_value'] ?>" <?= $selectedpriority ?>><?= $row['status_name'] ?></option>
+                <?php $selectedpriority = ""; ?>
             <?php endforeach; ?>
 
 
@@ -222,6 +236,32 @@ $role = $this->session->userdata('role');
         <textarea type="text" name="support_description" id="basic" ><?= set_value('support_description', $support_description) ?></textarea>
 
     </fieldset>   
+    
+    <?php if($resultsview == 1) { ?>
+    
+    <fieldset data-role="controlgroup" >
+
+
+        <label class="ui-btn-text" for="support_status">Status:</label>
+        <select name="support_status" id="support_status">
+            <?php foreach ($statuslist as $row): ?>
+                <?php
+                if ($row['status_value'] == $support_status) {
+                    $selectedstatus = "selected='selected'";
+                } else {
+                    $selectedstatus = "";
+                }
+                ?>
+                <option value="<?= $row['status_value'] ?>" <?= $selectedstatus ?>><?= $row['status_name'] ?></option>
+                <?php $selectedstatus = ""; ?>
+            <?php endforeach; ?>
+
+
+        </select>
+
+    </fieldset> 
+    
+    <?php } ?>
 
     <fieldset data-role="controlgroup" > 
 
