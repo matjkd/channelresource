@@ -150,7 +150,8 @@ class Mobile extends My_Controller {
         if (isset($this->message)) {
             $data['message'] = $this->message;
         }
-        if (eregi("BlackBerry", $agent)) {
+        
+        if (preg_match("/BlackBerry/i", $agent)) {
             $data['blackberry'] = 'yes';
             $data['main'] = '/quote/mobile/quotemain_bb';
             $this->load->vars($data);
