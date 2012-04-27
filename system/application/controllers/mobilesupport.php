@@ -318,6 +318,64 @@ class Mobilesupport extends My_Controller {
         $this->load->vars($data);
         $this->load->view('mobile_template');
     }
+    
+    function edit_request() {
+         $data['ticket_id'] = $this->uri->segment(3);
+         $data['ticket_data'] = $this->support_model->get_ticket($data['ticket_id']);
+          //get current user info
+        $data['customeruser_id'] = $this->session->userdata('user_id');
+        $data['customercompany_id'] = $this->session->userdata('company_id');
+        
+        //if admin get all employees, if not just get from user company
+        if ($this->session->userdata('role') < 3) {
+            $data['items'] = $this->Membership_model->get_all_employees();
+        } else {
+
+            $owner_company_id = $this->session->userdata('company_id');
+            $data['items'] = $this->Membership_model->get_employees($owner_company_id);
+        }
+        
+          //get members of proctor consulting
+        $data['responsibleusers'] = $this->Membership_model->get_employees('2');
+        
+        $data['companies'] = $this->Membership_model->get_companies();
+        //get list of related tickets
+        $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
+
+        $data['channel_partner'] = '';
+
+        foreach ($data['ticket_data'] as $row):
+
+
+            $data['user_id'] = $row['user_id'];
+            $data['assigned'] = $row['assigned_to'];
+            $data['assigned_id'] = $row['assigned_to'];
+            $data['responsible'] = $row['responsible'];
+            $data['company_id'] = $row['company_id'];
+            $data['telephone'] = $row['telephone'];
+            $data['email_address'] = $row['email_address'];
+            $data['support_subject'] = $row['support_subject'];
+            $data['support_type'] = $row['support_type'];
+            $data['support_issue'] = $row['support_issue'];
+            $data['support_description'] = $row['support_description'];
+            $data['support_status'] = $row['support_status'];
+            $data['completion_date'] = $row['completion_date'];
+            $data['support_priority'] = $row['support_priority'];
+        endforeach;
+
+        $data['title'] = 'Edit Support-Request';
+
+        $data['desktop'] = 'support';
+
+        $data['prioritylist'] = $this->support_model->get_statuses('Priority');
+        $data['type'] = $this->support_model->get_statuses('Issue');
+        $data['areas'] = $this->support_model->get_statuses('Type');
+
+        $data['main'] = '/support/mobile/add_request';
+        $data['title'] = 'Support Requests';
+        $this->load->vars($data);
+        $this->load->view('mobile_template');
+    }
 
     function post_request() {
         
