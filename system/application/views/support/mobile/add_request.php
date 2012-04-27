@@ -141,19 +141,24 @@ $role = $this->session->userdata('role');
             <?php } ?>
 
 
+            <p>
+                <label class="ui-btn-text" for="basic">Subject:</label>
+                <input type="text" name="support_subject" id="basic" value="<?= set_value('support_subject', $support_subject) ?>"  />
+            </p>
 
-            <label class="ui-btn-text" for="basic">Subject:</label>
-            <input type="text" name="support_subject" id="basic" value="<?= set_value('support_subject', $support_subject) ?>"  />
+            <p>
+                <label class="ui-btn-text" for="basic">Telephone:</label>
+                <input type="text" name="telephone" id="basic" value="<?= set_value('telephone', $telephone) ?>"  />
+            </p>
 
-
-            <label class="ui-btn-text" for="basic">Telephone:</label>
-            <input type="text" name="telephone" id="basic" value="<?= set_value('telephone', $telephone) ?>"  />
-
-
-            <label class="ui-btn-text" for="basic">Email:</label>
-            <input type="text" name="email_address" id="basic" value="<?= set_value('email_address', $email_address) ?>"  />
+            <p>
+                <label class="ui-btn-text" for="basic">Email:</label>
+                <input type="text" name="email_address" id="basic" value="<?= set_value('email_address', $email_address) ?>"  />
+            </p>
         </div>
     </fieldset>   
+
+
 
     <fieldset data-role="controlgroup" >
 
@@ -291,7 +296,7 @@ $role = $this->session->userdata('role');
             <input id="supportcheckbox" type="checkbox" name="email_changes" value="email" checked="yes" style="display:none;">
         <?php } ?>
 
-<input type="hidden" name="ticket_id" id="ticket_id" value="<?= $ticket_id ?>"/>
+        <input type="hidden" name="ticket_id" id="ticket_id" value="<?= $ticket_id ?>"/>
         <input type="submit" name="submit" value="Update">
     <?php } else { ?>
         <?= form_submit('submit', 'Submit') ?>
