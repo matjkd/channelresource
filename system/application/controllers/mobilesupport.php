@@ -272,7 +272,7 @@ class Mobilesupport extends My_Controller {
         //get current user info
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
-        
+
         //if admin get all employees, if not just get from user company
         if ($this->session->userdata('role') < 3) {
             $data['items'] = $this->Membership_model->get_all_employees();
@@ -281,10 +281,10 @@ class Mobilesupport extends My_Controller {
             $owner_company_id = $this->session->userdata('company_id');
             $data['items'] = $this->Membership_model->get_employees($owner_company_id);
         }
-        
-          //get members of proctor consulting
+
+        //get members of proctor consulting
         $data['responsibleusers'] = $this->Membership_model->get_employees('2');
-        
+
         $data['companies'] = $this->Membership_model->get_companies();
         //get list of related tickets
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
@@ -318,14 +318,14 @@ class Mobilesupport extends My_Controller {
         $this->load->vars($data);
         $this->load->view('mobile_template');
     }
-    
+
     function edit_request() {
-         $data['ticket_id'] = $this->uri->segment(3);
-         $data['ticket_data'] = $this->support_model->get_ticket($data['ticket_id']);
-          //get current user info
+        $data['ticket_id'] = $this->uri->segment(3);
+        $data['ticket_data'] = $this->support_model->get_ticket($data['ticket_id']);
+        //get current user info
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
-        
+
         //if admin get all employees, if not just get from user company
         if ($this->session->userdata('role') < 3) {
             $data['items'] = $this->Membership_model->get_all_employees();
@@ -334,10 +334,10 @@ class Mobilesupport extends My_Controller {
             $owner_company_id = $this->session->userdata('company_id');
             $data['items'] = $this->Membership_model->get_employees($owner_company_id);
         }
-        
-          //get members of proctor consulting
+
+        //get members of proctor consulting
         $data['responsibleusers'] = $this->Membership_model->get_employees('2');
-        
+
         $data['companies'] = $this->Membership_model->get_companies();
         //get list of related tickets
         $data['ticket_list'] = $this->support_model->list_tickets($data['customercompany_id']);
@@ -362,8 +362,8 @@ class Mobilesupport extends My_Controller {
             $data['completion_date'] = $row['completion_date'];
             $data['support_priority'] = $row['support_priority'];
         endforeach;
-        
-         //Turn the assigned user id into the full name then get the company details
+
+        //Turn the assigned user id into the full name then get the company details
         if ($data['assigned'] != 0 && $data['assigned'] != NULL) {
 
             $customer['assigned_info'] = $this->Membership_model->get_employee_detail($data['assigned']);
@@ -391,6 +391,7 @@ class Mobilesupport extends My_Controller {
         $data['prioritylist'] = $this->support_model->get_statuses('Priority');
         $data['type'] = $this->support_model->get_statuses('Issue');
         $data['areas'] = $this->support_model->get_statuses('Type');
+        $data['statuslist'] = $this->support_model->get_statuses('status');
 
         $data['main'] = '/support/mobile/add_request';
         $data['title'] = 'Support Requests';
