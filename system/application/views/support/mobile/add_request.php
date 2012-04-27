@@ -139,12 +139,12 @@ $role = $this->session->userdata('role');
 
 
             <?php } ?>
-
+        </div>
     </fieldset>   
 
     <fieldset data-role="controlgroup" >
         <p>
-            <label class="ui-btn-text" for="support_subject">Support Subject:</label>
+            <label class="ui-btn-text" for="support_subject">Subject:</label>
             <input type="text" name="support_subject" id="support_subject" value="<?= set_value('support_subject', $support_subject) ?>"  />
         </p>
 
@@ -157,7 +157,7 @@ $role = $this->session->userdata('role');
             <label class="ui-btn-text" for="email_address">Email:</label>
             <input type="text" name="email_address" id="email" value="<?= set_value('email_address', $email_address) ?>"  />
         </p>
-        </div>
+       
     </fieldset>   
 
 
