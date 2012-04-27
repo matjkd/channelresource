@@ -101,13 +101,17 @@ $role = $this->session->userdata('role');
 
 
                     </select>
-  <input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">
+  
                 </p>
 
                 <p class="assign">
+                    
+                      <input type="text" name="test" id='test' value="test" style="display:none;" />
+                    
                     <label class="ui-btn-text" for="assign_name">Contact Person:</label>
+                   
                     <input type="text" name="assign_name" id='company' value="<?= set_value('assign_name', $assigned_name) ?>"  />
-
+<input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">
                   
                 </p>
 
