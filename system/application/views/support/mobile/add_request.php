@@ -63,7 +63,7 @@ $role = $this->session->userdata('role');
 
 
                 <p class="assign">
-                    <label class="ui-btn-text" for="basic">Company:</label>
+                    <label class="ui-btn-text" for="company_owner">Company:</label>
                     <select name="company_owner" id="company_owner">
                         <?php foreach ($companies as $row): ?>
                             <?php
@@ -84,7 +84,7 @@ $role = $this->session->userdata('role');
 
 
                 <p class="assign">
-                    <label class="ui-btn-text" for="basic">Responsible:</label>
+                    <label class="ui-btn-text" for="responsible">Responsible:</label>
 
                     <select name="responsible" id="company_owner">
                         <?php foreach ($responsibleusers as $row): ?>
@@ -145,7 +145,7 @@ $role = $this->session->userdata('role');
     <fieldset data-role="controlgroup" >
         <p>
             <label class="ui-btn-text" for="support_subject">Subject:</label>
-            <input type="text" name="support_subject" id="subject" value="<?= set_value('support_subject', $support_subject) ?>"  />
+            <input type="text" name="support_subject" id="support_subject" value="<?= set_value('support_subject', $support_subject) ?>"  />
         </p>
 
         <p>
@@ -154,7 +154,7 @@ $role = $this->session->userdata('role');
         </p>
 
         <p>
-            <label class="ui-btn-text" for="email">Email:</label>
+            <label class="ui-btn-text" for="email_address">Email:</label>
             <input type="text" name="email_address" id="email" value="<?= set_value('email_address', $email_address) ?>"  />
         </p>
         </div>
@@ -165,7 +165,7 @@ $role = $this->session->userdata('role');
     <fieldset data-role="controlgroup" >
 
 
-        <label class="ui-btn-text" for="basic">Area:</label>
+        <label class="ui-btn-text" for="support_type">Area:</label>
         <select name="support_type" id="support_type">
             <?php foreach ($areas as $row): ?>
                 <?php
@@ -187,7 +187,7 @@ $role = $this->session->userdata('role');
     <fieldset data-role="controlgroup" >
 
 
-        <label class="ui-btn-text" for="basic">Type:</label>
+        <label class="ui-btn-text" for="support_issue">Type:</label>
         <select name="support_issue" id="support_issue">
 
 
