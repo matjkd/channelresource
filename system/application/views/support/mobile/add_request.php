@@ -105,7 +105,7 @@ $role = $this->session->userdata('role');
                 </p>
 
                 <p class="assign">
-                    <label class="ui-btn-text" for="basic">Contact Person:</label>
+                    <label class="ui-btn-text" for="assign_name">Contact Person:</label>
                     <input type="text" name="assign_name" id='company' value="<?= set_value('assign_name', $assigned_name) ?>"  />
 
                     <input type="hidden" name="assigned" value="<?php echo $assigned; ?>" id="hiddenIDbox">
@@ -116,7 +116,7 @@ $role = $this->session->userdata('role');
 
 
                 <p class="assign">
-                    <label class="ui-btn-text" for="basic">Contact Person:</label>
+                    <label class="ui-btn-text" for="company_owner">Contact Person:</label>
 
                     <select name="assigned_id" id="company_owner">
                         <?php foreach ($items as $row): ?>
@@ -133,7 +133,7 @@ $role = $this->session->userdata('role');
 
 
                     </select>
- <input type="hidden" name="value" value="" id="hiddenIDbox">
+
                 </p>
 
 
@@ -144,18 +144,18 @@ $role = $this->session->userdata('role');
 
     <fieldset data-role="controlgroup" >
         <p>
-            <label class="ui-btn-text" for="basic">Subject:</label>
-            <input type="text" name="support_subject" id="basic" value="<?= set_value('support_subject', $support_subject) ?>"  />
+            <label class="ui-btn-text" for="subject">Subject:</label>
+            <input type="text" name="support_subject" id="subject" value="<?= set_value('support_subject', $support_subject) ?>"  />
         </p>
 
         <p>
-            <label class="ui-btn-text" for="basic">Telephone:</label>
-            <input type="text" name="telephone" id="basic" value="<?= set_value('telephone', $telephone) ?>"  />
+            <label class="ui-btn-text" for="telephone">Telephone:</label>
+            <input type="text" name="telephone" id="telephone" value="<?= set_value('telephone', $telephone) ?>"  />
         </p>
 
         <p>
-            <label class="ui-btn-text" for="basic">Email:</label>
-            <input type="text" name="email_address" id="basic" value="<?= set_value('email_address', $email_address) ?>"  />
+            <label class="ui-btn-text" for="email">Email:</label>
+            <input type="text" name="email_address" id="email" value="<?= set_value('email_address', $email_address) ?>"  />
         </p>
         </div>
     </fieldset>   
