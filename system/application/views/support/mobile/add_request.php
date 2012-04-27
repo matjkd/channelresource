@@ -306,7 +306,7 @@ $role = $this->session->userdata('role');
 
         <?php $role = $this->session->userdata('role');
         if ($role == 1) { ?>
-            <input id="supportcheckbox" type="checkbox" name="email_changes" value="email" checked="yes">Check this box to email changes
+            <input id="supportcheckbox" type="checkbox" name="email_changes" value="email" checked="yes">Check this box to email changes<br/>
 
         <?php } else { ?>
 
