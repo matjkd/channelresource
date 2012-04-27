@@ -236,31 +236,31 @@ $role = $this->session->userdata('role');
         <textarea type="text" name="support_description" id="basic" ><?= set_value('support_description', $support_description) ?></textarea>
 
     </fieldset>   
-    
-    <?php if($resultsview == 1) { ?>
-    
-    <fieldset data-role="controlgroup" >
+
+    <?php if ($resultsview == 1) { ?>
+
+        <fieldset data-role="controlgroup" >
 
 
-        <label class="ui-btn-text" for="support_status">Status:</label>
-        <select name="support_status" id="support_status">
-            <?php foreach ($statuslist as $row): ?>
-                <?php
-                if ($row['status_value'] == $support_status) {
-                    $selectedstatus = "selected='selected'";
-                } else {
-                    $selectedstatus = "";
-                }
-                ?>
-                <option value="<?= $row['status_value'] ?>" <?= $selectedstatus ?>><?= $row['status_name'] ?></option>
-                <?php $selectedstatus = ""; ?>
-            <?php endforeach; ?>
+            <label class="ui-btn-text" for="support_status">Status:</label>
+            <select name="support_status" id="support_status">
+                <?php foreach ($statuslist as $row): ?>
+                    <?php
+                    if ($row['status_value'] == $support_status) {
+                        $selectedstatus = "selected='selected'";
+                    } else {
+                        $selectedstatus = "";
+                    }
+                    ?>
+                    <option value="<?= $row['status_value'] ?>" <?= $selectedstatus ?>><?= $row['status_name'] ?></option>
+                    <?php $selectedstatus = ""; ?>
+                <?php endforeach; ?>
 
 
-        </select>
+            </select>
 
-    </fieldset> 
-    
+        </fieldset> 
+
     <?php } ?>
 
     <fieldset data-role="controlgroup" > 
@@ -279,5 +279,10 @@ $role = $this->session->userdata('role');
     <?= form_hidden('mobile', 1) ?>
     <?= form_hidden('date_added', unix_to_human(now(), TRUE, 'eu')) ?>
     <?= form_hidden('user_id', $user_id) ?>
-    <?= form_submit('submit', 'Submit') ?>
+
+    <?php if ($resultsview == 1) { ?>
+        <input type="submit" name="submit" value="Update">
+    <?php } else { ?>
+        <?= form_submit('submit', 'Submit') ?>
+    <?php } ?>
     <?= form_close() ?>
