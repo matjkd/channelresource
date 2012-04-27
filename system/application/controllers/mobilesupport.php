@@ -298,7 +298,7 @@ class Mobilesupport extends My_Controller {
         $data['assigned_id'] = '';
         $data['telephone'] = '';
         $data['email_address'] = '';
-        //$data['support_subject'] = '';
+        $data['support_subject'] = '';
         $data['support_type'] = '';
         $data['support_issue'] = '';
         $data['support_priority'] = '';
@@ -312,7 +312,7 @@ class Mobilesupport extends My_Controller {
         $data['prioritylist'] = $this->support_model->get_statuses('Priority');
         $data['type'] = $this->support_model->get_statuses('Issue');
         $data['areas'] = $this->support_model->get_statuses('Type');
-
+        $data['resultsview'] = 0;
         $data['main'] = '/support/mobile/add_request';
         $data['title'] = 'Support Requests';
         $this->load->vars($data);
@@ -393,6 +393,7 @@ class Mobilesupport extends My_Controller {
         $data['areas'] = $this->support_model->get_statuses('Type');
         $data['statuslist'] = $this->support_model->get_statuses('status');
 
+        $data['resultsview'] = 1;
         $data['main'] = '/support/mobile/add_request';
         $data['title'] = 'Support Requests';
         $this->load->vars($data);
