@@ -140,21 +140,23 @@ $role = $this->session->userdata('role');
 
             <?php } ?>
 
+    </fieldset>   
 
-            <p>
-                <label class="ui-btn-text" for="basic">Subject:</label>
-                <input type="text" name="support_subject" id="basic" value="<?= set_value('support_subject', $support_subject) ?>"  />
-            </p>
+    <fieldset data-role="controlgroup" >
+        <p>
+            <label class="ui-btn-text" for="basic">Subject:</label>
+            <input type="text" name="support_subject" id="basic" value="<?= set_value('support_subject', $support_subject) ?>"  />
+        </p>
 
-            <p>
-                <label class="ui-btn-text" for="basic">Telephone:</label>
-                <input type="text" name="telephone" id="basic" value="<?= set_value('telephone', $telephone) ?>"  />
-            </p>
+        <p>
+            <label class="ui-btn-text" for="basic">Telephone:</label>
+            <input type="text" name="telephone" id="basic" value="<?= set_value('telephone', $telephone) ?>"  />
+        </p>
 
-            <p>
-                <label class="ui-btn-text" for="basic">Email:</label>
-                <input type="text" name="email_address" id="basic" value="<?= set_value('email_address', $email_address) ?>"  />
-            </p>
+        <p>
+            <label class="ui-btn-text" for="basic">Email:</label>
+            <input type="text" name="email_address" id="basic" value="<?= set_value('email_address', $email_address) ?>"  />
+        </p>
         </div>
     </fieldset>   
 
