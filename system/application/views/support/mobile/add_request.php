@@ -104,15 +104,7 @@ $role = $this->session->userdata('role');
   
                 </p>
 
-                   <p class="assign" style="display:none;">
-                    
-                      
-                    
-                    <label class="ui-btn-text" for="assign_name">test:</label>
-                   
-                  <input type="text" name="test" id='test' value="test"  />
-                  
-                </p>
+          
                 <p class="assign">
                     
                       <input type="text" name="test" id='test' value="test" style="display:none;" />

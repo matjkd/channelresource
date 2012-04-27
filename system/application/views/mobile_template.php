@@ -74,6 +74,10 @@
                     <?php if (isset($quote_id)) { ?>
                         <a href="<?= base_url() ?>mobile/quote/<?= $quote_id ?>" data-icon="gear" class="ui-btn-right" data-ajax="false">Edit</a>
                     <?php } ?>
+                        
+                         <?php if (isset($ticket_id)) { ?>
+                        <a href="<?= base_url() ?>mobilesupport/edit_request/<?= $ticket_id ?>" data-icon="gear" class="ui-btn-right" data-ajax="false">Edit</a>
+                    <?php } ?>
 
                     <a href="<?= base_url() ?>mobile/logout" data-icon="gear" class="ui-btn-left" data-ajax="false">Logout</a>
                 </div>
