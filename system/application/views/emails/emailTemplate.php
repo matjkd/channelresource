@@ -23,10 +23,8 @@
 <span style="font-family: arial,sans-serif; font-size:9.0pt;color:#943634"><strong>Switchboard:</strong> 01302 245310</span>
 <br/>
 
-<span style="font-family: arial,sans-serif; font-size:9.0pt;color:#943634"><strong>DDI:</strong> 01302 111111</span>
-<br/>
 
-<span style="font-family: arial,sans-serif; font-size:9.0pt;color:#943634"><strong>E:</strong> @lease-desk.com</span>
+<span style="font-family: arial,sans-serif; font-size:9.0pt;color:#943634"><strong>E:</strong> <a href="mailto:support@lease-desk.com">support@lease-desk.com</a></span>
 <br/>
 
 <span style="font-family: arial,sans-serif; font-size:9.0pt;color:#943634"><strong>W:</strong> <a href="http://www.lease-desk.com">www.lease-desk.com</a></span>
