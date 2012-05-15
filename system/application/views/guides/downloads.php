@@ -1,14 +1,6 @@
 <div id="body_container">
 <div id="guidesdownloads">
-<h2>Downloads</h2>
-<img src="<?=base_url()?>images/pdf_button.png"/>
-	<a href="<?=base_url()?>images/files/normal.user.2.2.pdf" target="_blank">Normal User Guide</a>
-	<br/>
-	<img src="<?=base_url()?>images/pdf_button.png"/>
-	<a href="<?=base_url()?>images/files/main-user.2.2.pdf" target="_blank">Main User Guide</a>
-	<br/>
-	<img src="<?=base_url()?>images/pdf_button.png"/>
-	<a href="<?=base_url()?>images/files/super.user.2.2.pdf" target="_blank">Super User Guide</a>
+&nbsp;
 </div>
 
 <div id="guidesbody">
