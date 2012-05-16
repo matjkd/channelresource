@@ -1,6 +1,6 @@
 
 
-<div id="body_container">
+<div id="body_container" style="clear:both">
     <div class="gap">&nbsp;</div>
 
 <h2>Latest Videos</h2>

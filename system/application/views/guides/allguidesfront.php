@@ -7,7 +7,7 @@
         padding-bottom:3px;
         clear:both;
     }
-    .cat_head h2 {
+    .cat_head h3 {
         color:#fff;
         padding-left:10px;
     }
@@ -66,7 +66,7 @@
 
 <?php foreach ($categories as $row2): ?>
     <div class="cat_head" >
-        <h2><?= $row2['guide_cat'] ?></h2>
+        <h3><?= $row2['guide_cat'] ?></h3>
     </div>
     <div  class="guideList" >
         <?php foreach ($all_guides as $row): ?>
