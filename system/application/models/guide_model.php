@@ -97,8 +97,9 @@ class Guide_model extends Model {
     function get_all_guides() {
         $data = array();
         $this->db->order_by('date_modified', 'desc');
-        $query = $this->db->get('user_guides');
-
+       
+       $this->db->join('guide_cat', 'guide_cat.guide_cat_id = user_guides.guide_category');
+         $query = $this->db->get('user_guides');
         if ($query->num_rows() > 0) {
             foreach ($query->result_array() as $row)
                 $data[] = $row;
@@ -259,7 +260,7 @@ class Guide_model extends Model {
 
     function get_guide_categories() {
         $data = array();
-
+$this->db->order_by('guide_cat', 'asc');
 
         $query = $this->db->get('guide_cat');
         if ($query->num_rows() > 0) {
