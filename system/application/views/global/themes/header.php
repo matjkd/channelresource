@@ -36,7 +36,7 @@
      <script src="<?= base_url() ?>js/jquery.tools.min.js" type="text/javascript"></script>
  <script src="<?= base_url() ?>js/blockui.js" type="text/javascript"></script>
     <script type="text/javascript" src="<?= base_url() ?>js/editor.js" type="text/javascript"></script>
-    <script src="<?= base_url() ?>js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>js/jquery-ui-1.8.custom.min.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>js/plugins.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>js/scripts.js?220312" type="text/javascript"></script>
