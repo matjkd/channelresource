@@ -60,6 +60,25 @@ class Userguide extends My_Controller {
             redirect('userguide/');
         }
     }
+       function guidemap() {
+
+        if ($this->session->userdata('role') == 1) {
+
+
+            $data['main'] = '/guides/allguidesfront';
+            $data['flash'] = 'yes';
+            $data['all_guides'] = $this->guide_model->get_all_guides();
+
+            $data['categories'] = $this->guide_model->get_guide_categories();
+            $data['source'] = $this->guide_model->get_linked_tags();
+            $guide_id = $this->uri->segment(3);
+            $data['guide'] = $this->guide_model->get_guide($guide_id);
+            $this->load->vars($data);
+            $this->load->view('leasedesktemplate');
+        } else {
+            redirect('userguide/');
+        }
+    }
 
     function delete_userguide() {
         if ($this->session->userdata('role') == 1) {
