@@ -1,6 +1,9 @@
 <div id="body_container">
 <div id="guidesdownloads">
-&nbsp;
+ <h2>View All Guides</h2>
+ <p>
+     <a href="<?=base_url()?>userguide/guidemap">All Videos organised by Category</a>
+ </p>
 </div>
 
 <div id="guidesbody">
