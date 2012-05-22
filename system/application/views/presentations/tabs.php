@@ -22,7 +22,7 @@
 <a href="<?=base_url()?>images/files/Features_Benefits_Overview_All.pdf" target="_blank">Features and Benefits</a><br/>
 
 <img src="<?=base_url()?>images/pdf_button.png"></img>
-<a href="<?=base_url()?>images/files/access_security.pdf" target="_blank">Access and Security</a><br/>
+<a href="https://s3-eu-west-1.amazonaws.com/lease-desk-blog/docs/data_sheets/Access_Security.pdf" target="_blank">Access and Security</a><br/>
 
 <img src="<?=base_url()?>images/pdf_button.png"></img>
 <a href="<?=base_url()?>images/files/channelpartners.pdf" target="_blank">Channel Partner</a><br/>
