@@ -28,7 +28,7 @@
 <a href="<?=base_url()?>images/files/channelpartners.pdf" target="_blank">Channel Partner</a><br/>
 
 <img src="<?=base_url()?>images/pdf_button.png"></img>
-<a href="<?=base_url()?>images/files/System_Integration.pdf" target="_blank">System Integration</a><br/>
+<a href="https://s3-eu-west-1.amazonaws.com/lease-desk-blog/docs/data_sheets/System_Integration.pdf" target="_blank">System Integration</a><br/>
 
 <img src="<?=base_url()?>images/pdf_button.png"></img>
 <a href="<?=base_url()?>images/files/faqs.pdf" target="_blank">FAQs</a><br/>
@@ -65,6 +65,8 @@
 <img src="<?=base_url()?>images/pdf_button.png"></img>
 <a href="<?=base_url()?>images/files/Henry_Howard_Finance_PLC_Case_Study.pdf" target="_blank">Henry Howard Finance PLC Case Study</a><br/>
 
+<img src="<?=base_url()?>images/pdf_button.png"></img>
+<a href="https://s3-eu-west-1.amazonaws.com/lease-desk-blog/docs/sales_docs/Hardsoft_Computers_Case_Study.pdf" target="_blank">Hardsoft Computers Case Study</a><br/>
 
 <a href="http://www.lease-deskbrochure.co.uk" target="_blank">Lease Desk Brochure</a><br/>
 
