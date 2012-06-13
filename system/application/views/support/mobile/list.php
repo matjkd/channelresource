@@ -51,6 +51,13 @@
                 } else {
                     $new_completion_date = "N/A";
                 }
+                
+                  if ($row['start_date'] != "0000-00-00" && $row['start_date'] != "") {
+                    $old_start_date = strtotime($row['start_date']);
+                    $new_start_date = date('l jS \of F Y', $old_start_date);
+                } else {
+                    $new_start_date = "N/A";
+                }
                 ?>
 
 
@@ -64,6 +71,7 @@
                         <p style="white-space: normal"><strong>Company:</strong> <?= $row['company_name'] ?></p>
                         <p style="white-space: normal"><strong>Type:</strong> <?= $type ?></p>
                         <p style="white-space: normal"><strong>Status:</strong> <?= $status ?></p>
+                          <p   style="white-space: normal"><strong>Estimated Start Date:</strong> <?= $new_start_date ?></p>
                         <p   style="white-space: normal"><strong>Estimated Completion Date:</strong> <?= $new_completion_date ?></p>
 
                         <p  style="white-space: normal"><strong>Date Added:</strong><?= $new_date_added ?></p>

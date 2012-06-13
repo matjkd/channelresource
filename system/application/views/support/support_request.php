@@ -9,6 +9,16 @@
             altFormat: "yy-mm-dd"}
     );
     });
+    
+        $(function() {
+        $("#startdatepicker").datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            dateFormat: 'D, dd M yy',
+            altField: "#altstartdatepicker",
+            altFormat: "yy-mm-dd"}
+    );
+    });
 
     $(function() {
         var availableTags = [<?php $this->load->view('ajax/json_users'); ?>];
@@ -32,10 +42,19 @@ if ($completion_date != NULL && $completion_date != "0000-00-00") {
     $humandate = "N/A";
 }
 
+
+if ($start_date != NULL && $start_date != "0000-00-00") {
+    $starthumandate = new DateTime($start_date);
+    $starthumandate = date_format($starthumandate, 'D, d M Y');
+} else {
+    $starthumandate = "N/A";
+}
 $user_id = $this->session->userdata('user_id');
 $role = $this->session->userdata('role');
 $datepicker = "id='datepicker'";
 $altdatepicker = "id='altdatepicker'";
+$startdatepicker = "id='startdatepicker'";
+$altstartdatepicker = "id='altstartdatepicker'";
 $auto = "id='company'";
 ?>
 
@@ -260,6 +279,21 @@ $auto = "id='company'";
 
 
         <?php } ?>
+        
+                    <?= form_label('Estimated Start Date') ?><br/>
+
+        <?php if (!isset($role) || $role != 1) { ?>
+
+            <?= $starthumandate ?>
+
+        <?php } else { ?>
+
+            <?= form_input('start_datehuman', set_value('start_datehuman', $starthumandate), $startdatepicker) ?>
+            <span style="display:none;">   <?= form_input('start_date', set_value('start_date', $start_date), $altstartdatepicker) ?></span>
+
+        <?php } ?>
+        
+        
         <?= form_label('Estimated Completion Date') ?><br/>
 
         <?php if (!isset($role) || $role != 1) { ?>
@@ -273,6 +307,7 @@ $auto = "id='company'";
 
         <?php } ?>
 
+ 
 
 
     </p>

@@ -36,7 +36,7 @@
     <li>Telephone:<p class="ui-li-aside"><strong> <?= $telephone ?></strong></p></li>
     <li>Email:<p class="ui-li-aside"><a href="mailto:<?= $email_address ?>" ><?= $email_address ?></a></p></li>
     <li>Support Type:<p class="ui-li-aside"><strong> <?= $support_type ?></strong></p></li>
-    
+     <li>Estimated Start Date:<p class="ui-li-aside"><strong> <?= $starthumandate ?></strong></p></li>
      <li>Estimated Completion Date:<p class="ui-li-aside"><strong> <?= $humandate ?></strong></p></li>
 
     <li data-role="list-divider">
