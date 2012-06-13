@@ -39,6 +39,7 @@ class Support_model extends Model {
                     'support_priority' => $this->input->post('support_priority'),
                     'assigned_to' => $this->input->post('assigned_id'),
                     'completion_date' => $this->input->post('completion_date'),
+                     'start_date' => $this->input->post('start_date'),
                     'support_status' => 1,
                     'company_id' => $company_owner,
                     'user_id' => $this->input->post('user_id'),
@@ -104,6 +105,13 @@ class Support_model extends Model {
         } else {
             $completion_date = $this->input->post('completion_date');
         }
+        
+        //set start date if it isn't set
+        if ($this->input->post('start_date') == "0000-00-00" || $this->input->post('start_date') == "") {
+            $start_date = "";
+        } else {
+            $start_date = $this->input->post('start_date');
+        }
 
         $owner = $this->input->post('company_owner');
         if ($owner != NULL) {
@@ -124,6 +132,7 @@ class Support_model extends Model {
                     'support_issue' => $this->input->post('support_issue'),
                     'support_priority' => $this->input->post('support_priority'),
                     'completion_date' => $completion_date,
+                     'start_date' => $start_date,
                     'support_status' => $this->input->post('support_status'),
                     'assigned_to' => $this->input->post('assigned_id'),
                     'support_subject' => $this->input->post('support_subject'),
@@ -361,7 +370,7 @@ class Support_model extends Model {
          $this->db->select('userCompany.company_name as user_company_name');
 
         $this->db->select('' . $table . '.support_id, ' . $table . '.telephone, ' . $table . '.email_address, ' . $table . '.support_subject, ' . $table . '.support_description, ' . $table . '.date_added, ' . $table . '.date_updated');
-        $this->db->select('' . $table . '.support_status, ' . $table . '.support_priority, ' . $table . '.support_issue, ' . $table . '.support_type, ' . $table . '.completion_date, ' . $table . '.date_closed');
+        $this->db->select('' . $table . '.support_status, ' . $table . '.support_priority, ' . $table . '.support_issue, ' . $table . '.support_type, ' .$table . '.start_date, ' . $table . '.completion_date, ' . $table . '.date_closed');
         $this->db->limit(1);
         $this->db->order_by($table . ".date_updated", "desc");
         $query = $this->db->get($table);

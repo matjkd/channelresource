@@ -1,4 +1,6 @@
-<?php if (!defined('BASEPATH'))
+<?php
+
+if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 class Support extends My_Controller {
@@ -74,6 +76,7 @@ class Support extends My_Controller {
         $data['support_type'] = '';
         $data['support_issue'] = '';
         $data['support_priority'] = '';
+        $data['start_date'] = '';
         $data['completion_date'] = '';
         $data['support_description'] = '';
         $data['support_status'] = 'Submitted';
@@ -292,6 +295,7 @@ class Support extends My_Controller {
             $data['support_issue'] = $this->input->post('support_issue');
             $data['support_priority'] = $this->input->post('support_priority');
             $data['completion_date'] = $this->input->post('completion_date');
+            $data['start_date'] = $this->input->post('start_date');
             $data['channel_partner_name'] = $company_name;
             $data['support_status'] = $this->input->post('support_status');
 
@@ -671,6 +675,7 @@ End
             $data['support_description'] = $row['support_description'];
             $data['support_status'] = $row['support_status'];
             $data['completion_date'] = $row['completion_date'];
+            $data['start_date'] = $row['start_date'];
             $data['support_priority'] = $row['support_priority'];
         endforeach;
 
