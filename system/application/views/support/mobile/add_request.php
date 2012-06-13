@@ -9,6 +9,16 @@
             altFormat: "yy-mm-dd"}
     );
     });
+    
+    $(function() {
+        $("#startdatepicker").datepicker({
+            showOtherMonths: true,
+            selectOtherMonths: true,
+            dateFormat: 'D, dd M yy',
+            altField: "#altstartdatepicker",
+            altFormat: "yy-mm-dd"}
+    );
+    });
 
 
     $(function() {
