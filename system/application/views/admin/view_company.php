@@ -28,7 +28,7 @@ function confirmuser(id) {
 		window.location = "delete_user/"+ id;
 	}
 	else{
-		alert("nothing deleted!")
+		alert("Nothing deleted!")
 	}
 }
 
