@@ -36,8 +36,18 @@ if ($completion_date != NULL && $completion_date != "0000-00-00") {
     $humandate = "N/A";
 }
 
+
+if ($start_date != NULL && $start_date != "0000-00-00") {
+    $starthumandate = new DateTime($start_date);
+    $starthumandate = date_format($starthumandate, 'D, d M Y');
+} else {
+    $starthumandate = "N/A";
+}
+
 $datepicker = "id='datepicker'";
 $altdatepicker = "id='altdatepicker'";
+$startdatepicker = "id='startdatepicker'";
+$altstartdatepicker = "id='altstartdatepicker'";
 
 $user_id = $this->session->userdata('user_id');
 $role = $this->session->userdata('role');
@@ -285,6 +295,22 @@ $role = $this->session->userdata('role');
 
     <?php } ?>
 
+    
+    <fieldset data-role="controlgroup" > 
+
+        <label for="date">Estimated Start Date:</label>
+        <?php if (!isset($role) || $role != 1) { ?>
+
+            <?= $starthumandate ?>
+
+        <?php } else { ?>
+            <?= form_input('start_datehuman', set_value('start_datehuman', $starthumandate), $startdatepicker) ?>
+            <span style="display:none;">   <?= form_input('start_date', set_value('start_date', $start_date), $altstartdatepicker) ?></span>
+        <?php } ?>
+    </fieldset>  
+    
+    
+    
     <fieldset data-role="controlgroup" > 
 
         <label for="date">Estimated Completion Date:</label>

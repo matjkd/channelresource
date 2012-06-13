@@ -42,7 +42,7 @@ class Mobilesupport extends My_Controller {
 
     function view_support_request($support_id) {
         //get current user info
-          $data['ticket_id'] = $support_id;
+        $data['ticket_id'] = $support_id;
         $data['customeruser_id'] = $this->session->userdata('user_id');
         $data['customercompany_id'] = $this->session->userdata('company_id');
 
@@ -60,6 +60,7 @@ class Mobilesupport extends My_Controller {
             $data['support_subject'] = $row['support_subject'];
             $data['support_description'] = $row['support_description'];
             $data['completion_date'] = $row['completion_date'];
+            $data['start_date'] = $row['start_date'];
 
             $support_type = $row['support_type'];
             $support_issue = $row['support_issue'];
@@ -94,6 +95,14 @@ class Mobilesupport extends My_Controller {
                 $data['humandate'] = date_format($humandate, 'D, d M Y');
             } else {
                 $data['humandate'] = "N/A";
+            }
+
+            //human start date
+            if ($data['start_date'] != NULL && $data['start_date'] != "0000-00-00") {
+                $starthumandate = new DateTime($data['start_date']);
+                $data['starthumandate'] = date_format($starthumandate, 'D, d M Y');
+            } else {
+                $data['starthumandate'] = "N/A";
             }
 
 
@@ -304,6 +313,7 @@ class Mobilesupport extends My_Controller {
         $data['support_issue'] = '';
         $data['support_priority'] = '';
         $data['completion_date'] = '';
+        $data['start_date'] = '';
         $data['support_description'] = '';
         $data['support_status'] = 'Submitted';
         $data['title'] = 'New Support-Request';
@@ -361,6 +371,7 @@ class Mobilesupport extends My_Controller {
             $data['support_description'] = $row['support_description'];
             $data['support_status'] = $row['support_status'];
             $data['completion_date'] = $row['completion_date'];
+            $data['start_date'] = $row['start_date'];
             $data['support_priority'] = $row['support_priority'];
         endforeach;
 
