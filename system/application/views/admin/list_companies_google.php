@@ -1,7 +1,7 @@
 <script type="text/javascript">
 
 function confirmation(id) {
-	var answer = confirm("are you sure you want to delete this company and all users?")
+	var answer = confirm("Are you sure you want to delete this company and all users?")
 	if (answer){
 		
 		window.location = "/admin/delete_company/"+ id;

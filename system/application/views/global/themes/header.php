@@ -38,6 +38,22 @@
     <script type="text/javascript" src="<?= base_url() ?>js/editor.js" type="text/javascript"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.0/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>js/jquery-ui-1.8.custom.min.js" type="text/javascript"></script>
+    
+    <!-- cookie cuttr
+================================================== -->
+<script src="<?= base_url() ?>js/cookiecuttr.js"></script>
+<link rel="stylesheet" href="<?= base_url() ?>css/cookiecuttr.css">
+<script>
+    $(document).ready(function () {
+        $.cookieCuttr({
+            cookieAnalytics: false,
+cookieMessage: 'We use cookies on this website, you can <a href="{{cookiePolicyLink}}" title="read about our cookies">read about them here</a>. To use the website as intended please...',
+
+        });	
+    });
+
+</script>
+    
     <script src="<?= base_url() ?>js/plugins.js" type="text/javascript"></script>
     <script src="<?= base_url() ?>js/scripts.js?220312" type="text/javascript"></script>
 
