@@ -2,13 +2,13 @@
 <script type="text/javascript">
 <!--
 function confirmation(id) {
-	var answer = confirm("are you sure you want to delete this company and all users?")
+	var answer = confirm("Are you sure you want to delete this company and all users?")
 	if (answer){
 		
 		window.location = "delete_company/"+ id;
 	}
 	else{
-		alert("nothing deleted!")
+		alert("Nothing deleted!")
 	}
 }
 //-->
