@@ -46,7 +46,7 @@
         
         
    </div> 
-   <div class="grid_5"><a href="http://www.lease-desk.com" target="_blank"><img width="200px" src="<?=base_url()?>images/proctor/logo.png"></img></a></div>
+   <div class="grid_5"><a href="http://www.lease-desk.com" target="_blank"><img width="180px" src="<?=base_url()?>images/ccappsgrey.png"></img></a></div>
 </div>
 <!-- //FOOTER --> 
  

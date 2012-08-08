@@ -5,10 +5,10 @@
   	  	<div id="logo">
   		
   		<?php if(SITE=="customer"){
-	?><a href="<?=base_url()?>" title="customer resource"><img src="<?=base_url()?>images/logocustomer.png"></img></a>
+	?><a href="<?=base_url()?>" title="customer resource"><img width="250px" src="<?=base_url()?>images/ccappscustomer.png"></img></a>
 <?php }
 else if(SITE=="channel"){
-	?><a href="<?=base_url()?>" title="channel resource"><img src="<?=base_url()?>images/logo.png"></img></a>
+	?><a href="<?=base_url()?>" title="channel resource"><img width="250px" src="<?=base_url()?>images/ccappschannel.png"></img></a>
 <?php }
 
 ?>
