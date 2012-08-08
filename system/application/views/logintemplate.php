@@ -11,7 +11,7 @@
 <?=$this->load->view('global/themes/header')?>
 
 
-<body>
+<body style="height:100%;">
 
 <!--[if lt IE 7]>
   <div style='border: 1px solid #F7941D; background: #FEEFDA; text-align: center; clear: both; height: 75px; position: relative;'>
@@ -29,15 +29,15 @@
     </div>
   </div>
 <![endif]-->
-<div id="container">
+<div id="container"  style="height:100%;">
          <div class="container_24" align="center">
                   	  	<div id="logo">
 
   		<?php if(SITE=="customer"){
-	?><a href="<?=base_url()?>" title="customer resource"><img src="<?=base_url()?>images/logocustomer.png"></img></a>
+	?><a href="<?=base_url()?>" title="customer resource"><img src="<?=base_url()?>images/ccappscustomer.png"></img></a>
 <?php }
 else if(SITE=="channel"){
-	?><a href="<?=base_url()?>" title="channel resource"><img src="<?=base_url()?>images/logo.png"></img></a>
+	?><a href="<?=base_url()?>" title="channel resource"><img src="<?=base_url()?>images/ccappschannel.png"></img></a>
 <?php }
 
 ?>
