@@ -79,11 +79,11 @@ cookieMessage: 'We use cookies on this website, you can <a href="{{cookiePolicyL
         if (SITE == "customer") {
 
             $domain = "customer-resource.com";
-            ?>Lease-Desk Customer Resource
+            ?>CCapps Customer Resource
         <?php
         } else if (SITE == "channel") {
             $domain = "channel-resource.com";
-            ?>Lease-Desk Channel Resource
+            ?>CCapps Channel Resource
         <?php } ?>
     </title>
 
