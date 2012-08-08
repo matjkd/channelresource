@@ -1,6 +1,6 @@
 <div style="width:100%; float:left">
 <p>Our dedicated Partner Portal providing valuable tools and resources to enable you to effectively
- promote and sell Lease-Desk.com</p>
+ promote and sell <strong>cc</strong>apps.</p>
 <p>On the right hand tool bar you will find a list of options available to you.
  If you have any questions or require any assistance, please contact us at:</p>
 
@@ -19,7 +19,7 @@
 
 
 
-    <div style="height:59px;  float:left; padding-left:30px;"><a href="mailto:support@lease-desk.com?subject=Customer Resource Help Required"><img alt="email" width="370px" height="59px"  src="<?=base_url()?>images/icons/emailwide.png"/>
+    <div style="height:59px;  float:left; padding-left:30px;"><a href="mailto:support@ccapps.cc?subject=Customer Resource Help Required"><img alt="email" width="370px" height="59px"  src="<?=base_url()?>images/icons/emailwide.png"/>
    </a></div>
 
 </div>
