@@ -12,7 +12,7 @@
 
 
 
-        <a href="http://www.lease-desk.com" target="_blank"><img alt="Lease Desk Ltd"  width="200px" src="<?=base_url()?>images/ccappsgrey.png"/></a>
+        <a href="http://www.ccapps.cc" target="_blank"><img alt="Lease Desk Ltd"  width="200px" src="<?=base_url()?>images/ccappsgrey.png"/></a>
 </div>
 </div>
 <!-- //FOOTER -->
