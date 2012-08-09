@@ -11,7 +11,7 @@
 <?=$this->load->view('global/themes/header')?>
 
 
-<body style="height:100%;">
+<body style="">
 
 <!--[if lt IE 7]>
   <div style='border: 1px solid #F7941D; background: #FEEFDA; text-align: center; clear: both; height: 75px; position: relative;'>
@@ -29,7 +29,7 @@
     </div>
   </div>
 <![endif]-->
-<div id="container"  style="height:100%;">
+<div id="container"  style="">
          <div class="container_24" align="center">
                   	  	<div id="logo">
 
@@ -53,7 +53,7 @@ else if(SITE=="channel"){
 
 	
 
-<div class="login_content container_24">
+<div class="login_content container_24" >
   	<!-- CONTENT -->
 
 
@@ -89,15 +89,17 @@ Login with your username and password below:<br/>
 	?>
         </div>
 
-        <div class="clear"></div>
+       
 
 
 
       <!-- //CONTENT -->
 </div>
 
+  
 </div>
-   <div id="footer2" >
+ <div class="clear" style="clear:both;"></div>
+  <div id="footer2" >
 	<div class="top_shadow"></div>
 	<div class="container_24">
 
