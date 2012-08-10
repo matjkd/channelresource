@@ -34,7 +34,7 @@ foreach ($roi_results as $key => $row):
     $this->table->add_row('RBO Available per Sales', number_format($row['rbo_available_per_sales'], 2));
     $this->table->add_row('Additional Churn per Month per Sales', number_format($row['additional_churn_per_sales'], 2));
     $this->table->add_row('Additional Churn per Month Total', number_format($row['additional_churn_total'], 2));
-    $this->table->add_row('Total Cost of Lease-Desk Per Month', number_format($row['total_cost_per_month'], 2));
+    $this->table->add_row('Total Cost of ccapps Per Month', number_format($row['total_cost_per_month'], 2));
     echo $this->table->generate();
     $this->table->clear();
 

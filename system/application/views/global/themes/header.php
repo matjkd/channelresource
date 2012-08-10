@@ -79,11 +79,11 @@ cookieMessage: 'We use cookies on this website, you can <a href="{{cookiePolicyL
         if (SITE == "customer") {
 
             $domain = "customer-resource.com";
-            ?>CCapps Customer Resource
+            ?>ccapps Customer Resource
         <?php
         } else if (SITE == "channel") {
             $domain = "channel-resource.com";
-            ?>CCapps Channel Resource
+            ?>ccapps Channel Resource
         <?php } ?>
     </title>
 

@@ -1,6 +1,6 @@
 <div style="width:100%; float:left">
 <p>Our dedicated Customer portal providing you with essential support tools and resources,
-enabling you to confidently use <strong>cc</strong>apps. and stay up to date on future product developments.</p>
+enabling you to confidently use <strong>cc</strong>apps and stay up to date on future product developments.</p>
 <p>On the right hand tool bar you will find a list of options available to you.
  If you have any questions or require any assistance, please contact us:</p>
 </div>

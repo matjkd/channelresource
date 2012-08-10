@@ -7,10 +7,10 @@
 </div>
 
 <div id="guidesbody">
-    <h2>CCApps User Guides</h2>
+    <h2>ccapps User Guides</h2>
     <p>
-    Welcome to the <strong>cc</strong>apps user guide section. Here you will find fully illustrated, interactive step-by-step instructions on how to use
-   <strong>cc</strong>apps within your business and if you are a Super User, how to set up and maintain <strong>cc</strong>apps. </p>
+    Welcome to the <strong>cc</strong>apps user guide section. Here you will find fully illustrated, interactive step-by-step instructions on how to use the 
+   <strong>cc</strong>apps platform within your business.</p>
 
     <p>
 To access the Interactive Guides, use the search box above.</p>
