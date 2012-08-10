@@ -541,7 +541,7 @@ End
 
                     $message = 'Ticket Updated';
                 }
-if( $data['support_status'] == '3' ) {
+if( $this->input->post('support_status') == '3' ) {
     $message = $message.".  Please ensure the Version control document is updated with dev additions";
 }
 
