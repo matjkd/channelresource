@@ -529,18 +529,23 @@ End
 
                     if ($this->s3->putObject($thefile, "lease-desk", $filelocation, S3:: ACL_PUBLIC_READ)) {
 //echo "We successfully uploaded your file.";
-                        $this->session->set_flashdata('message', 'Ticket Updated and file uploaded successfully');
+
+                        $message = 'Ticket Updated and file uploaded successfully';
                     } else {
 //	echo "Something went wrong while uploading your file... sorry.";
-                        $this->session->set_flashdata('message', 'Ticket Updated, but your file did not upload');
+
+                        $message = 'Ticket Updated, but your file did not upload';
                     }
                 } else {
 
-                    $this->session->set_flashdata('message', 'Ticket updated');
+
+                    $message = 'Ticket Updated';
                 }
+if( $data['support_status'] == '3' ) {
+    $message = $message.".  Please ensure the Version control document is updated with dev additions";
+}
 
-
-
+                $this->session->set_flashdata('message', $message);
 
 
 
