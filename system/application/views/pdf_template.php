@@ -125,7 +125,7 @@
 
 
 
-        <div style="font-size: 9px; text-align:center; width:500px; margin:30px auto; padding-top:50px;">Lease-Desk is a company dedicated to providing user
+        <div style="font-size: 9px; text-align:center; width:500px; margin:30px auto; padding-top:50px;"><strong >cc</strong>apps is a company dedicated to providing user
             friendly technology to simplify complex commercial &amp;
             financial models. For further information see contact
             details below.</div>
@@ -165,10 +165,10 @@
 
 
 
-            $text = "e:  info@lease-desk.com | t: 01302 245310 | w: www.lease-desk.com ";  
+            $text = "e:  info@ccapps.cc | t: 01302 245310 | w: www.ccapps.cc ";  
 
             // Center the text
-            $width = Font_Metrics::get_text_width("e:  info@lease-desk.com | t: 01302 245310 | w: www.lease-desk.com", $font, $size);
+            $width = Font_Metrics::get_text_width("e:  info@ccapps.cc | t: 01302 245310 | w: www.ccapps.cc", $font, $size);
             $pdf->page_text($w / 2 - $width / 2, $y, $text, $font, $size, $color);
 
             }
