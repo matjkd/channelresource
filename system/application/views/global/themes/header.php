@@ -10,7 +10,7 @@
     <link rel='stylesheet' href='<?= base_url() ?>css/prettyPhoto.css' type='text/css' />
     <link rel='stylesheet' href='<?= base_url() ?>css/themes/style.css' type='text/css' />
     <link rel='stylesheet' href='<?= base_url() ?>css/themes/1060.css' type='text/css' />
-    <link rel='stylesheet' href='<?= base_url() ?>css/themes/template.css?09082012' type='text/css' />
+    <link rel='stylesheet' href='<?= base_url() ?>css/themes/template.css?140820121' type='text/css' />
 
     <!--[if IE 6]>
     <link rel="stylesheet" href="<?= base_url() ?>css/themes/ie6.css" />

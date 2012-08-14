@@ -1,6 +1,6 @@
 <!-- HEADER --> 
 <div class="logotop">
-  <div class="grid_19">
+  <div class="grid_17">
   
   	  	<div id="logo">
   		
@@ -21,8 +21,8 @@ else if(SITE=="channel"){
       
   	
   	      </div>
-     <div class="grid_5" id="contact_details">
-		<h3>tel: +44(0)1302 245 310</h3>
+     <div class="grid_7" id="contact_details">
+		<h3 style="text-align:right;">tel: +44(0)1302 245 310</h3>
 		<?=$this->load->view('global/themes/social_links')?>
 		</div>
 </div> 
