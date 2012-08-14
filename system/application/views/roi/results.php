@@ -29,7 +29,7 @@ foreach ($roi_results as $key => $row):
     $this->table->add_row("RBO available " . $row['term_years'] . " years", number_format($row['rbo_available'], 2));
     $this->table->add_row('----', '----');
     $this->table->add_row('Cost Per Appointment', number_format($row['cost_per_appt'], 2));
-    $this->table->add_row('Lease-Desk Cost per Sales per Month', number_format($row['leasedesk_sales_cost'], 2));
+    $this->table->add_row('ccapps Cost per Sales per Month', number_format($row['leasedesk_sales_cost'], 2));
     $this->table->add_row('Average Number of Agreements per Sales', number_format($row['average_agreement_per_sales'], 1));
     $this->table->add_row('RBO Available per Sales', number_format($row['rbo_available_per_sales'], 2));
     $this->table->add_row('Additional Churn per Month per Sales', number_format($row['additional_churn_per_sales'], 2));

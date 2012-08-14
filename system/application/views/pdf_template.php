@@ -168,7 +168,7 @@
             $text = "e:  info@ccapps.cc | t: 01302 245310 | w: www.ccapps.cc ";  
 
             // Center the text
-            $width = Font_Metrics::get_text_width("e:  info@ccapps.cc | t: 01302 245310 | w: www.ccapps.cc", $font, $size);
+            $width = Font_Metrics::get_text_width("e:  info@ccapps.cc | t: 01302 245310 | w: ccapps.cc", $font, $size);
             $pdf->page_text($w / 2 - $width / 2, $y, $text, $font, $size, $color);
 
             }

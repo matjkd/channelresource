@@ -2,12 +2,38 @@
         Proctor Consulting Website Template
         
 */
+@font-face {
+    font-family: 'LubalinGraphStd';
+    src: url('fonts/lubalingraphstd-bold.eot');
+    src: url('fonts/lubalingraphstd-bold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/lubalingraphstd-bold.woff') format('woff'),
+         url('fonts/lubalingraphstd-bold.ttf') format('truetype'),
+         url('fonts/lubalingraphstd-bold.svg#MyriadProBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+ 
+}
+ 
+ 
+@font-face {
+    font-family: 'ITCAvantGardeStd';
+    src: url('fonts/itcavantgardestd-bk.eot');
+    src: url('fonts/itcavantgardestd-bk.eot?#iefix') format('embedded-opentype'),
+         url('fonts/itcavantgardestd-bk.woff') format('woff'),
+         url('fonts/itcavantgardestd-bk.ttf') format('truetype'),
+         url('fonts/itcavantgardestd-bk.svg#MyriadProBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+   
+ 
+}
+ 
 html, body, #container {
     width: 100%;
 
     padding: 0px;
     margin:0px;
-    font-family: 'Arimo', Helvetica, Arial, sans-serif;
+    font-family: 'ITCAvantGardeStd', Helvetica, Arial, sans-serif;
     background: rgb(229,235,238,1); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(246,248,249,1) 0%, rgba(229,235,238,1) 65%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(246,248,249,1)), color-stop(65%,rgba(229,235,238,1))); /* Chrome,Safari4+ */
@@ -19,9 +45,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', end
     
     
    
-    font-size: 12px;
+    font-size: 14px;
     color: #222;
-    line-height: 20px;
+    line-height: 22px;
      
 }
 
@@ -40,7 +66,8 @@ html {
 }
 p {
     line-height:20px;
-    font-size:12px;
+    
+    font-size:14px;
     margin:10px 0 10px 0;
 }
 
@@ -59,11 +86,11 @@ img {
 h1, h2, h3,
 .contentheading, .componentheading, .blog_more strong,
 .nftitle {
-    font-family: 'News Cycle', Arial, Helvetica, sans-serif;
+    font-family: 'LubalinGraphStd', Arial, Helvetica, sans-serif;
 
     font-style: normal;
     font-weight: 100;
-
+color:#BFC7C7;
     text-decoration: none;
     text-transform: none;
     letter-spacing: 0em;
@@ -73,12 +100,12 @@ h1, h2, h3,
 }
 h1 {
 
-    color:#000000;
+   
     font-size: 230%;
 }
 h2 {
 
-    color:#000000;
+  
     font-size: 180%;
 }
 h3 {
@@ -203,7 +230,7 @@ th {
 
 }
 #top_menu {
-
+   font-family: 'LubalinGraphStd', Arial, Helvetica, sans-serif;
     color:#ffffff;
     float:left;
     padding: 0px;
@@ -213,7 +240,7 @@ th {
 }
 #top_menu ul {
     height:42px;
-    padding:7px 0px 8px;
+    padding:9px 0px 8px;
     margin-left:0px;
 }
 #top_menu li {
@@ -224,7 +251,7 @@ th {
     background-position: right;
     padding-right:18px;
     padding-left:18px;
-    padding-top:7px;
+    padding-top:10px;
     padding-bottom:8px;
 }
 #top_menu li:first-child {
@@ -272,7 +299,7 @@ th {
     margin-top: 45px;
 }
 #contact_details h3 {
-    color: #b44640;
+    color: #DF3128;
     margin-bottom:5px;
 }
 
