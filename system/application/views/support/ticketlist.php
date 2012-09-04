@@ -113,7 +113,7 @@ if($row['completion_date'] != "0000-00-00" && $row['completion_date'] != "") {
                     <td style="padding:5px;"><?= $row['company_name'] ?></td>
                     <td style="padding:5px;"><?= $type ?></td>
                     <td style="padding:5px;"><?= $row['date_updated'] ?></td>
-                    <td style="padding:5px;"><?= $new_completion_date ?></td>
+                    <td style="padding:5px;"><span style="display:none"><?=$row['completion_date']?></span><?= $new_completion_date ?></td>
                     <td style="padding:5px;"><?= $status ?></td>
                     <td style="padding:5px;"><?= $row['firstname'] ?> <?= $row['lastname'] ?></td>
                     <td style="padding:5px;"><?= "<a href=$viewticket>View</a> | <a href='#' onclick='confirmation(" . $row['support_id'] . ")'>Delete</a>" ?></td>

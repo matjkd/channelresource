@@ -161,7 +161,7 @@ class Support extends My_Controller {
         $data['title'] = $subject;
         $this->load->vars($data);
         $msg = $this->load->view('emails/emailTemplate', $data, true);
-        $this->postmark->from('noreply@lease-desk.com', 'Lease-Desk.com');
+        $this->postmark->from('noreply@lease-desk.com', 'ccapps');
         $this->postmark->to('customer-resource@lease-desk.com');
         $this->postmark->bcc('mat@redstudio.co.uk');
         $this->postmark->subject($data['title']);
