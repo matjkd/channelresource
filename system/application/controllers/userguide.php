@@ -62,7 +62,7 @@ class Userguide extends My_Controller {
     }
        function guidemap() {
 
-        if ($this->session->userdata('role') == 1) {
+      
 
 
             $data['main'] = '/guides/allguidesfront';
@@ -75,9 +75,7 @@ class Userguide extends My_Controller {
             $data['guide'] = $this->guide_model->get_guide($guide_id);
             $this->load->vars($data);
             $this->load->view('leasedesktemplate');
-        } else {
-            redirect('userguide/');
-        }
+    
     }
 
     function delete_userguide() {
