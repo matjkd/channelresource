@@ -34,7 +34,7 @@
 
 
 <img src="<?=base_url()?>images/pdf_button.png"></img>
-<a href="https://s3-eu-west-1.amazonaws.com/lease-desk-blog/docs/sales_docs/CCAPPS_CS_DAISY-GROUP_V3.pdf" target="_blank">Daisy PLC Case Study</a><br/>
+<a href="https://s3-eu-west-1.amazonaws.com/lease-desk-blog/docs/sales_docs/CCAPPS_CS_DAISY-GROUP_V4.pdf" target="_blank">Daisy PLC Case Study</a><br/>
 
 <img src="<?=base_url()?>images/pdf_button.png"></img>
 <a href="https://s3-eu-west-1.amazonaws.com/lease-desk-blog/docs/sales_docs/CCAPPS_CS_HENRY-HOWARD_V2.pdf" target="_blank">Henry Howard Finance PLC Case Study</a><br/>
