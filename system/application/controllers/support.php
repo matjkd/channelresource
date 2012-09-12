@@ -542,12 +542,13 @@ End
                     $message = 'Ticket Updated';
                 }
 if( $this->input->post('support_status') == '3' ) {
-    $message = $message.".  Please ensure the Version control document is updated with dev additions";
+  
+	$popup = "Please ensure the Version control document is updated with dev additions";
 }
 
                 $this->session->set_flashdata('message', $message);
 
-
+ 				$this->session->set_flashdata('popup', $popup);
 
 
 // normal email update if email checkbox is checked
