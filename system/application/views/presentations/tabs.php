@@ -6,29 +6,15 @@
 	<br/>
 <div id="tabs" style="width:795px;">
 	<ul>
-		<li><a href="#tabs-1">Data Sheets</a></li>
-		<li><a href="#tabs-2">Presentations</a></li>
+	
 		<li><a href="#tabs-3">Sales Documentation</a></li>
-		<li><a href="#tabs-4">Other Resource</a></li>
+		
 	</ul>
 	
 
 
 
-<div id="tabs-1">
 
-
-
-
-
-
-
-</div>
-
-<div  id="tabs-2">
-
-
-</div>
 
 <div id="tabs-3">
 
@@ -55,12 +41,7 @@
 
 
 </div>
-<div id="tabs-4">
 
-
-
-</div>
-	
 
 
 
