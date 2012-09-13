@@ -544,11 +544,12 @@ End
 if( $this->input->post('support_status') == '3' ) {
   
 	$popup = "Please ensure the Version control document is updated with dev additions";
+	$this->session->set_flashdata('popup', $popup);
 }
 
                 $this->session->set_flashdata('message', $message);
 
- 				$this->session->set_flashdata('popup', $popup);
+ 			
 
 
 // normal email update if email checkbox is checked
