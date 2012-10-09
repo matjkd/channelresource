@@ -33,7 +33,7 @@ html, body, #container {
 
     padding: 0px;
     margin:0px;
-    font-family: 'ITCAvantGardeStd', Helvetica, Arial, sans-serif;
+    font-family: 'Arimo', Helvetica, Arial, sans-serif;
     background: rgb(229,235,238,1); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(246,248,249,1) 0%, rgba(229,235,238,1) 65%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(246,248,249,1)), color-stop(65%,rgba(229,235,238,1))); /* Chrome,Safari4+ */
@@ -45,9 +45,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f6f8f9', end
     
     
    
-    font-size: 14px;
+    font-size: 12px;
     color: #222;
-    line-height: 22px;
+    line-height: 20px;
      
 }
 
@@ -67,7 +67,7 @@ html {
 p {
     line-height:20px;
     
-    font-size:14px;
+    font-size:12px;
     margin:10px 0 10px 0;
 }
 
@@ -97,6 +97,8 @@ color:#BFC7C7;
     word-spacing: 0em;
     line-height: normal;
     margin-bottom: 0px;
+    
+    
 }
 h1 {
 
@@ -230,7 +232,7 @@ th {
 
 }
 #top_menu {
-   font-family: 'LubalinGraphStd', Arial, Helvetica, sans-serif;
+   
     color:#ffffff;
     float:left;
     padding: 0px;
@@ -474,7 +476,7 @@ body > #container {
     padding-right:10px;
     margin-bottom:10px;
     color:#ffffff;
-    height: 133px;
+    height:67px;
     background: rgb(146,153,160); /* Old browsers */
 background: -moz-linear-gradient(top, rgba(146,153,160,1) 0%, rgba(102,102,102,1) 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(146,153,160,1)), color-stop(100%,rgba(102,102,102,1))); /* Chrome,Safari4+ */

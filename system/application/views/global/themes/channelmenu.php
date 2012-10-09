@@ -1,6 +1,14 @@
 <!-- Left COLUMN --> 
 
 	     <?php $this->load->view('global/themes/login'); ?>
+	     
+	     <div class="widebox">
+	<div>
+		<a href="https://demo.lease-desk.com/" target="_blank"><img src="<?=base_url()?>images/icons/demosite.png"/></a>
+	</div>
+</div>
+	     
+
 
 <div class="widebox">
 	<div>
